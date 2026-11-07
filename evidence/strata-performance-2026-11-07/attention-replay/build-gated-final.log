@@ -1,0 +1,3 @@
+[0/2] Re-checking globbed directories...
+[1/3] Building CXX object CMakeFiles/hip_pa_bench.dir/tests/cuda/pa_bench.cpp.o
+[2/3] Linking HIP executable hip_pa_bench

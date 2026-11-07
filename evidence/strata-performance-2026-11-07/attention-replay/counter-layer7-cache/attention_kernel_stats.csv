@@ -1,0 +1,3 @@
+"Name","Calls","TotalDurationNs","AverageNs","Percentage","MinNs","MaxNs","StdDev"
+"void strata::kernels::(anonymous namespace)::prompt_attn_wmma_kernel<false, true, true, 2>(float const*, strata::kernels::QsaAttnPools, int const*, int const*, int, int, float, float*, int, float const*, unsigned short*, long)",8,201232905,25154113.125000,99.91,24768776,25885878,378240.152936
+"__amd_rocclr_fillBufferAligned",1,186784,186784.000000,0.0927,186784,186784,0.00000000e+00

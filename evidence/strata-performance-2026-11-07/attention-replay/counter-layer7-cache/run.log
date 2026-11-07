@@ -1,0 +1,15 @@
+W1107 17:18:20.370967   19358 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.162416 sec
+W1107 17:18:20.371549   19358 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_pa_bench.gated-control /home/less/.cache/strata-evaluation-20261107/attention-replay/records/record-019-layer-07-pos-61440.bin 7' ::     0.000000 sec
+W1107 17:18:21.305136   19358 tool.cpp:3082] HSA version 1.21.0 initialized (instance=0)
+strata: STRATA_HIP_WMMA: the prompt attention on matrix cores on (gfx1151)
+W1107 17:18:21.682560   19358 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_pa_bench.gated-control /home/less/.cache/strata-evaluation-20261107/attention-replay/records/record-019-layer-07-pos-61440.bin 7' ::     1.311009 sec
+E1107 17:18:21.694325   19358 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/counter-layer7-cache/attention_kernel_stats.csv
+E1107 17:18:21.694438   19358 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/counter-layer7-cache/attention_kernel_trace.csv
+E1107 17:18:21.703340   19358 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/counter-layer7-cache/attention_counter_collection.csv
+E1107 17:18:21.706696   19358 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/counter-layer7-cache/attention_agent_info.csv
+E1107 17:18:21.706770   19358 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/counter-layer7-cache/attention_domain_stats.csv
+W1107 17:18:21.708613   19358 simple_timer.cpp:55] [rocprofv3] output generation ::     0.023204 sec
+W1107 17:18:21.708675   19358 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.023347 sec
+layer 7 p0 61440 T 4096 cap 2051, 65536 cells, 24 heads / 2 KV heads x 256
+gated FP16 output, ld 6208; row padding intact
+prompt attention: median 24.967 ms (min 24.803) over 7; output hash 03e1afd508d8a383, rms 0.0113964

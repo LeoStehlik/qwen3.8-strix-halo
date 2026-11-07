@@ -604,3 +604,34 @@ Files ending in `.private.json` contain the API key and must not be published.
   it is not an established speedup on this Halo.
 - [Release-pinned architecture defaults](https://github.com/Niko1221/Strata/blob/v0.2.11/include/strata/core/arch_defaults.hpp)
   and [engine configuration](https://github.com/Niko1221/Strata/blob/v0.2.11/src/program/generate.cpp).
+
+## Attention selection replay and instruction trace
+
+The [attention experiment record](../experiments/strata-attention-replay/README.md)
+contains two completed public 64K captures (24 large layer/chunk records),
+gated synthetic-value replay, GPU counters and a successful gfx1151 Advanced
+Thread Trace. The published parser checks complete/stable captures; an initial
+in-flight parse was discarded. Diagnostics are not new throughput baselines.
+
+Four-query groups have a pooled ideal KV-read sharing factor of 1.59×, ranging
+1.37–2.20× across layers/runs. Layer-7 L2 hits measured 20.25%; external L2
+read requests are not direct DRAM bandwidth. The fast gated kernel uses 200
+VGPRs/thread, 18,432 LDS bytes/block and no scratch spills. The trace localizes
+large waits to scale loads and dependent selected-ID/page-table lookups.
+Repeated INT8 conversions also contribute substantial instruction work.
+Summed wave instruction latency is not GPU wall time or an Amdahl fraction.
+
+Independent off/on/on/off screens preserved output hashes and row padding:
+early V staging was noise (−0.04% to +0.51%); plain deferred scales produced
+essentially the same ISA; an empty compiler value barrier reduced static vector
+wait instructions from 27 to 21 but gave only +0.45% to +1.75% in three replay
+records. These small operator changes are not promoted and have no full-model
+or state/continuation result. Production attention source was restored; the
+restored replay binary exactly matches the saved gated control. The harness
+extension alone is retained. The packaged live endpoint was restored at
+17:30:07 UTC with authenticated readiness/model checks; no Mac gateway restart.
+
+Next candidate work is physical-row address preprocessing or exact INT8
+conversion reduction, with the corresponding page-table/exhaustive-code tests.
+Actual attention is about 10% of prefill, so this cannot alone establish the
+updated 1,700–2,000 tok/s objective. Generation tuning still follows prefill.

@@ -26,7 +26,18 @@ operator times by 2.4–2.5%, only about 0.6% estimated whole-prefill gain.
 It is retained as an undeployed opt-in candidate, without full-model/state
 validation. A four-stage loop unroll lost and was removed. Broader dense
 tuning retained the existing library solutions. No production source patch
-is deployed. Next active work: actual attention-selection replay and KV reuse.
+is deployed. The [attention-selection replay and instruction trace](experiments/strata-attention-replay/README.md)
+are now complete. Two public 64K captures cover every QSA layer; gated replay
+matches the production kernel's output format. Four-query ideal KV-read sharing
+averages 1.59×. A later-layer replay showed 20.25% L2 hits; external L2 requests
+are not direct DRAM bandwidth. Advanced Thread Trace worked on gfx1151 and
+identified scale-load and ID/page-table waits plus repeated INT8 conversions.
+Early V staging was noise; deferred scale conversion with a compiler barrier
+gave only 0.5–1.8% operator gain. All output hashes matched, but those tiny
+gains do not justify promotion; all attention kernel changes were removed.
+Next candidates are precomputed physical selected-row addresses, with arbitrary
+page-table tests and preprocessing cost included, or exact INT8 conversion
+reduction with exhaustive 256-code validation. Neither is implemented yet.
 
 Fresh packaged 64K screens: control **1,389.1 tok/s**, HC exact **1,217.2**,
 HC fused **1,382.8**. The exact arm includes a separate 5.83-second cache-park
@@ -92,6 +103,13 @@ loaded again at **17:06:46 UTC**. Authenticated health, metrics and model
 listing passed; the endpoint was idle. `90-benchmark.conf` was removed and
 `90-live-preview.conf` restored. Neither HC option nor the source epilogue is
 enabled in serving. The Mac gateway was untouched.
+
+After attention capture/replay, the same optimized preview was restored at
+**17:30:07 UTC**. Authenticated health, metrics and model listing passed, idle
+with zero queued requests. The temporary `91-qsa-profile.conf` is removed;
+`90-live-preview.conf` remains. No attention experiment, profiling switch or
+cooperative expert epilogue is enabled in serving. Boot promotion is still
+pending. Full public evidence and replay inputs are committed with the handoff.
 
 **Flash-Next is connected to the existing `tiercelmoe` provider.** Select
 `/model qwen-flash-next`, or the full reference

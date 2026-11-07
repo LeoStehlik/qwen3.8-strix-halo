@@ -57,10 +57,20 @@ A 2x expert improvement alone would predict about 14% overall, not 2x prefill.
    roofline from the remaining missing instruction counters. Broader dense
    tuning and packaged HC exact/fused screens gave no promotion-worthy gain.
    The rejected bounded-dispatch patch is not a candidate for promotion.
-2. **Next active experiment:** measure attention's memory reuse and remaining scheduling cost. The current
-   source already defaults to trimmed shared-memory rows and read prefetch;
-   enabling those again is not a new optimization. Old experimental flag names
-   in comments are not evidence that a switch still exists.
+2. The [attention capture and instruction trace](../experiments/strata-attention-replay/README.md)
+   are complete: all 12 QSA layers from two public 64K requests, gated replay,
+   useful memory/instruction counters and one gfx1151 Advanced Thread Trace.
+   Four-query ideal read sharing averages 1.59×; later-layer L2 hits were only
+   20.25%. The trace exposes waits after scales and selected-ID/page-table
+   loads, plus repeated INT8 conversion work. Its summed instruction-latency
+   shares are not GPU wall-time shares. Early V staging gave no gain; deferred
+   scales with a compiler barrier gave only 0.5–1.8% operator gain and is shelved.
+   All attention production changes were removed. **Next candidates:** reduce
+   dependent address lookup with precomputed physical selected rows (including
+   preprocessing cost), or exact INT8 conversion instruction count. Neither is
+   implemented. Validate arbitrary/nonresident page tables or every INT8 code,
+   respectively. Trim and read-prefetch already default on; enabling them again
+   is not a new optimization. Actual attention is only 10% of total prefill.
 3. Compare any operator winner against a same-source control, then validate
    cold 64K/128K and a 192K stress case. Report newly processed tokens, cache
    reuse, full durations and output checks; no warm-cache substitution.

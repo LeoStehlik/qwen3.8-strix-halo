@@ -1,0 +1,86 @@
+[
+  {
+    "layer": 0,
+    "turn": 0,
+    "raw_scales": 0,
+    "median_ms": 21.693,
+    "hash": "25aa67a7524d6383"
+  },
+  {
+    "layer": 0,
+    "turn": 1,
+    "raw_scales": 1,
+    "median_ms": 22.004,
+    "hash": "25aa67a7524d6383"
+  },
+  {
+    "layer": 0,
+    "turn": 2,
+    "raw_scales": 1,
+    "median_ms": 21.892,
+    "hash": "25aa67a7524d6383"
+  },
+  {
+    "layer": 0,
+    "turn": 3,
+    "raw_scales": 0,
+    "median_ms": 21.878,
+    "hash": "25aa67a7524d6383"
+  },
+  {
+    "layer": 3,
+    "turn": 0,
+    "raw_scales": 0,
+    "median_ms": 23.037,
+    "hash": "a13a405176784383"
+  },
+  {
+    "layer": 3,
+    "turn": 1,
+    "raw_scales": 1,
+    "median_ms": 22.6,
+    "hash": "a13a405176784383"
+  },
+  {
+    "layer": 3,
+    "turn": 2,
+    "raw_scales": 1,
+    "median_ms": 22.988,
+    "hash": "a13a405176784383"
+  },
+  {
+    "layer": 3,
+    "turn": 3,
+    "raw_scales": 0,
+    "median_ms": 23.171,
+    "hash": "a13a405176784383"
+  },
+  {
+    "layer": 7,
+    "turn": 0,
+    "raw_scales": 0,
+    "median_ms": 24.036,
+    "hash": "03e1afd508d8a383"
+  },
+  {
+    "layer": 7,
+    "turn": 1,
+    "raw_scales": 1,
+    "median_ms": 24.026,
+    "hash": "03e1afd508d8a383"
+  },
+  {
+    "layer": 7,
+    "turn": 2,
+    "raw_scales": 1,
+    "median_ms": 23.887,
+    "hash": "03e1afd508d8a383"
+  },
+  {
+    "layer": 7,
+    "turn": 3,
+    "raw_scales": 0,
+    "median_ms": 23.988,
+    "hash": "03e1afd508d8a383"
+  }
+]

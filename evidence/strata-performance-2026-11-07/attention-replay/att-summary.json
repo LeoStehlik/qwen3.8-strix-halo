@@ -1,0 +1,260 @@
+{
+  "header": "ISA, _, LineNumber, Source, Codeobj, Vaddr, Hit, Latency, Stall, Idle",
+  "groups": {
+    "vector_memory_wait": {
+      "hits": 255020,
+      "latency_cycles": 131624047,
+      "stall_cycles": 131369027,
+      "idle_cycles": 0,
+      "fraction_of_summed_instruction_latency": 0.44665601600262084
+    },
+    "vector_alu_other": {
+      "hits": 24519230,
+      "latency_cycles": 94715967,
+      "stall_cycles": 68810117,
+      "idle_cycles": 49325245,
+      "fraction_of_summed_instruction_latency": 0.3214113031493076
+    },
+    "lds_scalar_memory_wait": {
+      "hits": 2135690,
+      "latency_cycles": 26737324,
+      "stall_cycles": 24601634,
+      "idle_cycles": 0,
+      "fraction_of_summed_instruction_latency": 0.09073103956765027
+    },
+    "workgroup_barrier": {
+      "hits": 53710,
+      "latency_cycles": 17340960,
+      "stall_cycles": 40705,
+      "idle_cycles": 0,
+      "fraction_of_summed_instruction_latency": 0.0588452055972782
+    },
+    "lds_instruction": {
+      "hits": 6718670,
+      "latency_cycles": 16907812,
+      "stall_cycles": 8800062,
+      "idle_cycles": 46506086,
+      "fraction_of_summed_instruction_latency": 0.05737535138424444
+    },
+    "scalar_other": {
+      "hits": 3982740,
+      "latency_cycles": 4363379,
+      "stall_cycles": 93172,
+      "idle_cycles": 11983412,
+      "fraction_of_summed_instruction_latency": 0.014806788917905706
+    },
+    "wmma": {
+      "hits": 426400,
+      "latency_cycles": 1883439,
+      "stall_cycles": 1457039,
+      "idle_cycles": 294154,
+      "fraction_of_summed_instruction_latency": 0.006391304471317162
+    },
+    "global_memory_instruction": {
+      "hits": 487080,
+      "latency_cycles": 1052755,
+      "stall_cycles": 69165,
+      "idle_cycles": 6405943,
+      "fraction_of_summed_instruction_latency": 0.003572442610937492
+    },
+    "other": {
+      "hits": 53710,
+      "latency_cycles": 62046,
+      "stall_cycles": 8336,
+      "idle_cycles": 1515,
+      "fraction_of_summed_instruction_latency": 0.00021054829873828917
+    }
+  },
+  "total": {
+    "hits": 38632250,
+    "latency_cycles": 294687729,
+    "stall_cycles": 235249257,
+    "idle_cycles": 114516355
+  },
+  "top_opcodes_by_hits": [
+    {
+      "opcode": "v_cvt_f32_i32_e32",
+      "hits": 3411200,
+      "latency_cycles": 15517041
+    },
+    {
+      "opcode": "v_cvt_f16_f32_e32",
+      "hits": 3411200,
+      "latency_cycles": 14664273
+    },
+    {
+      "opcode": "v_bfe_i32",
+      "hits": 2558400,
+      "latency_cycles": 11327102
+    },
+    {
+      "opcode": "s_waitcnt",
+      "hits": 2390710,
+      "latency_cycles": 158361371
+    },
+    {
+      "opcode": "ds_load_b32",
+      "hits": 2316910,
+      "latency_cycles": 4661736
+    },
+    {
+      "opcode": "v_cvt_f16_i16_e32",
+      "hits": 1918800,
+      "latency_cycles": 7235698
+    },
+    {
+      "opcode": "v_mul_f32_e32",
+      "hits": 1836390,
+      "latency_cycles": 9022870
+    },
+    {
+      "opcode": "ds_load_i8_d16",
+      "hits": 1758900,
+      "latency_cycles": 5110195
+    },
+    {
+      "opcode": "ds_load_i8_d16_hi",
+      "hits": 1652300,
+      "latency_cycles": 4409481
+    },
+    {
+      "opcode": "s_or_b32",
+      "hits": 1505110,
+      "latency_cycles": 1507015
+    },
+    {
+      "opcode": "v_cvt_f16_i16_e64",
+      "hits": 1492400,
+      "latency_cycles": 4621488
+    },
+    {
+      "opcode": "v_dual_mov_b32",
+      "hits": 1405070,
+      "latency_cycles": 7307001
+    },
+    {
+      "opcode": "s_and_saveexec_b32",
+      "hits": 1200890,
+      "latency_cycles": 1200890
+    },
+    {
+      "opcode": "v_mov_b32_e32",
+      "hits": 947920,
+      "latency_cycles": 3223569
+    },
+    {
+      "opcode": "v_ashrrev_i32_e32",
+      "hits": 935210,
+      "latency_cycles": 3589159
+    },
+    {
+      "opcode": "s_cbranch_execz",
+      "hits": 668710,
+      "latency_cycles": 668710
+    },
+    {
+      "opcode": "v_add_f32_e32",
+      "hits": 624430,
+      "latency_cycles": 1161267
+    },
+    {
+      "opcode": "v_fmac_f32_e32",
+      "hits": 451820,
+      "latency_cycles": 1448898
+    },
+    {
+      "opcode": "v_fma_mixlo_f16",
+      "hits": 444850,
+      "latency_cycles": 1292033
+    },
+    {
+      "opcode": "v_fma_mixhi_f16",
+      "hits": 444030,
+      "latency_cycles": 878835
+    },
+    {
+      "opcode": "v_wmma_f32_16x16x16_f16",
+      "hits": 426400,
+      "latency_cycles": 1883439
+    },
+    {
+      "opcode": "ds_bpermute_b32",
+      "hits": 401800,
+      "latency_cycles": 904165
+    },
+    {
+      "opcode": "v_add_co_u32",
+      "hits": 394420,
+      "latency_cycles": 474671
+    },
+    {
+      "opcode": "v_add_co_ci_u32_e64",
+      "hits": 394420,
+      "latency_cycles": 762462
+    },
+    {
+      "opcode": "v_cndmask_b32_e64",
+      "hits": 375970,
+      "latency_cycles": 614735
+    },
+    {
+      "opcode": "global_load_b128",
+      "hits": 324720,
+      "latency_cycles": 708575
+    },
+    {
+      "opcode": "s_mov_b32",
+      "hits": 309140,
+      "latency_cycles": 346415
+    },
+    {
+      "opcode": "v_add_nc_u32_e32",
+      "hits": 305450,
+      "latency_cycles": 1441820
+    },
+    {
+      "opcode": "v_max_f32_e32",
+      "hits": 290690,
+      "latency_cycles": 366332
+    },
+    {
+      "opcode": "v_dual_fmac_f32",
+      "hits": 244360,
+      "latency_cycles": 963773
+    }
+  ],
+  "limitations": [
+    "one dispatch, one shader engine, one WGP/SIMD target",
+    "summed wave instruction latency is not percentage of total GPU wall time",
+    "gated kernel with synthetic query and KV values and actual captured layer-7 selection"
+  ],
+  "observed_traced_waves": 410,
+  "kernel_calls_traced": 1,
+  "hot_wait_source_assessment": [
+    {
+      "isa_line": 770,
+      "observed_wait": "vmcnt(4)",
+      "preceding_loads": "V scale and four V code vectors; next use converts V scale to float"
+    },
+    {
+      "isa_line": 786,
+      "observed_wait": "vmcnt(0)",
+      "preceding_loads": "first K scale; conversion follows before first K code tile"
+    },
+    {
+      "isa_line": 842,
+      "observed_wait": "vmcnt(0)",
+      "preceding_loads": "second K scale; conversion follows before second K code tile"
+    },
+    {
+      "isa_line": 892,
+      "observed_wait": "vmcnt(0)",
+      "preceding_loads": "next chunk selected ID"
+    },
+    {
+      "isa_line": 925,
+      "observed_wait": "vmcnt(0)",
+      "preceding_loads": "next chunk page table entry"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "normalized_isa_equal": false,
+  "instruction_lines": [
+    2946,
+    2946
+  ],
+  "sha256": [
+    "d4ce04640dbbb3905b3636e63d1bb653ea60f0180d981d56867f8b6330006354",
+    "0a07d21d5700b958acba3d4504f75f06644db44bf6e8fe23e8e8ef9f66109630"
+  ],
+  "method": "remove address/encoding comments and compare assembly instruction text for gated fast trim=2 RPF kernels",
+  "observed_difference": "Only two register-zeroing instructions differ; wait instruction sequence is unchanged. The compiler did not preserve the intended scale-conversion delay.",
+  "vmcnt_instructions": [
+    27,
+    27
+  ]
+}

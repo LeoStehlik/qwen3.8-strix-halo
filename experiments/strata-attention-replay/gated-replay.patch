@@ -1,0 +1,88 @@
+diff --git a/tests/cuda/pa_bench.cpp b/tests/cuda/pa_bench.cpp
+index afbf658..a856254 100644
+--- a/tests/cuda/pa_bench.cpp
++++ b/tests/cuda/pa_bench.cpp
+@@ -6,6 +6,7 @@
+ #include "strata/kernels/qsa_decode_attn.hpp"
+ #include "strata/kernels/qsa_prompt_attn.hpp"
+ 
++#include <cuda_fp16.h>
+ #include <cuda_runtime.h>
+ 
+ #include <algorithm>
+@@ -22,11 +23,14 @@
+ int main(int argc, char** argv) {
+     if (argc < 2) { std::fprintf(stderr, "usage: pa_bench DUMP [reps]\n"); return 2; }
+     const int reps = argc > 2 ? std::atoi(argv[2]) : 5;
++    if (reps < 1) { std::fprintf(stderr, "reps must be positive\n"); return 2; }
++    const bool gated = [] { const char* e = std::getenv("PA_BENCH_GATE"); return e && e[0] == '1'; }();
+     std::FILE* f = std::fopen(argv[1], "rb");
+     if (!f) { std::perror(argv[1]); return 1; }
+     int32_t hdr[4];
+     if (std::fread(hdr, 4, 4, f) != 4) return 1;
+     const int64_t p0 = hdr[1], T = hdr[2], cap = hdr[3];
++    if (hdr[0] < 0 || p0 < 0 || T < 1 || T > 262144 || cap < 1 || cap > 262144) return 2;
+     std::vector<int32_t> ids((size_t) (T * cap)), steps((size_t) (T * strata::kernels::kStepCount));
+     if (std::fread(ids.data(), 4, ids.size(), f) != ids.size() || std::fread(steps.data(), 4, steps.size(), f) != steps.size()) {
+         std::fprintf(stderr, "short dump (written without STRATA_QSA_DUMP_STEPS?)\n");
+@@ -52,6 +56,19 @@ int main(int argc, char** argv) {
+     for (size_t i = 0; i < sc_n; ++i) { ks[i] = 0x2000 + (uint16_t) (i % 512); vs[i] = 0x2000 + (uint16_t) ((i * 7) % 512); }
+     std::vector<int32_t> pt((size_t) pages);
+     for (int64_t i = 0; i < pages; ++i) pt[(size_t) i] = (int32_t) i;
++    // Generate the gate after all existing inputs: ungated baseline inputs and
++    // hashes stay unchanged. Match the model's padded FP16 output leading dimension.
++    const int64_t ld16 = NH * HD + 64;
++    std::vector<float> qf(gated ? (size_t) (T * NH * HD * 2) : 0);
++    for (auto& x : qf) x = nd(rng);
++    float* dqf = nullptr;
++    uint16_t* do16 = nullptr;
++    if (gated) {
++        CK(cudaMalloc(&dqf, qf.size() * 4));
++        CK(cudaMalloc(&do16, (size_t) (T * ld16) * 2));
++        CK(cudaMemcpy(dqf, qf.data(), qf.size() * 4, cudaMemcpyHostToDevice));
++        CK(cudaMemset(do16, 0xa5, (size_t) (T * ld16) * 2));
++    }
+ 
+     float *dq, *dattn;
+     int8_t *dk, *dv;
+@@ -84,7 +101,10 @@ int main(int argc, char** argv) {
+     std::vector<float> ms;
+     for (int r = 0; r < reps + 1; ++r) {
+         CK(cudaEventRecord(e0, st));
+-        if (!strata::kernels::qsa_prompt_attn_batch(dq, pools, dids, dsteps, cap, s, dattn, T, st)) {
++        const bool ok = gated
++            ? strata::kernels::qsa_prompt_attn_batch_gated(dq, pools, dids, dsteps, cap, s, dqf, do16, ld16, T, st)
++            : strata::kernels::qsa_prompt_attn_batch(dq, pools, dids, dsteps, cap, s, dattn, T, st);
++        if (!ok) {
+             std::fprintf(stderr, "qsa_prompt_attn_batch declined\n");
+             return 1;
+         }
+@@ -96,9 +116,26 @@ int main(int argc, char** argv) {
+     }
+     std::sort(ms.begin(), ms.end());
+     std::vector<float> out((size_t) (T * NH * HD));
+-    CK(cudaMemcpy(out.data(), dattn, out.size() * 4, cudaMemcpyDeviceToHost));
++    if (gated) {
++        std::vector<uint16_t> packed((size_t) (T * ld16));
++        CK(cudaMemcpy(packed.data(), do16, packed.size() * 2, cudaMemcpyDeviceToHost));
++        for (int64_t t = 0; t < T; ++t) {
++            for (int64_t j = 0; j < NH * HD; ++j) {
++                const __half v{__half_raw{packed[(size_t) (t * ld16 + j)]}};
++                out[(size_t) (t * NH * HD + j)] = __half2float(v);
++            }
++            for (int64_t j = NH * HD; j < ld16; ++j)
++                if (packed[(size_t) (t * ld16 + j)] != 0xa5a5) {
++                    std::fprintf(stderr, "gated output overwrote row padding\n"); return 1;
++                }
++        }
++        std::printf("gated FP16 output, ld %lld; row padding intact\n", (long long) ld16);
++    } else CK(cudaMemcpy(out.data(), dattn, out.size() * 4, cudaMemcpyDeviceToHost));
+     uint64_t h = 1469598103934665603ull;
+-    for (float x : out) { uint32_t b; std::memcpy(&b, &x, 4); h = (h ^ b) * 1099511628211ull; }
++    for (float x : out) {
++        if (!std::isfinite(x)) { std::fprintf(stderr, "nonfinite output\n"); return 1; }
++        uint32_t b; std::memcpy(&b, &x, 4); h = (h ^ b) * 1099511628211ull;
++    }
+     double ss = 0;
+     for (float x : out) ss += (double) x * x;
+     std::printf("prompt attention: median %.3f ms (min %.3f) over %d; output hash %016llx, rms %.6g\n", ms[ms.size() / 2],

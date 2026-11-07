@@ -1,0 +1,73 @@
+{
+  "counter-layer0": {
+    "mean_kernel_ms": 23.553656857142858,
+    "resources": {
+      "LDS_Block_Size": "18432",
+      "Scratch_Size": "0",
+      "VGPR_Count": "200",
+      "SGPR_Count": "128",
+      "Workgroup_Size": "128"
+    },
+    "mean_counters": {
+      "GL2C_EA_RDREQ_128B_sum": 40560666.85714286,
+      "GL2C_EA_RDREQ_32B_sum": 0.0,
+      "GL2C_EA_RDREQ_64B_sum": 34.0,
+      "GL2C_EA_WRREQ_64B_sum": 780224.8571428572,
+      "SQ_WAVES_sum": 32768.0
+    },
+    "external_read_bytes_excluding_96B": 5191767533.714286,
+    "external_write_bytes": 49934390.85714286
+  },
+  "counter-layer7": {
+    "mean_kernel_ms": 25.05030042857143,
+    "resources": {
+      "LDS_Block_Size": "18432",
+      "Scratch_Size": "0",
+      "VGPR_Count": "200",
+      "SGPR_Count": "128",
+      "Workgroup_Size": "128"
+    },
+    "mean_counters": {
+      "GL2C_EA_RDREQ_128B_sum": 60022381.14285714,
+      "GL2C_EA_RDREQ_32B_sum": 0.0,
+      "GL2C_EA_RDREQ_64B_sum": 0.0,
+      "GL2C_EA_WRREQ_64B_sum": 781318.8571428572,
+      "SQ_WAVES_sum": 32768.0
+    },
+    "external_read_bytes_excluding_96B": 7682864786.285714,
+    "external_write_bytes": 50004406.85714286
+  },
+  "counter-layer7-alu": {
+    "mean_kernel_ms": 25.333273857142856,
+    "resources": {
+      "LDS_Block_Size": "18432",
+      "Scratch_Size": "0",
+      "VGPR_Count": "200",
+      "SGPR_Count": "128",
+      "Workgroup_Size": "128"
+    },
+    "mean_counters": {
+      "SQ_BUSY_CYCLES": 1224545619.4285715,
+      "SQ_INSTS_LDS": 518873088.0,
+      "SQ_INSTS_SALU": 244293632.0,
+      "SQ_INSTS_VALU": 1948516352.0
+    }
+  },
+  "counter-layer7-cache": {
+    "mean_kernel_ms": 25.049575285714287,
+    "resources": {
+      "LDS_Block_Size": "18432",
+      "Scratch_Size": "0",
+      "VGPR_Count": "200",
+      "SGPR_Count": "128",
+      "Workgroup_Size": "128"
+    },
+    "mean_counters": {
+      "GL2C_EA_RDREQ_96B_sum": 0.0,
+      "GL2C_HIT_sum": 15347695.0,
+      "GL2C_MISS_sum": 60455094.0,
+      "SQ_WAVES_sum": 32768.0
+    },
+    "l2_hit_fraction": 0.2024687376608267
+  }
+}

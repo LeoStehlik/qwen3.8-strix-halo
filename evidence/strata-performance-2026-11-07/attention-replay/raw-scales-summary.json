@@ -1,0 +1,20 @@
+[
+  {
+    "layer": 0,
+    "control_mean_median_ms": 21.7855,
+    "candidate_mean_median_ms": 21.948,
+    "operator_speedup_percent": -0.7403863677783895
+  },
+  {
+    "layer": 3,
+    "control_mean_median_ms": 23.104,
+    "candidate_mean_median_ms": 22.794,
+    "operator_speedup_percent": 1.3600070193910518
+  },
+  {
+    "layer": 7,
+    "control_mean_median_ms": 24.012,
+    "candidate_mean_median_ms": 23.9565,
+    "operator_speedup_percent": 0.23166990169682933
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "complete_records": 60,
+  "large_chunk_records": 24,
+  "large_chunk_queries": 393216,
+  "analysis_tail_per_record": 4096,
+  "repeats": 2,
+  "groups": {
+    "2": {
+      "pooled_ideal_read_sharing_factor": 1.2540295334253786,
+      "min_layer_factor": 1.1442967793115773,
+      "max_layer_factor": 1.5244820217411503
+    },
+    "4": {
+      "pooled_ideal_read_sharing_factor": 1.586163283883883,
+      "min_layer_factor": 1.3748916569998089,
+      "max_layer_factor": 2.2030907115014244
+    },
+    "8": {
+      "pooled_ideal_read_sharing_factor": 2.066289330328023,
+      "min_layer_factor": 1.7217152357186656,
+      "max_layer_factor": 3.164312769502894
+    },
+    "16": {
+      "pooled_ideal_read_sharing_factor": 2.7844788050291602,
+      "min_layer_factor": 2.3203279930972083,
+      "max_layer_factor": 4.440510900291563
+    },
+    "32": {
+      "pooled_ideal_read_sharing_factor": 3.8716781577570534,
+      "min_layer_factor": 3.1786514269109225,
+      "max_layer_factor": 6.211916142160806
+    }
+  },
+  "input_sha256": "0aa3894a071c9777723f577c1f3b39fff75780abc8b23eb12cc644721ff1bc6a"
+}

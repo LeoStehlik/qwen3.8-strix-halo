@@ -1,0 +1,9 @@
+{
+  "base_commit": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "local_branch": "experiment/hip-attention-profile",
+  "local_head": "16834dd87fa2628e28c52db0be7132d9afaab9a8",
+  "attention_production_kernel_matches_base": true,
+  "retained_change": "tests/cuda/pa_bench.cpp gated replay only",
+  "other_inherited_experiments": "Cooperative expert epilogue and expanded matrix tuner remain in this lab source; expert flag was off and did not participate in attention replay",
+  "upstream_push": false
+}

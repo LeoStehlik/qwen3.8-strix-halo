@@ -1,0 +1,4 @@
+layer 0 p0 61440 T 4096 cap 2051, 65536 cells, 24 heads / 2 KV heads x 256
+gated FP16 output, ld 6208; row padding intact
+prompt attention: median 21.878 ms (min 21.223) over 31; output hash 25aa67a7524d6383, rms 0.011437
+strata: STRATA_HIP_WMMA: the prompt attention on matrix cores on (gfx1151)

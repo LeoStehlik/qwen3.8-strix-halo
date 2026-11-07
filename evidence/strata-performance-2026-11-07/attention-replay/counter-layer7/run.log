@@ -1,0 +1,15 @@
+W1107 17:17:19.787122   19325 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.117903 sec
+W1107 17:17:19.788032   19325 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_pa_bench /home/less/.cache/strata-evaluation-20261107/attention-replay/records/record-019-layer-07-pos-61440.bin 7' ::     0.000000 sec
+W1107 17:17:20.550559   19325 tool.cpp:3082] HSA version 1.21.0 initialized (instance=0)
+strata: STRATA_HIP_WMMA: the prompt attention on matrix cores on (gfx1151)
+W1107 17:17:20.928539   19325 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_pa_bench /home/less/.cache/strata-evaluation-20261107/attention-replay/records/record-019-layer-07-pos-61440.bin 7' ::     1.140506 sec
+E1107 17:17:20.939840   19325 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/counter-layer7/attention_kernel_stats.csv
+E1107 17:17:20.939950   19325 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/counter-layer7/attention_kernel_trace.csv
+E1107 17:17:20.948491   19325 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/counter-layer7/attention_counter_collection.csv
+E1107 17:17:20.951206   19325 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/counter-layer7/attention_agent_info.csv
+E1107 17:17:20.951284   19325 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/counter-layer7/attention_domain_stats.csv
+W1107 17:17:20.953006   19325 simple_timer.cpp:55] [rocprofv3] output generation ::     0.021761 sec
+W1107 17:17:20.953068   19325 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.021851 sec
+layer 7 p0 61440 T 4096 cap 2051, 65536 cells, 24 heads / 2 KV heads x 256
+gated FP16 output, ld 6208; row padding intact
+prompt attention: median 25.115 ms (min 24.858) over 7; output hash 03e1afd508d8a383, rms 0.0113964

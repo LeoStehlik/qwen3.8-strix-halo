@@ -1,0 +1,8 @@
+{
+  "hip_pa_bench": "726b84dd530837be876cd1a63f2050922a5c51326e057c1318578d9ff4e53a2c",
+  "hip_pa_bench.gated-control": "726b84dd530837be876cd1a63f2050922a5c51326e057c1318578d9ff4e53a2c",
+  "hip_pa_bench.control": "4eead12965c01d5918abbb3a880bb9aefc1582856dad67c27b261734ab1798b4",
+  "hip_pa_bench.stage-v": "75664a1069afc50ce973d8b2d540eb034687a83452db4fce96b657fe772c62ec",
+  "hip_pa_bench.raw-scales-no-barrier": "4647da2671d1ce4d7c841a6aebe08d4169769942e73c4222d34e756c19d59f29",
+  "hip_pa_bench.raw-barrier": "a82f9e0fe7c2a76d27e5c61c6978541fffafbc60e5ed4244e6de378f56f17bb0"
+}

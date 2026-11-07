@@ -1,0 +1,97 @@
+diff --git a/src/kernels/cuda/qsa_prompt_attn.cu b/src/kernels/cuda/qsa_prompt_attn.cu
+index 071aece..0fe97bf 100644
+--- a/src/kernels/cuda/qsa_prompt_attn.cu
++++ b/src/kernels/cuda/qsa_prompt_attn.cu
+@@ -1962,7 +1962,7 @@ __device__ __forceinline__ wh8 i8_to_h(const uint32_t* x) {   // PA_KL codes, ex
+ // body is shared by prompt_attn_wmma_kernel and the VGPR-capped copies prompt_attn_wmma_nv<N> (STRATA_PA_NV, experiment:
+ // amdgpu_num_vgpr(N) needs a literal, so one stamped kernel per cap).  They only move loads and registers around: the
+ // arithmetic, its order and the output bits are the same.
+-template <bool SPLIT, bool GATE, bool RPF, int TR>
++template <bool SPLIT, bool GATE, bool RPF, int TR, bool STAGE_V>
+ __device__ __forceinline__ void prompt_attn_wmma_body(const float* __restrict__ q, QsaAttnPools p,
+                                                                    const int32_t* __restrict__ ids,
+                                                                    const int32_t* __restrict__ steps, int n_kv_heads,
+@@ -2043,6 +2043,20 @@ __device__ __forceinline__ void prompt_attn_wmma_body(const float* __restrict__
+         float vsc, ksc[2];
+         uint32_t kx[2][4][PA_KL / 4];
+     };
++    auto stage_v = [&](const Chunk& cd) {
++        if constexpr (TR >= 2) {
++            uint2* dst = reinterpret_cast<uint2*>(&S.v[warp][lane][0]);
++            dst[0] = make_uint2(cd.v[0].x, cd.v[0].y); dst[1] = make_uint2(cd.v[0].z, cd.v[0].w);
++            dst[2] = make_uint2(cd.v[1].x, cd.v[1].y); dst[3] = make_uint2(cd.v[1].z, cd.v[1].w);
++            dst[4] = make_uint2(cd.v[2].x, cd.v[2].y); dst[5] = make_uint2(cd.v[2].z, cd.v[2].w);
++            dst[6] = make_uint2(cd.v[3].x, cd.v[3].y); dst[7] = make_uint2(cd.v[3].z, cd.v[3].w);
++        } else {
++            uint4* dst = reinterpret_cast<uint4*>(&S.v[warp][lane][0]);
++            dst[0] = cd.v[0]; dst[1] = cd.v[1]; dst[2] = cd.v[2]; dst[3] = cd.v[3];
++        }
++        S.vs[warp][lane] = cd.vsc;
++        if (warp == 0) S.valid[lane] = cd.row >= 0;
++    };
+     auto fetch = [&](long long row, Chunk& d) {
+         d.row = row;
+         d.v[0] = d.v[1] = d.v[2] = d.v[3] = make_uint4(0, 0, 0, 0);
+@@ -2052,6 +2066,10 @@ __device__ __forceinline__ void prompt_attn_wmma_body(const float* __restrict__
+             d.v[0] = __ldg(src); d.v[1] = __ldg(src + 1); d.v[2] = __ldg(src + 2); d.v[3] = __ldg(src + 3);
+             d.vsc = __half2float(__ushort_as_half(__ldg(p.v_scale + row * (HD / KV_Q8_GROUP) + warp)));
+         }
++        // Opt-in: end the V register lifetime before loading K fragments. This
++        // wave's preceding p.v is complete; the existing q.k barrier still
++        // precedes any cross-wave softmax use. Arithmetic and cell order stay put.
++        if constexpr (STAGE_V) stage_v(d);
+ #pragma unroll
+         for (int nt = 0; nt < 2; ++nt) {
+             const long long rr = __shfl(row, nt * 16 + col);
+@@ -2076,20 +2094,7 @@ __device__ __forceinline__ void prompt_attn_wmma_body(const float* __restrict__
+     };
+     auto chunk = [&](const Chunk& cd) {
+         // stage this wave's V slice and scale
+-        {
+-            if constexpr (TR >= 2) {   // 72-byte rows (8-byte aligned): 1,024 bytes less LDS a block
+-                uint2* dst = reinterpret_cast<uint2*>(&S.v[warp][lane][0]);
+-                dst[0] = make_uint2(cd.v[0].x, cd.v[0].y); dst[1] = make_uint2(cd.v[0].z, cd.v[0].w);
+-                dst[2] = make_uint2(cd.v[1].x, cd.v[1].y); dst[3] = make_uint2(cd.v[1].z, cd.v[1].w);
+-                dst[4] = make_uint2(cd.v[2].x, cd.v[2].y); dst[5] = make_uint2(cd.v[2].z, cd.v[2].w);
+-                dst[6] = make_uint2(cd.v[3].x, cd.v[3].y); dst[7] = make_uint2(cd.v[3].z, cd.v[3].w);
+-            } else {
+-                uint4* dst = reinterpret_cast<uint4*>(&S.v[warp][lane][0]);
+-                dst[0] = cd.v[0]; dst[1] = cd.v[1]; dst[2] = cd.v[2]; dst[3] = cd.v[3];
+-            }
+-            S.vs[warp][lane] = cd.vsc;
+-            if (warp == 0) S.valid[lane] = cd.row >= 0;
+-        }
++        if constexpr (!STAGE_V) stage_v(cd);
+         // q.k over this wave's 64 dims for two 16-cell tiles, times the cell's K scale for this group
+ #pragma unroll
+         for (int nt = 0; nt < 2; ++nt) {
+@@ -2221,7 +2226,7 @@ __device__ __forceinline__ void prompt_attn_wmma_body(const float* __restrict__
+     __builtin_trap();
+ #endif
+ }
+-template <bool SPLIT, bool GATE = false, bool RPF = false, int TR = 0>
++template <bool SPLIT, bool GATE = false, bool RPF = false, int TR = 0, bool STAGE_V = false>
+ __global__ void __launch_bounds__(THREADS) prompt_attn_wmma_kernel(const float* __restrict__ q, QsaAttnPools p,
+                                                                    const int32_t* __restrict__ ids,
+                                                                    const int32_t* __restrict__ steps, int n_kv_heads,
+@@ -2229,7 +2234,7 @@ __global__ void __launch_bounds__(THREADS) prompt_attn_wmma_kernel(const float*
+                                                                    float* __restrict__ attn, int cap,
+                                                                    const float* __restrict__ qf = nullptr,
+                                                                    uint16_t* __restrict__ o16 = nullptr, int64_t ld16 = 0) {
+-    prompt_attn_wmma_body<SPLIT, GATE, RPF, TR>(q, p, ids, steps, n_kv_heads, page_size, scale_log2, attn, cap, qf, o16, ld16);
++    prompt_attn_wmma_body<SPLIT, GATE, RPF, TR, STAGE_V>(q, p, ids, steps, n_kv_heads, page_size, scale_log2, attn, cap, qf, o16, ld16);
+ }
+ 
+ // gfx12 (RDNA4): on by default on Linux (148-amd; STRATA_HIP_WMMA=0 turns it off; Windows: opt-in with =1 until tested there).  gfx11 (RDNA3 / RDNA3.5): only on request
+@@ -2303,6 +2308,11 @@ void pa_launch(dim3 grid, cudaStream_t st, const float* q, const QsaAttnPools& p
+                int n_kv_heads, int page_size, float scale_log2, float* attn, int cap, const float* qf, uint16_t* o16, int64_t ld16) {
+     static const int trim = [] { const char* e = std::getenv("STRATA_PA_TRIM"); return e != nullptr && e[0] != '\0' ? std::atoi(e) : PA_TRIM_DEFAULT; }();
+     static const bool rpf = [] { const char* e = std::getenv("STRATA_PA_RPF"); return !(e != nullptr && e[0] == '0'); }();
++    static const bool stage_v = [] { const char* e = std::getenv("STRATA_PA_STAGE_V"); return e && e[0] == '1'; }();
++    if (stage_v && trim >= 2 && rpf) {
++        prompt_attn_wmma_kernel<SPLIT, GATE, true, 2, true><<<grid, THREADS, 0, st>>>(q, pools, ids, steps, n_kv_heads, page_size, scale_log2, attn, cap, qf, o16, ld16);
++        return;
++    }
+ #define STRATA_PA_L(R, T) prompt_attn_wmma_kernel<SPLIT, GATE, R, T><<<grid, THREADS, 0, st>>>(q, pools, ids, steps, n_kv_heads, page_size, scale_log2, attn, cap, qf, o16, ld16)
+     if (trim >= 2) { if (rpf) STRATA_PA_L(true, 2); else STRATA_PA_L(false, 2); }
+     else if (trim == 1) { if (rpf) STRATA_PA_L(true, 1); else STRATA_PA_L(false, 1); }

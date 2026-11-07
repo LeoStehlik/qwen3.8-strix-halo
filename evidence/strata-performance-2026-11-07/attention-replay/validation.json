@@ -1,0 +1,27 @@
+{
+  "parser_checks": [
+    "valid known-overlap capture",
+    "extracted record roundtrip",
+    "short header rejected",
+    "short steps rejected",
+    "negative layer rejected",
+    "width exceeds cap rejected",
+    "future selected cell rejected",
+    "writer mutation rejected"
+  ],
+  "independent_patches_apply_checked_against": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "patches": [
+    "gated-replay.patch",
+    "raw-scales-barrier-shelved.patch",
+    "raw-scales-no-barrier.patch",
+    "stage-v-rejected.patch"
+  ],
+  "backends_built": [
+    "HIP gfx1151"
+  ],
+  "not_run": [
+    "CUDA build",
+    "gfx12 execution",
+    "full-model tests of shelved kernels"
+  ]
+}

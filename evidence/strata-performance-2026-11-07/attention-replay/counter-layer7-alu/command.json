@@ -1,0 +1,34 @@
+{
+  "argv": [
+    "/home/less/.local/opt/rocm-7.14.1-strata-lab/bin/rocprofv3",
+    "--kernel-trace",
+    "--stats",
+    "-d",
+    "/home/less/.cache/strata-evaluation-20261107/attention-replay/counter-layer7-alu",
+    "-o",
+    "attention",
+    "--output-format",
+    "csv",
+    "--pmc",
+    "SQ_INSTS_VALU",
+    "SQ_INSTS_LDS",
+    "SQ_INSTS_SALU",
+    "SQ_BUSY_CYCLES",
+    "--kernel-include-regex",
+    ".*prompt_attn_wmma_kernel.*",
+    "--",
+    "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_pa_bench.gated-control",
+    "/home/less/.cache/strata-evaluation-20261107/attention-replay/records/record-019-layer-07-pos-61440.bin",
+    "7"
+  ],
+  "env": {
+    "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+    "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+    "HIP_PLATFORM": "amd",
+    "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+    "STRATA_HIP_WMMA": "1",
+    "STRATA_PA_FAST": "1",
+    "STRATA_PF_SWITCH_MIN_T": "4096",
+    "PA_BENCH_GATE": "1"
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "file": "attention_17843_shader_engine_0_2.att",
+    "bytes": 123885568,
+    "sha256": "78df1b9a9b93f7852324f27bba4f39b9e29fb7171d0878777426f7f4ae60e9d1"
+  },
+  {
+    "file": "attention_gfx1151_code_object_id_1.out",
+    "bytes": 44616,
+    "sha256": "cb656b84bfd6de05e0c3a5bee960ed928fab80b4b62df078b601ea69008ca5e9"
+  },
+  {
+    "file": "attention_gfx1151_code_object_id_2.out",
+    "bytes": 466168,
+    "sha256": "c57ff3ba57d80e28960be52a897157dabb46682da67c5c6c0ff940f83f5f495d"
+  }
+]

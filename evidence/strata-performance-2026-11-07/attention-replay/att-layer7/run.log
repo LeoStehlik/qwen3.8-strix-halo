@@ -1,0 +1,31 @@
+W1107 17:20:46.261434   19580 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.054653 sec
+W1107 17:20:46.262428   19580 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_pa_bench.gated-control /home/less/.cache/strata-evaluation-20261107/attention-replay/records/record-019-layer-07-pos-61440.bin 1' ::     0.000000 sec
+W1107 17:20:47.241241   19580 tool.cpp:3082] HSA version 1.21.0 initialized (instance=0)
+E1107 17:20:47.266761   19580 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/att-layer7/attention_gfx1151_code_object_id_1.out
+strata: STRATA_HIP_WMMA: the prompt attention on matrix cores on (gfx1151)
+E1107 17:20:47.304301   19580 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/att-layer7/attention_gfx1151_code_object_id_2.out
+E1107 17:20:47.356934   19583 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/att-layer7/attention_17843_shader_engine_0_2.att
+W1107 17:20:47.463218   19580 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_pa_bench.gated-control /home/less/.cache/strata-evaluation-20261107/attention-replay/records/record-019-layer-07-pos-61440.bin 1' ::     1.200788 sec
+W1107 17:20:47.477966   19580 generateRocpd.cpp:1054] writing SQL database for process 19580 on node 3418166753
+E1107 17:20:47.479377   19580 generateRocpd.cpp:1078] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-replay/att-layer7/attention_results.db (UUID=00000088-5051-7051-8d95-1717dcfc7953)
+W1107 17:20:47.741130   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd_string             ::     0.006600 sec
+W1107 17:20:47.741146   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd_info_node          ::     0.000003 sec
+W1107 17:20:47.741878   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd_info_process       ::     0.000730 sec
+W1107 17:20:47.742136   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd_info_agent         ::     0.000247 sec
+W1107 17:20:47.742139   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd_info_pmc           ::     0.000002 sec
+W1107 17:20:47.747386   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd kernel info        ::     0.005245 sec
+W1107 17:20:47.747430   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd_region             ::     0.000029 sec
+W1107 17:20:47.747438   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd_kernel_dispatch    ::     0.000003 sec
+W1107 17:20:47.747445   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd_pmc_event          ::     0.000003 sec
+W1107 17:20:47.747452   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd_memory_copy        ::     0.000004 sec
+W1107 17:20:47.747667   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd_memory_allocate    ::     0.000212 sec
+W1107 17:20:47.752211   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd_info_pmc: kfd      ::     0.004541 sec
+W1107 17:20:47.752215   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd_pmc_event: kfd     ::     0.000000 sec
+W1107 17:20:47.752500   19580 simple_timer.cpp:55] SQLite3 generation :: rocpd_flush_pending      ::     0.000282 sec
+W1107 17:20:47.752804   19580 simple_timer.cpp:55] SQLite3 generation :: SQL indexing             ::     0.000301 sec
+W1107 17:20:47.757313   19580 simple_timer.cpp:55] SQLite3 generation :: total                    ::     0.279505 sec
+W1107 17:21:37.273299   19580 simple_timer.cpp:55] [rocprofv3] output generation ::    49.806964 sec
+W1107 17:21:37.273394   19580 simple_timer.cpp:55] [rocprofv3] tool finalization ::    49.807065 sec
+layer 7 p0 61440 T 4096 cap 2051, 65536 cells, 24 heads / 2 KV heads x 256
+gated FP16 output, ld 6208; row padding intact
+prompt attention: median 25.141 ms (min 25.141) over 1; output hash 03e1afd508d8a383, rms 0.0113964
