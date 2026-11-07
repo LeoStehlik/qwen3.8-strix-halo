@@ -1,0 +1,334 @@
+[
+  {
+    "name": "layer7-r0-native0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_pa_bench",
+      "/home/less/.cache/strata-evaluation-20261107/attention-replay/records/record-019-layer-07-pos-61440.bin",
+      "31"
+    ],
+    "env": {
+      "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+      "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+      "HIP_PLATFORM": "amd",
+      "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+      "STRATA_HIP_WMMA": "1",
+      "STRATA_PA_FAST": "1",
+      "STRATA_PF_SWITCH_MIN_T": "4096",
+      "PA_BENCH_GATE": "1",
+      "PA_BENCH_ROWS": "0",
+      "STRATA_PA_NATIVE_I8": "0"
+    },
+    "exit": 0,
+    "started_unix_s": 1794079884.2513657,
+    "ended_unix_s": 1794079886.6722355,
+    "before": {
+      "live": {
+        "state": "idle",
+        "queued": 0,
+        "phase": null,
+        "prompt_tokens": null,
+        "prompt_read": null,
+        "prompt_total": null,
+        "generated": null,
+        "max_tokens": null,
+        "elapsed_s": null,
+        "tok_s": null,
+        "tok_s_mean": null,
+        "prefill_tok_s_mean": null,
+        "tok_s_window_s": null
+      },
+      "totals": {
+        "since": 1794078260.273393,
+        "requests": 10,
+        "prompt_tokens": 328492,
+        "reused": 576,
+        "output_tokens": 720,
+        "prompt_ms": 242264.19999999995,
+        "decode_ms": 18289.800000000003,
+        "drafts_offered": 605,
+        "drafts_accepted": 407
+      }
+    },
+    "after": {
+      "live": {
+        "state": "idle",
+        "queued": 0,
+        "phase": null,
+        "prompt_tokens": null,
+        "prompt_read": null,
+        "prompt_total": null,
+        "generated": null,
+        "max_tokens": null,
+        "elapsed_s": null,
+        "tok_s": null,
+        "tok_s_mean": null,
+        "prefill_tok_s_mean": null,
+        "tok_s_window_s": null
+      },
+      "totals": {
+        "since": 1794078260.273393,
+        "requests": 10,
+        "prompt_tokens": 328492,
+        "reused": 576,
+        "output_tokens": 720,
+        "prompt_ms": 242264.19999999995,
+        "decode_ms": 18289.800000000003,
+        "drafts_offered": 605,
+        "drafts_accepted": 407
+      }
+    },
+    "contaminated": false,
+    "median_ms": 26.779,
+    "min_ms": 26.202,
+    "hash": "03e1afd508d8a383"
+  },
+  {
+    "name": "layer7-r1-native1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_pa_bench",
+      "/home/less/.cache/strata-evaluation-20261107/attention-replay/records/record-019-layer-07-pos-61440.bin",
+      "31"
+    ],
+    "env": {
+      "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+      "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+      "HIP_PLATFORM": "amd",
+      "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+      "STRATA_HIP_WMMA": "1",
+      "STRATA_PA_FAST": "1",
+      "STRATA_PF_SWITCH_MIN_T": "4096",
+      "PA_BENCH_GATE": "1",
+      "PA_BENCH_ROWS": "0",
+      "STRATA_PA_NATIVE_I8": "1"
+    },
+    "exit": 0,
+    "started_unix_s": 1794079886.6738734,
+    "ended_unix_s": 1794079888.9242146,
+    "before": {
+      "live": {
+        "state": "idle",
+        "queued": 0,
+        "phase": null,
+        "prompt_tokens": null,
+        "prompt_read": null,
+        "prompt_total": null,
+        "generated": null,
+        "max_tokens": null,
+        "elapsed_s": null,
+        "tok_s": null,
+        "tok_s_mean": null,
+        "prefill_tok_s_mean": null,
+        "tok_s_window_s": null
+      },
+      "totals": {
+        "since": 1794078260.273393,
+        "requests": 10,
+        "prompt_tokens": 328492,
+        "reused": 576,
+        "output_tokens": 720,
+        "prompt_ms": 242264.19999999995,
+        "decode_ms": 18289.800000000003,
+        "drafts_offered": 605,
+        "drafts_accepted": 407
+      }
+    },
+    "after": {
+      "live": {
+        "state": "idle",
+        "queued": 0,
+        "phase": null,
+        "prompt_tokens": null,
+        "prompt_read": null,
+        "prompt_total": null,
+        "generated": null,
+        "max_tokens": null,
+        "elapsed_s": null,
+        "tok_s": null,
+        "tok_s_mean": null,
+        "prefill_tok_s_mean": null,
+        "tok_s_window_s": null
+      },
+      "totals": {
+        "since": 1794078260.273393,
+        "requests": 10,
+        "prompt_tokens": 328492,
+        "reused": 576,
+        "output_tokens": 720,
+        "prompt_ms": 242264.19999999995,
+        "decode_ms": 18289.800000000003,
+        "drafts_offered": 605,
+        "drafts_accepted": 407
+      }
+    },
+    "contaminated": false,
+    "median_ms": 26.355,
+    "min_ms": 26.018,
+    "hash": "03e1afd508d8a383"
+  },
+  {
+    "name": "layer7-r2-native1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_pa_bench",
+      "/home/less/.cache/strata-evaluation-20261107/attention-replay/records/record-019-layer-07-pos-61440.bin",
+      "31"
+    ],
+    "env": {
+      "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+      "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+      "HIP_PLATFORM": "amd",
+      "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+      "STRATA_HIP_WMMA": "1",
+      "STRATA_PA_FAST": "1",
+      "STRATA_PF_SWITCH_MIN_T": "4096",
+      "PA_BENCH_GATE": "1",
+      "PA_BENCH_ROWS": "0",
+      "STRATA_PA_NATIVE_I8": "1"
+    },
+    "exit": 0,
+    "started_unix_s": 1794079888.925962,
+    "ended_unix_s": 1794079891.1453638,
+    "before": {
+      "live": {
+        "state": "idle",
+        "queued": 0,
+        "phase": null,
+        "prompt_tokens": null,
+        "prompt_read": null,
+        "prompt_total": null,
+        "generated": null,
+        "max_tokens": null,
+        "elapsed_s": null,
+        "tok_s": null,
+        "tok_s_mean": null,
+        "prefill_tok_s_mean": null,
+        "tok_s_window_s": null
+      },
+      "totals": {
+        "since": 1794078260.273393,
+        "requests": 10,
+        "prompt_tokens": 328492,
+        "reused": 576,
+        "output_tokens": 720,
+        "prompt_ms": 242264.19999999995,
+        "decode_ms": 18289.800000000003,
+        "drafts_offered": 605,
+        "drafts_accepted": 407
+      }
+    },
+    "after": {
+      "live": {
+        "state": "idle",
+        "queued": 0,
+        "phase": null,
+        "prompt_tokens": null,
+        "prompt_read": null,
+        "prompt_total": null,
+        "generated": null,
+        "max_tokens": null,
+        "elapsed_s": null,
+        "tok_s": null,
+        "tok_s_mean": null,
+        "prefill_tok_s_mean": null,
+        "tok_s_window_s": null
+      },
+      "totals": {
+        "since": 1794078260.273393,
+        "requests": 10,
+        "prompt_tokens": 328492,
+        "reused": 576,
+        "output_tokens": 720,
+        "prompt_ms": 242264.19999999995,
+        "decode_ms": 18289.800000000003,
+        "drafts_offered": 605,
+        "drafts_accepted": 407
+      }
+    },
+    "contaminated": false,
+    "median_ms": 27.083,
+    "min_ms": 26.85,
+    "hash": "03e1afd508d8a383"
+  },
+  {
+    "name": "layer7-r3-native0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_pa_bench",
+      "/home/less/.cache/strata-evaluation-20261107/attention-replay/records/record-019-layer-07-pos-61440.bin",
+      "31"
+    ],
+    "env": {
+      "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+      "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+      "HIP_PLATFORM": "amd",
+      "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+      "STRATA_HIP_WMMA": "1",
+      "STRATA_PA_FAST": "1",
+      "STRATA_PF_SWITCH_MIN_T": "4096",
+      "PA_BENCH_GATE": "1",
+      "PA_BENCH_ROWS": "0",
+      "STRATA_PA_NATIVE_I8": "0"
+    },
+    "exit": 0,
+    "started_unix_s": 1794079891.1475115,
+    "ended_unix_s": 1794079893.4406133,
+    "before": {
+      "live": {
+        "state": "idle",
+        "queued": 0,
+        "phase": null,
+        "prompt_tokens": null,
+        "prompt_read": null,
+        "prompt_total": null,
+        "generated": null,
+        "max_tokens": null,
+        "elapsed_s": null,
+        "tok_s": null,
+        "tok_s_mean": null,
+        "prefill_tok_s_mean": null,
+        "tok_s_window_s": null
+      },
+      "totals": {
+        "since": 1794078260.273393,
+        "requests": 10,
+        "prompt_tokens": 328492,
+        "reused": 576,
+        "output_tokens": 720,
+        "prompt_ms": 242264.19999999995,
+        "decode_ms": 18289.800000000003,
+        "drafts_offered": 605,
+        "drafts_accepted": 407
+      }
+    },
+    "after": {
+      "live": {
+        "state": "idle",
+        "queued": 0,
+        "phase": null,
+        "prompt_tokens": null,
+        "prompt_read": null,
+        "prompt_total": null,
+        "generated": null,
+        "max_tokens": null,
+        "elapsed_s": null,
+        "tok_s": null,
+        "tok_s_mean": null,
+        "prefill_tok_s_mean": null,
+        "tok_s_window_s": null
+      },
+      "totals": {
+        "since": 1794078260.273393,
+        "requests": 10,
+        "prompt_tokens": 328492,
+        "reused": 576,
+        "output_tokens": 720,
+        "prompt_ms": 242264.19999999995,
+        "decode_ms": 18289.800000000003,
+        "drafts_offered": 605,
+        "drafts_accepted": 407
+      }
+    },
+    "contaminated": false,
+    "median_ms": 26.476,
+    "min_ms": 25.766,
+    "hash": "03e1afd508d8a383"
+  }
+]

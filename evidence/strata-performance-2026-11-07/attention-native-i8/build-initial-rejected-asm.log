@@ -1,0 +1,392 @@
+[0/2] Re-checking globbed directories...
+[1/2] Re-running CMake...
+-- Strata: verify / batch windows hold up to 16 rows
+CMake Warning at cmake/hip_backend.cmake:29 (message):
+  Strata HIP: gfx1151 builds, but it is not validated on a real card yet;
+  please report results
+Call Stack (most recent call first):
+  CMakeLists.txt:159 (include)
+
+
+-- HIP: Using hipcc from relative path: /home/less/.local/opt/rocm-7.14.1-strata-lab/bin/hipcc
+-- HIP: Using hipcc from relative path: /home/less/.local/opt/rocm-7.14.1-strata-lab/bin/hipcc
+-- HIP: Using hipcc from relative path: /home/less/.local/opt/rocm-7.14.1-strata-lab/bin/hipcc
+-- Strata: HIP enabled, arch gfx1151
+-- strata: pack/full/experts.bin absent - the expert arena load test is NOT registered
+-- STRATA tests: no python3 with numpy was found (the configured interpreter and .venv were probed) - the iq_parity fixtures and its test are not registered; the fixtures need python3 with numpy and the repository's vendored gguf-py
+-- ccache found, compilation results will be cached. Disable with GGML_CCACHE=OFF.
+-- CMAKE_SYSTEM_PROCESSOR: x86_64
+-- GGML_SYSTEM_ARCH: x86
+-- Including CPU backend
+-- x86 detected
+-- Adding CPU backend variant ggml-cpu: -march=native 
+-- ggml version: 0.24.0
+-- ggml commit:  unknown
+-- Configuring done (0.5s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/less/src/strata-f16-dispatch-20261107/build-halo-lab
+[0/4] Re-checking globbed directories...
+[1/8] Building HIP object CMakeFiles/hip_pa_native_i8.dir/tests/hip/pa_native_i8.cpp.o
+[2/8] Linking HIP executable hip_pa_native_i8
+[3/8] Building HIP object CMakeFiles/strata_kernels.dir/src/kernels/cuda/qsa_prompt_attn.cu.o
+FAILED: [code=1] CMakeFiles/strata_kernels.dir/src/kernels/cuda/qsa_prompt_attn.cu.o 
+ccache /home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/bin/clang++  -DSTRATA_HAVE_DFLASH2=1 -DSTRATA_HIP_ARCHS=\"gfx1151\" -DSTRATA_Q6K_EXPERTS=1 -DSTRATA_USE_HIP=1 -DSTRATA_VERIFY_MAX_T=16 -DSTRATA_VERSION=\"0.1.57\" -DSTRATA_WMMA_GFX11=1 -DUSE_PROF_API=1 -D__HIP_PLATFORM_AMD__=1 -D__HIP_ROCclr__=1 -I/home/less/src/strata-f16-dispatch-20261107/third_party/ggml -I/home/less/src/strata-f16-dispatch-20261107/include -I/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat --rocm-path=/home/less/.local/opt/rocm-7.14.1-strata-lab --rocm-device-lib-path=/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/amdgcn/bitcode -O3 -DNDEBUG -std=c++20 --offload-arch=gfx1151 -fPIC -Wall -Wextra -include /home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h -MD -MT CMakeFiles/strata_kernels.dir/src/kernels/cuda/qsa_prompt_attn.cu.o -MF CMakeFiles/strata_kernels.dir/src/kernels/cuda/qsa_prompt_attn.cu.o.d -o CMakeFiles/strata_kernels.dir/src/kernels/cuda/qsa_prompt_attn.cu.o -x hip -c /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:60:49: warning: unused parameter 'c' [-Wunused-parameter]
+   60 | __device__ __forceinline__ void mma16816(float* c, const uint32_t* a, const uint32_t* b) {
+      |                                                 ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:60:68: warning: unused parameter 'a' [-Wunused-parameter]
+   60 | __device__ __forceinline__ void mma16816(float* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:60:87: warning: unused parameter 'b' [-Wunused-parameter]
+   60 | __device__ __forceinline__ void mma16816(float* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:170:57: warning: '&&' within '||' [-Wlogical-op-parentheses]
+  170 |     static_assert(!PREFETCH || (CH * KP) % THREADS == 0 && CH * 4 == THREADS, "prefetch layout");
+      |                             ~~ ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:170:57: note: place parentheses around the '&&' expression to silence this warning
+  170 |     static_assert(!PREFETCH || (CH * KP) % THREADS == 0 && CH * 4 == THREADS, "prefetch layout");
+      |                                                         ^                   
+      |                                (                                            )
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1057:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1057 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1061:9: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1061 |         cudaDeviceGetAttribute(&major, cudaDevAttrComputeCapabilityMajor, dev);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:26:32: note: expanded from macro 'cudaDeviceGetAttribute'
+   26 | #define cudaDeviceGetAttribute hipDeviceGetAttribute
+      |                                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1068:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1068 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1096:48: warning: unused parameter 'c' [-Wunused-parameter]
+ 1096 | __device__ __forceinline__ void imma16832(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1096:67: warning: unused parameter 'a' [-Wunused-parameter]
+ 1096 | __device__ __forceinline__ void imma16832(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                   ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1096:86: warning: unused parameter 'b' [-Wunused-parameter]
+ 1096 | __device__ __forceinline__ void imma16832(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                                      ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1107:51: warning: unused parameter 'c' [-Wunused-parameter]
+ 1107 | __device__ __forceinline__ void imma16832_us(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                   ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1107:70: warning: unused parameter 'a' [-Wunused-parameter]
+ 1107 | __device__ __forceinline__ void imma16832_us(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                      ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1107:89: warning: unused parameter 'b' [-Wunused-parameter]
+ 1107 | __device__ __forceinline__ void imma16832_us(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                                         ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1407:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1407 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1413:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1413 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1417:9: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1417 |         cudaFuncSetAttribute(prompt_attn_i8v3_kernel, cudaFuncAttributePreferredSharedMemoryCarveout, 100);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1418:9: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1418 |         cudaGetLastError();
+      |         ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2376:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2376 |             cudaStreamSynchronize(st);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:124:31: note: expanded from macro 'cudaStreamSynchronize'
+  124 | #define cudaStreamSynchronize hipStreamSynchronize
+      |                               ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2378:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2378 |             cudaMemcpy(h.data(), ids, h.size() * 4, cudaMemcpyDeviceToHost);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:99:20: note: expanded from macro 'cudaMemcpy'
+   99 | #define cudaMemcpy hipMemcpy
+      |                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2379:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2379 |             cudaMemcpy(hs.data(), steps, hs.size() * 4, cudaMemcpyDeviceToHost);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:99:20: note: expanded from macro 'cudaMemcpy'
+   99 | #define cudaMemcpy hipMemcpy
+      |                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2437:41: warning: unused parameter 'q' [-Wunused-parameter]
+ 2437 | bool qsa_decode_attn_split(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+      |                                         ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2437:64: warning: unused parameter 'pools' [-Wunused-parameter]
+ 2437 | bool qsa_decode_attn_split(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+      |                                                                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2437:86: warning: unused parameter 'ids' [-Wunused-parameter]
+ 2437 | bool qsa_decode_attn_split(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+      |                                                                                      ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2437:106: warning: unused parameter 'steps' [-Wunused-parameter]
+ 2437 | bool qsa_decode_attn_split(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+      |                                                                                                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:36: warning: unused parameter 'cap' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:58: warning: unused parameter 's' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:68: warning: unused parameter 'scratch' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:86: warning: unused parameter 'scratch_floats' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                                                      ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:109: warning: unused parameter 'attn' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                                                                             ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:123: warning: unused parameter 'n_q' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                                                                                           ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2439:34: warning: unused parameter 'stream' [-Wunused-parameter]
+ 2439 |                            void* stream) {
+      |                                  ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2570:75: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2570 |         if (cudaGetDevice(&dev) != cudaSuccess || dev < 0 || dev >= 64) { cudaGetLastError(); return false; }
+      |                                                                           ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2575:17: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2575 |                 cudaGetLastError();
+      |                 ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2616:16: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<4, false>' requested here
+ 2616 |         return launch<4>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2621:16: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<3, false>' requested here
+ 2621 |         return launch<3>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2637:85: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<1, true>' requested here
+ 2637 |             if (pf_env == 1 || (pf_env < 0 && t75 && strata::sm75_series())) return launch<1, true>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |                                                                                     ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2638:20: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<1, false>' requested here
+ 2638 |             return launch<1>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2654:12: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<0, false>' requested here
+ 2654 |     return launch<0>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |            ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v160, v74
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v162, v76
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v76, v161
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v152, v70
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v153, v73
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v154, v74
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v69, v160
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v156, v76
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v76, v155
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v160, v74
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v162, v76
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v76, v161
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v152, v70
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v153, v73
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v154, v74
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v69, v160
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v156, v76
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v76, v155
+      |         ^
+In file included from /home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:18:
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/hip_native_i8_half.cuh:20:13: error: operands are not valid for this GPU or mode
+   20 |         asm("v_cvt_f16_i16_e32 %0, %1" : "=v"(bits) : "v"(value));
+      |             ^
+<inline asm>:1:2: note: instantiated into assembly here
+    1 |         v_cvt_f16_i16_e32 v159, v74
+      |         ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+45 warnings and 20 errors generated when compiling for gfx1151.
+ninja: build stopped: subcommand failed.

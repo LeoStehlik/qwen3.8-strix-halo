@@ -1,0 +1,41 @@
+{
+  "utc": "2026-11-07T19:36:29.066714+00:00",
+  "source_commit": "41021fbb392bab47590cfd6cb0fda82c2a7b0c19",
+  "source_clean": true,
+  "clock_policy": "auto",
+  "live": {
+    "state": "idle",
+    "queued": 0,
+    "phase": null,
+    "prompt_tokens": null,
+    "prompt_read": null,
+    "prompt_total": null,
+    "generated": null,
+    "max_tokens": null,
+    "elapsed_s": null,
+    "tok_s": null,
+    "tok_s_mean": null,
+    "prefill_tok_s_mean": null,
+    "tok_s_window_s": null
+  },
+  "totals": {
+    "since": 1794078260.273393,
+    "requests": 10,
+    "prompt_tokens": 328492,
+    "reused": 576,
+    "output_tokens": 720,
+    "prompt_ms": 242264.19999999995,
+    "decode_ms": 18289.800000000003,
+    "drafts_offered": 605,
+    "drafts_accepted": 407
+  },
+  "runtime_override": "[Service]\nExecStart=\nExecStart=/home/less/.local/bin/strata serve --profile /home/less/.local/share/strata/flash-next/strata-optimized-preview.json --host 100.96.8.54 --port 8083\nEnvironment=STRATA_PF_FUSED=1\nEnvironment=STRATA_PF_FUSED_KQ=1\nEnvironment=STRATA_PF_GEMM=1\nEnvironment=STRATA_HC_UPMIX=1\nEnvironment=STRATA_PA_FAST=1\nEnvironment=STRATA_HIP_WMMA=1\nEnvironment=STRATA_SELECT_WMMA=1\nEnvironment=STRATA_PF_SWITCH_MIN_T=4096\nEnvironment=STRATA_PREFILL_STREAM_MIN=128\nEnvironment=STRATA_VERIFY_EARLY_PLE_FLAG=1\nEnvironment=STRATA_PF_F16=1\nEnvironment=STRATA_CACHE_MESSAGE_BOUNDARY=1\n",
+  "qsa_object": {
+    "sha256": "ad9f7295582d20a0211349d5159ade4c42a6b50a6de9b9cfe68e44b25bc2ede1",
+    "same_as_control": true
+  },
+  "replay_binary": {
+    "sha256": "c8a1d81082e5f55a3fa2b966855865e4f90f8efce22d820b2df781a1aad0df43",
+    "same_as_control": true
+  }
+}

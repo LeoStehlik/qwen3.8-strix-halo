@@ -1,0 +1,12 @@
+{
+  "base": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "source_before": "41021fb",
+  "patch_sha256": "73e7a56ae453c5e9ff6f0491b1ea6a3c3e463cb95c84c94d3272803ebb514683",
+  "clean_base_patch_chain_applied": true,
+  "patch_dependencies": [
+    "strata-attention-replay/gated-replay.patch",
+    "strata-attention-rows/prepared-rows.patch"
+  ],
+  "selection": "rejected; archive only",
+  "compiler": "ROCm 7.14.1 lab clang 23; gfx1151"
+}

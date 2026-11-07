@@ -59,8 +59,14 @@ and 2.47–4.63% on three 4K replays. All output hashes match; 24 page/boundary
 cases passed. It is retained **undeployed**: ~256.4 MiB scratch, no production
 allocation/integration or full-model/state validation yet. Estimated overall
 gain is ~0.3%, not a measured throughput result. Source commit `41021fb` is
-local only; its patch and evidence are in this repo. Exact native INT8 conversion
-is still unimplemented and needs exhaustive validation.
+local only; its patch and evidence are in this repo. The subsequent
+[native INT8 conversion screen](experiments/strata-attention-native-i8/README.md)
+passed 1,048,576 exact conversion checks per variant and preserved all replay
+outputs, but the assembly form was neutral (−0.34%) and the vector form slower
+(−2.92%) on a captured 4K later-layer replay. Neither is selected. All 28 old
+attention kernels retained identical instructions. The patch is archived;
+active source and control binaries were restored exactly at 19:36:29 UTC.
+No full-model native-conversion test or serving change occurred.
 
 The user also added end-to-end latency investigation. The
 [real Telegram task audit](docs/STRATA-TURN-LATENCY-2026-11-07.md) reconciles

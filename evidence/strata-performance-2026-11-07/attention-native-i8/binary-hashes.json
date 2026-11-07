@@ -1,0 +1,6 @@
+{
+  "control-qsa.o": "ad9f7295582d20a0211349d5159ade4c42a6b50a6de9b9cfe68e44b25bc2ede1",
+  "control-hip_pa_bench": "c8a1d81082e5f55a3fa2b966855865e4f90f8efce22d820b2df781a1aad0df43",
+  "vector-hip_pa_bench": "1a9586d701b267d19c36842641241ec5becb3137fb5a2eaf6d3593125a21caf8",
+  "vector-hip_pa_native_i8": "fa3aa57ed0b0f04be97703b4b0ef09f34d7cdfa9db9fb7a63c2b2ac50422d120"
+}

@@ -1,0 +1,33 @@
+{
+  "assembly": {
+    "control_process_medians_ms": [
+      26.779,
+      26.476
+    ],
+    "candidate_process_medians_ms": [
+      26.355,
+      27.083
+    ],
+    "control_mean_ms": 26.627499999999998,
+    "candidate_mean_ms": 26.719,
+    "speedup_percent": -0.3424529361128914,
+    "hash": "03e1afd508d8a383",
+    "exact_output_match": true
+  },
+  "vector": {
+    "control_process_medians_ms": [
+      26.004,
+      26.833
+    ],
+    "candidate_process_medians_ms": [
+      26.941,
+      27.488
+    ],
+    "control_mean_ms": 26.4185,
+    "candidate_mean_ms": 27.2145,
+    "speedup_percent": -2.924911352404047,
+    "hash": "03e1afd508d8a383",
+    "exact_output_match": true
+  },
+  "decision": "Neither variant selected; assembly neutral, vector slower in this 4K later-layer screen. No full-model/state or full-16K candidate test; no serving change."
+}

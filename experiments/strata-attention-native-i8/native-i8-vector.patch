@@ -1,0 +1,188 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d273c7c..e83fda9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1204,6 +1204,12 @@ if(STRATA_ENABLE_CUDA OR STRATA_ENABLE_HIP)
+     # the prompt attention on a recorded selection (STRATA_QSA_DUMP), for A/B of kernel variants (STRATA_QSA_UNION=1)
+     add_executable(hip_pa_bench tests/cuda/pa_bench.cpp)
+     target_link_libraries(hip_pa_bench PRIVATE strata_kernels strata_hip_runtime)
++    set_source_files_properties(tests/hip/pa_native_i8.cpp PROPERTIES LANGUAGE HIP)
++    add_executable(hip_pa_native_i8 tests/hip/pa_native_i8.cpp)
++    target_link_libraries(hip_pa_native_i8 PRIVATE strata_hip_runtime)
++    add_test(NAME hip_pa_native_i8 COMMAND hip_pa_native_i8)
++    set_tests_properties(hip_pa_native_i8 PROPERTIES SKIP_RETURN_CODE 77)
++    list(APPEND _strata_hip_tests hip_pa_native_i8)
+     add_executable(hip_prompt_attn_wmma src/kernels/qsa_prompt_attn_parity.cpp)
+     target_link_libraries(hip_prompt_attn_wmma PRIVATE strata_kernels strata_hip_runtime)
+     add_test(NAME hip_prompt_attn_wmma COMMAND hip_prompt_attn_wmma 32768 2048 3)
+diff --git a/src/kernels/cuda/hip_native_i8_half.cuh b/src/kernels/cuda/hip_native_i8_half.cuh
+new file mode 100644
+index 0000000..e061e7a
+--- /dev/null
++++ b/src/kernels/cuda/hip_native_i8_half.cuh
+@@ -0,0 +1,19 @@
++// Experimental exact INT8 -> FP16 fragment conversion for gfx11 prompt attention.
++// Shared with the exhaustive GPU test; never selected by default.
++#pragma once
++#include <hip/hip_runtime.h>
++#include <cstdint>
++
++namespace strata::kernels::hip_detail {
++using I8Half16 = _Float16 __attribute__((ext_vector_type(16)));
++using I8Short16 = int16_t __attribute__((ext_vector_type(16)));
++
++__device__ __forceinline__ I8Half16 native_i8_to_half16(const uint32_t* words) {
++    I8Short16 codes;
++#pragma unroll
++    for (int i = 0; i < 16; ++i) {
++        codes[i] = (int16_t) (int8_t) (words[i / 4] >> (8 * (i % 4)));
++    }
++    return __builtin_convertvector(codes, I8Half16);
++}
++}  // namespace strata::kernels::hip_detail
+diff --git a/src/kernels/cuda/qsa_prompt_attn.cu b/src/kernels/cuda/qsa_prompt_attn.cu
+index 6c4eee2..2c31e24 100644
+--- a/src/kernels/cuda/qsa_prompt_attn.cu
++++ b/src/kernels/cuda/qsa_prompt_attn.cu
+@@ -14,6 +14,9 @@
+ 
+ #include <cuda_fp16.h>
+ #include <cuda_runtime.h>
++#if defined(__HIPCC__)
++#include "hip_native_i8_half.cuh"
++#endif
+ #include <algorithm>
+ #include <cmath>
+ 
+@@ -1962,7 +1965,7 @@ __device__ __forceinline__ wh8 i8_to_h(const uint32_t* x) {   // PA_KL codes, ex
+ // body is shared by prompt_attn_wmma_kernel and the VGPR-capped copies prompt_attn_wmma_nv<N> (STRATA_PA_NV, experiment:
+ // amdgpu_num_vgpr(N) needs a literal, so one stamped kernel per cap).  They only move loads and registers around: the
+ // arithmetic, its order and the output bits are the same.
+-template <bool SPLIT, bool GATE, bool RPF, int TR, bool PREPARED_ROWS>
++template <bool SPLIT, bool GATE, bool RPF, int TR, bool PREPARED_ROWS, bool NATIVE_I8 = false>
+ __device__ __forceinline__ void prompt_attn_wmma_body(const float* __restrict__ q, QsaAttnPools p,
+                                                                    const int32_t* __restrict__ ids,
+                                                                    const int32_t* __restrict__ steps, int n_kv_heads,
+@@ -2103,7 +2106,12 @@ __device__ __forceinline__ void prompt_attn_wmma_body(const float* __restrict__
+             wf8 s = wf8{0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f};
+ #pragma unroll
+             for (int kk = 0; kk < 4; ++kk) {
+-                const wh8 b = i8_to_h(cd.kx[nt][kk]);
++                wh8 b;
++#if STRATA_PA_GFX11
++                if constexpr (NATIVE_I8) b = hip_detail::native_i8_to_half16(cd.kx[nt][kk]);
++                else
++#endif
++                b = i8_to_h(cd.kx[nt][kk]);
+                 s = wmma_f16(qh[kk], b, s);
+                 if constexpr (SPLIT) s = wmma_f16(ql[kk], b, s);
+             }
+@@ -2240,6 +2248,17 @@ __global__ void __launch_bounds__(THREADS) prompt_attn_wmma_kernel(const float*
+     prompt_attn_wmma_body<SPLIT, GATE, RPF, TR, PREPARED_ROWS>(q, p, ids, steps, n_kv_heads, page_size, scale_log2, attn, cap, qf, o16, ld16, pool_rows);
+ }
+ 
++// Separate symbol leaves the original wrapper/template instantiations intact.
++template <bool SPLIT, bool GATE, bool PREPARED_ROWS>
++__global__ void __launch_bounds__(THREADS) prompt_attn_wmma_native_i8_kernel(
++        const float* __restrict__ q, QsaAttnPools p, const int32_t* __restrict__ ids,
++        const int32_t* __restrict__ steps, int n_kv_heads, int page_size, float scale_log2,
++        float* __restrict__ attn, int cap, const float* __restrict__ qf,
++        uint16_t* __restrict__ o16, int64_t ld16, const int64_t* __restrict__ pool_rows) {
++    prompt_attn_wmma_body<SPLIT, GATE, true, 2, PREPARED_ROWS, true>(
++        q, p, ids, steps, n_kv_heads, page_size, scale_log2, attn, cap, qf, o16, ld16, pool_rows);
++}
++
+ __global__ void prompt_attn_prepare_rows_kernel(const int32_t* ids, const int32_t* steps, const int32_t* page_table,
+                                                 int64_t cap, int n_kv_heads, int page_size, int64_t* rows, int64_t total) {
+     const int64_t i = (int64_t) blockIdx.x * blockDim.x + threadIdx.x;
+@@ -2326,6 +2345,15 @@ void pa_launch(dim3 grid, cudaStream_t st, const float* q, const QsaAttnPools& p
+                const int64_t* pool_rows = nullptr) {
+     static const int trim = [] { const char* e = std::getenv("STRATA_PA_TRIM"); return e != nullptr && e[0] != '\0' ? std::atoi(e) : PA_TRIM_DEFAULT; }();
+     static const bool rpf = [] { const char* e = std::getenv("STRATA_PA_RPF"); return !(e != nullptr && e[0] == '0'); }();
++    static const bool native_i8 = [] { const char* e = std::getenv("STRATA_PA_NATIVE_I8"); return e && e[0] == '1'; }();
++    int dev = 0;
++    if (native_i8 && trim >= 2 && rpf && hipGetDevice(&dev) == hipSuccess && hip_wmma_arch(dev) == 1) {
++        if (pool_rows)
++            prompt_attn_wmma_native_i8_kernel<SPLIT, GATE, true><<<grid, THREADS, 0, st>>>(q, pools, ids, steps, n_kv_heads, page_size, scale_log2, attn, cap, qf, o16, ld16, pool_rows);
++        else
++            prompt_attn_wmma_native_i8_kernel<SPLIT, GATE, false><<<grid, THREADS, 0, st>>>(q, pools, ids, steps, n_kv_heads, page_size, scale_log2, attn, cap, qf, o16, ld16, nullptr);
++        return;
++    }
+     if (pool_rows != nullptr && trim >= 2 && rpf) {
+         prompt_attn_wmma_kernel<SPLIT, GATE, true, 2, true><<<grid, THREADS, 0, st>>>(q, pools, ids, steps, n_kv_heads, page_size, scale_log2, attn, cap, qf, o16, ld16, pool_rows);
+         return;
+diff --git a/tests/hip/pa_native_i8.cpp b/tests/hip/pa_native_i8.cpp
+new file mode 100644
+index 0000000..a00d2db
+--- /dev/null
++++ b/tests/hip/pa_native_i8.cpp
+@@ -0,0 +1,69 @@
++// All 65,536 ordered byte pairs at every aligned pair position of a 16-code
++// fragment. CPU expected half bits are built with integer arithmetic.
++#include "../../src/kernels/cuda/hip_native_i8_half.cuh"
++#include <hip/hip_runtime.h>
++#include <cstdio>
++#include <cstring>
++#include <vector>
++
++#define CK(call) do { const hipError_t e = (call); if (e != hipSuccess) { \
++    std::fprintf(stderr, "%s: %s\n", #call, hipGetErrorString(e)); return 1; } } while (0)
++
++__global__ void decode_pairs(uint16_t* out) {
++    const uint32_t pair = blockIdx.x * blockDim.x + threadIdx.x;
++    if (pair >= 65536) return;
++    uint32_t words[4];
++#pragma unroll
++    for (int j = 0; j < 4; ++j)
++        words[j] = ((pair + 997u * j) & 65535u) | (((pair ^ (0xa55au + 251u * j)) & 65535u) << 16);
++    const auto h = strata::kernels::hip_detail::native_i8_to_half16(words);
++#pragma unroll
++    for (int i = 0; i < 16; ++i) {
++        const _Float16 scalar = h[i];
++        out[(size_t) pair * 16 + i] = __builtin_bit_cast(uint16_t, scalar);
++    }
++}
++
++static uint16_t integer_half_bits(int value) {
++    if (value == 0) return 0;
++    const uint16_t sign = value < 0 ? 0x8000 : 0;
++    const unsigned magnitude = value < 0 ? (unsigned) -value : (unsigned) value;
++    int exponent = 0;
++    while ((1u << (exponent + 1)) <= magnitude) ++exponent;
++    return sign | (uint16_t) ((exponent + 15) << 10) |
++           (uint16_t) ((magnitude - (1u << exponent)) << (10 - exponent));
++}
++
++int main() {
++    hipDeviceProp_t prop{};
++    CK(hipGetDeviceProperties(&prop, 0));
++    if (std::strncmp(prop.gcnArchName, "gfx11", 5) != 0) return 77;
++    constexpr size_t count = 65536 * 16;
++    uint16_t* output = nullptr;
++    CK(hipMalloc(&output, (count + 32) * sizeof(uint16_t)));
++    CK(hipMemset(output, 0xa5, (count + 32) * sizeof(uint16_t)));
++    decode_pairs<<<256, 256>>>(output);
++    CK(hipGetLastError());
++    CK(hipDeviceSynchronize());
++    std::vector<uint16_t> actual(count + 32);
++    CK(hipMemcpy(actual.data(), output, actual.size() * sizeof(uint16_t), hipMemcpyDeviceToHost));
++    for (uint32_t pair = 0; pair < 65536; ++pair) for (int j = 0; j < 4; ++j) {
++        const uint32_t word = ((pair + 997u * j) & 65535u) |
++                             (((pair ^ (0xa55au + 251u * j)) & 65535u) << 16);
++        for (int byte = 0; byte < 4; ++byte) {
++            const unsigned code = (word >> (byte * 8)) & 255u;
++            const int signed_value = code < 128 ? (int) code : (int) code - 256;
++            const size_t at = (size_t) pair * 16 + j * 4 + byte;
++            if (actual[at] != integer_half_bits(signed_value)) {
++                std::fprintf(stderr, "pair=%u position=%d code=%u actual=%04x expected=%04x\n",
++                             pair, j * 4 + byte, code, actual[at], integer_half_bits(signed_value));
++                return 1;
++            }
++        }
++    }
++    for (size_t i = count; i < actual.size(); ++i) if (actual[i] != 0xa5a5) return 1;
++    CK(hipFree(output));
++    std::printf("PASS: %zu exact conversions; all 65536 byte pairs in all 8 pair positions; guard intact (%s)\n",
++                count, prop.gcnArchName);
++    return 0;
++}

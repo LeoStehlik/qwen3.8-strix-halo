@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "cmake",
+    "--build",
+    "build-halo-lab",
+    "--target",
+    "hip_pa_native_i8",
+    "hip_pa_bench",
+    "-j",
+    "2"
+  ],
+  "env": {
+    "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+    "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+    "HIP_PLATFORM": "amd",
+    "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib"
+  }
+}

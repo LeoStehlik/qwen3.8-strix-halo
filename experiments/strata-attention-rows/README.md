@@ -89,5 +89,7 @@ and pass state/continuation and tool-use checks. Only HIP was built here;
 build all affected backends before any upstream submission.
 
 The same packaged preview was restored at **17:45:26 UTC**. No experimental
-attention or expert source patch is serving. Exact native INT8 conversion
-remains a separate, unimplemented candidate requiring exhaustive code tests.
+attention or expert source patch is serving. The later independent
+[native INT8 conversion screen](../strata-attention-native-i8/README.md)
+passed exhaustive code checks but found no timing winner; it was not combined
+with prepared rows and was removed from active source.

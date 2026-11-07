@@ -80,6 +80,16 @@ checkpoint trial loaded at 19:04:22 UTC. No Mac gateway restart or configuration
 
 ## Next experiment priorities
 
+Next bounded prefill candidate after the rejected native-conversion screen:
+the packaged **`STRATA_PF_PAD=1`** option, currently not selected or measured
+here. Source `prefill.cpp::pf_pad` and `Gemm::native` pad projection activation
+and dequantized-weight row strides by 64 half values when the existing
+`STRATA_PF_GEMM` path can consume them. K=6144 projections are an explicit
+target in the source comments. Verify actual dispatch and compare with the
+current F16 configuration; the source's historical speed claim is not a result
+on this model/installation. Preserve boundary checkpoint 1 and 64/128 in
+controls and restoration. Do not reuse an old flag-off runtime snapshot.
+
 A 64K profile of this configuration charged 24.9% to routed experts, 23.9% to
 GDN work, 20.9% to hyper-connections and 20.1% to attention-related work.
 Actual attention is only 10% of total; recurrence alone is 6.7%. The larger
@@ -111,8 +121,11 @@ A 2x expert improvement alone would predict about 14% overall, not 2x prefill.
    preprocessing included, with exact outputs across 24 boundary/page-table
    cases. Retain it, undeployed: its ~256 MiB scratch and production lifetime
    still need integration/full-model testing. Estimated overall gain is only
-   ~0.3%. Exact native INT8 conversion remains unimplemented and needs exhaustive
-   code validation. Trim/read-prefetch already default on. Actual attention is
+   ~0.3%. The subsequent [native INT8 conversion screen](../experiments/strata-attention-native-i8/README.md)
+   passed exhaustive exact-value checks and replay output parity, but its
+   assembly form was neutral and vector form slower. Both were removed from
+   active source; patch/evidence archived. No full-model trial justified by
+   that screen. Trim/read-prefetch already default on. Actual attention is
    only 10% of total prefill.
 3. Compare any operator winner against a same-source control, then validate
    cold 64K/128K and a 192K stress case. Report newly processed tokens, cache

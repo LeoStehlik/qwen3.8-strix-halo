@@ -1,0 +1,511 @@
+[0/2] Re-checking globbed directories...
+[1/6] Building HIP object CMakeFiles/hip_pa_native_i8.dir/tests/hip/pa_native_i8.cpp.o
+[2/6] Linking HIP executable hip_pa_native_i8
+[3/6] Building HIP object CMakeFiles/strata_kernels.dir/src/kernels/cuda/qsa_prompt_attn.cu.o
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:60:49: warning: unused parameter 'c' [-Wunused-parameter]
+   60 | __device__ __forceinline__ void mma16816(float* c, const uint32_t* a, const uint32_t* b) {
+      |                                                 ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:60:68: warning: unused parameter 'a' [-Wunused-parameter]
+   60 | __device__ __forceinline__ void mma16816(float* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:60:87: warning: unused parameter 'b' [-Wunused-parameter]
+   60 | __device__ __forceinline__ void mma16816(float* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:170:57: warning: '&&' within '||' [-Wlogical-op-parentheses]
+  170 |     static_assert(!PREFETCH || (CH * KP) % THREADS == 0 && CH * 4 == THREADS, "prefetch layout");
+      |                             ~~ ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:170:57: note: place parentheses around the '&&' expression to silence this warning
+  170 |     static_assert(!PREFETCH || (CH * KP) % THREADS == 0 && CH * 4 == THREADS, "prefetch layout");
+      |                                                         ^                   
+      |                                (                                            )
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1057:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1057 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1061:9: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1061 |         cudaDeviceGetAttribute(&major, cudaDevAttrComputeCapabilityMajor, dev);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:26:32: note: expanded from macro 'cudaDeviceGetAttribute'
+   26 | #define cudaDeviceGetAttribute hipDeviceGetAttribute
+      |                                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1068:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1068 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1096:48: warning: unused parameter 'c' [-Wunused-parameter]
+ 1096 | __device__ __forceinline__ void imma16832(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1096:67: warning: unused parameter 'a' [-Wunused-parameter]
+ 1096 | __device__ __forceinline__ void imma16832(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                   ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1096:86: warning: unused parameter 'b' [-Wunused-parameter]
+ 1096 | __device__ __forceinline__ void imma16832(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                                      ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1107:51: warning: unused parameter 'c' [-Wunused-parameter]
+ 1107 | __device__ __forceinline__ void imma16832_us(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                   ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1107:70: warning: unused parameter 'a' [-Wunused-parameter]
+ 1107 | __device__ __forceinline__ void imma16832_us(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                      ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1107:89: warning: unused parameter 'b' [-Wunused-parameter]
+ 1107 | __device__ __forceinline__ void imma16832_us(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                                         ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1407:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1407 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1413:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1413 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1417:9: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1417 |         cudaFuncSetAttribute(prompt_attn_i8v3_kernel, cudaFuncAttributePreferredSharedMemoryCarveout, 100);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1418:9: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1418 |         cudaGetLastError();
+      |         ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2376:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2376 |             cudaStreamSynchronize(st);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:124:31: note: expanded from macro 'cudaStreamSynchronize'
+  124 | #define cudaStreamSynchronize hipStreamSynchronize
+      |                               ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2378:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2378 |             cudaMemcpy(h.data(), ids, h.size() * 4, cudaMemcpyDeviceToHost);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:99:20: note: expanded from macro 'cudaMemcpy'
+   99 | #define cudaMemcpy hipMemcpy
+      |                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2379:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2379 |             cudaMemcpy(hs.data(), steps, hs.size() * 4, cudaMemcpyDeviceToHost);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:99:20: note: expanded from macro 'cudaMemcpy'
+   99 | #define cudaMemcpy hipMemcpy
+      |                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2437:41: warning: unused parameter 'q' [-Wunused-parameter]
+ 2437 | bool qsa_decode_attn_split(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+      |                                         ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2437:64: warning: unused parameter 'pools' [-Wunused-parameter]
+ 2437 | bool qsa_decode_attn_split(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+      |                                                                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2437:86: warning: unused parameter 'ids' [-Wunused-parameter]
+ 2437 | bool qsa_decode_attn_split(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+      |                                                                                      ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2437:106: warning: unused parameter 'steps' [-Wunused-parameter]
+ 2437 | bool qsa_decode_attn_split(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+      |                                                                                                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:36: warning: unused parameter 'cap' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:58: warning: unused parameter 's' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:68: warning: unused parameter 'scratch' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:86: warning: unused parameter 'scratch_floats' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                                                      ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:109: warning: unused parameter 'attn' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                                                                             ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:123: warning: unused parameter 'n_q' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                                                                                           ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2439:34: warning: unused parameter 'stream' [-Wunused-parameter]
+ 2439 |                            void* stream) {
+      |                                  ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2570:75: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2570 |         if (cudaGetDevice(&dev) != cudaSuccess || dev < 0 || dev >= 64) { cudaGetLastError(); return false; }
+      |                                                                           ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2575:17: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2575 |                 cudaGetLastError();
+      |                 ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2616:16: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<4, false>' requested here
+ 2616 |         return launch<4>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2621:16: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<3, false>' requested here
+ 2621 |         return launch<3>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2637:85: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<1, true>' requested here
+ 2637 |             if (pf_env == 1 || (pf_env < 0 && t75 && strata::sm75_series())) return launch<1, true>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |                                                                                     ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2638:20: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<1, false>' requested here
+ 2638 |             return launch<1>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2654:12: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<0, false>' requested here
+ 2654 |     return launch<0>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |            ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+45 warnings generated when compiling for gfx1151.
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:60:49: warning: unused parameter 'c' [-Wunused-parameter]
+   60 | __device__ __forceinline__ void mma16816(float* c, const uint32_t* a, const uint32_t* b) {
+      |                                                 ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:60:68: warning: unused parameter 'a' [-Wunused-parameter]
+   60 | __device__ __forceinline__ void mma16816(float* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:60:87: warning: unused parameter 'b' [-Wunused-parameter]
+   60 | __device__ __forceinline__ void mma16816(float* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:170:57: warning: '&&' within '||' [-Wlogical-op-parentheses]
+  170 |     static_assert(!PREFETCH || (CH * KP) % THREADS == 0 && CH * 4 == THREADS, "prefetch layout");
+      |                             ~~ ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:170:57: note: place parentheses around the '&&' expression to silence this warning
+  170 |     static_assert(!PREFETCH || (CH * KP) % THREADS == 0 && CH * 4 == THREADS, "prefetch layout");
+      |                                                         ^                   
+      |                                (                                            )
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1057:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1057 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1061:9: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1061 |         cudaDeviceGetAttribute(&major, cudaDevAttrComputeCapabilityMajor, dev);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:26:32: note: expanded from macro 'cudaDeviceGetAttribute'
+   26 | #define cudaDeviceGetAttribute hipDeviceGetAttribute
+      |                                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1068:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1068 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1096:48: warning: unused parameter 'c' [-Wunused-parameter]
+ 1096 | __device__ __forceinline__ void imma16832(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1096:67: warning: unused parameter 'a' [-Wunused-parameter]
+ 1096 | __device__ __forceinline__ void imma16832(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                   ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1096:86: warning: unused parameter 'b' [-Wunused-parameter]
+ 1096 | __device__ __forceinline__ void imma16832(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                                      ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1107:51: warning: unused parameter 'c' [-Wunused-parameter]
+ 1107 | __device__ __forceinline__ void imma16832_us(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                   ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1107:70: warning: unused parameter 'a' [-Wunused-parameter]
+ 1107 | __device__ __forceinline__ void imma16832_us(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                      ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1107:89: warning: unused parameter 'b' [-Wunused-parameter]
+ 1107 | __device__ __forceinline__ void imma16832_us(int* c, const uint32_t* a, const uint32_t* b) {
+      |                                                                                         ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1407:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1407 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1413:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1413 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1417:9: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1417 |         cudaFuncSetAttribute(prompt_attn_i8v3_kernel, cudaFuncAttributePreferredSharedMemoryCarveout, 100);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1418:9: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1418 |         cudaGetLastError();
+      |         ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1940:45: warning: unused parameter 'a' [-Wunused-parameter]
+ 1940 | __device__ __forceinline__ wf8 wmma_f16(wh8 a, wh8 b, wf8 c) {
+      |                                             ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1940:52: warning: unused parameter 'b' [-Wunused-parameter]
+ 1940 | __device__ __forceinline__ wf8 wmma_f16(wh8 a, wh8 b, wf8 c) {
+      |                                                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1969:81: warning: unused parameter 'q' [-Wunused-parameter]
+ 1969 | __device__ __forceinline__ void prompt_attn_wmma_body(const float* __restrict__ q, QsaAttnPools p,
+      |                                                                                 ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1969:97: warning: unused parameter 'p' [-Wunused-parameter]
+ 1969 | __device__ __forceinline__ void prompt_attn_wmma_body(const float* __restrict__ q, QsaAttnPools p,
+      |                                                                                                 ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1970:96: warning: unused parameter 'ids' [-Wunused-parameter]
+ 1970 |                                                                    const int32_t* __restrict__ ids,
+      |                                                                                                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1971:96: warning: unused parameter 'steps' [-Wunused-parameter]
+ 1971 |                                                                    const int32_t* __restrict__ steps, int n_kv_heads,
+      |                                                                                                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1971:107: warning: unused parameter 'n_kv_heads' [-Wunused-parameter]
+ 1971 |                                                                    const int32_t* __restrict__ steps, int n_kv_heads,
+      |                                                                                                           ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1972:72: warning: unused parameter 'page_size' [-Wunused-parameter]
+ 1972 |                                                                    int page_size, float scale_log2,
+      |                                                                        ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1972:89: warning: unused parameter 'scale_log2' [-Wunused-parameter]
+ 1972 |                                                                    int page_size, float scale_log2,
+      |                                                                                         ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1973:88: warning: unused parameter 'attn' [-Wunused-parameter]
+ 1973 |                                                                    float* __restrict__ attn, int cap,
+      |                                                                                        ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1973:98: warning: unused parameter 'cap' [-Wunused-parameter]
+ 1973 |                                                                    float* __restrict__ attn, int cap,
+      |                                                                                                  ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1974:94: warning: unused parameter 'qf' [-Wunused-parameter]
+ 1974 |                                                                    const float* __restrict__ qf,
+      |                                                                                              ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1975:91: warning: unused parameter 'o16' [-Wunused-parameter]
+ 1975 |                                                                    uint16_t* __restrict__ o16, int64_t ld16,
+      |                                                                                           ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1975:104: warning: unused parameter 'ld16' [-Wunused-parameter]
+ 1975 |                                                                    uint16_t* __restrict__ o16, int64_t ld16,
+      |                                                                                                        ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1976:96: warning: unused parameter 'pool_rows' [-Wunused-parameter]
+ 1976 |                                                                    const int64_t* __restrict__ pool_rows) {
+      |                                                                                                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2376:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2376 |             cudaStreamSynchronize(st);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:124:31: note: expanded from macro 'cudaStreamSynchronize'
+  124 | #define cudaStreamSynchronize hipStreamSynchronize
+      |                               ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2378:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2378 |             cudaMemcpy(h.data(), ids, h.size() * 4, cudaMemcpyDeviceToHost);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:99:20: note: expanded from macro 'cudaMemcpy'
+   99 | #define cudaMemcpy hipMemcpy
+      |                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2379:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2379 |             cudaMemcpy(hs.data(), steps, hs.size() * 4, cudaMemcpyDeviceToHost);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:99:20: note: expanded from macro 'cudaMemcpy'
+   99 | #define cudaMemcpy hipMemcpy
+      |                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2437:41: warning: unused parameter 'q' [-Wunused-parameter]
+ 2437 | bool qsa_decode_attn_split(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+      |                                         ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2437:64: warning: unused parameter 'pools' [-Wunused-parameter]
+ 2437 | bool qsa_decode_attn_split(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+      |                                                                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2437:86: warning: unused parameter 'ids' [-Wunused-parameter]
+ 2437 | bool qsa_decode_attn_split(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+      |                                                                                      ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2437:106: warning: unused parameter 'steps' [-Wunused-parameter]
+ 2437 | bool qsa_decode_attn_split(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+      |                                                                                                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:36: warning: unused parameter 'cap' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:58: warning: unused parameter 's' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:68: warning: unused parameter 'scratch' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:86: warning: unused parameter 'scratch_floats' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                                                      ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:109: warning: unused parameter 'attn' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                                                                             ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2438:123: warning: unused parameter 'n_q' [-Wunused-parameter]
+ 2438 |                            int64_t cap, const QsaShapes& s, float* scratch, uint64_t scratch_floats, float* attn, int64_t n_q,
+      |                                                                                                                           ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2439:34: warning: unused parameter 'stream' [-Wunused-parameter]
+ 2439 |                            void* stream) {
+      |                                  ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2570:75: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2570 |         if (cudaGetDevice(&dev) != cudaSuccess || dev < 0 || dev >= 64) { cudaGetLastError(); return false; }
+      |                                                                           ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2575:17: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 2575 |                 cudaGetLastError();
+      |                 ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2616:16: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<4, false>' requested here
+ 2616 |         return launch<4>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2621:16: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<3, false>' requested here
+ 2621 |         return launch<3>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |                ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2637:85: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<1, true>' requested here
+ 2637 |             if (pf_env == 1 || (pf_env < 0 && t75 && strata::sm75_series())) return launch<1, true>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |                                                                                     ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2638:20: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<1, false>' requested here
+ 2638 |             return launch<1>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |                    ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1441:5: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1441 |     cudaGetDevice(&dev);
+      |     ^~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:56:23: note: expanded from macro 'cudaGetDevice'
+   56 | #define cudaGetDevice hipGetDevice
+      |                       ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:2654:12: note: in instantiation of function template specialization 'strata::kernels::(anonymous namespace)::launch<0, false>' requested here
+ 2654 |     return launch<0>(q, pools, ids, steps, cap, s, attn, n_q, st);
+      |            ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1447:13: warning: ignoring return value of type 'hipError_t' declared with 'nodiscard' attribute [-Wunused-value]
+ 1447 |             cudaGetLastError();
+      |             ^~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:60:26: note: expanded from macro 'cudaGetLastError'
+   60 | #define cudaGetLastError hipGetLastError
+      |                          ^
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:807:44: warning: unused function 'decode_attn_i8_split_kernel' [-Wunused-function]
+  807 | __global__ void __launch_bounds__(THREADS) decode_attn_i8_split_kernel(const float* __restrict__ q, QsaAttnPools p,
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1033:39: warning: unused function 'decode_attn_merge_kernel' [-Wunused-function]
+ 1033 | __global__ void __launch_bounds__(HD) decode_attn_merge_kernel(const float* __restrict__ part, int n_head, int nsp,
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1940:32: warning: unused function 'wmma_f16' [-Wunused-function]
+ 1940 | __device__ __forceinline__ wf8 wmma_f16(wh8 a, wh8 b, wf8 c) {
+      |                                ^~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/src/kernels/cuda/qsa_prompt_attn.cu:1951:32: warning: unused function 'i8_to_h' [-Wunused-function]
+ 1951 | __device__ __forceinline__ wh8 i8_to_h(const uint32_t* x) {   // PA_KL codes, exact: |code| <= 128
+      |                                ^~~~~~~
+64 warnings generated when compiling for host.
+[4/6] Linking HIP static library libstrata_kernels.a
+[5/6] Linking HIP executable hip_pa_bench
