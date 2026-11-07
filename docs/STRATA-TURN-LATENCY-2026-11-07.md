@@ -133,3 +133,38 @@ store, with compressed events decoded locally. No full transcript, tool
 argument, result body, user/channel identifier or reasoning text is included
 in the public audit output. This is one user-approved task, not a general
 latency benchmark or independent assessment of the answer's correctness.
+
+## Tool-sequence review: useful leads, not promised savings
+
+A read-only review of the existing tool arguments/results adds these findings.
+No command from the transcript was re-executed, and the private arguments,
+results and reasoning remain excluded from the public evidence.
+
+* **Authentication fallback:** turn 2 tried two GitHub CLI operations in one
+  shell call; both reported missing authentication. The tool-result window was
+  2.081 seconds. The next turn successfully used the public HTTP API. A public
+  fallback within the original operation could avoid a recovery round trip.
+  The preceding model time is not all established as avoidable overhead.
+* **Independent network requests:** turn 5 fetched four PR records serially;
+  turn 7 performed a serial four-commit by four-release comparison matrix
+  (**16 independent HTTP requests**). Bounded concurrency is a concrete lead.
+  The current trace has no per-HTTP timing, so it does not support a projected
+  speedup or a claim that every tool second was network waiting.
+* **Repeated retrieval:** turn 9 fetched the same three changelog files and
+  release-list endpoint already requested earlier. It added HTTP status checks,
+  searched full release bodies (the earlier display was truncated), and listed
+  the changelog directory. Preserving status and relevant full-body matches on
+  the first read could avoid some repeat work; the entire verification turn
+  must not be labelled unnecessary without checking retained evidence quality.
+* **Polling overlaps useful work:** the long comparison command ran for about
+  **40.25 seconds** from its recorded process start through the final tool
+  result. Within that interval the model spent **11.058 seconds** preparing a
+  poll, including 9.254 seconds of repeated prefill, then waited another 17.445
+  seconds for the result. Those 11.058 seconds are GPU occupancy, not an equal
+  additional delay on top of the command. Completion-driven continuation could
+  avoid that inference, but its answer-latency benefit needs measurement.
+
+The model already launched two independent tools together in turn 3; it was
+not wholly serial. These are task-specific opportunities in how the agent
+organizes work, separate from the measured ~0.1-second runtime handoff gaps.
+No prompt, tool policy, authentication setting or OpenClaw runtime was changed.

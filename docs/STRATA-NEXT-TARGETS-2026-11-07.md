@@ -62,10 +62,13 @@ now demonstrates the interaction with moving runtime context. The existing
 45% and reread tokens by 74%, with identical outputs across off/on/off arms.
 All moving-context state canaries passed; fixed-context follow-ups only passed
 output parity, emitting the same unwanted lookup text in every arm. Cold
-startup varied materially. Keep the option **undeployed** pending checkpoint/
-memory timing and representative-tail checks, then a real-traffic trial.
+startup varied materially. A traced follow-up passed 12 moving-context canaries
+with matching outputs at 43- and 267-token tails. It found multi-second GPU
+eviction activity before the extra checkpoint, versus 24–41 ms checkpoint
+copies. The larger tail also benefited. Keep the option **undeployed** while
+comparing the short-read cutoff, then use a limited real-traffic trial.
 It is work avoided, not a higher raw-prefill rate. The unchanged preview was
-restored at 18:21:53 UTC. No Mac gateway restart or configuration change.
+restored after the trace at 18:38:35 UTC. No Mac gateway restart or configuration change.
 
 ## Next experiment priorities
 

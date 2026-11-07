@@ -675,3 +675,13 @@ consistent with the audited OpenClaw cache pattern, whose complete historical
 wire payload is unavailable. Next: checkpoint timing/memory counters and
 representative runtime-context lengths, then actual traffic. The original
 preview was restored at 18:21:53 UTC; temporary overrides are removed.
+
+The subsequent traced off/on/off diagnostic passed all 12 moving-context
+canaries at 43- and 267-token runtime tails, with matching outputs. First
+continuation latency fell about 32% and 36%. Multi-second cold variability
+coincided with GPU queue evictions before the extra checkpoint was reached;
+individual checkpoint copies were 24–41 ms. The short-tail verify-window path
+took 516 ms for 43 tokens, versus 533 ms for 267 tokens batched: compare the
+short-read threshold separately before any assumption of a win. Full timings,
+memory counters and caveats are in the boundary-cache report. No serving
+promotion; the unchanged preview was restored at 18:38:35 UTC.

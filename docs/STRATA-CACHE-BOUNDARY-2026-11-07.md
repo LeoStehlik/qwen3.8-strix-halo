@@ -96,19 +96,73 @@ unexpected lookup. The final protocol separates formatting from state values,
 requests no new tools explicitly, and records all outcomes. Preliminary runs
 are not mixed into the off/on/off performance comparison.
 
+## Follow-up trace: memory stalls and short reads
+
+A second off/on/off diagnostic enabled `STRATA_TRACE=1` in all arms and
+recorded Linux VM/KFD counters around each request. It tested a cold request
+plus one continuation with both a **43-token** and a **267-token** runtime
+message. Each size used a distinct system prefix, preventing reuse between
+the two cases. The original model, context, KV and resident-expert settings
+were retained. Automatic conversation-cache capacity was 6,912 MiB in all
+three arms, sufficient for these fixtures without conversation evictions.
+
+| Wall seconds | Off, first | On | Off, return |
+|---|---:|---:|---:|
+| 43-token message, cold request | 19.683 | 21.281 | 16.620 |
+| 43-token message, continuation | 5.086 | 3.464 | 5.094 |
+| 267-token message, cold request | 16.533 | 16.891 | 16.643 |
+| 267-token message, continuation | 5.617 | 3.465 | 5.276 |
+
+All **12 responses passed the root/latest-value canaries**, with identical
+request, rendered-prompt and output hashes at each matching position. This
+is a new moving-context diagnostic; it does not erase the earlier fixed-case
+canary failures. The larger message is a sensitivity test, not a measurement
+of the original private request's runtime-context length.
+
+The trace separates several costs that the aggregate prefill number hid:
+
+* First control, cold: **3,211.7 ms before prompt processing**, with the
+  inference process's KFD eviction counter increasing **3,196 ms** over the
+  request. Its 16,850-token root segment then took 11,822.8 ms.
+* Enabled, cold: preparation was only 25.2 ms, but that same root segment took
+  **16,238.7 ms**, before reaching the additional message checkpoint. One
+  process's eviction counter increased **4,229 ms**. The return control's root
+  took 11,995.5 ms and its largest process eviction delta was 242 ms.
+* Checkpoint copies in the enabled arm took **23.6–40.9 ms each**, not seconds.
+  These timings include nested checkpoints inside some batched-read intervals;
+  they must not all be added as disjoint costs.
+* The enabled continuation read **43 tokens through verify windows in
+  516.3 ms**, versus **267 tokens batched in 533.4 ms**. Both then read the
+  six-token assistant header through windows in about 64 ms. The default
+  short-read cutoff is 64 tokens; it merits a separate controlled comparison
+  in this all-resident layout.
+
+This identifies a substantial memory-stall contribution to the cold variability.
+It does not prove an exact stall subtraction: KFD counters cover whole requests,
+can overlap between the inference and vision processes, and VM counters are
+host-wide. Do not report counter-adjusted throughput. The relatively quiet
+267-token cold cases show a smaller enabled cost of about **0.25–0.36 seconds**;
+that is a limited observation, not a universal startup penalty.
+
+The [trace evidence](../evidence/strata-performance-2026-11-07/cache-boundary-trace/)
+includes engine logs, per-request memory counters and exact prompt checks.
+Reproduce with `--modes moving --turns 2 --runtime-padding-rows 0` or `16`,
+plus `--host-metrics`, using a different `--seed` for each size and the same
+seeds across arms. The [trace summarizer](../benchmarks/strata-cache-trace.py)
+checks that each trace interval matches the API prefill time within 1 ms.
+
 ## Decision and next checks
 
-Keep the option as a concrete cache candidate. The warm benefit is clear,
-but cold-request timing varies substantially even between the two controls.
-The enabled arm's slower cold request is not yet attributed to the option,
-initial memory stalls, or another startup cost. Only one enabled arm ran.
+Keep the option as a concrete cache candidate. The warm benefit has repeated
+with both message sizes; cold timing is strongly affected by memory stalls.
+Two enabled arms have now run, one untraced and one traced, with different
+fixtures. They are not a large production latency distribution.
 
-The next diagnostic should use `STRATA_TRACE=1` for checkpoint timing and
-memory-eviction/migration counters. The 43-token message is also below the
-engine's default `--short-read 64` threshold: adding a checkpoint exposes a
-short segment processed through decode windows. That is a source-based lead,
-not a measured explanation of the cold delay. Measure representative larger
-runtime-context messages too; do not tune solely for this tiny fixture.
+Next compare the short-read cutoff independently, preserving the six-token
+header's current path and testing both message sizes. Do not assume that the
+batched path wins for 43 tokens merely because it handles 267 efficiently.
+Memory management remains a separate source of stalls; the earlier compaction
+setting experiments did not establish a stable win and remain reverted.
 
 Before making this a serving default, check the cold cost, then use a limited
 real-traffic trial to confirm useful reuse on the actual request path. Continue raw kernel work
@@ -122,6 +176,10 @@ The unchanged private-8083 preview was restored at **18:21:53 UTC**, loaded
 and idle. The temporary `91-cache-boundary.conf` override was removed; the
 message-boundary option remains off, source experiments remain undeployed,
 and boot promotion remains pending.
+
+After the traced follow-up, the same preview was restored at **18:38:35 UTC**,
+loaded and idle. `91-cache-boundary-trace.conf` was removed. Neither the cache
+option nor tracing is enabled in serving; the short-read setting is unchanged.
 
 ## Reproduction
 

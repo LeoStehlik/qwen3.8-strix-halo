@@ -6,6 +6,7 @@ Use the packaged Python runtime for its tokenizer/Jinja dependencies. API keys
 come only from STRATA_API_KEY; requests and outputs contain public fixture data.
 """
 import argparse
+import datetime
 import hashlib
 import json
 import os
@@ -13,6 +14,25 @@ from pathlib import Path
 import sys
 import time
 import urllib.request
+
+
+def host_memory():
+    """Read-only Linux counters; host-wide values are not GPU stall timings."""
+    vm = dict(line.split() for line in Path('/proc/vmstat').read_text().splitlines())
+    mem = dict(line.split(':', 1) for line in Path('/proc/meminfo').read_text().splitlines())
+    evicted = {}
+    for file in Path('/sys/class/kfd/kfd/proc').glob('*/stats_*/evicted_ms'):
+        try:
+            pid = file.parent.parent.name
+            evicted[pid + '/' + file.parent.name] = int(file.read_text())
+        except OSError:
+            pass
+    return {'utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            'kfd_evicted_ms': evicted,
+            'vmstat': {k: int(v) for k, v in vm.items()
+                       if k.startswith(('compact_', 'pgmigrate_', 'pgscan_', 'pswp', 'pgmajfault'))},
+            'meminfo_kib': {k: int(mem[k].split()[0]) for k in
+                            ('MemAvailable', 'MemFree', 'SwapFree', 'AnonPages')}}
 
 
 def main():
@@ -26,8 +46,12 @@ def main():
     ap.add_argument('--turns', type=int, default=4)
     ap.add_argument('--offline', action='store_true')
     ap.add_argument('--modes', nargs='+', choices=['moving', 'fixed'], default=['moving', 'fixed'])
+    ap.add_argument('--runtime-padding-rows', type=int, default=0,
+                    help='Additional inert rows in the transient final message')
+    ap.add_argument('--host-metrics', action='store_true', help='Record Linux VM/KFD counters per request')
     args = ap.parse_args()
     assert 2 <= args.turns <= 8
+    assert 0 <= args.runtime_padding_rows <= 200
     sys.path[:0] = [str(args.terminal), str(args.terminal / 'tools')]
     from serve.frontend import ChatTemplate, openai_to_messages
     from strata_tokenizer import Tokenizer
@@ -49,11 +73,16 @@ def main():
     carrier = {'role': 'user', 'content': 'OpenClaw runtime context:\n'
                'This is transient context for a public backend replay. Answer the original request '
                'using the latest lookup result. Return only the JSON object.\nEnd runtime context.'}
+    if args.runtime_padding_rows:
+        carrier['content'] = carrier['content'].replace('End runtime context.',
+            ''.join(f'Inert transient row {i:03d}: copper silver gold.\n'
+                    for i in range(args.runtime_padding_rows)) + 'End runtime context.')
     headers = {'Content-Type': 'application/json'}
     if os.environ.get('STRATA_API_KEY'):
         headers['Authorization'] = 'Bearer ' + os.environ['STRATA_API_KEY']
     report = {'protocol': 'strata-message-boundary-v2', 'seed': args.seed,
-              'synthetic': True, 'offline': args.offline, 'runs': [], 'completed': False}
+              'synthetic': True, 'offline': args.offline,
+              'runtime_padding_rows': args.runtime_padding_rows, 'runs': [], 'completed': False}
 
     def save():
         args.out.parent.mkdir(parents=True, exist_ok=True)
@@ -110,6 +139,8 @@ def main():
                    'expected': expected}
             previous = ids
             if not args.offline:
+                if args.host_metrics:
+                    row['host_before'] = host_memory()
                 started = time.monotonic()
                 first = None
                 output, reasoning, usage, timings, done, finish = [], [], None, None, False, None
@@ -138,8 +169,11 @@ def main():
                             if delta.get('tool_calls'):
                                 tool_deltas.extend(delta['tool_calls'])
                             finish = choice.get('finish_reason') or finish
+                elapsed = time.monotonic() - started
+                if args.host_metrics:
+                    row['host_after'] = host_memory()
                 text = ''.join(output).strip()
-                row.update(elapsed_s=time.monotonic() - started, first_token_s=first,
+                row.update(elapsed_s=elapsed, first_token_s=first,
                            usage=usage, timings=timings, complete_stream=done, finish_reason=finish,
                            output=text, output_sha256=hashlib.sha256(text.encode()).hexdigest(),
                            reasoning_chars=len(''.join(reasoning)), tool_call_deltas=tool_deltas)

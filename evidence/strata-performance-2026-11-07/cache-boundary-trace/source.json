@@ -1,0 +1,28 @@
+{
+  "engine_sha256": "bce2f61ca0f970a1640aafa77925c0908f060243cffcd1ad10e3843b35eed476",
+  "source_selector_base": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "environment": {
+    "STRATA_TRACE": "1 in every arm",
+    "STRATA_CACHE_MESSAGE_BOUNDARY": "0 / 1 / 0"
+  },
+  "fixtures": {
+    "padding_rows": [
+      0,
+      16
+    ],
+    "runtime_tail_tokens": [
+      43,
+      267
+    ],
+    "turns_per_case": 2,
+    "mode": "moving",
+    "no_real_tools_executed": true
+  },
+  "serving_afterwards": {
+    "message_boundary": "unset, default off",
+    "trace": "unset",
+    "short_read": "unchanged, default 64"
+  },
+  "collector": "benchmarks/strata-cache-boundary.py --host-metrics",
+  "summarizer": "python3 benchmarks/strata-cache-trace.py --root EVIDENCE_DIRECTORY"
+}

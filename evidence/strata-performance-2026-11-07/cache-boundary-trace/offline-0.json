@@ -1,0 +1,56 @@
+{
+  "protocol": "strata-message-boundary-v2",
+  "seed": "boundary-trace-20261107-pad0",
+  "synthetic": true,
+  "offline": true,
+  "runtime_padding_rows": 0,
+  "runs": [
+    {
+      "mode": "moving",
+      "turn": 0,
+      "prompt_tokens_offline": 20612,
+      "message_boundaries": [
+        0,
+        16850,
+        18693,
+        18727,
+        20562,
+        20605
+      ],
+      "candidate_checkpoint": 20562,
+      "previous_prompt_lcp": null,
+      "request_sha256": "1ea63ca70003dd04319b9931cc432200d3b37e9e031de64d3992060a58b850e4",
+      "rendered_sha256": "066732021965ff7b7ceed7efb4864b9a89d9b2b525dc0962d7ac338d71c8188d",
+      "expected": {
+        "root_code": "ROOT-de910725",
+        "sequence": 0,
+        "code": "VALUE-c67a9181b7"
+      }
+    },
+    {
+      "mode": "moving",
+      "turn": 1,
+      "prompt_tokens_offline": 22481,
+      "message_boundaries": [
+        0,
+        16850,
+        18693,
+        18727,
+        20562,
+        20596,
+        22431,
+        22474
+      ],
+      "candidate_checkpoint": 22431,
+      "previous_prompt_lcp": 20563,
+      "request_sha256": "5f314b3ae1a05e97a345a11e4fd8c1bcb826e051c801e507f0a702a79e8495ae",
+      "rendered_sha256": "effb6c7cd756629f7f2059e34aed4ee551e25758701b52853eacc7b7a166a136",
+      "expected": {
+        "root_code": "ROOT-de910725",
+        "sequence": 1,
+        "code": "VALUE-63cc4b56a4"
+      }
+    }
+  ],
+  "completed": true
+}

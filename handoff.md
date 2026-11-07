@@ -64,10 +64,22 @@ identical across the three arms. All moving-context canaries passed. The fixed
 case already cached efficiently; three follow-ups emitted identical unwanted
 lookup text in every arm and count only as output/cache parity. Cold timings
 varied (control 19.8/24.3 s, enabled 25.9 s), so the option is **not promoted**.
-Next inspect checkpoint timing/memory counters and representative runtime-tail
-lengths; the 43-token fixture is below the default short-read threshold.
+The subsequent traced off/on/off comparison passed all 12 moving-context
+canaries, with identical outputs. Both 43- and 267-token tails benefited:
+first-continuation latency fell about 32% and 36%, respectively. Multi-second
+cold variability coincided with GPU queue evictions before the extra checkpoint
+was reached; checkpoint copies themselves took 24–41 ms. A 43-token window
+read took 516 ms, almost the same as 267 tokens batched (533 ms). Next compare
+the short-read cutoff independently, then run a limited actual-traffic trial.
+The flag remains off. This is avoided work, not higher raw prefill throughput.
 The original user payload was not fully captured, so the historical task's
 exact cache miss remains unproven. Source/model throughput targets remain active.
+
+The tool-sequence audit also identified a failed GitHub CLI authentication
+attempt, 16 independent comparison requests issued serially, and repeated
+fetches that added missing status/full-body checks. A polling model turn used
+11.058 seconds of GPU time while the command kept running; do not count that
+as an equal removable wall delay. No tool/prompt/authentication policy changed.
 
 Fresh packaged 64K screens: control **1,389.1 tok/s**, HC exact **1,217.2**,
 HC fused **1,382.8**. The exact arm includes a separate 5.83-second cache-park
@@ -150,6 +162,10 @@ No experimental kernel is serving and boot promotion remains pending.
 After the cache comparison, the same preview was restored at **18:21:53 UTC**,
 loaded and idle. `91-cache-boundary.conf` is removed; the message-boundary flag
 is off. No source experiment, trace flag or short-read override is deployed.
+
+Latest restoration, after the traced cache comparison: **18:38:35 UTC**.
+Health and idle state verified on 8083; only `90-live-preview.conf` remains.
+The temporary trace override is removed and the same baseline is serving.
 
 **Flash-Next is connected to the existing `tiercelmoe` provider.** Select
 `/model qwen-flash-next`, or the full reference

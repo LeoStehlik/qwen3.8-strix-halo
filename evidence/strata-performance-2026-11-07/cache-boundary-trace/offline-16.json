@@ -1,0 +1,56 @@
+{
+  "protocol": "strata-message-boundary-v2",
+  "seed": "boundary-trace-20261107-pad16",
+  "synthetic": true,
+  "offline": true,
+  "runtime_padding_rows": 16,
+  "runs": [
+    {
+      "mode": "moving",
+      "turn": 0,
+      "prompt_tokens_offline": 20839,
+      "message_boundaries": [
+        0,
+        16853,
+        18696,
+        18730,
+        20565,
+        20832
+      ],
+      "candidate_checkpoint": 20565,
+      "previous_prompt_lcp": null,
+      "request_sha256": "d9b789780618a9ad02e45908d32e6b5a1c89b17b82ce090f544b08ddf1f46edd",
+      "rendered_sha256": "c164174f8e6d543bea2070fac2682513528362d360ad136fff1c551fcf594958",
+      "expected": {
+        "root_code": "ROOT-e058e2c9",
+        "sequence": 0,
+        "code": "VALUE-003173bd6c"
+      }
+    },
+    {
+      "mode": "moving",
+      "turn": 1,
+      "prompt_tokens_offline": 22706,
+      "message_boundaries": [
+        0,
+        16853,
+        18696,
+        18730,
+        20565,
+        20599,
+        22432,
+        22699
+      ],
+      "candidate_checkpoint": 22432,
+      "previous_prompt_lcp": 20566,
+      "request_sha256": "dda7a743adab6d13a4ef5fbb256d51d14edc0ed03906f2a7779f4c8052997c73",
+      "rendered_sha256": "ffe12b36abd2d7ac4a1023142e45a8abba6f213438f420e52a38d27f1702b0b1",
+      "expected": {
+        "root_code": "ROOT-e058e2c9",
+        "sequence": 1,
+        "code": "VALUE-75db36adbe"
+      }
+    }
+  ],
+  "completed": true
+}

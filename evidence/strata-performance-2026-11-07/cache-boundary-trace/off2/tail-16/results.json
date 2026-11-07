@@ -1,0 +1,263 @@
+{
+  "protocol": "strata-message-boundary-v2",
+  "seed": "boundary-trace-20261107-pad16",
+  "synthetic": true,
+  "offline": false,
+  "runtime_padding_rows": 16,
+  "runs": [
+    {
+      "mode": "moving",
+      "turn": 0,
+      "prompt_tokens_offline": 20839,
+      "message_boundaries": [
+        0,
+        16853,
+        18696,
+        18730,
+        20565,
+        20832
+      ],
+      "candidate_checkpoint": 20565,
+      "previous_prompt_lcp": null,
+      "request_sha256": "d9b789780618a9ad02e45908d32e6b5a1c89b17b82ce090f544b08ddf1f46edd",
+      "rendered_sha256": "c164174f8e6d543bea2070fac2682513528362d360ad136fff1c551fcf594958",
+      "expected": {
+        "root_code": "ROOT-e058e2c9",
+        "sequence": 0,
+        "code": "VALUE-003173bd6c"
+      },
+      "host_before": {
+        "utc": "2026-11-07T18:36:44.135811+00:00",
+        "kfd_evicted_ms": {
+          "25018/stats_35564": 1390,
+          "25027/stats_35564": 4171
+        },
+        "vmstat": {
+          "pswpin": 4278012,
+          "pswpout": 11543881,
+          "pgmajfault": 1348175,
+          "pgscan_kswapd": 1024469195,
+          "pgscan_direct": 145370419,
+          "pgscan_khugepaged": 0,
+          "pgscan_proactive": 0,
+          "pgscan_direct_throttle": 0,
+          "pgscan_anon": 32473548,
+          "pgscan_file": 1137366066,
+          "pgmigrate_success": 45931759,
+          "pgmigrate_fail": 5556600,
+          "compact_migrate_scanned": 1950784604,
+          "compact_free_scanned": 658163088,
+          "compact_isolated": 97684773,
+          "compact_stall": 14958,
+          "compact_fail": 6547,
+          "compact_success": 8411,
+          "compact_daemon_wake": 94701,
+          "compact_daemon_migrate_scanned": 1940683826,
+          "compact_daemon_free_scanned": 638326073
+        },
+        "meminfo_kib": {
+          "MemAvailable": 19972788,
+          "MemFree": 2709388,
+          "SwapFree": 6524460,
+          "AnonPages": 1891400
+        }
+      },
+      "host_after": {
+        "utc": "2026-11-07T18:37:00.779290+00:00",
+        "kfd_evicted_ms": {
+          "25018/stats_35564": 1390,
+          "25027/stats_35564": 4195
+        },
+        "vmstat": {
+          "pswpin": 4278968,
+          "pswpout": 11543881,
+          "pgmajfault": 1348722,
+          "pgscan_kswapd": 1024469195,
+          "pgscan_direct": 145370419,
+          "pgscan_khugepaged": 0,
+          "pgscan_proactive": 0,
+          "pgscan_direct_throttle": 0,
+          "pgscan_anon": 32473548,
+          "pgscan_file": 1137366066,
+          "pgmigrate_success": 45931759,
+          "pgmigrate_fail": 5556600,
+          "compact_migrate_scanned": 1950784604,
+          "compact_free_scanned": 658163088,
+          "compact_isolated": 97684773,
+          "compact_stall": 14958,
+          "compact_fail": 6547,
+          "compact_success": 8411,
+          "compact_daemon_wake": 94701,
+          "compact_daemon_migrate_scanned": 1940683826,
+          "compact_daemon_free_scanned": 638326073
+        },
+        "meminfo_kib": {
+          "MemAvailable": 19146932,
+          "MemFree": 1874912,
+          "SwapFree": 6525832,
+          "AnonPages": 2696708
+        }
+      },
+      "elapsed_s": 16.642682265000985,
+      "first_token_s": 15.932211097000618,
+      "usage": {
+        "prompt_tokens": 20839,
+        "completion_tokens": 47,
+        "total_tokens": 20886,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 20839,
+        "prompt_ms": 15870.7,
+        "prompt_per_token_ms": 0.762,
+        "prompt_per_second": 1313.0,
+        "predicted_n": 47,
+        "predicted_ms": 743.9,
+        "predicted_per_token_ms": 15.828,
+        "predicted_per_second": 63.2,
+        "draft_n": 35,
+        "draft_n_accepted": 35
+      },
+      "complete_stream": true,
+      "finish_reason": "stop",
+      "output": "{\n  \"root_code\": \"ROOT-e058e2c9\",\n  \"sequence\": 0,\n  \"code\": \"VALUE-003173bd6c\"\n}",
+      "output_sha256": "70e92f70d2bb112526a4248a564adb2b2b25fea28b946113538a56a16358ae8d",
+      "reasoning_chars": 0,
+      "tool_call_deltas": [],
+      "bare_json": true,
+      "answer_correct": true
+    },
+    {
+      "mode": "moving",
+      "turn": 1,
+      "prompt_tokens_offline": 22706,
+      "message_boundaries": [
+        0,
+        16853,
+        18696,
+        18730,
+        20565,
+        20599,
+        22432,
+        22699
+      ],
+      "candidate_checkpoint": 22432,
+      "previous_prompt_lcp": 20566,
+      "request_sha256": "dda7a743adab6d13a4ef5fbb256d51d14edc0ed03906f2a7779f4c8052997c73",
+      "rendered_sha256": "ffe12b36abd2d7ac4a1023142e45a8abba6f213438f420e52a38d27f1702b0b1",
+      "expected": {
+        "root_code": "ROOT-e058e2c9",
+        "sequence": 1,
+        "code": "VALUE-75db36adbe"
+      },
+      "host_before": {
+        "utc": "2026-11-07T18:37:00.796335+00:00",
+        "kfd_evicted_ms": {
+          "25018/stats_35564": 1390,
+          "25027/stats_35564": 4195
+        },
+        "vmstat": {
+          "pswpin": 4278968,
+          "pswpout": 11543881,
+          "pgmajfault": 1348722,
+          "pgscan_kswapd": 1024469195,
+          "pgscan_direct": 145370419,
+          "pgscan_khugepaged": 0,
+          "pgscan_proactive": 0,
+          "pgscan_direct_throttle": 0,
+          "pgscan_anon": 32473548,
+          "pgscan_file": 1137366066,
+          "pgmigrate_success": 45931759,
+          "pgmigrate_fail": 5556600,
+          "compact_migrate_scanned": 1950784604,
+          "compact_free_scanned": 658163088,
+          "compact_isolated": 97684773,
+          "compact_stall": 14958,
+          "compact_fail": 6547,
+          "compact_success": 8411,
+          "compact_daemon_wake": 94701,
+          "compact_daemon_migrate_scanned": 1940683826,
+          "compact_daemon_free_scanned": 638326073
+        },
+        "meminfo_kib": {
+          "MemAvailable": 19146932,
+          "MemFree": 1874912,
+          "SwapFree": 6525832,
+          "AnonPages": 2696664
+        }
+      },
+      "host_after": {
+        "utc": "2026-11-07T18:37:06.073095+00:00",
+        "kfd_evicted_ms": {
+          "25018/stats_35564": 1390,
+          "25027/stats_35564": 4238
+        },
+        "vmstat": {
+          "pswpin": 4279001,
+          "pswpout": 11543881,
+          "pgmajfault": 1348749,
+          "pgscan_kswapd": 1024469195,
+          "pgscan_direct": 145370419,
+          "pgscan_khugepaged": 0,
+          "pgscan_proactive": 0,
+          "pgscan_direct_throttle": 0,
+          "pgscan_anon": 32473548,
+          "pgscan_file": 1137366066,
+          "pgmigrate_success": 45934421,
+          "pgmigrate_fail": 5558854,
+          "compact_migrate_scanned": 1950838876,
+          "compact_free_scanned": 659064360,
+          "compact_isolated": 97692419,
+          "compact_stall": 14958,
+          "compact_fail": 6547,
+          "compact_success": 8411,
+          "compact_daemon_wake": 94702,
+          "compact_daemon_migrate_scanned": 1940738098,
+          "compact_daemon_free_scanned": 639227345
+        },
+        "meminfo_kib": {
+          "MemAvailable": 18455292,
+          "MemFree": 1182712,
+          "SwapFree": 6525888,
+          "AnonPages": 3469492
+        }
+      },
+      "elapsed_s": 5.276325419001296,
+      "first_token_s": 4.560800369001299,
+      "usage": {
+        "prompt_tokens": 22706,
+        "completion_tokens": 45,
+        "total_tokens": 22751,
+        "prompt_tokens_details": {
+          "cached_tokens": 16853
+        }
+      },
+      "timings": {
+        "cache_n": 16853,
+        "prompt_n": 5853,
+        "prompt_ms": 4512.6,
+        "prompt_per_token_ms": 0.771,
+        "prompt_per_second": 1297.0,
+        "predicted_n": 45,
+        "predicted_ms": 749.0,
+        "predicted_per_token_ms": 16.644,
+        "predicted_per_second": 60.1,
+        "draft_n": 35,
+        "draft_n_accepted": 33
+      },
+      "complete_stream": true,
+      "finish_reason": "stop",
+      "output": "{\n  \"root_code\": \"ROOT-e058e2c9\",\n  \"sequence\": 1,\n  \"code\": \"VALUE-75db36adbe\"\n}",
+      "output_sha256": "12dec5ccd46d34a709e95e655cdfd5526566bc018878391c9296066faed9d4ef",
+      "reasoning_chars": 0,
+      "tool_call_deltas": [],
+      "bare_json": true,
+      "answer_correct": true
+    }
+  ],
+  "completed": true,
+  "all_state_canaries_correct": true
+}
