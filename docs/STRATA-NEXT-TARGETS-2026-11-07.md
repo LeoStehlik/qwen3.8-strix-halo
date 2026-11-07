@@ -80,15 +80,17 @@ checkpoint trial loaded at 19:04:22 UTC. No Mac gateway restart or configuration
 
 ## Next experiment priorities
 
-Next bounded prefill candidate after the rejected native-conversion screen:
-the packaged **`STRATA_PF_PAD=1`** option, currently not selected or measured
-here. Source `prefill.cpp::pf_pad` and `Gemm::native` pad projection activation
-and dequantized-weight row strides by 64 half values when the existing
-`STRATA_PF_GEMM` path can consume them. K=6144 projections are an explicit
-target in the source comments. Verify actual dispatch and compare with the
-current F16 configuration; the source's historical speed claim is not a result
-on this model/installation. Preserve boundary checkpoint 1 and 64/128 in
-controls and restoration. Do not reuse an old flag-off runtime snapshot.
+The next candidate is now measured: the packaged **`STRATA_PF_PAD=1`**
+[off/on/off screen](STRATA-PROJECTION-PADDING-2026-11-07.md) delivered
+1,329 / 1,395 / 1,352 tok/s on second uncached 64K requests, with matching
+outputs. Retain it undeployed: +4.08% throughput against combined controls, +3.21%
+against the return control, but only one enabled arm and inconsistent
+first-64K results with memory stalls. Source pads projection activation and
+dequantized-weight row strides by 64 half values; actual internal dispatch
+was not traced. Next compare matched GPU phase timings, confirm 128K and
+continuation/state behavior. Preserve boundary checkpoint 1 and 64/128 in
+controls/restoration; do not reuse an old flag-off snapshot. Serving was
+restored at 19:55:46 UTC with padding off and the cache trial still on.
 
 A 64K profile of this configuration charged 24.9% to routed experts, 23.9% to
 GDN work, 20.9% to hyper-connections and 20.1% to attention-related work.

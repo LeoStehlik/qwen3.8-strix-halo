@@ -1,16 +1,30 @@
 # Handoff for Francis — Flash-Next performance investigation, 2026-11-07
 
+Repository: [Qwen3.8 inference on Strix Halo](https://github.com/LeoStehlik/qwen3.8-strix-halo),
+renamed from the earlier 27B/DFlash2-specific name on 7 November. The default
+branch landing page links this active investigation; clone URLs are updated.
+
 **Performance investigation resumed with higher targets: 1,700–2,000 tok/s
 prefill first, then 50–70 tok/s sustained generation.** These supersede the old
 goal wording. Read the [updated objective and experiment order](docs/STRATA-NEXT-TARGETS-2026-11-07.md).
 
-**Current live state, 19:04:22 UTC:** the packaged optimized endpoint now has
+**Current live state, restored at 19:55:46 UTC:** the packaged optimized endpoint has
 `STRATA_CACHE_MESSAGE_BOUNDARY=1` for a [limited live trial](docs/STRATA-CACHE-LIVE-TRIAL-2026-11-07.md).
 Short-read remains 64 and stream minimum 128; no experimental source kernel
 or tracing is serving. Health and actual-process flags were verified, and the
 Mac's configured provider passed a read-only health check. Real OpenClaw reuse
 and quality validation are pending. This is runtime-only; boot promotion is
 still pending. Do not confuse it with the undeployed 8/32 candidate below.
+
+The [projection-padding off/on/off screen](docs/STRATA-PROJECTION-PADDING-2026-11-07.md)
+retained **`STRATA_PF_PAD=1` as an undeployed candidate**. Second cold 64K
+requests measured 1,329 / 1,395 / 1,352 tok/s: +4.08% throughput against the
+combined controls, +3.21% against the return control, with matching outputs
+and draft counts. First 64K results were inconsistent and included GPU queue
+evictions. Only one enabled arm ran; internal projection dispatch was not
+traced. Next confirm with matched phase timing, 128K and continuation checks.
+Padding is **off in serving**. The same original runtime override was restored
+byte for byte, and read-only health from the Mac passed. No gateway restart.
 
 The subsequent [factory clock-policy screen](docs/STRATA-CLOCK-POLICY-2026-11-07.md)
 kept this endpoint/configuration running. Cold 64K `auto / high / auto /

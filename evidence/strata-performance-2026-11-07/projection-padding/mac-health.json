@@ -1,0 +1,6 @@
+{
+  "status": "ok",
+  "loaded": true,
+  "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+  "max_context": 262144
+}

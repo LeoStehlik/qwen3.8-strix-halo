@@ -1,0 +1,9 @@
+{
+  "engine_sha256": "bce2f61ca0f970a1640aafa77925c0908f060243cffcd1ad10e3843b35eed476",
+  "fixture_sha256": "6efd5cb8693d5c7fc9fa826da0e454895172071c7d30283f6eb6c04978875346",
+  "source_reference": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "driver": "benchmarks/strata-padding.py",
+  "private_profiles_published": false,
+  "model_or_gateway_requests_from_mac": false,
+  "mac_check": "authenticated health only"
+}

@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/less/worktrees/qwen38-strata-20261106/benchmarks/strata-prefill.py",
+    "--url",
+    "http://127.0.0.1:8084",
+    "--model",
+    "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+    "--fixture",
+    "/home/less/qwen3.6-35b-a3b-strix-halo/benchmarks/fixtures/prompt.txt",
+    "--out",
+    "/home/less/.cache/strata-evaluation-20261107/projection-padding/02-pad1/results.json",
+    "--sizes",
+    "65536",
+    "--repeat",
+    "2",
+    "--max-tokens",
+    "128",
+    "--presence-penalty",
+    "0",
+    "--nonce-seed",
+    "padding-screen-20261107"
+  ],
+  "extra_env": {
+    "STRATA_API_KEY": "<from private profile>"
+  }
+}

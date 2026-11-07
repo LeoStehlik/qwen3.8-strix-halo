@@ -1,39 +1,27 @@
-# Qwen3.8 27B + DFlash2 on AMD Strix Halo
+# Qwen3.8 inference on Strix Halo
 
-A reproducible local deployment of Qwen3.8-27B on a Ryzen AI Max+ 395 / Radeon
-8060S, using llama.cpp Vulkan, DFlash2 speculative decoding, vision, a 245,760
-token context, exact-request coalescing, a 24 GiB prompt cache, and
-on-demand Q4/Q5 model routing.
-
-The service exposes an OpenAI-compatible endpoint on localhost by default:
-
-```text
-http://127.0.0.1:8080/v1
-```
-
-Two API model IDs are available:
-
-| API model | Target quant | Intended use |
-|---|---|---|
-| `qwen3.8-27b-q4-fast` | UD-Q4_K_XL | Default, faster agent/chat traffic |
-| `qwen3.8-27b-q5-quality` | UD-Q5_K_XL | Quality-sensitive requests |
-
-Both targets share the Q4_K_M DFlash2 drafter and F16 vision projector. The
-router keeps one target resident at a time; Q4 loads at startup and Q5 loads on
-demand. A streaming front proxy collapses concurrent byte-identical inference
-requests into one upstream generation, which avoids duplicate work from client
-retries without caching completed responses.
+Reproducible Qwen3.8 inference on AMD Ryzen AI Max+ 395 / Radeon 8060S systems.
+This repository covers Strata and llama.cpp deployments, long-context
+performance experiments, and OpenClaw integration. It includes both the
+current Flash-Next work and the earlier 27B/DFlash2 deployment.
 
 ## Current direction — 2026-11-07
 
 **Optimization resumed: target 1,700–2,000 tok/s prefill, then 50–70 tok/s generation.** The selected packaged
 configuration reached 1,416 tok/s cold prefill at 64K, 1,363 at 128K and 1,301
 at 192K, retaining the same model quantization and 262,144 context capacity.
-Generation on that fixture is about 37–41 tok/s, below the 50–60 target.
+Generation on that fixture is about 37–41 tok/s, below the 50–70 target.
 The private Tiercel preview is loaded and reachable from the Mac mini.
 The user approved the result of a real beta-release/co-authored-PR research
 task; the first 13 live calls averaged 1,327 prefill / 47.2 generation.
 Read the [updated objective](docs/STRATA-NEXT-TARGETS-2026-11-07.md).
+
+The latest [projection-padding screen](docs/STRATA-PROJECTION-PADDING-2026-11-07.md)
+retained a 3–4% candidate on second uncached 64K requests, with matching
+outputs. It is not deployed or a new absolute throughput record; startup
+stalls and larger-context confirmation remain open. The independent
+[boundary-checkpoint option](docs/STRATA-CACHE-LIVE-TRIAL-2026-11-07.md) is in
+a live trial. See the handoff for the actual serving configuration.
 
 The expert-dispatch experiment was slower and is rejected with
 [code and evidence](experiments/strata-f16-persistent-dispatch/README.md).
@@ -71,7 +59,33 @@ time in quantized dense matrix multiplication and 20.20% in attention; existing
 attention/fusion optimizations are already present. No new kernel was deployed.
 Read the [investigation](docs/PREFILL-RETURN-2026-11-05.md) and [Francis handoff](handoff.md).
 
-## Measured result
+## Earlier 27B/DFlash2 deployment
+
+A reproducible local deployment of Qwen3.8-27B on a Ryzen AI Max+ 395 / Radeon
+8060S, using llama.cpp Vulkan, DFlash2 speculative decoding, vision, a 245,760
+token context, exact-request coalescing, a 24 GiB prompt cache, and
+on-demand Q4/Q5 model routing.
+
+The service exposes an OpenAI-compatible endpoint on localhost by default:
+
+```text
+http://127.0.0.1:8080/v1
+```
+
+Two API model IDs are available:
+
+| API model | Target quant | Intended use |
+|---|---|---|
+| `qwen3.8-27b-q4-fast` | UD-Q4_K_XL | Default, faster agent/chat traffic |
+| `qwen3.8-27b-q5-quality` | UD-Q5_K_XL | Quality-sensitive requests |
+
+Both targets share the Q4_K_M DFlash2 drafter and F16 vision projector. The
+router keeps one target resident at a time; Q4 loads at startup and Q5 loads on
+demand. A streaming front proxy collapses concurrent byte-identical inference
+requests into one upstream generation, which avoids duplicate work from client
+retries without caching completed responses.
+
+## Earlier 27B measurements
 
 On the reference 128 GB Strix Halo machine, the controlled DFlash width sweep
 produced:
@@ -125,13 +139,13 @@ For agent and tool-calling traffic, the current starting point is:
 Sampling is deliberately set by the client rather than globally by the server.
 Thinking is enabled by default, and reasoning is preserved across tool turns.
 
-## Quick start
+## 27B/DFlash2 quick start
 
 Prerequisites: x86-64 Linux, a Strix Halo iGPU accessible through `/dev/dri`,
 `curl`, `git`, Python 3, the Hugging Face `hf` CLI, and the system Vulkan loader.
 
 ```bash
-git clone git@github.com:LeoStehlik/qwen3.8-27b-strix-halo-dflash2.git
+git clone git@github.com:LeoStehlik/qwen3.8-strix-halo.git qwen38-dflash2
 cd qwen38-dflash2
 
 ./scripts/download-runtime.sh
@@ -163,7 +177,7 @@ Vision check:
 
 Full installation and operational details are in [docs/INSTALL.md](docs/INSTALL.md).
 
-## Configuration summary
+## 27B configuration summary
 
 | Setting | Value |
 |---|---|
