@@ -1570,770 +1570,770 @@ Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_GCRIU_BUSY
-Description         :	
+Description         :
 Block               :	CPC
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_GUS_READ_REQUEST_SENT
-Description         :	
+Description         :
 Block               :	CPC
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_GUS_READ_REQUEST_SENT_sum
-Description         :	
+Description         :
 Expression          :	reduce(CPC_GUS_READ_REQUEST_SENT,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_GUS_WRITE_REQUEST_SENT
-Description         :	
+Description         :
 Block               :	CPC
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_GUS_WRITE_REQUEST_SENT_sum
-Description         :	
+Description         :
 Expression          :	reduce(CPC_GUS_WRITE_REQUEST_SENT,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_ME1_STALL_ON_DATA_FROM_ROQ
-Description         :	
+Description         :
 Block               :	CPC
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_ME1_STALL_WAIT_ON_MEM_READ
-Description         :	
+Description         :
 Block               :	CPC
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_ME1_STALL_WAIT_ON_MEM_WRITE
-Description         :	
+Description         :
 Block               :	CPC
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_ME1_STALL_WAIT_ON_RCIU_READY
-Description         :	
+Description         :
 Block               :	CPC
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_MEC_INSTR_CACHE_HIT
-Description         :	
+Description         :
 Block               :	CPC
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_MEC_INSTR_CACHE_HIT_sum
-Description         :	
+Description         :
 Expression          :	reduce(CPC_MEC_INSTR_CACHE_HIT,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_MEC_INSTR_CACHE_MISS
-Description         :	
+Description         :
 Block               :	CPC
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_MEC_INSTR_CACHE_MISS_sum
-Description         :	
+Description         :
 Expression          :	reduce(CPC_MEC_INSTR_CACHE_MISS,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_TCIU_READ_REQUEST_SENT
-Description         :	
+Description         :
 Block               :	CPC
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_TCIU_READ_REQUEST_SENT_sum
-Description         :	
+Description         :
 Expression          :	reduce(CPC_TCIU_READ_REQUEST_SENT,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_TCIU_WRITE_REQUEST_SENT
-Description         :	
+Description         :
 Block               :	CPC
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	CPC_TCIU_WRITE_REQUEST_SENT_sum
-Description         :	
+Description         :
 Expression          :	reduce(CPC_TCIU_WRITE_REQUEST_SENT,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_ALWAYS_COUNT
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_ALWAYS_COUNT_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_ALWAYS_COUNT,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_PRB_REQ
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_PRB_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_PRB_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_RDRAM_CHAINED_REQ_PER_CLIGRP
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_RDRAM_CHAINED_REQ_PER_CLIGRP_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_RDRAM_CHAINED_REQ_PER_CLIGRP,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_RDRAM_NUM_BANKS_VLD
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_RDRAM_NUM_BANKS_VLD_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_RDRAM_NUM_BANKS_VLD,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_RDRAM_REQ_PER_CLIGRP
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_RDRAM_REQ_PER_CLIGRP_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_RDRAM_REQ_PER_CLIGRP,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_RDRAM_SIZE_REQ
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_RDRAM_SIZE_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_RDRAM_SIZE_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_RRET_VLD
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_RRET_VLD_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_RRET_VLD,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_SARB_BUSY
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_SARB_BUSY_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_SARB_BUSY,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_SARB_DRAM_REQ_PER_VC
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_SARB_DRAM_REQ_PER_VC_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_SARB_DRAM_REQ_PER_VC,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_SARB_REQ_PER_VC
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_SARB_REQ_PER_VC_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_SARB_REQ_PER_VC,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_SARB_STALLED
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_SARB_STALLED_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_SARB_STALLED,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_SARB_STARVING
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_WDRAM_CHAINED_REQ_PER_CLIGRP
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_WDRAM_CHAINED_REQ_PER_CLIGRP_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_WDRAM_CHAINED_REQ_PER_CLIGRP,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_WDRAM_NUM_BANKS_VLD
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_WDRAM_NUM_BANKS_VLD_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_WDRAM_NUM_BANKS_VLD,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_WDRAM_REQ_PER_CLIGRP
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_WDRAM_REQ_PER_CLIGRP_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_WDRAM_REQ_PER_CLIGRP,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_WDRAM_SIZE_REQ
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_WDRAM_SIZE_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_WDRAM_SIZE_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GCEA_WRET_VLD
-Description         :	
+Description         :
 Block               :	GCEA
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:15]
 
 
 Counter_Name        :	GCEA_WRET_VLD_sum
-Description         :	
+Description         :
 Expression          :	reduce(GCEA_WRET_VLD,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_BUSY
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_BUSY_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_BUSY,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_CYCLE
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_CYCLE_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_CYCLE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_GL2_REQ_READ
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_GL2_REQ_READ_128B
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_GL2_REQ_READ_128B_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_GL2_REQ_READ_128B,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_GL2_REQ_READ_32B
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_GL2_REQ_READ_32B_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_GL2_REQ_READ_32B,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_GL2_REQ_READ_64B
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_GL2_REQ_READ_64B_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_GL2_REQ_READ_64B,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_GL2_REQ_READ_LATENCY
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_GL2_REQ_READ_LATENCY_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_GL2_REQ_READ_LATENCY,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_GL2_REQ_READ_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_GL2_REQ_READ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_GL2_REQ_WRITE
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_GL2_REQ_WRITE_32B
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_GL2_REQ_WRITE_32B_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_GL2_REQ_WRITE_32B,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_GL2_REQ_WRITE_64B
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_GL2_REQ_WRITE_64B_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_GL2_REQ_WRITE_64B,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_GL2_REQ_WRITE_LATENCY
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_GL2_REQ_WRITE_LATENCY_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_GL2_REQ_WRITE_LATENCY,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_GL2_REQ_WRITE_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_GL2_REQ_WRITE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_REQ
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_REQ_MISS
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_REQ_MISS_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_REQ_MISS,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_REQ_READ
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_REQ_READ_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_REQ_READ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_REQ_WRITE
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_REQ_WRITE_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_REQ_WRITE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_STALL_GL2_GL1
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_STALL_GL2_GL1_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_STALL_GL2_GL1,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_STALL_LFIFO_FULL
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_STALL_LFIFO_FULL_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_STALL_LFIFO_FULL,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL1C_STARVE
-Description         :	
+Description         :
 Block               :	GL1C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:3] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	GL1C_STARVE_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL1C_STARVE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL2C_ATOMIC
-Description         :	
+Description         :
 Block               :	GL2C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:7]
 
 
 Counter_Name        :	GL2C_ATOMIC_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL2C_ATOMIC,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL2C_BUSY
-Description         :	
+Description         :
 Block               :	GL2C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:7]
 
 
 Counter_Name        :	GL2C_BUSY_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL2C_BUSY,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL2C_COMPRESSED_READ_96_REQ
-Description         :	
+Description         :
 Block               :	GL2C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:7]
 
 
 Counter_Name        :	GL2C_COMPRESSED_READ_96_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL2C_COMPRESSED_READ_96_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL2C_CYCLE
-Description         :	
+Description         :
 Block               :	GL2C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:7]
 
 
 Counter_Name        :	GL2C_CYCLE_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL2C_CYCLE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL2C_EA_RDREQ_DRAM
-Description         :	
+Description         :
 Block               :	GL2C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:7]
 
 
 Counter_Name        :	GL2C_EA_RDREQ_DRAM_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL2C_EA_RDREQ_DRAM,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL2C_EA_WRREQ_DRAM
-Description         :	
+Description         :
 Block               :	GL2C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:7]
 
 
 Counter_Name        :	GL2C_EA_WRREQ_DRAM_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL2C_EA_WRREQ_DRAM,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL2C_READ
-Description         :	
+Description         :
 Block               :	GL2C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:7]
 
 
 Counter_Name        :	GL2C_READ_128_REQ
-Description         :	
+Description         :
 Block               :	GL2C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:7]
 
 
 Counter_Name        :	GL2C_READ_128_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL2C_READ_128_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL2C_READ_32_REQ
-Description         :	
+Description         :
 Block               :	GL2C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:7]
 
 
 Counter_Name        :	GL2C_READ_32_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL2C_READ_32_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL2C_READ_64_REQ
-Description         :	
+Description         :
 Block               :	GL2C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:7]
 
 
 Counter_Name        :	GL2C_READ_64_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL2C_READ_64_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL2C_READ_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL2C_READ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL2C_REQ
-Description         :	
+Description         :
 Block               :	GL2C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:7]
 
 
 Counter_Name        :	GL2C_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL2C_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GL2C_WRITE
-Description         :	
+Description         :
 Block               :	GL2C
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:7]
 
 
 Counter_Name        :	GL2C_WRITE_sum
-Description         :	
+Description         :
 Expression          :	reduce(GL2C_WRITE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
@@ -2347,35 +2347,35 @@ Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	GRBM_GUI_ACTIVE_sum
-Description         :	
+Description         :
 Expression          :	reduce(GRBM_GUI_ACTIVE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SPI_BUSY
-Description         :	
+Description         :
 Block               :	SPI
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SPI_CSN_WAVE_sum
-Description         :	
+Description         :
 Expression          :	reduce(SPI_CSN_WAVE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQC_DCACHE_BUSY_CYCLES_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_DCACHE_BUSY_CYCLES,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQC_DCACHE_HITS_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_DCACHE_HITS,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
@@ -2389,35 +2389,35 @@ Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADE
 
 
 Counter_Name        :	SQC_DCACHE_INPUT_VALID_READYB_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_DCACHE_INPUT_VALID_READYB,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQC_DCACHE_MISSES_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_DCACHE_MISSES,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQC_DCACHE_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_DCACHE_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQC_ICACHE_BUSY_CYCLES_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_ICACHE_BUSY_CYCLES,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQC_ICACHE_HITS_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_ICACHE_HITS,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
@@ -2431,49 +2431,49 @@ Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADE
 
 
 Counter_Name        :	SQC_ICACHE_INPUT_VALID_READYB_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_ICACHE_INPUT_VALID_READYB,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQC_ICACHE_MISSES_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_ICACHE_MISSES,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQC_ICACHE_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_ICACHE_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQC_LDS_BANK_CONFLICT_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_LDS_BANK_CONFLICT,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQC_LDS_IDX_ACTIVE_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_LDS_IDX_ACTIVE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQC_TC_DATA_READ_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_TC_DATA_READ_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQC_TC_INST_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQC_TC_INST_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
@@ -2487,394 +2487,392 @@ Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_BUSY_CYCLES_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_BUSY_CYCLES,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_ALL
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_INSTS_ALL_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_ALL,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_DUAL_VALU_WAVE32_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_DUAL_VALU_WAVE32,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_FLAT_LOAD
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_INSTS_FLAT_LOAD_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_FLAT_LOAD,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_FLAT_STORE
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_INSTS_FLAT_STORE_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_FLAT_STORE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_FLAT_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_FLAT,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_INTERNAL
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_INSTS_INTERNAL_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_INTERNAL,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_LDS_DIRECT_LOAD
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_INSTS_LDS_DIRECT_LOAD_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_LDS_DIRECT_LOAD,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_LDS_PARAM_LOAD
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_INSTS_LDS_PARAM_LOAD_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_LDS_PARAM_LOAD,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_LDS_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_LDS,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_SALU_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_SALU,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_SMEM_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_SMEM,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_TEX
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_INSTS_TEX_LOAD_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_TEX_LOAD,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_TEX_STORE_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_TEX_STORE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_TEX_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_TEX,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_VALU_DP
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_INSTS_VALU_DP_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_VALU_DP,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_VALU_TRANS
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_INSTS_VALU_TRANS_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_VALU_TRANS,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_VALU_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_VALU,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INSTS_WAVE32_LDS_PARAM_LOAD
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_INSTS_WAVE32_LDS_PARAM_LOAD_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INSTS_WAVE32_LDS_PARAM_LOAD,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_INST_CYCLES_LDS
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_INST_CYCLES_LDS_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_INST_CYCLES_LDS,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_ITEMS_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_ITEMS,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_LDS_ATOMIC_RETURN_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_LDS_ATOMIC_RETURN,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_WAIT_BARRIER
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_WAIT_CNT_ANY
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_WAIT_IFETCH
-Description         :	
+Description         :
 Block               :	SQ
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	SQ_WAIT_INST_LDS_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_WAIT_INST_LDS,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	SQ_WAVE_CYCLES_sum
-Description         :	
+Description         :
 Expression          :	reduce(SQ_WAVE_CYCLES,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	TCP_DATA_FIFO_STALL
-Description         :	
+Description         :
 Block               :	TCP
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:1] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	TCP_DATA_FIFO_STALL_sum
-Description         :	
+Description         :
 Expression          :	reduce(TCP_DATA_FIFO_STALL,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	TCP_GL1_REQ_READ
-Description         :	
+Description         :
 Block               :	TCP
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:1] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	TCP_GL1_REQ_READ_128B
-Description         :	
+Description         :
 Block               :	TCP
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:1] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	TCP_GL1_REQ_READ_128B_sum
-Description         :	
+Description         :
 Expression          :	reduce(TCP_GL1_REQ_READ_128B,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	TCP_GL1_REQ_READ_sum
-Description         :	
+Description         :
 Expression          :	reduce(TCP_GL1_REQ_READ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	TCP_GL1_REQ_WRITE
-Description         :	
+Description         :
 Block               :	TCP
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:1] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	TCP_GL1_REQ_WRITE_sum
-Description         :	
+Description         :
 Expression          :	reduce(TCP_GL1_REQ_WRITE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	TCP_GL1_TCP_BACK_PRESSURE
-Description         :	
+Description         :
 Block               :	TCP
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:1] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	TCP_GL1_TCP_BACK_PRESSURE_sum
-Description         :	
+Description         :
 Expression          :	reduce(TCP_GL1_TCP_BACK_PRESSURE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	TCP_REQ_MISS_sum
-Description         :	
+Description         :
 Expression          :	reduce(TCP_REQ_MISS,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	TCP_REQ_READ
-Description         :	
+Description         :
 Block               :	TCP
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:1] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	TCP_REQ_READ_sum
-Description         :	
+Description         :
 Expression          :	reduce(TCP_REQ_READ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	TCP_REQ_WRITE
-Description         :	
+Description         :
 Block               :	TCP
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:1] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	TCP_REQ_WRITE_sum
-Description         :	
+Description         :
 Expression          :	reduce(TCP_REQ_WRITE,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	TCP_REQ_sum
-Description         :	
+Description         :
 Expression          :	reduce(TCP_REQ,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
 
 
 Counter_Name        :	TCP_TCP_TA_REQ_STALL
-Description         :	
+Description         :
 Block               :	TCP
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:1] DIMENSION_WGP[0:4] DIMENSION_SHADER_ARRAY[0:1] DIMENSION_SHADER_ENGINE[0:1]
 
 
 Counter_Name        :	TCP_TCP_TA_REQ_STALL_sum
-Description         :	
+Description         :
 Expression          :	reduce(TCP_TCP_TA_REQ_STALL,sum)
 SPM                 :	Not Supported
 Dimensions          :	DIMENSION_INSTANCE[0:0]
-
-

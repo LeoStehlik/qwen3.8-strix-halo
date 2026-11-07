@@ -27,7 +27,7 @@ as if they were a regression.
 | 8,192 | 160 | 19.332 | 11.464 | 0.522 |
 | 16,384 | 320 | 35.355 | 20.963 | 1.012 |
 
-At 16K, gate/up accounts for about 62% of these kernel durations, down 37%,
+At 16K, gate/up accounts for about 61.6% of these kernel durations, down 36.5%,
 and activation quantization 1.8%. Group count/scan/place total about 0.036 ms.
 The all-dispatch profiler summary, which also includes warm-up/initialization,
 reports 61.39% gate/up and 36.39% down. These are different denominators.
@@ -169,3 +169,5 @@ total prefill. Even a 2x gate/up improvement would predict only about 8%
 overall. Reaching the new target will likely require several contributions.
 
 [Raw evidence](../../evidence/strata-performance-2026-11-07/expert-profile/).
+Trailing whitespace was stripped from the available-counter listing only;
+measurement CSVs and logs are unchanged.
