@@ -10,6 +10,12 @@ panel still displays that older wording:
 - Keep Qwen3.8-Flash-Next UD-Q4_K_XL, 262,144 context capacity, INT8 KV and useful
   OpenClaw capability. Do not substitute a smaller model, weaker quant or
   shorter context. Record floating-point changes and validate their effect.
+- Keep repeatable gains, including 5% overall improvements (about 70 tok/s at
+  the measured ~1,400 baseline). Small operator wins can be accumulated; do not
+  present them as whole-model gains or promote them without integration tests.
+- Also measure end-to-end useful-action and answer latency: model/tool turn
+  counts, preparation, cache save/restore, tool waits, retries, background work
+  and gaps. The user explicitly added this scope; raw throughput remains active.
 - Preserve the current working configuration, independently switch experiments,
   and publish reproduction steps and evidence. Do not restart the Mac gateway
   or reboot either machine. Check for active requests before backend work.
@@ -22,7 +28,8 @@ reviewed the result and reported being pleased. This is a successful real
 agent test by the user's assessment, not an independent audit of the answer
 or a broad model-quality evaluation.
 
-The first 13 completed calls measured 136,630 newly processed input tokens in
+The first 13 completed backend calls (including the greeting and the beginning
+of background work, not just the main task) measured 136,630 newly processed input tokens in
 102.9643 seconds (**1,326.96 tok/s**), and 11,068 generated tokens in 234.2528
 seconds (**47.25 tok/s**). Prefix reuse totalled 185,360 tokens. Completed
 request generation ranged about 42–52 tok/s; context grew from 15K to 38K.
@@ -36,6 +43,18 @@ and the measured upstream fast kernels. It serves authenticated private
 `100.96.8.54:8083/v1`; the Mac uses the existing `tiercelmoe` provider and
 `qwen-flash-next` alias. Source experiments are not deployed. Boot promotion
 remains pending; the live selection uses `90-live-preview.conf`.
+
+## End-to-end evidence added by user request
+
+The [real-task timing audit](STRATA-TURN-LATENCY-2026-11-07.md) measures 334.025 s
+to Telegram send-success: 210.272 s generation, 62.963 s prefill, 55.073 s
+tool-result windows, about 5.7 s elsewhere. Ten model turns / ten tool calls.
+Post-tool gaps were only 109 ms median; cache reuse remained fixed at 15,015
+tokens. Two surrounding turns spent ~6.65 s in session setup and ~2.3 s in
+system-prompt preparation. Investigate exact prompt/checkpoint differences and
+finer setup spans. Later skill-learning calls happened after answer delivery;
+do not label them idle time or charge them to the answer. This is read-only
+evidence from the existing task, not a new synthetic OpenClaw run.
 
 ## Next experiment priorities
 
@@ -65,12 +84,14 @@ A 2x expert improvement alone would predict about 14% overall, not 2x prefill.
    loads, plus repeated INT8 conversion work. Its summed instruction-latency
    shares are not GPU wall-time shares. Early V staging gave no gain; deferred
    scales with a compiler barrier gave only 0.5–1.8% operator gain and is shelved.
-   All attention production changes were removed. **Next candidates:** reduce
-   dependent address lookup with precomputed physical selected rows (including
-   preprocessing cost), or exact INT8 conversion instruction count. Neither is
-   implemented. Validate arbitrary/nonresident page tables or every INT8 code,
-   respectively. Trim and read-prefetch already default on; enabling them again
-   is not a new optimization. Actual attention is only 10% of total prefill.
+   The [prepared physical-row candidate](../experiments/strata-attention-rows/README.md)
+   now gives 2.47–4.63% on three 4K replays and 3.16% on a full 16K chunk,
+   preprocessing included, with exact outputs across 24 boundary/page-table
+   cases. Retain it, undeployed: its ~256 MiB scratch and production lifetime
+   still need integration/full-model testing. Estimated overall gain is only
+   ~0.3%. Exact native INT8 conversion remains unimplemented and needs exhaustive
+   code validation. Trim/read-prefetch already default on. Actual attention is
+   only 10% of total prefill.
 3. Compare any operator winner against a same-source control, then validate
    cold 64K/128K and a 192K stress case. Report newly processed tokens, cache
    reuse, full durations and output checks; no warm-cache substitution.

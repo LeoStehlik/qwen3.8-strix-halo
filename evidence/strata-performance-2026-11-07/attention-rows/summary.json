@@ -1,0 +1,23 @@
+{
+  "tail4k_layer0": {
+    "control_ms": 22.086,
+    "prepared_including_setup_ms": 21.552999999999997,
+    "speedup_percent": 2.47297359996288
+  },
+  "tail4k_layer3": {
+    "control_ms": 22.91,
+    "prepared_including_setup_ms": 21.941499999999998,
+    "speedup_percent": 4.414009981086076
+  },
+  "tail4k_layer7": {
+    "control_ms": 24.174500000000002,
+    "prepared_including_setup_ms": 23.1055,
+    "speedup_percent": 4.626604055311523
+  },
+  "full16k_layer7": {
+    "control_ms": 90.5265,
+    "prepared_including_setup_ms": 87.7535,
+    "speedup_percent": 3.159987920709706,
+    "scratch_bytes": 268828672
+  }
+}

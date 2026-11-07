@@ -635,3 +635,27 @@ Next candidate work is physical-row address preprocessing or exact INT8
 conversion reduction, with the corresponding page-table/exhaustive-code tests.
 Actual attention is about 10% of prefill, so this cannot alone establish the
 updated 1,700–2,000 tok/s objective. Generation tuning still follows prefill.
+
+
+## Prepared physical rows and real-task latency audit
+
+The [prepared-row operator experiment](../experiments/strata-attention-rows/README.md)
+retains a measured small gain: 2.47–4.63% across three 4K attention replays,
+**3.16% on a full 16K layer-7 chunk**, GPU preprocessing included. Exact
+output checks passed across 24 page-table/width/boundary fixtures. At attention's
+~10% share, predicted whole-prefill gain is only ~0.3%; this was not measured.
+The ~256.4 MiB scratch allocation and production integration are still pending.
+No source patch is deployed. The unchanged packaged service was restored at
+17:45:26 UTC. Native INT8 conversion is a separate unimplemented candidate.
+
+The user's expanded scope includes latency outside token processing. The
+[existing Telegram task audit](STRATA-TURN-LATENCY-2026-11-07.md) partitions
+334.025 seconds into generation (210.272), prefill (62.963), tool-result windows
+(55.073) and other time (~5.7). Ten model turns and ten tool calls; post-tool
+gaps are only 109 ms median / 127 ms maximum. The constant 15,015-token reused
+prefix, despite a growing prompt, is a concrete caching lead. Surrounding
+turns show ~6.65-second session preparation and ~2.3-second prompt assembly.
+Background skill-learning ran after the answer was delivered and must be
+accounted separately. The earlier first-13-call aggregate mixes these phases;
+it is not a main-task-only latency measurement. All public evidence is stripped
+of transcript text, tool arguments/results and user/channel identifiers.

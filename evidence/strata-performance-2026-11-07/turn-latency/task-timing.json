@@ -1,0 +1,229 @@
+{
+  "schema": 1,
+  "method": "Match backend records uniquely by prompt/reused/read/output token counts; transcript and gateway timestamps delimit wall intervals.",
+  "caveats": [
+    "Backend log milliseconds are rounded; API request windows also include transport, rendering, cache work and persistence.",
+    "Tool-result windows include dispatch/serialization overhead and take the last result of parallel calls, avoiding double counting.",
+    "Post-tool gaps are elapsed time to the next recorded request, not a direct GPU-idle measurement.",
+    "Send-success is the gateway acknowledgement, not measured client display time.",
+    "Generated tokens include thinking and tool arguments; no token-level split is inferred from character counts."
+  ],
+  "summary": {
+    "task_wall_s": 334.025,
+    "model_turns": 10,
+    "tool_calls": 10,
+    "first_tool_model_completion_s": 5.771,
+    "prefill_s": 62.963,
+    "generation_s": 210.272,
+    "model_request_other_s": 3.328000000000003,
+    "tool_result_window_s": 55.073,
+    "post_tool_gap_s": 0.986,
+    "post_tool_gap_median_s": 0.109,
+    "post_tool_gap_max_s": 0.127,
+    "task_start_to_request_s": 0.074,
+    "final_transcript_to_send_success_s": 1.329,
+    "read_tokens": 83745,
+    "reused_tokens": 150150,
+    "generated_tokens": 10031,
+    "prefill_tok_s": 1330.0668646665501,
+    "generation_tok_s": 47.704877492010354
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "request_start_offset_s": 0.074,
+      "transcript_completion_offset_s": 5.771,
+      "prompt_tokens": 15745,
+      "reused_tokens": 15015,
+      "read_tokens": 730,
+      "generated_tokens": 218,
+      "prefill_s": 1.1,
+      "generation_s": 4.431,
+      "request_window_s": 5.697,
+      "tool_names": [
+        "exec"
+      ],
+      "tool_exit_codes": [
+        0
+      ],
+      "tool_result_window_s": 7.089,
+      "post_tool_gap_s": 0.127
+    },
+    {
+      "turn": 2,
+      "request_start_offset_s": 12.987,
+      "transcript_completion_offset_s": 23.498,
+      "prompt_tokens": 16071,
+      "reused_tokens": 15015,
+      "read_tokens": 1056,
+      "generated_tokens": 414,
+      "prefill_s": 1.392,
+      "generation_s": 8.883,
+      "request_window_s": 10.511,
+      "tool_names": [
+        "exec"
+      ],
+      "tool_exit_codes": [
+        4
+      ],
+      "tool_result_window_s": 2.081,
+      "post_tool_gap_s": 0.097
+    },
+    {
+      "turn": 3,
+      "request_start_offset_s": 25.676,
+      "transcript_completion_offset_s": 39.701,
+      "prompt_tokens": 16571,
+      "reused_tokens": 15015,
+      "read_tokens": 1556,
+      "generated_tokens": 563,
+      "prefill_s": 1.856,
+      "generation_s": 12.019,
+      "request_window_s": 14.025,
+      "tool_names": [
+        "exec",
+        "exec"
+      ],
+      "tool_exit_codes": [
+        0,
+        0
+      ],
+      "tool_result_window_s": 2.927,
+      "post_tool_gap_s": 0.1
+    },
+    {
+      "turn": 4,
+      "request_start_offset_s": 42.728,
+      "transcript_completion_offset_s": 62.146,
+      "prompt_tokens": 22969,
+      "reused_tokens": 15015,
+      "read_tokens": 7954,
+      "generated_tokens": 658,
+      "prefill_s": 6.081,
+      "generation_s": 13.197,
+      "request_window_s": 19.418,
+      "tool_names": [
+        "exec"
+      ],
+      "tool_exit_codes": [
+        0
+      ],
+      "tool_result_window_s": 2.973,
+      "post_tool_gap_s": 0.102
+    },
+    {
+      "turn": 5,
+      "request_start_offset_s": 65.221,
+      "transcript_completion_offset_s": 84.713,
+      "prompt_tokens": 24022,
+      "reused_tokens": 15015,
+      "read_tokens": 9007,
+      "generated_tokens": 623,
+      "prefill_s": 6.643,
+      "generation_s": 12.722,
+      "request_window_s": 19.492,
+      "tool_names": [
+        "exec"
+      ],
+      "tool_exit_codes": [
+        0
+      ],
+      "tool_result_window_s": 3.733,
+      "post_tool_gap_s": 0.104
+    },
+    {
+      "turn": 6,
+      "request_start_offset_s": 88.55,
+      "transcript_completion_offset_s": 110.11,
+      "prompt_tokens": 25256,
+      "reused_tokens": 15015,
+      "read_tokens": 10241,
+      "generated_tokens": 725,
+      "prefill_s": 7.495,
+      "generation_s": 13.904,
+      "request_window_s": 21.56,
+      "tool_names": [
+        "exec"
+      ],
+      "tool_exit_codes": [
+        0
+      ],
+      "tool_result_window_s": 2.907,
+      "post_tool_gap_s": 0.11
+    },
+    {
+      "turn": 7,
+      "request_start_offset_s": 113.127,
+      "transcript_completion_offset_s": 151.871,
+      "prompt_tokens": 26231,
+      "reused_tokens": 15015,
+      "read_tokens": 11216,
+      "generated_tokens": 1463,
+      "prefill_s": 8.173,
+      "generation_s": 30.384,
+      "request_window_s": 38.744,
+      "tool_names": [
+        "exec"
+      ],
+      "tool_exit_codes": [
+        null
+      ],
+      "tool_result_window_s": 11.752,
+      "post_tool_gap_s": 0.109
+    },
+    {
+      "turn": 8,
+      "request_start_offset_s": 163.732,
+      "transcript_completion_offset_s": 174.79,
+      "prompt_tokens": 27779,
+      "reused_tokens": 15015,
+      "read_tokens": 12764,
+      "generated_tokens": 80,
+      "prefill_s": 9.254,
+      "generation_s": 1.608,
+      "request_window_s": 11.058,
+      "tool_names": [
+        "process"
+      ],
+      "tool_exit_codes": [
+        0
+      ],
+      "tool_result_window_s": 17.445,
+      "post_tool_gap_s": 0.121
+    },
+    {
+      "turn": 9,
+      "request_start_offset_s": 192.356,
+      "transcript_completion_offset_s": 248.78,
+      "prompt_tokens": 28371,
+      "reused_tokens": 15015,
+      "read_tokens": 13356,
+      "generated_tokens": 2200,
+      "prefill_s": 9.606,
+      "generation_s": 46.661,
+      "request_window_s": 56.424,
+      "tool_names": [
+        "exec"
+      ],
+      "tool_exit_codes": [
+        0
+      ],
+      "tool_result_window_s": 4.166,
+      "post_tool_gap_s": 0.116
+    },
+    {
+      "turn": 10,
+      "request_start_offset_s": 253.062,
+      "transcript_completion_offset_s": 332.696,
+      "prompt_tokens": 30880,
+      "reused_tokens": 15015,
+      "read_tokens": 15865,
+      "generated_tokens": 3087,
+      "prefill_s": 11.363,
+      "generation_s": 66.463,
+      "request_window_s": 79.634,
+      "tool_names": [],
+      "tool_exit_codes": []
+    }
+  ]
+}

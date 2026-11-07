@@ -1,0 +1,15 @@
+W1107 17:41:25.243984   21280 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.000916 sec
+W1107 17:41:25.244552   21280 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_pa_bench /home/less/.cache/strata-evaluation-20261107/attention-replay/records/record-019-layer-07-pos-61440.bin 7' ::     0.000000 sec
+W1107 17:41:26.215803   21280 tool.cpp:3082] HSA version 1.21.0 initialized (instance=0)
+strata: STRATA_HIP_WMMA: the prompt attention on matrix cores on (gfx1151)
+W1107 17:41:26.609759   21280 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_pa_bench /home/less/.cache/strata-evaluation-20261107/attention-replay/records/record-019-layer-07-pos-61440.bin 7' ::     1.365206 sec
+E1107 17:41:26.621603   21280 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-rows/trace-prepared/attention_kernel_stats.csv
+E1107 17:41:26.621719   21280 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-rows/trace-prepared/attention_kernel_trace.csv
+E1107 17:41:26.623972   21280 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-rows/trace-prepared/attention_agent_info.csv
+E1107 17:41:26.624037   21280 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/attention-rows/trace-prepared/attention_domain_stats.csv
+W1107 17:41:26.624900   21280 simple_timer.cpp:55] [rocprofv3] output generation ::     0.013296 sec
+W1107 17:41:26.624955   21280 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.013367 sec
+layer 7 p0 61440 T 4096 cap 2051, 65536 cells, 24 heads / 2 KV heads x 256
+prepared rows: CPU mapping and guard PASS; median 0.463 ms included in total
+gated FP16 output, ld 6208; row padding intact
+prompt attention: median 23.234 ms (min 23.072) over 7; output hash 03e1afd508d8a383, rms 0.0113964

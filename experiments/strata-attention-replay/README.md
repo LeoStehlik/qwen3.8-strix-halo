@@ -126,6 +126,8 @@ selected-row addresses to remove repeated dependent ID/page-table lookups;
 or reduce repeated INT8-to-half conversion instructions. The former needs
 non-identity/nonresident page-table tests and must include preprocessing cost.
 The latter needs exhaustive checks of all 256 codes before operator tests.
-Neither candidate has been implemented. Actual attention is about 10% of
+The physical-row candidate has now been implemented and tested separately;
+see [its results and promotion limits](../strata-attention-rows/README.md).
+Exact INT8 conversion remains unimplemented. Actual attention is about 10% of
 whole prefill, so even a substantial operator gain only addresses part of the
 remaining target. Keep these separate from the larger GDN/HC/expert work.

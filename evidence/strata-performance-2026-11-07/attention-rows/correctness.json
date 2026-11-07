@@ -1,0 +1,218 @@
+[
+  {
+    "case": 0,
+    "fixture": "boundary-t257.bin",
+    "pages": "identity",
+    "widths": "original",
+    "switch_min": 0,
+    "hash": "48c8564c5023a383",
+    "exact_match": true
+  },
+  {
+    "case": 1,
+    "fixture": "boundary-t257.bin",
+    "pages": "identity",
+    "widths": "original",
+    "switch_min": 4096,
+    "hash": "cabf870c1136a383",
+    "exact_match": true
+  },
+  {
+    "case": 2,
+    "fixture": "boundary-t257.bin",
+    "pages": "identity",
+    "widths": "mixed",
+    "switch_min": 0,
+    "hash": "122d454e90948383",
+    "exact_match": true
+  },
+  {
+    "case": 3,
+    "fixture": "boundary-t257.bin",
+    "pages": "identity",
+    "widths": "mixed",
+    "switch_min": 4096,
+    "hash": "6b61832c98920383",
+    "exact_match": true
+  },
+  {
+    "case": 4,
+    "fixture": "boundary-t257.bin",
+    "pages": "shuffle",
+    "widths": "original",
+    "switch_min": 0,
+    "hash": "d15493c305eaa383",
+    "exact_match": true
+  },
+  {
+    "case": 5,
+    "fixture": "boundary-t257.bin",
+    "pages": "shuffle",
+    "widths": "original",
+    "switch_min": 4096,
+    "hash": "76eddea2ed672383",
+    "exact_match": true
+  },
+  {
+    "case": 6,
+    "fixture": "boundary-t257.bin",
+    "pages": "shuffle",
+    "widths": "mixed",
+    "switch_min": 0,
+    "hash": "6526fdbc77222383",
+    "exact_match": true
+  },
+  {
+    "case": 7,
+    "fixture": "boundary-t257.bin",
+    "pages": "shuffle",
+    "widths": "mixed",
+    "switch_min": 4096,
+    "hash": "6f5ae99773df2383",
+    "exact_match": true
+  },
+  {
+    "case": 8,
+    "fixture": "boundary-t257.bin",
+    "pages": "holes",
+    "widths": "original",
+    "switch_min": 0,
+    "hash": "a11ffac53d390383",
+    "exact_match": true
+  },
+  {
+    "case": 9,
+    "fixture": "boundary-t257.bin",
+    "pages": "holes",
+    "widths": "original",
+    "switch_min": 4096,
+    "hash": "05fdb50eb6a1c383",
+    "exact_match": true
+  },
+  {
+    "case": 10,
+    "fixture": "boundary-t257.bin",
+    "pages": "holes",
+    "widths": "mixed",
+    "switch_min": 0,
+    "hash": "3f47a4280524c383",
+    "exact_match": true
+  },
+  {
+    "case": 11,
+    "fixture": "boundary-t257.bin",
+    "pages": "holes",
+    "widths": "mixed",
+    "switch_min": 4096,
+    "hash": "22ffca316c706383",
+    "exact_match": true
+  },
+  {
+    "case": 12,
+    "fixture": "boundary-t257.bin",
+    "pages": "missing",
+    "widths": "original",
+    "switch_min": 0,
+    "hash": "3b79a83971d62383",
+    "exact_match": true
+  },
+  {
+    "case": 13,
+    "fixture": "boundary-t257.bin",
+    "pages": "missing",
+    "widths": "original",
+    "switch_min": 4096,
+    "hash": "3b79a83971d62383",
+    "exact_match": true
+  },
+  {
+    "case": 14,
+    "fixture": "boundary-t257.bin",
+    "pages": "missing",
+    "widths": "mixed",
+    "switch_min": 0,
+    "hash": "3b79a83971d62383",
+    "exact_match": true
+  },
+  {
+    "case": 15,
+    "fixture": "boundary-t257.bin",
+    "pages": "missing",
+    "widths": "mixed",
+    "switch_min": 4096,
+    "hash": "3b79a83971d62383",
+    "exact_match": true
+  },
+  {
+    "case": 16,
+    "fixture": "boundary-t1.bin",
+    "pages": "holes",
+    "widths": "mixed",
+    "switch_min": 0,
+    "hash": "26c8ba1e58b62383",
+    "exact_match": true
+  },
+  {
+    "case": 17,
+    "fixture": "boundary-t31.bin",
+    "pages": "holes",
+    "widths": "mixed",
+    "switch_min": 0,
+    "hash": "a78c159044026383",
+    "exact_match": true
+  },
+  {
+    "case": 18,
+    "fixture": "boundary-t32.bin",
+    "pages": "holes",
+    "widths": "mixed",
+    "switch_min": 0,
+    "hash": "967593336b7cc383",
+    "exact_match": true
+  },
+  {
+    "case": 19,
+    "fixture": "boundary-t33.bin",
+    "pages": "holes",
+    "widths": "mixed",
+    "switch_min": 0,
+    "hash": "8ef4fac4f2aa4383",
+    "exact_match": true
+  },
+  {
+    "case": 20,
+    "fixture": "boundary-t64.bin",
+    "pages": "holes",
+    "widths": "mixed",
+    "switch_min": 0,
+    "hash": "4c558ae28f26c383",
+    "exact_match": true
+  },
+  {
+    "case": 21,
+    "fixture": "boundary-first-final.bin",
+    "pages": "shuffle",
+    "widths": "original",
+    "switch_min": 0,
+    "hash": "e7c2de88f77b6383",
+    "exact_match": true
+  },
+  {
+    "case": 22,
+    "fixture": "boundary-first-final.bin",
+    "pages": "holes",
+    "widths": "mixed",
+    "switch_min": 0,
+    "hash": "754daa8c96c24383",
+    "exact_match": true
+  },
+  {
+    "case": 23,
+    "fixture": "boundary-dispatch-split.bin",
+    "pages": "shuffle",
+    "widths": "original",
+    "switch_min": 0,
+    "hash": "4258e770162aa383",
+    "exact_match": true
+  }
+]

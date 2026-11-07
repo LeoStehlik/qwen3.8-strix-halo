@@ -5,7 +5,8 @@ prefill first, then 50–70 tok/s sustained generation.** These supersede the ol
 goal wording. Read the [updated objective and experiment order](docs/STRATA-NEXT-TARGETS-2026-11-07.md).
 
 The user reviewed Francis's real GitHub beta-release/co-authored-PR investigation
-and was pleased with the result. The first 13 completed live calls averaged
+and was pleased with the result. The first 13 completed backend calls (greeting and initial background work
+included) averaged
 **1,327 tok/s prefill / 47.2 generation**, excluding reused prompt tokens.
 This validates that task by the user's assessment; broader quality is not proven.
 The measured packaged configuration remains the baseline and serves private
@@ -33,11 +34,26 @@ averages 1.59×. A later-layer replay showed 20.25% L2 hits; external L2 request
 are not direct DRAM bandwidth. Advanced Thread Trace worked on gfx1151 and
 identified scale-load and ID/page-table waits plus repeated INT8 conversions.
 Early V staging was noise; deferred scale conversion with a compiler barrier
-gave only 0.5–1.8% operator gain. All output hashes matched, but those tiny
-gains do not justify promotion; all attention kernel changes were removed.
-Next candidates are precomputed physical selected-row addresses, with arbitrary
-page-table tests and preprocessing cost included, or exact INT8 conversion
-reduction with exhaustive 256-code validation. Neither is implemented yet.
+gave only 0.5–1.8% operator gain and remains shelved without full-model evidence.
+The user wants repeatable small gains retained and accumulated. The new
+[prepared physical-row candidate](experiments/strata-attention-rows/README.md)
+gives **3.16% net operator speedup on a full 16K chunk**, preprocessing included,
+and 2.47–4.63% on three 4K replays. All output hashes match; 24 page/boundary
+cases passed. It is retained **undeployed**: ~256.4 MiB scratch, no production
+allocation/integration or full-model/state validation yet. Estimated overall
+gain is ~0.3%, not a measured throughput result. Source commit `41021fb` is
+local only; its patch and evidence are in this repo. Exact native INT8 conversion
+is still unimplemented and needs exhaustive validation.
+
+The user also added end-to-end latency investigation. The
+[real Telegram task audit](docs/STRATA-TURN-LATENCY-2026-11-07.md) reconciles
+334.025 seconds: 210.272 generation, 62.963 prefill, 55.073 tool-result waits,
+about 5.7 elsewhere. Ten model turns / ten tool calls; post-tool gaps only
+109 ms median. Cache reuse stayed at **15,015 tokens** while the reread tail
+grew; next diagnose exact payload/token/checkpoint differences. Surrounding
+turns spent **~6.65 s in session setup** and ~2.3 s in prompt assembly. The
+later skill-learning notification was not delayed answer delivery. No Mac
+configuration was changed and no new agent task was launched for this audit.
 
 Fresh packaged 64K screens: control **1,389.1 tok/s**, HC exact **1,217.2**,
 HC fused **1,382.8**. The exact arm includes a separate 5.83-second cache-park
@@ -54,7 +70,8 @@ Rebooting did not eliminate the memory-restore warnings or page migrations.
 
 **Prefill is the first priority, now targeting 1,700–2,000 tok/s.** The
 faster build has been profiled; use that profile to choose further changes. Generation's revised 50–70 tok/s target
-remains active but comes second; tool-call debugging stays parked. Public
+remains active but comes second. End-to-end timing and turn/retry efficiency
+are now explicitly in scope; preserve useful tool behaviour. Public
 probes reached 49.8 tok/s prose, 45.2 on a 16K document, and 57.7 code. These
 are workload-dependent results, not a broad 50–60 tok/s baseline.
 
@@ -110,6 +127,11 @@ with zero queued requests. The temporary `91-qsa-profile.conf` is removed;
 `90-live-preview.conf` remains. No attention experiment, profiling switch or
 cooperative expert epilogue is enabled in serving. Boot promotion is still
 pending. Full public evidence and replay inputs are committed with the handoff.
+
+After prepared-row tests, the unchanged packaged preview was restored at
+**17:45:26 UTC**. The private-address health/model checks passed again during
+the latency audit. The listener binds its Tailscale address, not loopback.
+No experimental kernel is serving and boot promotion remains pending.
 
 **Flash-Next is connected to the existing `tiercelmoe` provider.** Select
 `/model qwen-flash-next`, or the full reference

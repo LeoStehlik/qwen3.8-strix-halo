@@ -1,0 +1,30 @@
+[
+  {
+    "turn": 0,
+    "prepared": 0,
+    "median_ms": 90.047,
+    "preparation_ms": 0,
+    "hash": "9d7703748fff2383"
+  },
+  {
+    "turn": 1,
+    "prepared": 1,
+    "median_ms": 87.687,
+    "preparation_ms": 1.993,
+    "hash": "9d7703748fff2383"
+  },
+  {
+    "turn": 2,
+    "prepared": 1,
+    "median_ms": 87.82,
+    "preparation_ms": 1.989,
+    "hash": "9d7703748fff2383"
+  },
+  {
+    "turn": 3,
+    "prepared": 0,
+    "median_ms": 91.006,
+    "preparation_ms": 0,
+    "hash": "9d7703748fff2383"
+  }
+]

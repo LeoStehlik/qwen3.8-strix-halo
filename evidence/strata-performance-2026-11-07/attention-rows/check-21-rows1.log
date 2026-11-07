@@ -1,0 +1,5 @@
+layer 0 p0 0 T 65 cap 35, 65 cells, 24 heads / 2 KV heads x 256
+prepared rows: CPU mapping and guard PASS; median 0.017 ms included in total
+gated FP16 output, ld 6208; row padding intact
+prompt attention: median 0.114 ms (min 0.106) over 2; output hash e7c2de88f77b6383, rms 0.130749
+strata: STRATA_HIP_WMMA: the prompt attention on matrix cores on (gfx1151)

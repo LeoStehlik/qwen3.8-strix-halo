@@ -1,0 +1,293 @@
+diff --git a/include/strata/kernels/qsa_prompt_attn.hpp b/include/strata/kernels/qsa_prompt_attn.hpp
+index 6191df0..f8ff756 100644
+--- a/include/strata/kernels/qsa_prompt_attn.hpp
++++ b/include/strata/kernels/qsa_prompt_attn.hpp
+@@ -37,6 +37,21 @@ bool qsa_prompt_attn_batch_gated(const float* q, const QsaAttnPools& pools, cons
+                                  int64_t cap, const QsaShapes& s, const float* qf, uint16_t* o16, int64_t ld16, int64_t n_q,
+                                  void* stream);
+ 
++/// HIP experiment: resolve [n_q, cap] selections to physical pool rows for KV
++/// head 0. Padding and nonresident pages become -1. Caller owns n_q*cap int64
++/// scratch; rows must be rebuilt whenever selections or page mapping change.
++/// False on other backends. Inputs and page table must satisfy attention's
++/// existing bounds contract. Source IDs and the page table are not modified.
++bool qsa_prompt_attn_prepare_rows(const int32_t* ids, const int32_t* steps, const int32_t* page_table,
++                                  int64_t cap, const QsaShapes& s, int64_t* rows, int64_t n_q, void* stream);
++
++/// HIP gated replay using the prepared rows above. The original IDs remain
++/// available for diagnostics/fallback. Same arithmetic/order as the ordinary
++/// gated call. The caller must include row preparation in performance timing.
++bool qsa_prompt_attn_batch_gated_rows(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
++                                      int64_t cap, const QsaShapes& s, const float* qf, uint16_t* o16, int64_t ld16,
++                                      int64_t n_q, const int64_t* rows, void* stream);
++
+ /// HIP only (false in every other build): the prompt attention runs on the RDNA4 matrix cores on the current device -
+ /// the default on gfx12 (STRATA_HIP_WMMA=0 turns it off), STRATA_HIP_WMMA=1 on gfx11 as well.  The prompt path sizes its
+ /// expert ring for it (prefill.cpp).
+diff --git a/src/kernels/cuda/qsa_prompt_attn.cu b/src/kernels/cuda/qsa_prompt_attn.cu
+index 071aece..6c4eee2 100644
+--- a/src/kernels/cuda/qsa_prompt_attn.cu
++++ b/src/kernels/cuda/qsa_prompt_attn.cu
+@@ -1962,14 +1962,15 @@ __device__ __forceinline__ wh8 i8_to_h(const uint32_t* x) {   // PA_KL codes, ex
+ // body is shared by prompt_attn_wmma_kernel and the VGPR-capped copies prompt_attn_wmma_nv<N> (STRATA_PA_NV, experiment:
+ // amdgpu_num_vgpr(N) needs a literal, so one stamped kernel per cap).  They only move loads and registers around: the
+ // arithmetic, its order and the output bits are the same.
+-template <bool SPLIT, bool GATE, bool RPF, int TR>
++template <bool SPLIT, bool GATE, bool RPF, int TR, bool PREPARED_ROWS>
+ __device__ __forceinline__ void prompt_attn_wmma_body(const float* __restrict__ q, QsaAttnPools p,
+                                                                    const int32_t* __restrict__ ids,
+                                                                    const int32_t* __restrict__ steps, int n_kv_heads,
+                                                                    int page_size, float scale_log2,
+                                                                    float* __restrict__ attn, int cap,
+                                                                    const float* __restrict__ qf,
+-                                                                   uint16_t* __restrict__ o16, int64_t ld16) {
++                                                                   uint16_t* __restrict__ o16, int64_t ld16,
++                                                                   const int64_t* __restrict__ pool_rows) {
+ #if STRATA_PA_WMMA
+     __shared__ SmemWT<TR ? G : 16, TR >= 2 ? 72 : WVS> S;
+     const int qi = blockIdx.x, kvh = blockIdx.y;
+@@ -1977,6 +1978,7 @@ __device__ __forceinline__ void prompt_attn_wmma_body(const float* __restrict__
+     q += (size_t) qi * n_head * HD + (size_t) kvh * G * HD;
+     attn += (size_t) qi * n_head * HD + (size_t) kvh * G * HD;
+     ids += (size_t) qi * cap;
++    if constexpr (PREPARED_ROWS) pool_rows += (size_t) qi * cap;
+     const int n = __ldg(steps + (size_t) qi * kStepCount + kStepWidth);
+     const int t = threadIdx.x, lane = t & 31, warp = t >> 5;
+     const int col = lane & 15, half = lane >> 4;   // fragment column / k half
+@@ -2029,9 +2031,14 @@ __device__ __forceinline__ void prompt_attn_wmma_body(const float* __restrict__
+         const int c0 = ci * WCH;
+         long long r = -1;
+         if (c0 + lane < n) {
+-            const int cell = __ldg(ids + c0 + lane);
+-            const long long page = (long long) __ldg(p.page_table + cell / page_size);
+-            if (page >= 0) r = (page * n_kv_heads + kvh) * page_size + (cell % page_size);
++            if constexpr (PREPARED_ROWS) {
++                const long long base = __ldg(pool_rows + c0 + lane);
++                if (base >= 0) r = base + (long long) kvh * page_size;
++            } else {
++                const int cell = __ldg(ids + c0 + lane);
++                const long long page = (long long) __ldg(p.page_table + cell / page_size);
++                if (page >= 0) r = (page * n_kv_heads + kvh) * page_size + (cell % page_size);
++            }
+         }
+         return r;
+     };
+@@ -2221,15 +2228,30 @@ __device__ __forceinline__ void prompt_attn_wmma_body(const float* __restrict__
+     __builtin_trap();
+ #endif
+ }
+-template <bool SPLIT, bool GATE = false, bool RPF = false, int TR = 0>
++template <bool SPLIT, bool GATE = false, bool RPF = false, int TR = 0, bool PREPARED_ROWS = false>
+ __global__ void __launch_bounds__(THREADS) prompt_attn_wmma_kernel(const float* __restrict__ q, QsaAttnPools p,
+                                                                    const int32_t* __restrict__ ids,
+                                                                    const int32_t* __restrict__ steps, int n_kv_heads,
+                                                                    int page_size, float scale_log2,
+                                                                    float* __restrict__ attn, int cap,
+                                                                    const float* __restrict__ qf = nullptr,
+-                                                                   uint16_t* __restrict__ o16 = nullptr, int64_t ld16 = 0) {
+-    prompt_attn_wmma_body<SPLIT, GATE, RPF, TR>(q, p, ids, steps, n_kv_heads, page_size, scale_log2, attn, cap, qf, o16, ld16);
++                                                                   uint16_t* __restrict__ o16 = nullptr, int64_t ld16 = 0,
++                                                                   const int64_t* __restrict__ pool_rows = nullptr) {
++    prompt_attn_wmma_body<SPLIT, GATE, RPF, TR, PREPARED_ROWS>(q, p, ids, steps, n_kv_heads, page_size, scale_log2, attn, cap, qf, o16, ld16, pool_rows);
++}
++
++__global__ void prompt_attn_prepare_rows_kernel(const int32_t* ids, const int32_t* steps, const int32_t* page_table,
++                                                int64_t cap, int n_kv_heads, int page_size, int64_t* rows, int64_t total) {
++    const int64_t i = (int64_t) blockIdx.x * blockDim.x + threadIdx.x;
++    if (i >= total) return;
++    const int64_t qi = i / cap, col = i - qi * cap;
++    int64_t row = -1;
++    if (col < steps[qi * kStepCount + kStepWidth]) {
++        const int cell = ids[i];
++        const int page = page_table[cell / page_size];
++        if (page >= 0) row = (int64_t) page * n_kv_heads * page_size + cell % page_size;
++    }
++    rows[i] = row;
+ }
+ 
+ // gfx12 (RDNA4): on by default on Linux (148-amd; STRATA_HIP_WMMA=0 turns it off; Windows: opt-in with =1 until tested there).  gfx11 (RDNA3 / RDNA3.5): only on request
+@@ -2300,9 +2322,14 @@ bool hip_wmma_usable(int64_t n_q, int64_t cap) {
+ constexpr int PA_TRIM_DEFAULT = 2;
+ template <bool SPLIT, bool GATE>
+ void pa_launch(dim3 grid, cudaStream_t st, const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+-               int n_kv_heads, int page_size, float scale_log2, float* attn, int cap, const float* qf, uint16_t* o16, int64_t ld16) {
++               int n_kv_heads, int page_size, float scale_log2, float* attn, int cap, const float* qf, uint16_t* o16, int64_t ld16,
++               const int64_t* pool_rows = nullptr) {
+     static const int trim = [] { const char* e = std::getenv("STRATA_PA_TRIM"); return e != nullptr && e[0] != '\0' ? std::atoi(e) : PA_TRIM_DEFAULT; }();
+     static const bool rpf = [] { const char* e = std::getenv("STRATA_PA_RPF"); return !(e != nullptr && e[0] == '0'); }();
++    if (pool_rows != nullptr && trim >= 2 && rpf) {
++        prompt_attn_wmma_kernel<SPLIT, GATE, true, 2, true><<<grid, THREADS, 0, st>>>(q, pools, ids, steps, n_kv_heads, page_size, scale_log2, attn, cap, qf, o16, ld16, pool_rows);
++        return;
++    }
+ #define STRATA_PA_L(R, T) prompt_attn_wmma_kernel<SPLIT, GATE, R, T><<<grid, THREADS, 0, st>>>(q, pools, ids, steps, n_kv_heads, page_size, scale_log2, attn, cap, qf, o16, ld16)
+     if (trim >= 2) { if (rpf) STRATA_PA_L(true, 2); else STRATA_PA_L(false, 2); }
+     else if (trim == 1) { if (rpf) STRATA_PA_L(true, 1); else STRATA_PA_L(false, 1); }
+@@ -2312,7 +2339,7 @@ void pa_launch(dim3 grid, cudaStream_t st, const float* q, const QsaAttnPools& p
+ 
+ bool launch_wmma(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps, int64_t cap,
+                  const QsaShapes& s, float* attn, int64_t n_q, cudaStream_t st, const float* gate_qf = nullptr,
+-                 uint16_t* gate_o16 = nullptr, int64_t gate_ld = 0) {
++                 uint16_t* gate_o16 = nullptr, int64_t gate_ld = 0, const int64_t* pool_rows = nullptr) {
+     {   // STRATA_QSA_STAT=1 (diagnostic): how much consecutive queries' selections overlap (the row-union attention's sharing factor)
+         static const bool stat_on = std::getenv("STRATA_QSA_STAT") != nullptr;
+         static int stat_calls = 0;
+@@ -2354,9 +2381,9 @@ bool launch_wmma(const float* q, const QsaAttnPools& pools, const int32_t* ids,
+             const float* qfq = gate_qf + (size_t) q0 * s.n_head * 2 * HD;
+             uint16_t* o16q = gate_o16 + (size_t) q0 * gate_ld;
+             if (fast && n_q >= min_t)
+-                pa_launch<false, true>(grid, st, qq, pools, idq, stq, (int) s.n_head_kv, (int) s.page_size, scale_log2, nullptr, (int) cap, qfq, o16q, gate_ld);
++                pa_launch<false, true>(grid, st, qq, pools, idq, stq, (int) s.n_head_kv, (int) s.page_size, scale_log2, nullptr, (int) cap, qfq, o16q, gate_ld, pool_rows ? pool_rows + q0 * cap : nullptr);
+             else
+-                pa_launch<true, true>(grid, st, qq, pools, idq, stq, (int) s.n_head_kv, (int) s.page_size, scale_log2, nullptr, (int) cap, qfq, o16q, gate_ld);
++                pa_launch<true, true>(grid, st, qq, pools, idq, stq, (int) s.n_head_kv, (int) s.page_size, scale_log2, nullptr, (int) cap, qfq, o16q, gate_ld, pool_rows ? pool_rows + q0 * cap : nullptr);
+         } else if (fast && n_q >= min_t)
+             pa_launch<false, false>(grid, st, qq, pools, idq, stq, (int) s.n_head_kv, (int) s.page_size, scale_log2, attn + q0 * s.n_head * HD, (int) cap, nullptr, nullptr, 0);
+         else
+@@ -2452,6 +2479,38 @@ bool qsa_prompt_attn_matrix_cores_gfx12() {
+ 
+ bool qsa_hip_wmma_active() { return qsa_prompt_attn_matrix_cores_requested(); }
+ 
++bool qsa_prompt_attn_prepare_rows(const int32_t* ids, const int32_t* steps, const int32_t* page_table,
++                                  int64_t cap, const QsaShapes& s, int64_t* rows, int64_t n_q, void* stream) {
++#if defined(__HIPCC__) && !defined(STRATA_HIP_GFX906)
++    if (!ids || !steps || !page_table || !rows || cap <= 0 || cap > INT32_MAX || n_q <= 0 || n_q > INT32_MAX ||
++        s.n_head_kv != 2 || s.page_size != 4) return false;
++    const int64_t total = n_q * cap;
++    if ((total + 255) / 256 > UINT32_MAX) return false;
++    prompt_attn_prepare_rows_kernel<<<(unsigned) ((total + 255) / 256), 256, 0, (cudaStream_t) stream>>>(
++        ids, steps, page_table, cap, (int) s.n_head_kv, (int) s.page_size, rows, total);
++    return cudaGetLastError() == cudaSuccess;
++#else
++    (void) ids; (void) steps; (void) page_table; (void) cap; (void) s; (void) rows; (void) n_q; (void) stream;
++    return false;
++#endif
++}
++
++bool qsa_prompt_attn_batch_gated_rows(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
++                                      int64_t cap, const QsaShapes& s, const float* qf, uint16_t* o16, int64_t ld16,
++                                      int64_t n_q, const int64_t* rows, void* stream) {
++#if defined(__HIPCC__) && !defined(STRATA_HIP_GFX906)
++    if (!q || !rows || !qf || !o16 || n_q <= 0 || ld16 < s.n_head * HD) return false;
++    if (pools.k_q && pools.v_q && pools.k_scale && pools.v_scale && !pools.k_q4 && !pools.v_q4 &&
++        s.head_dim == HD && s.n_head == (int64_t) G * s.n_head_kv && s.n_head_kv == 2 && s.page_size == 4 &&
++        cap > 0 && ids && steps && pools.page_table && hip_wmma_usable(n_q, cap))
++        return launch_wmma(q, pools, ids, steps, cap, s, nullptr, n_q, (cudaStream_t) stream, qf, o16, ld16, rows);
++#else
++    (void) q; (void) pools; (void) ids; (void) steps; (void) cap; (void) s; (void) qf; (void) o16;
++    (void) ld16; (void) n_q; (void) rows; (void) stream;
++#endif
++    return false;
++}
++
+ bool qsa_prompt_attn_batch_gated(const float* q, const QsaAttnPools& pools, const int32_t* ids, const int32_t* steps,
+                                  int64_t cap, const QsaShapes& s, const float* qf, uint16_t* o16, int64_t ld16, int64_t n_q,
+                                  void* stream) {
+diff --git a/tests/cuda/pa_bench.cpp b/tests/cuda/pa_bench.cpp
+index a856254..f1e4ed2 100644
+--- a/tests/cuda/pa_bench.cpp
++++ b/tests/cuda/pa_bench.cpp
+@@ -25,6 +25,8 @@ int main(int argc, char** argv) {
+     const int reps = argc > 2 ? std::atoi(argv[2]) : 5;
+     if (reps < 1) { std::fprintf(stderr, "reps must be positive\n"); return 2; }
+     const bool gated = [] { const char* e = std::getenv("PA_BENCH_GATE"); return e && e[0] == '1'; }();
++    const bool prepared = [] { const char* e = std::getenv("PA_BENCH_ROWS"); return e && e[0] == '1'; }();
++    if (prepared && !gated) { std::fprintf(stderr, "PA_BENCH_ROWS requires PA_BENCH_GATE=1\n"); return 2; }
+     std::FILE* f = std::fopen(argv[1], "rb");
+     if (!f) { std::perror(argv[1]); return 1; }
+     int32_t hdr[4];
+@@ -37,6 +39,15 @@ int main(int argc, char** argv) {
+         return 1;
+     }
+     std::fclose(f);
++    if (const char* mix = std::getenv("PA_BENCH_WIDTHS"); mix && std::strcmp(mix, "mixed") == 0) {
++        const int widths[] = {0, 1, 31, 32, 33, (int) cap};
++        for (int64_t i = 0; i < T; ++i) {
++            const int w = std::min(widths[i % 6], steps[(size_t) i * strata::kernels::kStepCount + strata::kernels::kStepWidth]);
++            steps[(size_t) i * strata::kernels::kStepCount + strata::kernels::kStepWidth] = w;
++            // Poison unused selections: neither path may dereference them.
++            for (int64_t j = w; j < cap; ++j) ids[(size_t) (i * cap + j)] = INT32_MAX;
++        }
++    }
+     strata::kernels::QsaShapes s = strata::kernels::qsa_real_shapes();
+     const int64_t cells = p0 + T, HD = s.head_dim, KVH = s.n_head_kv, NH = s.n_head;
+     const int64_t pages = (cells + s.page_size - 1) / s.page_size;
+@@ -56,6 +67,17 @@ int main(int argc, char** argv) {
+     for (size_t i = 0; i < sc_n; ++i) { ks[i] = 0x2000 + (uint16_t) (i % 512); vs[i] = 0x2000 + (uint16_t) ((i * 7) % 512); }
+     std::vector<int32_t> pt((size_t) pages);
+     for (int64_t i = 0; i < pages; ++i) pt[(size_t) i] = (int32_t) i;
++    if (const char* mode = std::getenv("PA_BENCH_PAGES")) {
++        if (std::strcmp(mode, "shuffle") == 0 || std::strcmp(mode, "holes") == 0) {
++            std::mt19937 page_rng(11);
++            std::shuffle(pt.begin(), pt.end(), page_rng);
++            if (std::strcmp(mode, "holes") == 0) {
++                for (size_t i = 0; i < pt.size(); i += 7) pt[i] = -1;
++                pt.front() = pt.back() = -1;
++            }
++        } else if (std::strcmp(mode, "missing") == 0) std::fill(pt.begin(), pt.end(), -1);
++        else if (std::strcmp(mode, "identity") != 0) { std::fprintf(stderr, "unknown PA_BENCH_PAGES\n"); return 2; }
++    }
+     // Generate the gate after all existing inputs: ungated baseline inputs and
+     // hashes stay unchanged. Match the model's padded FP16 output leading dimension.
+     const int64_t ld16 = NH * HD + 64;
+@@ -91,17 +113,30 @@ int main(int argc, char** argv) {
+     CK(cudaMemcpy(dids, ids.data(), ids.size() * 4, cudaMemcpyHostToDevice));
+     CK(cudaMemcpy(dsteps, steps.data(), steps.size() * 4, cudaMemcpyHostToDevice));
+     CK(cudaMemcpy(dpt, pt.data(), pt.size() * 4, cudaMemcpyHostToDevice));
++    int64_t* drows = nullptr;
++    constexpr size_t row_guard = 32;
++    if (prepared) {
++        CK(cudaMalloc(&drows, (ids.size() + row_guard) * sizeof(int64_t)));
++        CK(cudaMemset(drows, 0xa5, (ids.size() + row_guard) * sizeof(int64_t)));
++    }
+     strata::kernels::QsaAttnPools pools;
+     pools.k_q = dk; pools.v_q = dv; pools.k_scale = dks; pools.v_scale = dvs; pools.page_table = dpt;
+     cudaStream_t st;
+     CK(cudaStreamCreate(&st));
+-    cudaEvent_t e0, e1;
++    cudaEvent_t e0, e1, ep;
+     CK(cudaEventCreate(&e0));
+     CK(cudaEventCreate(&e1));
+-    std::vector<float> ms;
++    CK(cudaEventCreate(&ep));
++    std::vector<float> ms, prep_ms;
+     for (int r = 0; r < reps + 1; ++r) {
+         CK(cudaEventRecord(e0, st));
+-        const bool ok = gated
++        if (prepared) {
++            if (!strata::kernels::qsa_prompt_attn_prepare_rows(dids, dsteps, dpt, cap, s, drows, T, st)) return 1;
++            CK(cudaEventRecord(ep, st));
++        }
++        const bool ok = prepared
++            ? strata::kernels::qsa_prompt_attn_batch_gated_rows(dq, pools, dids, dsteps, cap, s, dqf, do16, ld16, T, drows, st)
++            : gated
+             ? strata::kernels::qsa_prompt_attn_batch_gated(dq, pools, dids, dsteps, cap, s, dqf, do16, ld16, T, st)
+             : strata::kernels::qsa_prompt_attn_batch(dq, pools, dids, dsteps, cap, s, dattn, T, st);
+         if (!ok) {
+@@ -113,6 +148,27 @@ int main(int argc, char** argv) {
+         float t = 0;
+         CK(cudaEventElapsedTime(&t, e0, e1));
+         if (r > 0) ms.push_back(t);
++        if (prepared && r > 0) {
++            CK(cudaEventElapsedTime(&t, e0, ep));
++            prep_ms.push_back(t);
++        }
++    }
++    if (prepared) {
++        std::vector<int64_t> rows(ids.size() + row_guard);
++        CK(cudaMemcpy(rows.data(), drows, rows.size() * sizeof(int64_t), cudaMemcpyDeviceToHost));
++        for (int64_t i = 0; i < T; ++i) for (int64_t j = 0; j < cap; ++j) {
++            const size_t at = (size_t) (i * cap + j);
++            int64_t expected = -1;
++            if (j < steps[(size_t) i * strata::kernels::kStepCount + strata::kernels::kStepWidth]) {
++                const int cell = ids[at], page = pt[(size_t) cell / s.page_size];
++                if (page >= 0) expected = (int64_t) page * s.n_head_kv * s.page_size + cell % s.page_size;
++            }
++            if (rows[at] != expected) { std::fprintf(stderr, "prepared row mismatch at %zu\n", at); return 1; }
++        }
++        for (size_t i = ids.size(); i < rows.size(); ++i)
++            if ((uint64_t) rows[i] != 0xa5a5a5a5a5a5a5a5ull) { std::fprintf(stderr, "row guard overwritten\n"); return 1; }
++        std::sort(prep_ms.begin(), prep_ms.end());
++        std::printf("prepared rows: CPU mapping and guard PASS; median %.3f ms included in total\n", prep_ms[prep_ms.size()/2]);
+     }
+     std::sort(ms.begin(), ms.end());
+     std::vector<float> out((size_t) (T * NH * HD));
