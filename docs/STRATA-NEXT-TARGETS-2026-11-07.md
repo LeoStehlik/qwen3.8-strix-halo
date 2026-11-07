@@ -80,17 +80,30 @@ checkpoint trial loaded at 19:04:22 UTC. No Mac gateway restart or configuration
 
 ## Next experiment priorities
 
-The next candidate is now measured: the packaged **`STRATA_PF_PAD=1`**
+**Correction to the preceding update:** packaged **`STRATA_PF_PAD=1`**
 [off/on/off screen](STRATA-PROJECTION-PADDING-2026-11-07.md) delivered
 1,329 / 1,395 / 1,352 tok/s on second uncached 64K requests, with matching
-outputs. Retain it undeployed: +4.08% throughput against combined controls, +3.21%
+outputs: +4.08% throughput against combined controls, +3.21%
 against the return control, but only one enabled arm and inconsistent
 first-64K results with memory stalls. Source pads projection activation and
 dequantized-weight row strides by 64 half values; actual internal dispatch
-was not traced. Next compare matched GPU phase timings, confirm 128K and
-continuation/state behavior. Preserve boundary checkpoint 1 and 64/128 in
-controls/restoration; do not reuse an old flag-off snapshot. Serving was
-restored at 19:55:46 UTC with padding off and the cache trial still on.
+was not traced. **Padding was already on in the serving baseline**, supplied
+by `apply_arch_defaults` for gfx1151 before the engine reads its settings.
+Its startup log lists `PF_PAD`; the inherited environment alone missed that
+internal change. Thus this is an ablation of an existing default, not a new
+candidate. Cancel the proposed padding promotion/128K confirmation ladder.
+Serving was restored at 19:55:46 UTC with the original hardware defaults and
+the cache trial still on. Audit effective defaults before further switches.
+
+The subsequent [projection block-grouping screen](../experiments/strata-projection-grouping/README.md)
+tested groups 1/2/4/8/16/32/64 on three padded 16K-row matrix shapes. The
+existing group 8 was close to best: only 0.2–1.2% operator median improvements,
+with substantial regressions elsewhere. All 49 GPU output comparisons matched
+bit for bit; four CPU-reference cases passed 1e-6 tolerance. No selector is
+selected. This was an isolated operator probe with the live server idle and
+unchanged, not a new full-model result. Next investigate the projection
+kernel's LDS/register usage and instruction/memory limits before changing its
+tile shape. Launch-order tuning alone is not a promising source of the needed gain.
 
 A 64K profile of this configuration charged 24.9% to routed experts, 23.9% to
 GDN work, 20.9% to hyper-connections and 20.1% to attention-related work.

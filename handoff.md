@@ -17,16 +17,34 @@ and quality validation are pending. This is runtime-only; boot promotion is
 still pending. Do not confuse it with the undeployed 8/32 candidate below.
 
 The [projection-padding off/on/off screen](docs/STRATA-PROJECTION-PADDING-2026-11-07.md)
-retained **`STRATA_PF_PAD=1` as an undeployed candidate**. Second cold 64K
+was initially misclassified as a new candidate. **Correction: `STRATA_PF_PAD=1`
+is already applied internally by the packaged gfx1151 defaults.** Second cold 64K
 requests measured 1,329 / 1,395 / 1,352 tok/s: +4.08% throughput against the
 combined controls, +3.21% against the return control, with matching outputs
 and draft counts. First 64K results were inconsistent and included GPU queue
 evictions. Only one enabled arm ran; internal projection dispatch was not
-traced. Next confirm with matched phase timing, 128K and continuation checks.
-Padding is **off in serving**. The same original runtime override was restored
+traced. This measures an existing optimization against explicit disabling,
+not headroom above the current baseline; skip its proposed promotion tests.
+Padding is **on through the hardware default in serving**. The inherited
+`/proc/PID/environ` snapshot does not include defaults added by the engine's
+`setenv` calls. The startup log and source default table resolve that ambiguity.
+The same original runtime override was restored
 byte for byte, and read-only health from the Mac passed. No gateway restart.
 
-The subsequent [factory clock-policy screen](docs/STRATA-CLOCK-POLICY-2026-11-07.md)
+The subsequent [projection block-grouping screen](experiments/strata-projection-grouping/README.md)
+changed only launch ordering in an isolated copy of the existing padded BK64
+kernel. Groups 1/2/4/8/16/32/64 at three 16K-row matrix shapes yielded best
+operator medians only 0.2–1.2% above group 8; several alternatives were much
+slower. Set this path aside; no selector or throughput gain is promoted.
+All 49 GPU comparisons matched the control bit for bit, including partial
+blocks/groups and beta 1. Four smaller CPU-reference cases passed 1e-6
+absolute tolerance (max 1.34e-7); the initial mistaken exact-CPU check failed
+on the unchanged control and is retained in evidence. Serving stayed loaded
+and idle with the same PID and zero requests. No source worktree or serving
+binary changes. Before changing projection tiles, measure the current kernel's
+resource limits; block order alone did not reveal significant headroom.
+
+The earlier [factory clock-policy screen](docs/STRATA-CLOCK-POLICY-2026-11-07.md)
 kept this endpoint/configuration running. Cold 64K `auto / high / auto /
 profile_peak / auto` measured **1,398 / 1,417 / 1,394 / 1,275 / 1,396 tok/s**.
 High's single-arm +1.48% is inconclusive amid uneven memory stalls; peak lost

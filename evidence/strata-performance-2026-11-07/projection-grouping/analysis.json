@@ -1,0 +1,234 @@
+{
+  "shapes": {
+    "gdn-qkv": {
+      "m": 16384,
+      "n": 10240,
+      "k": 2560,
+      "x_padding": 0,
+      "weight_padding": 64,
+      "groups": {
+        "1": {
+          "samples": 31,
+          "median_ms": 34.761707,
+          "min_ms": 34.58334,
+          "max_ms": 129.769073,
+          "operator_speedup_pct": -42.545344507966774
+        },
+        "2": {
+          "samples": 31,
+          "median_ms": 20.4967,
+          "min_ms": 20.330276,
+          "max_ms": 21.083616,
+          "operator_speedup_pct": -2.558855815814265
+        },
+        "4": {
+          "samples": 31,
+          "median_ms": 19.727173,
+          "min_ms": 19.539707,
+          "max_ms": 20.580494,
+          "operator_speedup_pct": 1.2421749431608786
+        },
+        "8": {
+          "samples": 31,
+          "median_ms": 19.972219,
+          "min_ms": 19.677361,
+          "max_ms": 35.414825,
+          "operator_speedup_pct": 0.0
+        },
+        "16": {
+          "samples": 31,
+          "median_ms": 20.265316,
+          "min_ms": 20.000273,
+          "max_ms": 57.62627,
+          "operator_speedup_pct": -1.446298690827219
+        },
+        "32": {
+          "samples": 31,
+          "median_ms": 21.134548,
+          "min_ms": 20.844656,
+          "max_ms": 22.444387,
+          "operator_speedup_pct": -5.499663394741161
+        },
+        "64": {
+          "samples": 31,
+          "median_ms": 29.148705,
+          "min_ms": 28.961285,
+          "max_ms": 30.676704,
+          "operator_speedup_pct": -31.481624998434754
+        }
+      }
+    },
+    "gdn-gate": {
+      "m": 16384,
+      "n": 6144,
+      "k": 2560,
+      "x_padding": 0,
+      "weight_padding": 64,
+      "groups": {
+        "1": {
+          "samples": 31,
+          "median_ms": 11.865492,
+          "min_ms": 11.554202,
+          "max_ms": 13.096628,
+          "operator_speedup_pct": 0.8149430297538451
+        },
+        "2": {
+          "samples": 31,
+          "median_ms": 11.978179,
+          "min_ms": 11.784182,
+          "max_ms": 12.733923,
+          "operator_speedup_pct": -0.13349274543318357
+        },
+        "4": {
+          "samples": 31,
+          "median_ms": 11.89186,
+          "min_ms": 11.773844,
+          "max_ms": 18.155712,
+          "operator_speedup_pct": 0.5914045405849055
+        },
+        "8": {
+          "samples": 31,
+          "median_ms": 11.962189,
+          "min_ms": 11.790114,
+          "max_ms": 31.656992,
+          "operator_speedup_pct": 0.0
+        },
+        "16": {
+          "samples": 31,
+          "median_ms": 12.048868,
+          "min_ms": 11.917946,
+          "max_ms": 12.441107,
+          "operator_speedup_pct": -0.7193953822052013
+        },
+        "32": {
+          "samples": 31,
+          "median_ms": 12.542212,
+          "min_ms": 12.268631,
+          "max_ms": 48.587509,
+          "operator_speedup_pct": -4.624567022148874
+        },
+        "64": {
+          "samples": 31,
+          "median_ms": 17.442469,
+          "min_ms": 17.271355,
+          "max_ms": 21.1961,
+          "operator_speedup_pct": -31.419175805902245
+        }
+      }
+    },
+    "out-projection": {
+      "m": 16384,
+      "n": 2560,
+      "k": 6144,
+      "x_padding": 64,
+      "weight_padding": 64,
+      "groups": {
+        "1": {
+          "samples": 31,
+          "median_ms": 11.365817,
+          "min_ms": 11.156606,
+          "max_ms": 24.271893,
+          "operator_speedup_pct": -0.17911602835062324
+        },
+        "2": {
+          "samples": 31,
+          "median_ms": 11.399678,
+          "min_ms": 11.205442,
+          "max_ms": 23.800579,
+          "operator_speedup_pct": -0.4756186973000398
+        },
+        "4": {
+          "samples": 31,
+          "median_ms": 11.321175,
+          "min_ms": 11.156192,
+          "max_ms": 11.950887,
+          "operator_speedup_pct": 0.2145007033280466
+        },
+        "8": {
+          "samples": 31,
+          "median_ms": 11.345459,
+          "min_ms": 11.17182,
+          "max_ms": 22.833612,
+          "operator_speedup_pct": 0.0
+        },
+        "16": {
+          "samples": 31,
+          "median_ms": 11.404005,
+          "min_ms": 11.251567,
+          "max_ms": 197.578445,
+          "operator_speedup_pct": -0.5133810446417697
+        },
+        "32": {
+          "samples": 31,
+          "median_ms": 11.502868,
+          "min_ms": 11.394548,
+          "max_ms": 30.17264,
+          "operator_speedup_pct": -1.368432637843009
+        },
+        "64": {
+          "samples": 31,
+          "median_ms": 12.109458,
+          "min_ms": 11.959182,
+          "max_ms": 13.047978,
+          "operator_speedup_pct": -6.309109788398459
+        }
+      }
+    }
+  },
+  "cpu_reference_checks": [
+    {
+      "kind": "cpu_reference",
+      "m": 129,
+      "n": 1031,
+      "k": 64,
+      "acc": 0,
+      "nonidentical": 25537,
+      "max_abs": 1.19209289551e-07,
+      "atol": 1e-06,
+      "failures": 0
+    },
+    {
+      "kind": "cpu_reference",
+      "m": 2049,
+      "n": 1025,
+      "k": 64,
+      "acc": 0,
+      "nonidentical": 405653,
+      "max_abs": 1.34110450745e-07,
+      "atol": 1e-06,
+      "failures": 0
+    },
+    {
+      "kind": "cpu_reference",
+      "m": 129,
+      "n": 1031,
+      "k": 64,
+      "acc": 1,
+      "nonidentical": 12584,
+      "max_abs": 1.19209289551e-07,
+      "atol": 1e-06,
+      "failures": 0
+    },
+    {
+      "kind": "cpu_reference",
+      "m": 2049,
+      "n": 1025,
+      "k": 64,
+      "acc": 1,
+      "nonidentical": 198861,
+      "max_abs": 1.34110450745e-07,
+      "atol": 1e-06,
+      "failures": 0
+    }
+  ],
+  "gpu_parity_checks": 49,
+  "gpu_elements_compared": 2204128052,
+  "decision": "No scheduling selector promoted; best operator median gains are small and have no full-model confirmation.",
+  "limits": [
+    "Synthetic values at real matrix dimensions, not captured model activations.",
+    "Same-source operator control; not an installed-package throughput comparison.",
+    "GPU event samples include scheduling stalls; medians do not remove their end-to-end cost.",
+    "Full output comparison is to GPU group 8; independent CPU tolerance is tested only at two smaller boundary shapes.",
+    "No full model, checkpoint, tool continuation or cross-backend validation; no serving change."
+  ]
+}

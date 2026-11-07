@@ -1,0 +1,16 @@
+In file included from /home/less/worktrees/qwen38-strata-20261106/experiments/strata-projection-grouping/grouping.hip:3:
+/home/less/.cache/strata-evaluation-20261107/projection-grouping/wmma_gemm_grouping.generated.cuh:60:6: error: redefinition of 'strata_pf_padded_gemm_available'
+   60 | bool strata_pf_padded_gemm_available() { return strata_wmma_gfx11_device(); }
+      |      ^
+/home/less/src/strata-f16-dispatch-20261107/src/prefill/wmma_gemm.h:50:13: note: previous definition is here
+   50 | inline bool strata_pf_padded_gemm_available() { return false; }
+      |             ^
+In file included from /home/less/worktrees/qwen38-strata-20261106/experiments/strata-projection-grouping/grouping.hip:3:
+/home/less/.cache/strata-evaluation-20261107/projection-grouping/wmma_gemm_grouping.generated.cuh:658:6: error: redefinition of 'strata_pf_hcdown_bf16'
+  658 | bool strata_pf_hcdown_bf16(const uint16_t* X, int64_t ldx, const uint16_t* Wd, const uint16_t* Wi, int64_t nd,
+      |      ^
+/home/less/src/strata-f16-dispatch-20261107/src/prefill/wmma_gemm.h:34:13: note: previous definition is here
+   34 | inline bool strata_pf_hcdown_bf16(const uint16_t*, int64_t, const uint16_t*, const uint16_t*, int64_t, int64_t, float*, float*,
+      |             ^
+2 errors generated when compiling for gfx1151.
+failed to execute:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/bin/clang++  --offload-arch=gfx1151 --driver-mode=g++ -Llib --hip-link  -O3 -std=c++17 -DSTRATA_WMMA_GFX11=1 -I/home/less/src/strata-f16-dispatch-20261107/include -I/home/less/src/strata-f16-dispatch-20261107/src/prefill -I/home/less/.cache/strata-evaluation-20261107/projection-grouping -x hip /home/less/worktrees/qwen38-strata-20261106/experiments/strata-projection-grouping/grouping.hip -o "/home/less/.cache/strata-evaluation-20261107/projection-grouping/grouping"

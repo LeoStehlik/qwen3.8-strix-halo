@@ -1,0 +1,55 @@
+{
+  "started_utc": "2026-11-07T20:13:35.178738+00:00",
+  "completed": false,
+  "service_requests_before": 0,
+  "host_before": {
+    "unix_s": 1794082415.179324,
+    "kfd_evicted_ms": {
+      "32500/stats_35564": 13960,
+      "32490/stats_35564": 8630
+    },
+    "sclk": "0: 600Mhz *\n1: 1100Mhz \n2: 2900Mhz",
+    "clock_policy": "auto"
+  },
+  "arms": [
+    {
+      "label": "correctness",
+      "argv": [
+        "/home/less/.cache/strata-evaluation-20261107/projection-grouping-diagnostic/grouping",
+        "--check"
+      ],
+      "start": {
+        "unix_s": 1794082415.182315,
+        "kfd_evicted_ms": {
+          "32500/stats_35564": 13960,
+          "32490/stats_35564": 8630
+        },
+        "sclk": "0: 600Mhz *\n1: 1100Mhz \n2: 2900Mhz",
+        "clock_policy": "auto"
+      },
+      "pid": 33912,
+      "exit_code": 4,
+      "end": {
+        "unix_s": 1794082415.5228631,
+        "kfd_evicted_ms": {
+          "32500/stats_35564": 13960,
+          "32490/stats_35564": 8630,
+          "33912/stats_35564": 0
+        },
+        "sclk": "0: 600Mhz \n1: 911Mhz *\n2: 2900Mhz",
+        "clock_policy": "auto"
+      }
+    }
+  ],
+  "error": "AssertionError: correctness exited 4",
+  "host_after": {
+    "unix_s": 1794082415.523887,
+    "kfd_evicted_ms": {
+      "32500/stats_35564": 13960,
+      "32490/stats_35564": 8630,
+      "33912/stats_35564": 0
+    },
+    "sclk": "0: 600Mhz \n1: 911Mhz *\n2: 2900Mhz",
+    "clock_policy": "auto"
+  }
+}

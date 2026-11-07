@@ -19,6 +19,29 @@ import time
 import urllib.request
 
 
+def padding_evidence(log_path, launch_pad):
+    """Distinguish an inherited override from defaults added after exec."""
+    lines = Path(log_path).read_text().splitlines()
+    # Serving logs can be appended across restarts. Never use a default line
+    # from before the latest engine start to interpret the current process.
+    starts = [i for i, line in enumerate(lines) if line.startswith('[strata]') and ' engine started: ' in line]
+    if starts:
+        lines = lines[starts[-1] + 1:]
+    defaults = next((line for line in reversed(lines)
+                     if line.startswith('strata: gfx1151 (Strix Halo):')
+                     and 'exact speed switches on by default' in line), '')
+    applied = defaults.rsplit(': ', 1)[-1].split() if defaults else []
+    if launch_pad != '<unset>':
+        if 'PF_PAD' in applied:
+            raise RuntimeError('Startup defaults contradict explicit padding override')
+        effective = {'value': launch_pad, 'source': 'explicit launch override'}
+    elif 'PF_PAD' in applied:
+        effective = {'value': '1', 'source': 'gfx1151 startup default'}
+    else:
+        effective = {'value': 'unknown', 'source': 'insufficient startup evidence'}
+    return defaults, effective
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--profile', type=Path, required=True)
@@ -103,7 +126,7 @@ def main():
             # Observation time alone is not a reason to restart a live loader.
             time.sleep(2)
 
-    def process_flags():
+    def process_flags(log_path):
         pid = subprocess.check_output(['systemctl', '--user', 'show', args.unit,
                                       '-p', 'MainPID', '--value'], text=True).strip()
         children = {ch for p in Path(f'/proc/{pid}/task').glob('*/children') for ch in p.read_text().split()}
@@ -112,9 +135,16 @@ def main():
                 continue
             env = dict(x.split(b'=', 1) for x in Path(f'/proc/{child}/environ').read_bytes().split(b'\0') if b'=' in x)
             names = ['STRATA_PF_PAD', 'STRATA_PF_GEMM', 'STRATA_PF_F16', 'STRATA_CACHE_MESSAGE_BOUNDARY',
-                     'STRATA_PREFILL_STREAM_MIN', 'STRATA_PREFILL_TIMING', 'STRATA_TRACE', 'STRATA_PA_NATIVE_I8']
+                     'STRATA_PREFILL_STREAM_MIN', 'STRATA_PREFILL_TIMING', 'STRATA_TRACE', 'STRATA_PA_NATIVE_I8',
+                     'STRATA_GFX1151_DEFAULTS', 'STRATA_DEFAULTS']
             values = {name: env.get(name.encode(), b'<unset>').decode() for name in names}
+            # /proc/PID/environ is the launch environment, not a reliable view
+            # of defaults added by setenv after exec. Use the startup evidence
+            # too; an absent inherited setting does not mean the switch is off.
+            defaults, effective_pad = padding_evidence(log_path, values['STRATA_PF_PAD'])
             return {'frontend_pid': int(pid), 'engine_pid': int(child), 'flags': values,
+                    'flags_scope': 'inherited environment; excludes later engine setenv defaults',
+                    'arch_defaults_startup_line': defaults, 'effective_pad': effective_pad,
                     'short_read_override': b'--short-read' in Path(f'/proc/{child}/cmdline').read_bytes().split(b'\0')}
         raise RuntimeError('Loaded native process was not found')
 
@@ -135,7 +165,7 @@ def main():
                 'clock_policy': Path('/sys/class/drm/card0/device/power_dpm_force_performance_level').read_text().strip()}
 
     report['serving_before'] = idle(args.live_url)
-    report['process_before'] = process_flags()
+    report['process_before'] = process_flags(cfg['log'])
     assert report['process_before']['flags']['STRATA_CACHE_MESSAGE_BOUNDARY'] == '1'
     assert report['process_before']['flags']['STRATA_PREFILL_STREAM_MIN'] == '128'
     for name, content in originals.items():
@@ -167,9 +197,10 @@ def main():
             service('start', args.unit)
             print(json.dumps({'event': 'arm_start', 'arm': arm_dir.name}), flush=True)
             record = {'arm': arm_dir.name, 'pad': pad, **loaded(bench_url), 'before': idle(bench_url),
-                      'process': process_flags(), 'host_before': host()}
+                      'process': process_flags(profile['log']), 'host_before': host()}
             flags = record['process']['flags']
             assert flags['STRATA_PF_PAD'] == str(pad) and flags['STRATA_PF_GEMM'] == '1'
+            assert record['process']['effective_pad']['value'] == str(pad)
             assert flags['STRATA_PF_F16'] == '1' and flags['STRATA_CACHE_MESSAGE_BOUNDARY'] == '1'
             assert flags['STRATA_PREFILL_STREAM_MIN'] == '128' and not record['process']['short_read_override']
             assert flags['STRATA_TRACE'] == '<unset>' and flags['STRATA_PREFILL_TIMING'] == '<unset>'
@@ -224,7 +255,7 @@ def main():
             service('daemon-reload')
             service('start', args.unit)
             report['restoration'] = {**loaded(args.live_url), 'metrics': idle(args.live_url),
-                                     'process': process_flags(), 'host': host(),
+                                     'process': process_flags(cfg['log']), 'host': host(),
                                      'utc': datetime.datetime.now(datetime.timezone.utc).isoformat()}
             assert originals == {p.name: p.read_bytes() for p in unit_dir.glob('*.conf')}
             report['restoration']['original_overrides_unchanged'] = True

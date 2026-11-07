@@ -1,0 +1,229 @@
+{
+  "utc": "2026-11-07T20:10:00.660330+00:00",
+  "source_commit": "41021fbb392bab47590cfd6cb0fda82c2a7b0c19",
+  "source_files": {
+    "src/core/arch_defaults.cpp": "37ab31e7843404185bdad27b79f3db92d11f53a8250eb71f93e17c80d9b0c41a",
+    "src/program/generate.cpp": "6e095e47f50af71b410be68d75fa0c73cf98c45076ce1c036295d3d4a3194d21",
+    "src/prefill/wmma_gemm.cu": "eca51cd8a3cdd63690fb47bdb267dfaf4f721b3f0e2786b3ffc4f45ae5487860"
+  },
+  "frontend_pid": 32475,
+  "engine_pid": 32500,
+  "launch_environment": {
+    "STRATA_ATTN_LANECELL": "<unset>",
+    "STRATA_CACHE_MESSAGE_BOUNDARY": "1",
+    "STRATA_CVEC_FUSE": "<unset>",
+    "STRATA_DEFAULTS": "<unset>",
+    "STRATA_EXPERT_V2": "<unset>",
+    "STRATA_GDN_CONVL2": "<unset>",
+    "STRATA_GDN_HEAD": "<unset>",
+    "STRATA_GDN_NOY": "<unset>",
+    "STRATA_GDN_PP": "<unset>",
+    "STRATA_GDN_SPLIT": "<unset>",
+    "STRATA_GFX1151_DEFAULTS": "<unset>",
+    "STRATA_HCD_EXACT": "<unset>",
+    "STRATA_LFUSE": "<unset>",
+    "STRATA_MMVF_ROWS": "<unset>",
+    "STRATA_PF_BK64": "<unset>",
+    "STRATA_PF_F16": "1",
+    "STRATA_PF_GEMM": "1",
+    "STRATA_PF_PAD": "<unset>",
+    "STRATA_PLE_BATCH": "<unset>",
+    "STRATA_PREFILL_STREAM_MIN": "128",
+    "STRATA_Q6_PACKED": "<unset>",
+    "STRATA_Q8_PACKED": "<unset>",
+    "STRATA_QFUSE": "<unset>",
+    "STRATA_SH_STREAM": "<unset>",
+    "STRATA_TOPK_REG_MIN_BLOCKS": "<unset>",
+    "STRATA_TSUM": "<unset>"
+  },
+  "current_startup_line": "strata: gfx1151 (Strix Halo): 19 exact speed switches on by default (STRATA_GFX1151_DEFAULTS=0 turns them off; a switch you set is kept): GDN_HEAD GDN_PP GDN_CONVL2 GDN_NOY CVEC_FUSE HCD_EXACT PF_PAD TOPK_REG_MIN_BLOCKS Q8_PACKED Q6_PACKED MMVF_ROWS ATTN_LANECELL EXPERT_V2 TSUM LFUSE GDN_SPLIT QFUSE PLE_BATCH SH_STREAM",
+  "padding_effective": {
+    "value": "1",
+    "source": "gfx1151 startup default"
+  },
+  "arch_defaults": {
+    "STRATA_GDN_HEAD": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_GDN_PP": {
+      "value": "2",
+      "source": "logged architecture default"
+    },
+    "STRATA_GDN_CONVL2": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_GDN_NOY": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_CVEC_FUSE": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_HCD_EXACT": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_PF_PAD": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_TOPK_REG_MIN_BLOCKS": {
+      "value": "4096",
+      "source": "logged architecture default"
+    },
+    "STRATA_Q8_PACKED": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_Q6_PACKED": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_MMVF_ROWS": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_ATTN_LANECELL": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_EXPERT_V2": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_TSUM": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_LFUSE": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_GDN_SPLIT": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_QFUSE": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_PLE_BATCH": {
+      "value": "1",
+      "source": "logged architecture default"
+    },
+    "STRATA_SH_STREAM": {
+      "value": "1",
+      "source": "logged architecture default"
+    }
+  },
+  "prior_baselines": [
+    {
+      "file": "evidence/strata-performance-2026-11-07/gpu-mmap-f16-v2/engine-facts.log",
+      "sha256": "94456ce4069b17a554d27492c188772dc719d80452723fc7018d1d6fc4b1d9c7",
+      "startup_line": "strata: gfx1151 (Strix Halo): 19 exact speed switches on by default (STRATA_GFX1151_DEFAULTS=0 turns them off; a switch you set is kept): GDN_HEAD GDN_PP GDN_CONVL2 GDN_NOY CVEC_FUSE HCD_EXACT PF_PAD TOPK_REG_MIN_BLOCKS Q8_PACKED Q6_PACKED MMVF_ROWS ATTN_LANECELL EXPERT_V2 TSUM LFUSE GDN_SPLIT QFUSE PLE_BATCH SH_STREAM"
+    },
+    {
+      "file": "evidence/strata-performance-2026-11-07/gpu-mmap-profile/engine-facts.log",
+      "sha256": "96c5c7e1ea1cbeaa88f8414398ab603908545b83f106b57b343a3b09ba5a4878",
+      "startup_line": "strata: gfx1151 (Strix Halo): 19 exact speed switches on by default (STRATA_GFX1151_DEFAULTS=0 turns them off; a switch you set is kept): GDN_HEAD GDN_PP GDN_CONVL2 GDN_NOY CVEC_FUSE HCD_EXACT PF_PAD TOPK_REG_MIN_BLOCKS Q8_PACKED Q6_PACKED MMVF_ROWS ATTN_LANECELL EXPERT_V2 TSUM LFUSE GDN_SPLIT QFUSE PLE_BATCH SH_STREAM"
+    },
+    {
+      "file": "evidence/strata-performance-2026-11-07/expert-profile/real64k/engine.log",
+      "sha256": "ec3d07bcc2cceec6c5bb764b61472365a54750bad668ffae79bc8b11d0b115e6",
+      "startup_line": "strata: gfx1151 (Strix Halo): 19 exact speed switches on by default (STRATA_GFX1151_DEFAULTS=0 turns them off; a switch you set is kept): GDN_HEAD GDN_PP GDN_CONVL2 GDN_NOY CVEC_FUSE HCD_EXACT PF_PAD TOPK_REG_MIN_BLOCKS Q8_PACKED Q6_PACKED MMVF_ROWS ATTN_LANECELL EXPERT_V2 TSUM LFUSE GDN_SPLIT QFUSE PLE_BATCH SH_STREAM"
+    }
+  ],
+  "collector_checks": [
+    {
+      "case": "default_on",
+      "passed": true
+    },
+    {
+      "case": "explicit_off",
+      "passed": true
+    },
+    {
+      "case": "explicit_on",
+      "passed": true
+    },
+    {
+      "case": "unknown",
+      "passed": true
+    },
+    {
+      "case": "stale_previous_start",
+      "passed": true
+    },
+    {
+      "case": "contradictory_override_rejected",
+      "passed": true
+    },
+    {
+      "case": "01-pad0",
+      "passed": true
+    },
+    {
+      "case": "02-pad1",
+      "passed": true
+    },
+    {
+      "case": "03-pad0",
+      "passed": true
+    }
+  ],
+  "health": {
+    "status": "ok",
+    "max_context": 262144,
+    "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+    "images": true,
+    "api_key": true,
+    "image_generation": false,
+    "loaded": true,
+    "service": "strata"
+  },
+  "live": {
+    "state": "idle",
+    "queued": 0,
+    "phase": null,
+    "prompt_tokens": null,
+    "prompt_read": null,
+    "prompt_total": null,
+    "generated": null,
+    "max_tokens": null,
+    "elapsed_s": null,
+    "tok_s": null,
+    "tok_s_mean": null,
+    "prefill_tok_s_mean": null,
+    "tok_s_window_s": null
+  },
+  "request_count": 0,
+  "source_test": {
+    "compile_argv": [
+      "g++",
+      "-std=c++17",
+      "-O2",
+      "-I",
+      "include",
+      "src/core/arch_defaults_test.cpp",
+      "src/core/arch_defaults.cpp",
+      "-o",
+      "arch_defaults_test"
+    ],
+    "run_argv": [
+      "env",
+      "-i",
+      "PATH=/usr/bin:/bin",
+      "./arch_defaults_test"
+    ],
+    "exit_code": 0
+  },
+  "limits": [
+    "Environment values are inherited at exec, not a complete snapshot of runtime getenv values.",
+    "Architecture values are resolved only from explicit overrides or the current startup log plus the pinned source table.",
+    "No new inference request, restart, profiling or performance claim.",
+    "Internal kernel dispatch was not traced."
+  ]
+}

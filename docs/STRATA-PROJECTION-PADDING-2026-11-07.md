@@ -1,16 +1,26 @@
-# Projection row padding: retained 3–4% candidate, not deployed
+# Projection row padding: 3–4% ablation of an existing default
+
+**Correction, 7 November:** the original report misclassified padding as
+an undeployed optimization and serving as padding-off. Strata's
+`apply_arch_defaults` sets `STRATA_PF_PAD=1` internally on gfx1151 when the
+caller supplies no override. The serving startup log explicitly lists
+`PF_PAD` among the defaults it applied, as do earlier baseline/profile logs.
+Padding was already part of the ~1,400 tok/s baseline. The measurements below
+remain valid comparisons of explicit 0/1/0, but do not show a new improvement
+over serving. No new padding deployment or further promotion test is needed.
 
 The packaged `STRATA_PF_PAD=1` option improved the **second uncached 64K
 request** to **1,394.9 tok/s**, versus controls at **1,329.2 and 1,351.5**.
 That is a **4.08% throughput gain versus the two controls combined**, or
-**3.21% versus the return control**, saving 1.92 or 1.51 seconds respectively. Retain the option as a
-candidate; one enabled arm does not establish a repeatable gain or a new
-baseline. First-64K results were inconsistent, with GPU queue evictions.
-The candidate also does not exceed earlier 1,416–1,418 tok/s screens: this
+**3.21% versus the return control**, saving 1.92 or 1.51 seconds respectively.
+Retain this as a measurement of an existing default; one enabled arm does not establish a
+repeatable gain. First-64K results were inconsistent, with GPU queue evictions.
+The enabled arm also does not exceed earlier 1,416–1,418 tok/s screens: this
 is a within-screen comparison with slower controls, not a new absolute record.
 
 The serving configuration was restored at **19:55:46 UTC**, with padding
-unset/off, boundary checkpoints still enabled and short-read 64 / stream
+unset in the launch environment and **enabled internally by the hardware
+default**, boundary checkpoints still enabled and short-read 64 / stream
 minimum 128. A subsequent health request from the Mac using its existing
 provider credentials succeeded. No OpenClaw gateway restart or agent request.
 
@@ -67,7 +77,7 @@ clock was 2,579 MHz versus 2,612 / 2,600 for the controls; higher clocks do not
 explain the result. The cleaner return control had no observed reading-counter
 increase and the same automatic conversation-cache budget as the enabled arm
 (7,168 MiB; first control 6,656 MiB). Comparing that control still gives 3.21%.
-This supports keeping the candidate, but does not isolate the projection
+This supports the existing default, but does not isolate the projection
 kernel as the cause: internal dispatch/phase timings were **not traced**.
 
 Eviction figures are max-minus-min per-process counters over sampled API
@@ -77,13 +87,24 @@ VM compaction, migration and reclaim counters are included in the evidence.
 Generation was 39.8–40.6 tok/s for the short fixed-length outputs. This screen
 does not establish sustained representative generation performance.
 
-## Follow-up before promotion
+## Why the original interpretation was wrong
 
-Compare a matched control and candidate with GPU phase timing, then confirm
-at 128K and with checkpoint/tool-result continuations. Record startup and
-steady-workload results separately. Keep the model, context, sampling and
-independent checkpoint trial fixed. The current 1,700–2,000 prefill and 50–70
-generation targets remain unachieved; this is not a promoted default.
+The collector read `/proc/PID/environ`, which describes the inherited
+environment and does not reliably expose later `setenv` allocations. It
+reported `<unset>` for padding in serving; that did not establish effective
+padding-off. Source `src/core/arch_defaults.cpp` supplies `PF_PAD=1`, honors
+explicit overrides, and prints each default it actually adds. The caller in
+`src/program/generate.cpp` runs before the engine first reads its switches.
+The existing startup logs supply runtime corroboration. Explicit 0/1/0 arm
+settings were respected; only their relationship to serving was misreported.
+
+The [default audit](../evidence/strata-performance-2026-11-07/default-audit/audit.json)
+preserves source hashes, selected launch flags and content-free startup lines.
+The driver now labels inherited values and separately records the applied
+defaults and padding interpretation. Original raw evidence/checksums are
+unchanged. The proposed phase/128K/continuation promotion ladder is cancelled:
+it would retest an optimization already in the baseline. The current
+1,700–2,000 prefill and 50–70 generation targets remain unachieved.
 
 ## Reproduction and evidence
 

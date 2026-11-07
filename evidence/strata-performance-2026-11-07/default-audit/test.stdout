@@ -1,0 +1,12 @@
+  (not on) RX 7900 XTX (dGPU)
+  (not on) RX 7800 XT (dGPU)
+  (not on) R9700 (dGPU)
+  (not on) RX 9060 (dGPU)
+  (not on) RX 6800 (dGPU)
+  (not on) a gfx1103 reported as a discrete card
+  (not on) a gfx1151 reported as a discrete card
+  (not on) Radeon 860M (Krackan, no kernels)
+  (not on) older iGPU (gfx1036, no kernels)
+  (not on) an integrated gfx1201 would not get it
+  (not on) CUDA (no gcn name)
+arch_defaults_test: OK

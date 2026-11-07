@@ -17,9 +17,9 @@ task; the first 13 live calls averaged 1,327 prefill / 47.2 generation.
 Read the [updated objective](docs/STRATA-NEXT-TARGETS-2026-11-07.md).
 
 The latest [projection-padding screen](docs/STRATA-PROJECTION-PADDING-2026-11-07.md)
-retained a 3–4% candidate on second uncached 64K requests, with matching
-outputs. It is not deployed or a new absolute throughput record; startup
-stalls and larger-context confirmation remain open. The independent
+measured a 3–4% benefit over explicitly disabling padding, with matching
+outputs. **Correction:** padding was already enabled by Strata's hardware
+defaults in our serving baseline; this is an ablation, not a new gain. The independent
 [boundary-checkpoint option](docs/STRATA-CACHE-LIVE-TRIAL-2026-11-07.md) is in
 a live trial. See the handoff for the actual serving configuration.
 

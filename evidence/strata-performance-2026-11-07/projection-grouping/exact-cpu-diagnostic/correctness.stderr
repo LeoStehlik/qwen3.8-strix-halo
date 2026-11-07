@@ -1,0 +1,8 @@
+CPU mismatch row=0 col=1 got=0.257946044 want=0.257946014 delta=2.98023224e-08
+CPU mismatch row=0 col=6 got=-0.0329933353 want=-0.0329933167 delta=-1.86264515e-08
+CPU mismatch row=0 col=10 got=0.187442809 want=0.18744278 delta=2.98023224e-08
+CPU mismatch row=0 col=11 got=-0.219009414 want=-0.219009399 delta=-1.49011612e-08
+CPU mismatch row=0 col=19 got=0.450866669 want=0.450866699 delta=-2.98023224e-08
+CPU mismatch row=0 col=23 got=0.0584754981 want=0.0584754944 delta=3.7252903e-09
+CPU mismatch row=0 col=30 got=-0.119495399 want=-0.119495392 delta=-7.4505806e-09
+CPU mismatch row=0 col=51 got=-0.265815705 want=-0.265815735 delta=2.98023224e-08

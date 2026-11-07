@@ -1,0 +1,152 @@
+{
+  "started_utc": "2026-11-07T20:14:29.474922+00:00",
+  "completed": true,
+  "service_requests_before": 0,
+  "host_before": {
+    "unix_s": 1794082469.4754376,
+    "kfd_evicted_ms": {
+      "32500/stats_35564": 13960,
+      "32490/stats_35564": 8630
+    },
+    "sclk": "0: 600Mhz *\n1: 1100Mhz \n2: 2900Mhz",
+    "clock_policy": "auto"
+  },
+  "arms": [
+    {
+      "label": "correctness",
+      "argv": [
+        "/home/less/.cache/strata-evaluation-20261107/projection-grouping-screen/grouping",
+        "--check"
+      ],
+      "start": {
+        "unix_s": 1794082469.4785395,
+        "kfd_evicted_ms": {
+          "32500/stats_35564": 13960,
+          "32490/stats_35564": 8630
+        },
+        "sclk": "0: 600Mhz *\n1: 1100Mhz \n2: 2900Mhz",
+        "clock_policy": "auto"
+      },
+      "pid": 33996,
+      "exit_code": 0,
+      "end": {
+        "unix_s": 1794082472.596557,
+        "kfd_evicted_ms": {
+          "33996/stats_35564": 193,
+          "32500/stats_35564": 13960,
+          "32490/stats_35564": 8630
+        },
+        "sclk": "0: 600Mhz \n1: 2741Mhz *\n2: 2900Mhz",
+        "clock_policy": "auto"
+      }
+    },
+    {
+      "label": "gdn-qkv",
+      "argv": [
+        "/home/less/.cache/strata-evaluation-20261107/projection-grouping-screen/grouping",
+        "10240",
+        "2560",
+        "0",
+        "31"
+      ],
+      "start": {
+        "unix_s": 1794082472.5990763,
+        "kfd_evicted_ms": {
+          "33996/stats_35564": 193,
+          "32500/stats_35564": 13960,
+          "32490/stats_35564": 8630
+        },
+        "sclk": "0: 600Mhz \n1: 2741Mhz *\n2: 2900Mhz",
+        "clock_policy": "auto"
+      },
+      "pid": 34017,
+      "exit_code": 0,
+      "end": {
+        "unix_s": 1794082478.4455564,
+        "kfd_evicted_ms": {
+          "34017/stats_35564": 226,
+          "32500/stats_35564": 13960,
+          "32490/stats_35564": 8630
+        },
+        "sclk": "0: 600Mhz \n1: 2600Mhz *\n2: 2900Mhz",
+        "clock_policy": "auto"
+      }
+    },
+    {
+      "label": "gdn-gate",
+      "argv": [
+        "/home/less/.cache/strata-evaluation-20261107/projection-grouping-screen/grouping",
+        "6144",
+        "2560",
+        "0",
+        "31"
+      ],
+      "start": {
+        "unix_s": 1794082478.4493535,
+        "kfd_evicted_ms": {
+          "34017/stats_35564": 226,
+          "32500/stats_35564": 13960,
+          "32490/stats_35564": 8630
+        },
+        "sclk": "0: 600Mhz \n1: 2594Mhz *\n2: 2900Mhz",
+        "clock_policy": "auto"
+      },
+      "pid": 34027,
+      "exit_code": 0,
+      "end": {
+        "unix_s": 1794082481.8981478,
+        "kfd_evicted_ms": {
+          "34027/stats_35564": 265,
+          "32500/stats_35564": 13980,
+          "32490/stats_35564": 8630
+        },
+        "sclk": "0: 600Mhz \n1: 2600Mhz *\n2: 2900Mhz",
+        "clock_policy": "auto"
+      }
+    },
+    {
+      "label": "out-projection",
+      "argv": [
+        "/home/less/.cache/strata-evaluation-20261107/projection-grouping-screen/grouping",
+        "2560",
+        "6144",
+        "64",
+        "31"
+      ],
+      "start": {
+        "unix_s": 1794082481.9005883,
+        "kfd_evicted_ms": {
+          "34027/stats_35564": 265,
+          "32500/stats_35564": 13980,
+          "32490/stats_35564": 8630
+        },
+        "sclk": "0: 600Mhz \n1: 2594Mhz *\n2: 2900Mhz",
+        "clock_policy": "auto"
+      },
+      "pid": 34054,
+      "exit_code": 0,
+      "end": {
+        "unix_s": 1794082484.9324458,
+        "kfd_evicted_ms": {
+          "34054/stats_35564": 267,
+          "32500/stats_35564": 13999,
+          "32490/stats_35564": 8630
+        },
+        "sclk": "0: 600Mhz \n1: 2469Mhz *\n2: 2900Mhz",
+        "clock_policy": "auto"
+      }
+    }
+  ],
+  "service_requests_after": 0,
+  "serving_state_after": "idle",
+  "host_after": {
+    "unix_s": 1794082484.9364588,
+    "kfd_evicted_ms": {
+      "34054/stats_35564": 267,
+      "32500/stats_35564": 13999,
+      "32490/stats_35564": 8630
+    },
+    "sclk": "0: 600Mhz \n1: 2462Mhz *\n2: 2900Mhz",
+    "clock_policy": "auto"
+  }
+}
