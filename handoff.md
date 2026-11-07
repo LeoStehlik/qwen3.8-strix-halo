@@ -4,6 +4,14 @@
 prefill first, then 50–70 tok/s sustained generation.** These supersede the old
 goal wording. Read the [updated objective and experiment order](docs/STRATA-NEXT-TARGETS-2026-11-07.md).
 
+**Current live state, 19:04:22 UTC:** the packaged optimized endpoint now has
+`STRATA_CACHE_MESSAGE_BOUNDARY=1` for a [limited live trial](docs/STRATA-CACHE-LIVE-TRIAL-2026-11-07.md).
+Short-read remains 64 and stream minimum 128; no experimental source kernel
+or tracing is serving. Health and actual-process flags were verified, and the
+Mac's configured provider passed a read-only health check. Real OpenClaw reuse
+and quality validation are pending. This is runtime-only; boot promotion is
+still pending. Do not confuse it with the undeployed 8/32 candidate below.
+
 The user reviewed Francis's real GitHub beta-release/co-authored-PR investigation
 and was pleased with the result. The first 13 completed backend calls (greeting and initial background work
 included) averaged
@@ -63,7 +71,8 @@ warm continuation latency, 74% fewer reread tokens**, all eight output hashes
 identical across the three arms. All moving-context canaries passed. The fixed
 case already cached efficiently; three follow-ups emitted identical unwanted
 lookup text in every arm and count only as output/cache parity. Cold timings
-varied (control 19.8/24.3 s, enabled 25.9 s), so the option is **not promoted**.
+varied (control 19.8/24.3 s, enabled 25.9 s), so it was initially kept off for
+the follow-up trace below. It is now in a live trial, not a persistent default.
 The subsequent traced off/on/off comparison passed all 12 moving-context
 canaries, with identical outputs. Both 43- and 267-token tails benefited:
 first-continuation latency fell about 32% and 36%, respectively. Multi-second
@@ -74,10 +83,16 @@ read took 516 ms, almost the same as 267 tokens batched (533 ms). The subsequent
 the short continuation took 4.180 s versus 3.522/3.520 s at 64, with its
 43-token segment rising from ~514 to 1,201 ms. All 12 value canaries passed;
 one cold response changed only JSON whitespace, so raw hashes were not all
-identical. Next isolate the small-batch fused-expert threshold while holding
-the short-read cutoff fixed, then compare any winner with 64/128. A limited
-actual-traffic cache trial is still pending.
-The flag remains off. This is avoided work, not higher raw prefill throughput.
+identical. The [128/32/128 threshold comparison](docs/STRATA-SMALL-BATCH-2026-11-07.md)
+then held short-read 8 fixed: the 43-token segment fell from ~1,191 to 270 ms,
+and continuation time from ~4.22 to 3.33 s. All 12 canaries and output hashes
+matched; the larger-tail case was essentially unchanged. That is about 5.5%
+below the earlier 64/128 winner, a preliminary cross-experiment comparison.
+Retain 8/32 **undeployed** pending direct comparison with 64/128, substantial
+cold prefill and longer generation checks. Draft acceptance varied even
+between controls; do not claim unchanged generation performance.
+The checkpoint flag alone is now on for actual-traffic evaluation using 64/128.
+This is avoided work, not higher raw prefill throughput.
 The original user payload was not fully captured, so the historical task's
 exact cache miss remains unproven. Source/model throughput targets remain active.
 
@@ -176,6 +191,11 @@ The temporary trace override is removed and the same baseline is serving.
 Latest restoration, after the short-read comparison: **18:49:50 UTC**.
 `91-cache-short-read.conf` is removed. Default short-read 64, stream minimum
 128, message-boundary off, no tracing; no source kernel changes deployed.
+
+After the threshold test, that baseline was restored at **19:00:59 UTC**.
+At **19:04:22 UTC**, only the boundary-checkpoint flag was then enabled for
+the live trial. The actual engine environment confirms it. Only the normal
+`90-live-preview.conf` override remains; service boot enablement is unchanged.
 
 **Flash-Next is connected to the existing `tiercelmoe` provider.** Select
 `/model qwen-flash-next`, or the full reference

@@ -692,3 +692,17 @@ with the current stream minimum of 128. The 43-token continuation took
 one cold JSON response changed whitespace, so raw hashes were not all equal.
 The source's small-batch fused-expert threshold is a new, untested lead.
 The unchanged serving configuration was restored at 18:49:50 UTC.
+
+The [small-batch dispatch comparison](STRATA-SMALL-BATCH-2026-11-07.md) held
+short-read at 8 and varied stream minimum 128/32/128. The short continuation
+took 4.201 / 3.326 / 4.232 s; its 43-token segment took
+1,185.1 / 270.0 / 1,196.8 ms. All 12 state canaries and raw hashes matched.
+The 267-token segment was essentially unchanged. Keep 8/32 undeployed pending
+direct comparison with the previous 64/128 winner and broader prefill/decode
+checks; its ~5.5% advantage over that earlier winner is preliminary.
+
+Separately, the message-boundary checkpoint alone entered a
+[live trial](STRATA-CACHE-LIVE-TRIAL-2026-11-07.md) at 19:04:22 UTC, keeping
+64/128 and the existing model/context/KV. Health, actual process flags and
+read-only connectivity from the Mac were verified. Actual OpenClaw results
+and boot promotion are pending. Raw throughput targets remain active.

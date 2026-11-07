@@ -1,6 +1,8 @@
 # Checkpoint placement for moving runtime context
 
-**Retained candidate, not enabled in serving.** A backend-only off/on/off
+**Live trial enabled at 19:04:22 UTC; actual traffic validation pending.**
+See the [current settings and rollback](STRATA-CACHE-LIVE-TRIAL-2026-11-07.md).
+A backend-only off/on/off
 comparison cut three synthetic tool-continuation latencies from about
 19.2 seconds to 10.6 seconds (**45% shorter**) by avoiding repeated work.
 This does not establish the 1,700–2,000 tok/s cold-prefill target or measure
@@ -153,21 +155,23 @@ checks that each trace interval matches the API prefill time within 1 ms.
 
 ## Decision and next checks
 
-Keep the option as a concrete cache candidate. The warm benefit has repeated
+The option has advanced to a limited live trial using the original 64/128
+short-read/stream settings. The warm benefit has repeated
 with both message sizes; cold timing is strongly affected by memory stalls.
 Two enabled arms have now run, one untraced and one traced, with different
 fixtures. They are not a large production latency distribution.
 
 The [separate short-read comparison](STRATA-SHORT-READ-2026-11-07.md) has now
 rejected a cutoff of 8 with the current expert threshold: the 43-token
-continuation became about 19% slower. Keep 64. Source inspection identifies
-the small-batch expert dispatch threshold as the next independent hypothesis;
-it has not yet been lowered or measured.
+continuation became about 19% slower. Keep 64. Source inspection identified
+the small-batch expert dispatch threshold as an independent hypothesis. The
+[128/32/128 comparison](STRATA-SMALL-BATCH-2026-11-07.md) then retained 8/32
+as an undeployed short-input candidate; full prefill/generation checks remain.
 Memory management remains a separate source of stalls; the earlier compaction
 setting experiments did not establish a stable win and remain reverted.
 
-Before making this a serving default, check the cold cost, then use a limited
-real-traffic trial to confirm useful reuse on the actual request path. Continue raw kernel work
+Before making this a persistent default, complete the limited real-traffic
+trial to confirm useful reuse on the actual request path. Continue raw kernel work
 independently; this experiment has not changed its throughput baseline.
 The roughly 6.65-second OpenClaw session-setup stage is still unresolved.
 Source inspection narrows it to session preparation (including initial context
@@ -176,14 +180,17 @@ operation. No Mac code/configuration was changed for these investigations.
 
 The unchanged private-8083 preview was restored at **18:21:53 UTC**, loaded
 and idle. The temporary `91-cache-boundary.conf` override was removed; the
-message-boundary option remains off, source experiments remain undeployed,
-and boot promotion remains pending.
+message-boundary option was off after that comparison. Source experiments
+remain undeployed and boot promotion remains pending.
 
 After the traced follow-up, the same preview was restored at **18:38:35 UTC**,
 loaded and idle. `91-cache-boundary-trace.conf` was removed. Neither the cache
-option nor tracing is enabled in serving; the short-read setting is unchanged.
+option nor tracing was enabled after that comparison; short-read was unchanged.
 
 The later short-read diagnostic restored the same baseline at **18:49:50 UTC**.
+The small-batch test restored it at **19:00:59 UTC**. The separate live
+checkpoint trial began at **19:04:22 UTC**, with short-read 64 and stream
+minimum 128; see the current-state link above.
 
 ## Reproduction
 

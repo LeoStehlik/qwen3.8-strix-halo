@@ -1,0 +1,827 @@
+{
+  "arms": {
+    "stream128a": [
+      {
+        "padding_rows": 0,
+        "turn": 0,
+        "wall_s": 21.34106321299987,
+        "prefill_ms": 19088.0,
+        "read_tokens": 20618,
+        "reused_tokens": 0,
+        "answer_correct": true,
+        "tail_tokens": 43,
+        "request_sha256": "668a7030e825faf6b11b3704ba3c3bd526e9c487e30879005a9d2cbdfaa5b849",
+        "rendered_sha256": "0ab0dedb8a5fb98064c8fdc9e5386765861fbd1cf1b0c82f0e443baea824fad2",
+        "output_sha256": "43db0218111509d7521f03691748377213fb7ebe3ab3955e06b3485b8b0af529",
+        "trace": {
+          "r0_ms": 0.0,
+          "segments": [
+            {
+              "tokens": 16856,
+              "path": "batched",
+              "ms": 14225.7
+            },
+            {
+              "tokens": 3712,
+              "path": "batched",
+              "ms": 3415.6
+            },
+            {
+              "tokens": 43,
+              "path": "batched",
+              "ms": 1239.3
+            },
+            {
+              "tokens": 6,
+              "path": "windows",
+              "ms": 80.0
+            }
+          ],
+          "checkpoints": [
+            {
+              "tokens": 16384,
+              "sync_ms": 0.0,
+              "save_ms": 42.1
+            },
+            {
+              "tokens": 16856,
+              "sync_ms": 0.0,
+              "save_ms": 41.1
+            },
+            {
+              "tokens": 20568,
+              "sync_ms": 0.0,
+              "save_ms": 40.2
+            },
+            {
+              "tokens": 20611,
+              "sync_ms": 0.0,
+              "save_ms": 20.8
+            }
+          ],
+          "prompt_tokens": 20618,
+          "preparation_ms": 25.2,
+          "prompt_total_ms": 19088.0
+        },
+        "kfd_evicted_delta_ms": {
+          "26903/stats_35564": 3535,
+          "26893/stats_35564": 3013
+        },
+        "vmstat_delta": {
+          "pswpin": 2376,
+          "pswpout": 13,
+          "pgmajfault": 1957,
+          "pgscan_kswapd": 940657,
+          "pgscan_anon": 43,
+          "pgscan_file": 940614,
+          "pgmigrate_success": 551623,
+          "pgmigrate_fail": 32464,
+          "compact_migrate_scanned": 3133073,
+          "compact_free_scanned": 1906085,
+          "compact_isolated": 1136198,
+          "compact_stall": 5,
+          "compact_fail": 5,
+          "compact_daemon_wake": 5,
+          "compact_daemon_migrate_scanned": 3126477,
+          "compact_daemon_free_scanned": 1905314
+        }
+      },
+      {
+        "padding_rows": 0,
+        "turn": 1,
+        "wall_s": 4.200776626999868,
+        "prefill_ms": 3387.9,
+        "read_tokens": 1919,
+        "reused_tokens": 20568,
+        "answer_correct": true,
+        "tail_tokens": 43,
+        "request_sha256": "5084d32c0466b95b2003abe8fd90e914d9a56b0020cabb411c80d33352ddf043",
+        "rendered_sha256": "c2c38f3960b9c62f7e3a5301432ab62de40bd7bfa7e480979da28d71336fa2b7",
+        "output_sha256": "6dd3081023d7850423cc22d7e8cd2b65df24a9d1d889bc896aa5c5c1563203b1",
+        "trace": {
+          "r0_ms": 21260.5,
+          "segments": [
+            {
+              "tokens": 1869,
+              "path": "batched",
+              "ms": 1922.9
+            },
+            {
+              "tokens": 43,
+              "path": "batched",
+              "ms": 1185.1
+            },
+            {
+              "tokens": 6,
+              "path": "windows",
+              "ms": 63.4
+            }
+          ],
+          "checkpoints": [
+            {
+              "tokens": 22437,
+              "sync_ms": 0.0,
+              "save_ms": 19.2
+            },
+            {
+              "tokens": 22480,
+              "sync_ms": 0.0,
+              "save_ms": 18.9
+            }
+          ],
+          "prompt_tokens": 22487,
+          "preparation_ms": 171.40000000000146,
+          "prompt_total_ms": 3387.9000000000015
+        },
+        "kfd_evicted_delta_ms": {
+          "26903/stats_35564": 15,
+          "26893/stats_35564": 0
+        },
+        "vmstat_delta": {
+          "pswpin": 18,
+          "pgmajfault": 51
+        }
+      },
+      {
+        "padding_rows": 16,
+        "turn": 0,
+        "wall_s": 16.970875955001247,
+        "prefill_ms": 16150.7,
+        "read_tokens": 20843,
+        "reused_tokens": 0,
+        "answer_correct": true,
+        "tail_tokens": 267,
+        "request_sha256": "57155daa31d68ea137574f70979f50be8960dc32aefebb07142e89d58c005bfe",
+        "rendered_sha256": "8e5246c03e4956d871e67c7fa59290ab166875d8418733549c8234a89197e1d5",
+        "output_sha256": "b9f7469965ba18aa53f9c9c6e99e613ff55f81ea3c3dfea1b5ee3114d8d275b5",
+        "trace": {
+          "r0_ms": 25804.4,
+          "segments": [
+            {
+              "tokens": 16856,
+              "path": "batched",
+              "ms": 11812.0
+            },
+            {
+              "tokens": 3713,
+              "path": "batched",
+              "ms": 3425.4
+            },
+            {
+              "tokens": 267,
+              "path": "batched",
+              "ms": 525.7
+            },
+            {
+              "tokens": 6,
+              "path": "windows",
+              "ms": 63.1
+            }
+          ],
+          "checkpoints": [
+            {
+              "tokens": 16384,
+              "sync_ms": 0.0,
+              "save_ms": 38.8
+            },
+            {
+              "tokens": 16856,
+              "sync_ms": 0.0,
+              "save_ms": 40.1
+            },
+            {
+              "tokens": 20569,
+              "sync_ms": 0.0,
+              "save_ms": 41.5
+            },
+            {
+              "tokens": 20836,
+              "sync_ms": 0.0,
+              "save_ms": 35.4
+            }
+          ],
+          "prompt_tokens": 20843,
+          "preparation_ms": 207.39999999999782,
+          "prompt_total_ms": 16150.699999999997
+        },
+        "kfd_evicted_delta_ms": {
+          "26903/stats_35564": 24,
+          "26893/stats_35564": 0
+        },
+        "vmstat_delta": {
+          "pswpin": 81,
+          "pgmajfault": 210
+        }
+      },
+      {
+        "padding_rows": 16,
+        "turn": 1,
+        "wall_s": 3.546884648998457,
+        "prefill_ms": 2739.1,
+        "read_tokens": 2142,
+        "reused_tokens": 20569,
+        "answer_correct": true,
+        "tail_tokens": 267,
+        "request_sha256": "5a593854a7fe92f0b0d8b591b77e1db48864b8c03894100b25eee8dcca798ac0",
+        "rendered_sha256": "bebb1dc17a6e2f105d2d55866e2cd0bfeed311eccc36031c0d7a2a5348bcca10",
+        "output_sha256": "3b404bd05ca92c7433d57c0f224e44066fd3a6fc35c931a14225a1b05fbfb6eb",
+        "trace": {
+          "r0_ms": 42765.2,
+          "segments": [
+            {
+              "tokens": 1868,
+              "path": "batched",
+              "ms": 1906.3
+            },
+            {
+              "tokens": 267,
+              "path": "batched",
+              "ms": 528.5
+            },
+            {
+              "tokens": 6,
+              "path": "windows",
+              "ms": 63.4
+            }
+          ],
+          "checkpoints": [
+            {
+              "tokens": 22437,
+              "sync_ms": 0.0,
+              "save_ms": 39.7
+            },
+            {
+              "tokens": 22704,
+              "sync_ms": 0.0,
+              "save_ms": 35.3
+            }
+          ],
+          "prompt_tokens": 22711,
+          "preparation_ms": 156.70000000000437,
+          "prompt_total_ms": 2739.100000000006
+        },
+        "kfd_evicted_delta_ms": {
+          "26903/stats_35564": 18,
+          "26893/stats_35564": 0
+        },
+        "vmstat_delta": {
+          "pswpin": 25,
+          "pgmajfault": 31,
+          "pgscan_kswapd": 48768,
+          "pgscan_file": 48768,
+          "compact_daemon_wake": 1
+        }
+      }
+    ],
+    "stream32": [
+      {
+        "padding_rows": 0,
+        "turn": 0,
+        "wall_s": 19.662450273001014,
+        "prefill_ms": 18637.6,
+        "read_tokens": 20618,
+        "reused_tokens": 0,
+        "answer_correct": true,
+        "tail_tokens": 43,
+        "request_sha256": "668a7030e825faf6b11b3704ba3c3bd526e9c487e30879005a9d2cbdfaa5b849",
+        "rendered_sha256": "0ab0dedb8a5fb98064c8fdc9e5386765861fbd1cf1b0c82f0e443baea824fad2",
+        "output_sha256": "43db0218111509d7521f03691748377213fb7ebe3ab3955e06b3485b8b0af529",
+        "trace": {
+          "r0_ms": 0.0,
+          "segments": [
+            {
+              "tokens": 16856,
+              "path": "batched",
+              "ms": 11900.2
+            },
+            {
+              "tokens": 3712,
+              "path": "batched",
+              "ms": 3396.4
+            },
+            {
+              "tokens": 43,
+              "path": "batched",
+              "ms": 310.7
+            },
+            {
+              "tokens": 6,
+              "path": "windows",
+              "ms": 80.4
+            }
+          ],
+          "checkpoints": [
+            {
+              "tokens": 16384,
+              "sync_ms": 0.0,
+              "save_ms": 37.3
+            },
+            {
+              "tokens": 16856,
+              "sync_ms": 0.0,
+              "save_ms": 39.7
+            },
+            {
+              "tokens": 20568,
+              "sync_ms": 0.0,
+              "save_ms": 39.4
+            },
+            {
+              "tokens": 20611,
+              "sync_ms": 0.0,
+              "save_ms": 20.1
+            }
+          ],
+          "prompt_tokens": 20618,
+          "preparation_ms": 2850.5,
+          "prompt_total_ms": 18637.6
+        },
+        "kfd_evicted_delta_ms": {
+          "27080/stats_35564": 4703,
+          "27070/stats_35564": 428
+        },
+        "vmstat_delta": {
+          "pswpin": 2581,
+          "pgmajfault": 2395,
+          "pgscan_kswapd": 135040,
+          "pgscan_file": 135040,
+          "pgmigrate_success": 786501,
+          "pgmigrate_fail": 9515,
+          "compact_migrate_scanned": 24540461,
+          "compact_free_scanned": 3187674,
+          "compact_isolated": 1581986,
+          "compact_daemon_wake": 2,
+          "compact_daemon_migrate_scanned": 24540461,
+          "compact_daemon_free_scanned": 3187674
+        }
+      },
+      {
+        "padding_rows": 0,
+        "turn": 1,
+        "wall_s": 3.325819760999366,
+        "prefill_ms": 2441.9,
+        "read_tokens": 1919,
+        "reused_tokens": 20568,
+        "answer_correct": true,
+        "tail_tokens": 43,
+        "request_sha256": "5084d32c0466b95b2003abe8fd90e914d9a56b0020cabb411c80d33352ddf043",
+        "rendered_sha256": "c2c38f3960b9c62f7e3a5301432ab62de40bd7bfa7e480979da28d71336fa2b7",
+        "output_sha256": "6dd3081023d7850423cc22d7e8cd2b65df24a9d1d889bc896aa5c5c1563203b1",
+        "trace": {
+          "r0_ms": 19591.0,
+          "segments": [
+            {
+              "tokens": 1869,
+              "path": "batched",
+              "ms": 1894.9
+            },
+            {
+              "tokens": 43,
+              "path": "batched",
+              "ms": 270.0
+            },
+            {
+              "tokens": 6,
+              "path": "windows",
+              "ms": 63.4
+            }
+          ],
+          "checkpoints": [
+            {
+              "tokens": 22437,
+              "sync_ms": 0.0,
+              "save_ms": 39.0
+            },
+            {
+              "tokens": 22480,
+              "sync_ms": 0.0,
+              "save_ms": 18.0
+            }
+          ],
+          "prompt_tokens": 22487,
+          "preparation_ms": 150.29999999999927,
+          "prompt_total_ms": 2441.9000000000015
+        },
+        "kfd_evicted_delta_ms": {
+          "27080/stats_35564": 12,
+          "27070/stats_35564": 0
+        },
+        "vmstat_delta": {
+          "pswpin": 177,
+          "pgmajfault": 80
+        }
+      },
+      {
+        "padding_rows": 16,
+        "turn": 0,
+        "wall_s": 16.930419442998755,
+        "prefill_ms": 16102.4,
+        "read_tokens": 20843,
+        "reused_tokens": 0,
+        "answer_correct": true,
+        "tail_tokens": 267,
+        "request_sha256": "57155daa31d68ea137574f70979f50be8960dc32aefebb07142e89d58c005bfe",
+        "rendered_sha256": "8e5246c03e4956d871e67c7fa59290ab166875d8418733549c8234a89197e1d5",
+        "output_sha256": "b9f7469965ba18aa53f9c9c6e99e613ff55f81ea3c3dfea1b5ee3114d8d275b5",
+        "trace": {
+          "r0_ms": 23259.9,
+          "segments": [
+            {
+              "tokens": 16856,
+              "path": "batched",
+              "ms": 11813.2
+            },
+            {
+              "tokens": 3713,
+              "path": "batched",
+              "ms": 3404.5
+            },
+            {
+              "tokens": 267,
+              "path": "batched",
+              "ms": 528.3
+            },
+            {
+              "tokens": 6,
+              "path": "windows",
+              "ms": 63.9
+            }
+          ],
+          "checkpoints": [
+            {
+              "tokens": 16384,
+              "sync_ms": 0.0,
+              "save_ms": 37.5
+            },
+            {
+              "tokens": 16856,
+              "sync_ms": 0.0,
+              "save_ms": 39.1
+            },
+            {
+              "tokens": 20569,
+              "sync_ms": 0.0,
+              "save_ms": 39.6
+            },
+            {
+              "tokens": 20836,
+              "sync_ms": 0.0,
+              "save_ms": 30.8
+            }
+          ],
+          "prompt_tokens": 20843,
+          "preparation_ms": 182.89999999999782,
+          "prompt_total_ms": 16102.400000000001
+        },
+        "kfd_evicted_delta_ms": {
+          "27080/stats_35564": 16,
+          "27070/stats_35564": 0
+        },
+        "vmstat_delta": {
+          "pswpin": 174,
+          "pgmajfault": 99
+        }
+      },
+      {
+        "padding_rows": 16,
+        "turn": 1,
+        "wall_s": 3.521460804000526,
+        "prefill_ms": 2708.3,
+        "read_tokens": 2142,
+        "reused_tokens": 20569,
+        "answer_correct": true,
+        "tail_tokens": 267,
+        "request_sha256": "5a593854a7fe92f0b0d8b591b77e1db48864b8c03894100b25eee8dcca798ac0",
+        "rendered_sha256": "bebb1dc17a6e2f105d2d55866e2cd0bfeed311eccc36031c0d7a2a5348bcca10",
+        "output_sha256": "3b404bd05ca92c7433d57c0f224e44066fd3a6fc35c931a14225a1b05fbfb6eb",
+        "trace": {
+          "r0_ms": 40200.8,
+          "segments": [
+            {
+              "tokens": 1868,
+              "path": "batched",
+              "ms": 1892.3
+            },
+            {
+              "tokens": 267,
+              "path": "batched",
+              "ms": 525.6
+            },
+            {
+              "tokens": 6,
+              "path": "windows",
+              "ms": 63.7
+            }
+          ],
+          "checkpoints": [
+            {
+              "tokens": 22437,
+              "sync_ms": 0.0,
+              "save_ms": 39.5
+            },
+            {
+              "tokens": 22704,
+              "sync_ms": 0.0,
+              "save_ms": 37.3
+            }
+          ],
+          "prompt_tokens": 22711,
+          "preparation_ms": 143.5,
+          "prompt_total_ms": 2708.2999999999956
+        },
+        "kfd_evicted_delta_ms": {
+          "27080/stats_35564": 11,
+          "27070/stats_35564": 0
+        },
+        "vmstat_delta": {
+          "pswpin": 96,
+          "pgmajfault": 73
+        }
+      }
+    ],
+    "stream128b": [
+      {
+        "padding_rows": 0,
+        "turn": 0,
+        "wall_s": 17.953829989999576,
+        "prefill_ms": 16917.6,
+        "read_tokens": 20618,
+        "reused_tokens": 0,
+        "answer_correct": true,
+        "tail_tokens": 43,
+        "request_sha256": "668a7030e825faf6b11b3704ba3c3bd526e9c487e30879005a9d2cbdfaa5b849",
+        "rendered_sha256": "0ab0dedb8a5fb98064c8fdc9e5386765861fbd1cf1b0c82f0e443baea824fad2",
+        "output_sha256": "43db0218111509d7521f03691748377213fb7ebe3ab3955e06b3485b8b0af529",
+        "trace": {
+          "r0_ms": 0.0,
+          "segments": [
+            {
+              "tokens": 16856,
+              "path": "batched",
+              "ms": 12024.1
+            },
+            {
+              "tokens": 3712,
+              "path": "batched",
+              "ms": 3415.6
+            },
+            {
+              "tokens": 43,
+              "path": "batched",
+              "ms": 1273.9
+            },
+            {
+              "tokens": 6,
+              "path": "windows",
+              "ms": 80.3
+            }
+          ],
+          "checkpoints": [
+            {
+              "tokens": 16384,
+              "sync_ms": 0.0,
+              "save_ms": 41.1
+            },
+            {
+              "tokens": 16856,
+              "sync_ms": 0.0,
+              "save_ms": 40.3
+            },
+            {
+              "tokens": 20568,
+              "sync_ms": 0.0,
+              "save_ms": 39.5
+            },
+            {
+              "tokens": 20611,
+              "sync_ms": 0.0,
+              "save_ms": 18.9
+            }
+          ],
+          "prompt_tokens": 20618,
+          "preparation_ms": 24.8,
+          "prompt_total_ms": 16917.6
+        },
+        "kfd_evicted_delta_ms": {
+          "27345/stats_35564": 114,
+          "27336/stats_35564": 19
+        },
+        "vmstat_delta": {
+          "pswpin": 3092,
+          "pgmajfault": 2678,
+          "pgscan_kswapd": 146432,
+          "pgscan_file": 146432,
+          "pgmigrate_success": 9418,
+          "pgmigrate_fail": 200,
+          "compact_migrate_scanned": 18743,
+          "compact_free_scanned": 20796,
+          "compact_isolated": 19166,
+          "compact_stall": 4,
+          "compact_success": 4,
+          "compact_daemon_wake": 2,
+          "compact_daemon_migrate_scanned": 15912,
+          "compact_daemon_free_scanned": 16531
+        }
+      },
+      {
+        "padding_rows": 0,
+        "turn": 1,
+        "wall_s": 4.2319200059992,
+        "prefill_ms": 3375.7,
+        "read_tokens": 1919,
+        "reused_tokens": 20568,
+        "answer_correct": true,
+        "tail_tokens": 43,
+        "request_sha256": "5084d32c0466b95b2003abe8fd90e914d9a56b0020cabb411c80d33352ddf043",
+        "rendered_sha256": "c2c38f3960b9c62f7e3a5301432ab62de40bd7bfa7e480979da28d71336fa2b7",
+        "output_sha256": "6dd3081023d7850423cc22d7e8cd2b65df24a9d1d889bc896aa5c5c1563203b1",
+        "trace": {
+          "r0_ms": 17871.9,
+          "segments": [
+            {
+              "tokens": 1869,
+              "path": "batched",
+              "ms": 1895.2
+            },
+            {
+              "tokens": 43,
+              "path": "batched",
+              "ms": 1196.8
+            },
+            {
+              "tokens": 6,
+              "path": "windows",
+              "ms": 63.4
+            }
+          ],
+          "checkpoints": [
+            {
+              "tokens": 22437,
+              "sync_ms": 0.0,
+              "save_ms": 39.0
+            },
+            {
+              "tokens": 22480,
+              "sync_ms": 0.0,
+              "save_ms": 18.9
+            }
+          ],
+          "prompt_tokens": 22487,
+          "preparation_ms": 156.29999999999927,
+          "prompt_total_ms": 3375.699999999997
+        },
+        "kfd_evicted_delta_ms": {
+          "27345/stats_35564": 12,
+          "27336/stats_35564": 0
+        },
+        "vmstat_delta": {
+          "pswpin": 604,
+          "pgmajfault": 378
+        }
+      },
+      {
+        "padding_rows": 16,
+        "turn": 0,
+        "wall_s": 17.0977575600009,
+        "prefill_ms": 16270.5,
+        "read_tokens": 20843,
+        "reused_tokens": 0,
+        "answer_correct": true,
+        "tail_tokens": 267,
+        "request_sha256": "57155daa31d68ea137574f70979f50be8960dc32aefebb07142e89d58c005bfe",
+        "rendered_sha256": "8e5246c03e4956d871e67c7fa59290ab166875d8418733549c8234a89197e1d5",
+        "output_sha256": "b9f7469965ba18aa53f9c9c6e99e613ff55f81ea3c3dfea1b5ee3114d8d275b5",
+        "trace": {
+          "r0_ms": 22439.1,
+          "segments": [
+            {
+              "tokens": 16856,
+              "path": "batched",
+              "ms": 11920.9
+            },
+            {
+              "tokens": 3713,
+              "path": "batched",
+              "ms": 3425.3
+            },
+            {
+              "tokens": 267,
+              "path": "batched",
+              "ms": 558.0
+            },
+            {
+              "tokens": 6,
+              "path": "windows",
+              "ms": 63.3
+            }
+          ],
+          "checkpoints": [
+            {
+              "tokens": 16384,
+              "sync_ms": 0.0,
+              "save_ms": 38.5
+            },
+            {
+              "tokens": 16856,
+              "sync_ms": 0.0,
+              "save_ms": 39.2
+            },
+            {
+              "tokens": 20569,
+              "sync_ms": 0.0,
+              "save_ms": 38.8
+            },
+            {
+              "tokens": 20836,
+              "sync_ms": 0.0,
+              "save_ms": 35.7
+            }
+          ],
+          "prompt_tokens": 20843,
+          "preparation_ms": 189.0,
+          "prompt_total_ms": 16270.400000000001
+        },
+        "kfd_evicted_delta_ms": {
+          "27345/stats_35564": 16,
+          "27336/stats_35564": 0
+        },
+        "vmstat_delta": {
+          "pswpin": 1052,
+          "pgmajfault": 601
+        }
+      },
+      {
+        "padding_rows": 16,
+        "turn": 1,
+        "wall_s": 3.56913339699895,
+        "prefill_ms": 2721.0,
+        "read_tokens": 2142,
+        "reused_tokens": 20569,
+        "answer_correct": true,
+        "tail_tokens": 267,
+        "request_sha256": "5a593854a7fe92f0b0d8b591b77e1db48864b8c03894100b25eee8dcca798ac0",
+        "rendered_sha256": "bebb1dc17a6e2f105d2d55866e2cd0bfeed311eccc36031c0d7a2a5348bcca10",
+        "output_sha256": "3b404bd05ca92c7433d57c0f224e44066fd3a6fc35c931a14225a1b05fbfb6eb",
+        "trace": {
+          "r0_ms": 39550.1,
+          "segments": [
+            {
+              "tokens": 1868,
+              "path": "batched",
+              "ms": 1895.2
+            },
+            {
+              "tokens": 267,
+              "path": "batched",
+              "ms": 524.0
+            },
+            {
+              "tokens": 6,
+              "path": "windows",
+              "ms": 63.6
+            }
+          ],
+          "checkpoints": [
+            {
+              "tokens": 22437,
+              "sync_ms": 0.0,
+              "save_ms": 39.8
+            },
+            {
+              "tokens": 22704,
+              "sync_ms": 0.0,
+              "save_ms": 38.0
+            }
+          ],
+          "prompt_tokens": 22711,
+          "preparation_ms": 154.09999999999854,
+          "prompt_total_ms": 2721.0
+        },
+        "kfd_evicted_delta_ms": {
+          "27345/stats_35564": 12,
+          "27336/stats_35564": 0
+        },
+        "vmstat_delta": {
+          "pswpin": 14,
+          "pgmajfault": 14,
+          "pgscan_kswapd": 143360,
+          "pgscan_file": 143360,
+          "compact_daemon_wake": 1
+        }
+      }
+    ]
+  },
+  "limits": [
+    "Trace preparation and prompt total are elapsed intervals. Read segments can include periodic checkpoint saves; do not add nested timings as disjoint costs.",
+    "KFD counters are per process/GPU; vision and main-engine evictions may overlap and must not be summed as wall time.",
+    "VM counters are host-wide and cover the whole request, not an individually attributed stage.",
+    "Diagnostic trace changes logging overhead; use the earlier untraced comparison for primary warm performance."
+  ],
+  "complete_comparison": true,
+  "matching_hashes": {
+    "request_sha256": true,
+    "rendered_sha256": true,
+    "output_sha256": true
+  },
+  "all_state_canaries_correct": true
+}

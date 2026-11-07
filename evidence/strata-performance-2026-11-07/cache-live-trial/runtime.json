@@ -1,0 +1,15 @@
+{
+  "utc": "2026-11-07T19:05:53.243864+00:00",
+  "frontend_pid": 27955,
+  "engine_pid": 27978,
+  "actual_engine_environment": {
+    "STRATA_CACHE_MESSAGE_BOUNDARY": "1",
+    "STRATA_PREFILL_STREAM_MIN": "128"
+  },
+  "short_read_cli_override": false,
+  "short_read_default": 64,
+  "runtime_overrides": [
+    "90-live-preview.conf"
+  ],
+  "boot_enabled": "disabled"
+}

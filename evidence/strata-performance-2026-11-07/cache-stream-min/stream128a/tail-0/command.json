@@ -1,0 +1,23 @@
+[
+  "/home/less/.local/share/strata/terminal/0.1.57/python/bin/python3",
+  "/home/less/worktrees/qwen38-strata-20261106/benchmarks/strata-cache-boundary.py",
+  "--url",
+  "http://127.0.0.1:8084",
+  "--model",
+  "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+  "--terminal",
+  "/home/less/.local/share/strata/terminal/0.1.57",
+  "--tokenizer",
+  "/home/less/models/strata-flash-next/packs/unsloth-ud-q4_k_xl/tokenizer",
+  "--out",
+  "/home/less/.cache/strata-evaluation-20261107/cache-stream-min/stream128a/tail-0/results.json",
+  "--modes",
+  "moving",
+  "--turns",
+  "2",
+  "--runtime-padding-rows",
+  "0",
+  "--seed",
+  "short-read-20261107-pad0",
+  "--host-metrics"
+]

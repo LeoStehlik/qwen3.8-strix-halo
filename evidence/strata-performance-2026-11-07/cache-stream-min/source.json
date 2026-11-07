@@ -1,0 +1,29 @@
+{
+  "engine_sha256": "bce2f61ca0f970a1640aafa77925c0908f060243cffcd1ad10e3843b35eed476",
+  "source_base": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "varied_environment": {
+    "STRATA_PREFILL_STREAM_MIN": [
+      128,
+      32,
+      128
+    ]
+  },
+  "fixed": {
+    "--short-read": 8,
+    "STRATA_CACHE_MESSAGE_BOUNDARY": 1,
+    "STRATA_TRACE": 1
+  },
+  "runtime_tail_tokens": [
+    43,
+    267
+  ],
+  "turns_per_case": 2,
+  "mode": "moving",
+  "decision": "Retain 8/32 as an undeployed candidate; full prefill and longer generation checks remain.",
+  "limits": [
+    "One candidate arm; comparison with the earlier 64/128 winner spans experiments.",
+    "Cold requests overlap variable GPU queue evictions.",
+    "Draft behavior varies between controls; no unchanged generation-speed claim.",
+    "This is short-continuation latency, not raw long-prefill throughput."
+  ]
+}

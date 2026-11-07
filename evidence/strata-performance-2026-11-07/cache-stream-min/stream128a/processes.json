@@ -1,0 +1,13 @@
+{
+  "frontend_pid": 26879,
+  "children": [
+    {
+      "pid": 26893,
+      "comm": "strata-vision-h"
+    },
+    {
+      "pid": 26903,
+      "comm": "strata-host"
+    }
+  ]
+}

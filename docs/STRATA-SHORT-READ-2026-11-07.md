@@ -55,17 +55,18 @@ With the current threshold of 128, a batched 43-token segment is excluded;
 267 tokens can take it. This is a concrete dispatch distinction, **not yet
 a measured explanation of the entire timing difference**.
 
-The next isolated hypothesis is a lower small-batch threshold with the
-8-token short-read cutoff held fixed, followed by comparison with the winning
-64/128 configuration. Such a change also affects buffer sizing and can change
-numerical results. Keep its contribution separate, verify canary/state results,
-and check substantial cold prefill before considering adoption. A segment
-speedup would not itself establish 1,700–2,000 tok/s raw prefill.
+The [follow-up threshold comparison](STRATA-SMALL-BATCH-2026-11-07.md) lowered
+that threshold with short-read 8 held fixed and retained 8/32 as a candidate.
+Direct comparison with the 64/128 winner, substantial cold prefill and longer
+generation checks still remain. The threshold affects buffer sizing and can
+change numerical results. A segment speedup does not establish the
+1,700–2,000 tok/s raw-prefill target.
 
 The earlier prepared-row and cooperative-expert source experiments remain
 undeployed. No source kernel was edited or compiled during this comparison.
-The boundary-cache option also remains off in serving pending a real-traffic
-trial. The production short-read setting remains its original default of 64.
+The boundary-cache option has since entered a [separate live trial](STRATA-CACHE-LIVE-TRIAL-2026-11-07.md)
+using the original short-read 64 and stream minimum 128. The 8/32 pair is not
+included in that trial.
 The original endpoint was restored loaded and idle at **18:49:50 UTC**;
 `91-cache-short-read.conf` was removed and tracing is off.
 
