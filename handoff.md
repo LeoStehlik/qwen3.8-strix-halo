@@ -5,6 +5,22 @@ renamed from the earlier 27B/DFlash2-specific name on 7 November. The default
 branch landing page links this active investigation; clone URLs are updated.
 
 **The user authorized the bounded follow-up proposed at the stopping checkpoint.**
+The subsequent [cost-aware MTP screen](docs/STRATA-MTP-COST-2026-11-07.md)
+also found no reliable gain: off/on/off gave 41.42/39.86/41.31 tok/s at 16K
+and 41.35/40.77/38.95 at 64K. The latter is inconclusive within control drift;
+do not compare only against the slower return control. All 16K hashes match;
+the enabled 64K output differs from both matching controls. No quality claim
+or promotion follows. The original runtime override was restored byte for
+byte at **21:59:11 UTC**, with cost-aware mode unset and serving idle/loaded.
+
+The [prepared-weight capacity analysis](docs/STRATA-EXPERT-WEIGHT-CAPACITY-2026-11-07.md)
+narrows the spare-RAM idea: full FP16 expert copies would add 225 GiB if the
+original quantized copies remain for decode. An 8 GiB selective cache, ranked
+on the first full chunk, covers 23.2% of routed rows in the next three chunks;
+16 GiB covers 34.5%. This is one repeated-source fixture, not a measured time
+saving or a safe live allocation recommendation. No prepared-weight kernel or
+cache manager has been built. An operator win must precede any such integration.
+
 The [MTP 4/6/8/4 comparison](docs/STRATA-MTP-WINDOW-2026-11-07.md) found no
 reliable generation improvement. Window 4 and the original runtime override
 were restored at 21:16:19 UTC; serving is loaded. The subsequent
@@ -27,7 +43,7 @@ remains unproven. Do not repeat these losing screens or silently promote the
 small earlier operator candidates. Further kernel work needs a different
 mechanism and a new bounded experiment; no 100–200 / 10–20 tok/s gain emerged.
 
-**Current live state, last restored at 21:16:19 UTC:** the packaged optimized endpoint has
+**Current live state, last restored at 21:59:11 UTC:** the packaged optimized endpoint has
 `STRATA_CACHE_MESSAGE_BOUNDARY=1` for a [limited live trial](docs/STRATA-CACHE-LIVE-TRIAL-2026-11-07.md).
 Short-read remains 64 and stream minimum 128; no experimental source kernel
 or tracing is serving. Health and actual-process flags were verified, and the

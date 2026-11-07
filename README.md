@@ -16,7 +16,10 @@ no reliable generation gain, so window 4 is restored. The subsequent
 [prepared-activation prototype](docs/STRATA-EXPERT-PREPARED-2026-11-07.md):
 exact outputs, but no repeatable operator gain in reversed-order comparisons.
 The extra 280 MiB fits; this implementation is rejected. No source patch is
-serving. The earlier
+serving. The later [cost-aware MTP comparison](docs/STRATA-MTP-COST-2026-11-07.md)
+also found no reliable gain; the original policy is restored. A
+[selective prepared-weight cache](docs/STRATA-EXPERT-WEIGHT-CAPACITY-2026-11-07.md)
+has routing/capacity analysis only, with no speedup demonstrated. The earlier
 [checkpoint](docs/STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md) records the
 decision to narrow this investigation.
 

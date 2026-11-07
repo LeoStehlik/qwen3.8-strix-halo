@@ -1,0 +1,5 @@
+{
+  "probabilistic_draft_startup_message_present": false,
+  "source_default": "Off unless STRATA_SPEC_PROB requests it; enabled path emits the startup message.",
+  "sampling_mode_not_changed_by_cost_override": true
+}

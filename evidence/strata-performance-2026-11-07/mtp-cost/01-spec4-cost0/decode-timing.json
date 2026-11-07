@@ -1,0 +1,9 @@
+{
+  "lines": [
+    "strata decode timing: 7 windows, avg T 2.71, 2.29 tokens/window, 308.03 ms/window = adapt wait 0.00 + verify 300.96 (GPU-reach wait 0.00 + per-layer host 0.00 [plan 0.00 actq 0.00 jobs 0.00 CPU 0.00] + stage 0.91) + commit/emit 0.02 + draft 7.05 + adapt join 0.00 + other 0.00; per layer-window: CPU experts 0.00 (0.00 entries), VRAM hits 0.00, PCIe 0.00; 0.0 swaps/window",
+    "strata decode timing: 227 windows, avg T 2.97, 2.26 tokens/window, 55.08 ms/window = adapt wait 0.00 + verify 46.11 (GPU-reach wait 0.00 + per-layer host 0.00 [plan 0.00 actq 0.00 jobs 0.00 CPU 0.00] + stage 0.86) + commit/emit 0.00 + draft 8.96 + adapt join 0.00 + other 0.00; per layer-window: CPU experts 0.00 (0.00 entries), VRAM hits 0.00, PCIe 0.00; 0.0 swaps/window",
+    "strata decode timing: 210 windows, avg T 3.10, 2.35 tokens/window, 56.23 ms/window = adapt wait 0.00 + verify 47.08 (GPU-reach wait 0.00 + per-layer host 0.00 [plan 0.00 actq 0.00 jobs 0.00 CPU 0.00] + stage 0.76) + commit/emit 0.00 + draft 9.14 + adapt join 0.00 + other 0.00; per layer-window: CPU experts 0.00 (0.00 entries), VRAM hits 0.00, PCIe 0.00; 0.0 swaps/window",
+    "strata decode timing: 212 windows, avg T 3.17, 2.42 tokens/window, 58.89 ms/window = adapt wait 0.00 + verify 48.38 (GPU-reach wait 0.00 + per-layer host 0.00 [plan 0.00 actq 0.00 jobs 0.00 CPU 0.00] + stage 1.23) + commit/emit 0.00 + draft 10.51 + adapt join 0.00 + other 0.00; per layer-window: CPU experts 0.00 (0.00 entries), VRAM hits 0.00, PCIe 0.00; 0.0 swaps/window",
+    "strata decode timing: 204 windows, avg T 3.11, 2.42 tokens/window, 58.30 ms/window = adapt wait 0.00 + verify 48.15 (GPU-reach wait 0.00 + per-layer host 0.00 [plan 0.00 actq 0.00 jobs 0.00 CPU 0.00] + stage 0.94) + commit/emit 0.01 + draft 10.15 + adapt join 0.00 + other 0.00; per layer-window: CPU experts 0.00 (0.00 entries), VRAM hits 0.00, PCIe 0.00; 0.0 swaps/window"
+  ]
+}

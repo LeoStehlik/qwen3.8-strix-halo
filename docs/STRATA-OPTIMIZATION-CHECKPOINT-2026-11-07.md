@@ -9,6 +9,11 @@ capacity was sufficient; it did not make this implementation faster. No new
 code is deployed. The text below preserves the assessment made before that
 follow-up; future-tense proposals below are historical, not pending tasks.
 
+The subsequent [cost-aware MTP comparison](STRATA-MTP-COST-2026-11-07.md)
+found no reliable gain either. A
+[selective prepared-weight capacity analysis](STRATA-EXPERT-WEIGHT-CAPACITY-2026-11-07.md)
+is now recorded, but no corresponding kernel or performance result exists.
+
 The user asked to step back after roughly seven hours and assess whether
 further low-level work or hardware tuning has a credible larger payoff.
 **Recommendation: stop the current raw-prefill search at the working baseline.**

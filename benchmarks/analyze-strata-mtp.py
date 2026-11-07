@@ -11,8 +11,8 @@ ap.add_argument('--out', type=Path, required=True)
 a = ap.parse_args()
 report = {'arms': [], 'limits': [
     'Public repeated-source fixture, not an actual OpenClaw turn or a quality evaluation.',
-    'OpenClaw sampling is held fixed; different window sizes may still produce different text.',
-    '--spec changes the MTP cap and the default suffix-lookup cap; this is a packaged-setting comparison.',
+    'OpenClaw sampling is held fixed; different window sizes or cost policies may still produce different text.',
+    'Where --spec changes, both the MTP cap and the default suffix-lookup cap change; cost-only arms retain both caps.',
     'Native timings are rounded. API completion counts can include injected thinking-transition tokens.',
     'Decode timing logging is common to all arms; detailed GPU verification profiling is off.']}
 timing = re.compile(r'(\d+) windows, avg T ([\d.]+), ([\d.]+) tokens/window, ([\d.]+) ms/window = .*?verify ([\d.]+).*?draft ([\d.]+)')
@@ -24,7 +24,7 @@ for directory in a.directories:
         assert data['completed']
         native = json.loads((d / 'native-accounting.json').read_text())['groups']
         assert len(native) == len(data['runs'])
-        row = {'directory': str(d), 'window': arm['spec_window'], 'sampling': data['sampling'],
+        row = {'directory': str(d), 'window': arm['spec_window'], 'cost_aware': arm.get('cost_aware'), 'sampling': data['sampling'],
                'engine': arm['before']['engine'], 'runs': [],
                'runner_completed': summary['completed'], 'runner_error': summary.get('error')}
         for run, segments in zip(data['runs'], native):
@@ -64,14 +64,14 @@ assert report['arms']
 contexts = sorted({r['target_context'] for arm in report['arms'] for r in arm['runs']})
 report['context_comparisons'] = {}
 for context in contexts:
-    rows = [(arm['window'], r) for arm in report['arms'] for r in arm['runs'] if r['target_context'] == context]
-    assert len({r['messages_sha256'] for _, r in rows}) == 1, 'Prompts differ between arms'
+    rows = [(arm['window'], arm['cost_aware'], r) for arm in report['arms'] for r in arm['runs'] if r['target_context'] == context]
+    assert len({r['messages_sha256'] for _, _, r in rows}) == 1, 'Prompts differ between arms'
     report['context_comparisons'][str(context)] = {
-        'identical_output_hashes': len({r['output_sha256'] for _, r in rows}) == 1,
-        'ordered_results': [{'window': w, 'tok_s': r['native_generation_tok_s'],
+        'identical_output_hashes': len({r['output_sha256'] for _, _, r in rows}) == 1,
+        'ordered_results': [{'window': w, 'cost_aware': cost, 'tok_s': r['native_generation_tok_s'],
                              'tokens_per_window': r['tokens_per_window'],
                              'verify_ms_per_window': r['verify_ms_per_window'],
-                             'draft_ms_per_window': r['draft_ms_per_window']} for w, r in rows]}
+                             'draft_ms_per_window': r['draft_ms_per_window']} for w, cost, r in rows]}
 a.out.parent.mkdir(parents=True, exist_ok=True)
 a.out.write_text(json.dumps(report, indent=2) + '\n')
 print(json.dumps(report['context_comparisons'], indent=2))

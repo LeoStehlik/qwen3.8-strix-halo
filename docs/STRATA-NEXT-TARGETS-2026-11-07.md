@@ -10,6 +10,12 @@ path showed a repeatable gain in the reverse-order screen. That bounded
 follow-up is complete; no candidate is promoted. The target remains unmet
 and the hardware ceiling unproven.
 
+The later [cost-aware MTP screen](STRATA-MTP-COST-2026-11-07.md) also found no
+reliable improvement; serving was restored at 21:59:11 UTC. The
+[prepared-weight capacity study](STRATA-EXPERT-WEIGHT-CAPACITY-2026-11-07.md)
+provides constraints for another possible mechanism, not a measured gain.
+Keep it distinct from the rejected prepared-activation implementation.
+
 The user raised the objective and manually resumed the Codex goal. These
 objectives supersede the earlier 1,100 / 50–60 tok/s target, even if the goal
 panel still displays that older wording:

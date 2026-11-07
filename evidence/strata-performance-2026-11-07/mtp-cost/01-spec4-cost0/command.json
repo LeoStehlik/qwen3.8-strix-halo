@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/less/worktrees/qwen38-strata-20261106/benchmarks/strata-prefill.py",
+    "--url",
+    "http://127.0.0.1:8084",
+    "--model",
+    "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+    "--fixture",
+    "/home/less/qwen3.6-35b-a3b-strix-halo/benchmarks/fixtures/prompt.txt",
+    "--out",
+    "/home/less/.cache/strata-evaluation-20261107/mtp-cost/01-spec4-cost0/results.json",
+    "--sizes",
+    "16384",
+    "65536",
+    "--repeat",
+    "1",
+    "--max-tokens",
+    "1024",
+    "--presence-penalty",
+    "0",
+    "--sampling-preset",
+    "openclaw",
+    "--nonce-seed",
+    "mtp-window-screen-20261107"
+  ],
+  "extra_env": {
+    "STRATA_API_KEY": "<from private profile>"
+  }
+}

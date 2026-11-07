@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Isolated packaged-engine MTP-window 4/6/8/4 comparison.
+"""Isolated packaged-engine MTP-window or cost-policy comparison.
 
 Temporarily redirects an existing user service to loopback, preserving all its
 other runtime settings. Restores serving in finally. No OpenClaw calls. Keep
@@ -90,6 +90,8 @@ def main():
     ap.add_argument('--sizes', type=int, nargs='+', default=[16384, 65536])
     ap.add_argument('--repeat', type=int, default=1)
     ap.add_argument('--windows', type=int, nargs='+', default=[4, 6, 8, 4])
+    ap.add_argument('--cost-aware', type=int, nargs='+', choices=[0, 1],
+                    help='Optional STRATA_SPEC_COST setting for each window arm; otherwise preserve baseline')
     ap.add_argument('--max-tokens', type=int, default=1024)
     ap.add_argument('--sampling-preset', choices=['greedy', 'openclaw'], default='openclaw')
     args = ap.parse_args()
@@ -98,6 +100,8 @@ def main():
     args.out = args.out.resolve()
     if args.repeat < 1 or args.max_tokens < 1 or any(n < 1024 for n in args.sizes) or any(w not in (4, 6, 8) for w in args.windows):
         ap.error('Positive repeats/output, prompt sizes >=1024 and windows 4/6/8 required')
+    if args.cost_aware is not None and len(args.cost_aware) != len(args.windows):
+        ap.error('--cost-aware must provide one value for each --windows arm')
     cfg = json.loads(args.profile.read_text())
     key = cfg['api_key']
     executable = shutil.which('strata')
@@ -113,7 +117,7 @@ def main():
         raise RuntimeError('Expected existing runtime settings; refusing an unspecified baseline')
     bench_url = f'http://127.0.0.1:{args.benchmark_port}'
     report = {'protocol': 'strata-mtp-window-v1', 'started_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
-              'windows': args.windows, 'sizes': args.sizes, 'repeat': args.repeat,
+              'windows': args.windows, 'cost_aware': args.cost_aware, 'sizes': args.sizes, 'repeat': args.repeat,
               'sampling_preset': args.sampling_preset, 'max_tokens': args.max_tokens,
               'limits': ['--spec counts the current token plus drafts.',
                          'Default suffix lookup also changes its cap: 6/8/8 for spec 4/6/8.',
@@ -211,6 +215,7 @@ def main():
 
     report['serving_before'] = idle(args.live_url)
     report['process_before'] = process_flags(cfg['log'])
+    assert report['process_before']['flags']['STRATA_SPEC_COST'] == '<unset>'
     assert report['process_before']['flags']['STRATA_CACHE_MESSAGE_BOUNDARY'] == '1'
     assert report['process_before']['flags']['STRATA_PREFILL_STREAM_MIN'] == '128'
     for name, content in originals.items():
@@ -219,11 +224,12 @@ def main():
     touched = False
     try:
         for index, window in enumerate(report['windows']):
+            cost = None if args.cost_aware is None else args.cost_aware[index]
             if index:
                 idle(bench_url)
             else:
                 idle(args.live_url)
-            arm_dir = args.out / f'{index+1:02d}-spec{window}'
+            arm_dir = args.out / (f'{index+1:02d}-spec{window}' + (f'-cost{cost}' if cost is not None else ''))
             arm_dir.mkdir(mode=0o700)
             profile = {**cfg, 'host': '127.0.0.1', 'port': args.benchmark_port, 'log': str(arm_dir / 'engine.log')}
             for field in ('args', 'args_written'):
@@ -240,14 +246,15 @@ def main():
             service('stop', args.unit)
             touched = True
             # The measured flags and cache trial stay inherited unchanged.
-            # Only --spec differs between arms; timing reporting is common.
+            # Only the specified window/cost policy differs; reporting is common.
             override.write_text('[Service]\nExecStart=\nExecStart=' + unit_arg(executable) +
                 ' serve --profile ' + unit_arg(str(private)) + f' --host 127.0.0.1 --port {args.benchmark_port}\n' +
-                'Environment=STRATA_DECODE_TIMING=1\n')
+                'Environment=STRATA_DECODE_TIMING=1\n' +
+                (f'Environment=STRATA_SPEC_COST={cost}\n' if cost is not None else ''))
             service('daemon-reload')
             service('start', args.unit)
             print(json.dumps({'event': 'arm_start', 'arm': arm_dir.name}), flush=True)
-            record = {'arm': arm_dir.name, 'spec_window': window, **loaded(bench_url), 'before': idle(bench_url),
+            record = {'arm': arm_dir.name, 'spec_window': window, 'cost_aware': cost, **loaded(bench_url), 'before': idle(bench_url),
                       'process': process_flags(profile['log']), 'host_before': host()}
             flags = record['process']['flags']
             assert flags['STRATA_PF_PAD'] == '<unset>' and flags['STRATA_PF_GEMM'] == '1'
@@ -255,7 +262,7 @@ def main():
             engine = record['before']['engine']
             assert int(engine['mtp_max']) == window and int(engine['spec']) == min(window + 2, 8)
             assert flags['STRATA_DECODE_TIMING'] == '1' and flags['STRATA_VERIFY_PROFILE'] == '<unset>'
-            assert flags['STRATA_SPEC_COST'] == '<unset>'
+            assert flags['STRATA_SPEC_COST'] == ('<unset>' if cost is None else str(cost))
             assert flags['STRATA_PF_F16'] == '1' and flags['STRATA_CACHE_MESSAGE_BOUNDARY'] == '1'
             assert flags['STRATA_PREFILL_STREAM_MIN'] == '128' and not record['process']['short_read_override']
             assert flags['STRATA_TRACE'] == '<unset>' and flags['STRATA_PREFILL_TIMING'] == '<unset>'
