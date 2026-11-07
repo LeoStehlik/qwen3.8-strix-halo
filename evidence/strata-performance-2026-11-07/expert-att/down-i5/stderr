@@ -1,0 +1,29 @@
+W1107 21:17:31.031336   38884 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.038296 sec
+W1107 21:17:31.041956   38884 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq --no-ref --only=Q4_K / Q5_1 --chunks=16384' ::     0.000000 sec
+W1107 21:17:31.218095   38884 tool.cpp:3082] HSA version 1.21.0 initialized (instance=0)
+E1107 21:17:31.224810   38884 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-att/down-i5/expert_gfx1151_code_object_id_1.out
+E1107 21:17:31.238084   38884 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-att/down-i5/expert_gfx1151_code_object_id_2.out
+E1107 21:17:31.242427   38884 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-att/down-i5/expert_gfx1151_code_object_id_3.out
+E1107 21:17:31.891726   38884 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-att/down-i5/expert_gfx1151_code_object_id_4.out
+E1107 21:17:32.061361   38887 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-att/down-i5/expert_7696_shader_engine_0_21.att
+W1107 21:17:35.222854   38884 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq --no-ref --only=Q4_K / Q5_1 --chunks=16384' ::     4.180896 sec
+W1107 21:17:35.233501   38884 generateRocpd.cpp:1054] writing SQL database for process 38884 on node 3418166753
+E1107 21:17:35.234020   38884 generateRocpd.cpp:1078] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-att/down-i5/expert_results.db (UUID=00000161-0f73-7f73-a331-cf9376249cc8)
+W1107 21:17:36.007798   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd_string             ::     0.004797 sec
+W1107 21:17:36.007812   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd_info_node          ::     0.000003 sec
+W1107 21:17:36.008095   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd_info_process       ::     0.000280 sec
+W1107 21:17:36.008203   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd_info_agent         ::     0.000103 sec
+W1107 21:17:36.008207   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd_info_pmc           ::     0.000002 sec
+W1107 21:17:36.013018   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd kernel info        ::     0.004810 sec
+W1107 21:17:36.013036   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd_region             ::     0.000012 sec
+W1107 21:17:36.013039   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd_kernel_dispatch    ::     0.000001 sec
+W1107 21:17:36.013041   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd_pmc_event          ::     0.000001 sec
+W1107 21:17:36.013044   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd_memory_copy        ::     0.000001 sec
+W1107 21:17:36.013048   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd_memory_allocate    ::     0.000003 sec
+W1107 21:17:36.016531   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd_info_pmc: kfd      ::     0.003482 sec
+W1107 21:17:36.016535   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd_pmc_event: kfd     ::     0.000000 sec
+W1107 21:17:36.016956   38884 simple_timer.cpp:55] SQLite3 generation :: rocpd_flush_pending      ::     0.000418 sec
+W1107 21:17:36.017099   38884 simple_timer.cpp:55] SQLite3 generation :: SQL indexing             ::     0.000141 sec
+W1107 21:17:36.021063   38884 simple_timer.cpp:55] SQLite3 generation :: total                    ::     0.787568 sec
+W1107 21:17:42.737598   38884 simple_timer.cpp:55] [rocprofv3] output generation ::     7.510956 sec
+W1107 21:17:42.737725   38884 simple_timer.cpp:55] [rocprofv3] tool finalization ::     7.511090 sec

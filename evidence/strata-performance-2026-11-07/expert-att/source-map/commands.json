@@ -1,0 +1,24 @@
+{
+  "extract": [
+    [
+      "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/bin/llvm-objcopy",
+      "--dump-section",
+      ".hip_fatbin=/home/less/.cache/strata-evaluation-20261107/expert-att/source-map-reproduction/device.fatbin",
+      "/home/less/.cache/strata-evaluation-20261107/expert-att/source-map-reproduction/moe_f16_kq.debug.o"
+    ],
+    [
+      "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/bin/clang-offload-bundler",
+      "--type=o",
+      "--unbundle",
+      "--input=/home/less/.cache/strata-evaluation-20261107/expert-att/source-map-reproduction/device.fatbin",
+      "--targets=hipv4-amdgcn-amd-amdhsa--gfx1151",
+      "--output=/home/less/.cache/strata-evaluation-20261107/expert-att/source-map-reproduction/debug.co"
+    ]
+  ],
+  "symbolize": [
+    "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/bin/llvm-symbolizer",
+    "--obj=/home/less/.cache/strata-evaluation-20261107/expert-att/source-map-reproduction/debug.co",
+    "--output-style=JSON",
+    "--no-inlines"
+  ]
+}

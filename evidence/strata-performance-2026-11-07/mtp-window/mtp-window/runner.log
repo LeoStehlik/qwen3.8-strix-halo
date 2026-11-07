@@ -1,0 +1,17 @@
+{"event": "arm_start", "arm": "01-spec4"}
+{"event": "loading", "elapsed_s": 0.0, "service_state": "active"}
+{"event": "loading", "elapsed_s": 30.4, "service_state": "active"}
+{"event": "loading", "elapsed_s": 60.5, "service_state": "active"}
+{"event": "loading", "elapsed_s": 92.3, "service_state": "active"}
+{"event": "loading", "elapsed_s": 0.0, "service_state": "active"}
+{"event": "loading", "elapsed_s": 30.3, "service_state": "active"}
+{"event": "loading", "elapsed_s": 60.4, "service_state": "active"}
+{"event": "finished", "completed": false, "restored": true}
+Traceback (most recent call last):
+  File "/home/less/worktrees/qwen38-strata-20261106/benchmarks/strata-mtp-window.py", line 289, in <module>
+    main()
+    ~~~~^^
+  File "/home/less/worktrees/qwen38-strata-20261106/benchmarks/strata-mtp-window.py", line 265, in main
+    assert len(decode_lines) == len(result['runs']), 'Missing decode-window accounting'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Missing decode-window accounting

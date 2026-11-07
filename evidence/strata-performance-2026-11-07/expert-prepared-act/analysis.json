@@ -1,0 +1,59 @@
+{
+  "screens": {
+    "screen-median": {
+      "medians_ms": {
+        "control": [
+          57.561,
+          57.75
+        ],
+        "x": [
+          56.966
+        ],
+        "h": [
+          57.995
+        ]
+      },
+      "mean_bracketing_control_ms": 57.6555,
+      "throughput_change_pct": {
+        "x": 1.2103710985500227,
+        "h": -0.5853952926976325
+      },
+      "all_output_hashes": [
+        "019f42e2855f67cc"
+      ]
+    },
+    "screen-median-return": {
+      "medians_ms": {
+        "control": [
+          57.769,
+          58.212
+        ],
+        "h": [
+          57.927
+        ],
+        "x": [
+          58.478
+        ]
+      },
+      "mean_bracketing_control_ms": 57.9905,
+      "throughput_change_pct": {
+        "h": 0.10962072953890623,
+        "x": -0.8336468415472531
+      },
+      "all_output_hashes": [
+        "019f42e2855f67cc"
+      ]
+    }
+  },
+  "decision": "No reliable gain. Do not combine or promote.",
+  "limits": [
+    "Synthetic weights and activations with captured median-padding routing from one public 64K request.",
+    "Complete operator times include activation preparation but exclude scratch allocation.",
+    "No model-level test or serving deployment."
+  ],
+  "reference_checks": true,
+  "scratch_bytes_at_16384_tokens": {
+    "x": 83886080,
+    "h": 209715200
+  }
+}

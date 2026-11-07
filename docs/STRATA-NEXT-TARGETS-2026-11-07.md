@@ -1,11 +1,14 @@
 # Flash-Next: resumed optimization target, 2026-11-07
 
-**Latest recommendation:** stop the current raw-prefill tuning round and retain
-the working endpoint. The target is unmet and the hardware ceiling unproven.
-The [checkpoint](STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md) records the final
-rejected tile experiments and prioritizes possible later work. The experiment
-ladder below is retained for a future resumption, not an instruction to keep
-running benchmarks while next steps are being discussed.
+**Latest decision:** the user authorized a bounded MTP comparison and expert
+instruction trace after the [stopping checkpoint](STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md).
+The [MTP screen](STRATA-MTP-WINDOW-2026-11-07.md) is complete: no reliable gain,
+window 4 restored. The [expert instruction trace](STRATA-EXPERT-ATT-2026-11-07.md)
+then motivated [prepared activations](STRATA-EXPERT-PREPARED-2026-11-07.md).
+Exact operator outputs were preserved, but neither independent preparation
+path showed a repeatable gain in the reverse-order screen. That bounded
+follow-up is complete; no candidate is promoted. The target remains unmet
+and the hardware ceiling unproven.
 
 The user raised the objective and manually resumed the Codex goal. These
 objectives supersede the earlier 1,100 / 50–60 tok/s target, even if the goal
@@ -165,11 +168,11 @@ A 2x expert improvement alone would predict about 14% overall, not 2x prefill.
 3. Compare any operator winner against a same-source control, then validate
    cold 64K/128K and a 192K stress case. Report newly processed tokens, cache
    reuse, full durations and output checks; no warm-cache substitution.
-4. After the prefill investigation, complete the generation experiments:
-   MTP depth 4/6/8 with matched prompts, then the measured winner under actual
-   OpenClaw sampling. Only depth 4 has run; the thinking-enabled synthetic
-   probe was interrupted for the user's live test. Head-mix fusion and other
-   generation candidates remain untested.
+4. The later MTP 4/6/8/4 comparison used matched 16K/64K prompts and OpenClaw
+   sampling. Window 6 showed no reliable gain; window 8 was slower. Keep 4.
+   All 16K hashes match; at 64K window 8 differs while both controls and 6 match.
+   No candidate qualified for further tool/state validation. Head-mix fusion
+   and the existing opt-in cost-aware MTP policy remain untested here.
 
 Rejected or low-value paths remain documented: persistent expert dispatch was
 slower with identical outputs; 8K/32K chunks, forced 64-row F16 tiles and chunked

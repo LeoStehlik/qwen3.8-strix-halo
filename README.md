@@ -7,11 +7,18 @@ current Flash-Next work and the earlier 27B/DFlash2 deployment.
 
 ## Current direction — 2026-11-07
 
-**Recommended stopping point: retain the working baseline.** The higher target
+**Bounded follow-up authorized; retain the working baseline.** The higher target
 of 1,700–2,000 tok/s prefill and 50–70 tok/s generation remains unmet; the
-hardware ceiling is unproven. The latest tile changes lost performance, and
-further credible gains require more substantial kernel work. Read the
-[optimization checkpoint and remaining opportunities](docs/STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md).
+hardware ceiling is unproven. The latest tile changes lost performance. The
+subsequent [MTP 4/6/8/4 screen](docs/STRATA-MTP-WINDOW-2026-11-07.md) also found
+no reliable generation gain, so window 4 is restored. The subsequent
+[expert trace](docs/STRATA-EXPERT-ATT-2026-11-07.md) motivated a
+[prepared-activation prototype](docs/STRATA-EXPERT-PREPARED-2026-11-07.md):
+exact outputs, but no repeatable operator gain in reversed-order comparisons.
+The extra 280 MiB fits; this implementation is rejected. No source patch is
+serving. The earlier
+[checkpoint](docs/STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md) records the
+decision to narrow this investigation.
 
 The selected packaged
 configuration reached 1,416 tok/s cold prefill at 64K, 1,363 at 128K and 1,301

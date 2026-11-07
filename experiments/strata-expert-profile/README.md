@@ -12,6 +12,12 @@ Q5_1 down weights and activations, 512 experts and top 10. This is the format
 pair used by 43 of this model's 48 expert layers. It is not a whole-model
 quality test. The previous persistent-dispatch patch is absent.
 
+Later follow-ups: the cooperative epilogue was tested and retained as a small
+undeployed candidate. The [expert ATT/source mapping](../../docs/STRATA-EXPERT-ATT-2026-11-07.md)
+then motivated [prepared activations](../../docs/STRATA-EXPERT-PREPARED-2026-11-07.md),
+which preserved exact outputs but showed no repeatable gain. The original
+"Next experiment" section below records the earlier decision.
+
 ## What the timing trace establishes
 
 Unmodified operator, uniform random routing. The table sums kernel durations

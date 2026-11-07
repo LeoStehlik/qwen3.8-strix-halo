@@ -1,0 +1,15 @@
+{
+  "upstream_commit": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "patches_apply": true,
+  "matches_measured_sources": true,
+  "source_sha256": {
+    "CMakeLists.txt": "d751046459ce128e20f5cc3eb0c43274ac0f5555e42aa1ec45efea766e87c337",
+    "include/strata/prefill/moe_fused_iq.hpp": "1ef9554cba067cfd20161e12624815dbbc3ef7a4f5d679f55bcbc85a6158023f",
+    "src/prefill/moe_f16_common.cuh": "027451394365d758219abd9fc4c43d8e49649e39439f4b216b1968268400401e",
+    "src/prefill/moe_f16_kq.hpp": "1209b2610a6bf56d55ade66f33603bb7497eecf02b5b034ff4677a1e17761f4e",
+    "src/prefill/moe_f16_kq.cu": "2fa281c598eb42b7b1bd0933d3f002aa31bf5e441bbce2fc8e18f8c6abc0aebd",
+    "src/prefill/moe_f16_prepared.cu": "42b994e906c2d81bef8af63b0e23ce30d4878587d79d62e566df406941539eb5",
+    "src/prefill/moe_fused_iq.cu": "6e308b43fcb302f3d1e1312d0a32520e36c5540590d7fd7be1e464c39948ebbf",
+    "tests/cuda/prefill_fused_iq_test.cpp": "e8c6e9283e29967331e17f90b26a37d6ac763dfd322e90f4e2ca4b14544e30cf"
+  }
+}

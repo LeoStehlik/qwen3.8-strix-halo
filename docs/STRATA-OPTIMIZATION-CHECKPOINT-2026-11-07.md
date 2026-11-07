@@ -1,5 +1,14 @@
 # Recommended stopping point for this optimization session
 
+Subsequent decision: the user authorized the bounded follow-up below. The
+[MTP 4/6/8/4 screen](STRATA-MTP-WINDOW-2026-11-07.md) is now complete and retains
+window 4. The [expert trace](STRATA-EXPERT-ATT-2026-11-07.md) and
+[prepared-activation experiment](STRATA-EXPERT-PREPARED-2026-11-07.md) are also
+complete: exact outputs, but no repeatable performance gain. Extra buffer
+capacity was sufficient; it did not make this implementation faster. No new
+code is deployed. The text below preserves the assessment made before that
+follow-up; future-tense proposals below are historical, not pending tasks.
+
 The user asked to step back after roughly seven hours and assess whether
 further low-level work or hardware tuning has a credible larger payoff.
 **Recommendation: stop the current raw-prefill search at the working baseline.**

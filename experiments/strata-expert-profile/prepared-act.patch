@@ -1,0 +1,636 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d273c7c..f22e287 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2562,6 +2562,7 @@ if(STRATA_NATIVE_EXPERTS)
+       src/prefill/moe_fused.cu
+       src/prefill/moe_fused_iq.cu
+       src/prefill/moe_f16_kq.cu
++      src/prefill/moe_f16_prepared.cu
+       src/prefill/ggml_cuda_host.cu
+       "${_strata_quantize_cu}")
+     if(STRATA_MMQ_KQUANTS)
+@@ -2579,7 +2580,7 @@ if(STRATA_NATIVE_EXPERTS)
+     endif()
+     set_source_files_properties(${_strata_mmq_sources} PROPERTIES LANGUAGE HIP)
+     # moe_fused.cu is Strata's own CUDA-shaped source: it takes the HIP compat headers, ggml's MMQ sources do not
+-    set_source_files_properties(src/prefill/moe_fused.cu src/prefill/moe_fused_iq.cu src/prefill/moe_f16_kq.cu
++    set_source_files_properties(src/prefill/moe_fused.cu src/prefill/moe_fused_iq.cu src/prefill/moe_f16_kq.cu src/prefill/moe_f16_prepared.cu
+                                 PROPERTIES INCLUDE_DIRECTORIES "${STRATA_HIP_COMPAT_INCLUDE_DIR}")
+     add_library(strata_mmq STATIC ${_strata_mmq_sources})
+     target_include_directories(strata_mmq
+diff --git a/include/strata/prefill/moe_fused_iq.hpp b/include/strata/prefill/moe_fused_iq.hpp
+index f90fa5f..63a9b6e 100644
+--- a/include/strata/prefill/moe_fused_iq.hpp
++++ b/include/strata/prefill/moe_fused_iq.hpp
+@@ -42,6 +42,14 @@ void quantize_act_native(const float* x, int64_t rows, int64_t cols, void* xa, v
+ /// through Alloc's 256-byte takes from a 256-aligned cache slot or cudaMalloc).
+ void experts_native(const Batch& b, const NativeGeom& g, int n_expert, int64_t n, const void* scratch, const void* xa,
+                     const int32_t* src, void* ha, float* dm, void* stream);
++
++// Offline prepared-activation experiment. Original quantization is retained;
++// caller allocates rows*cols*2 bytes for X, n*640*2 for H when requested.
++// Only gfx11 Q4_K/Q5_K gate/up with Q5_1 down is supported by this experiment.
++void prepare_act_f16_native(const void* xa, int64_t rows, int cols, void* output, void* stream);
++void experts_native_prepared(const Batch& b, const NativeGeom& g, int n_expert, int64_t n,
++                            const void* scratch, const void* xa, const void* prepared_x,
++                            const int32_t* src, void* ha, void* prepared_h, float* dm, void* stream);
+ /// The NT = 256 kernels (STRATA_PF_FUSED_NT=256 or _F16=1) or the warp-specialized kernel (STRATA_PF_FUSED_WS=1) are
+ /// set up on the current device: experts_native takes a WideBatch (STRATA_PF_BATCH up to kBatchRoom experts a launch).
+ bool native_wide();
+diff --git a/src/prefill/moe_f16_common.cuh b/src/prefill/moe_f16_common.cuh
+index cde9944..093c555 100644
+--- a/src/prefill/moe_f16_common.cuh
++++ b/src/prefill/moe_f16_common.cuh
+@@ -151,6 +151,33 @@ template <int BN> struct ActStage {
+     }
+ };
+ 
++// Experimental input staging: the original quantized values were already
++// converted to F16 once. Keep exactly the same LDS layout and matrix inputs.
++template <int BN> struct PreparedActStage {
++    static constexpr int FETCH = BN * 8 / THREADS, STRIDE = BN + 1, BYTES = 2 * 4 * STRIDE * 16;
++    const uint8_t* src[FETCH];
++    int slot[FETCH];
++    uint4 values[FETCH];
++    __device__ __forceinline__ void init(const uint8_t* base, size_t ld, const int* rows, int tid) {
++#pragma unroll
++        for (int i = 0; i < FETCH; ++i) {
++            const int chunk = tid + i * THREADS, t = chunk >> 3, c = chunk & 7;
++            src[i] = rows[t] >= 0 ? base + (size_t) rows[t] * ld + c * 16 : nullptr;
++            slot[i] = c * STRIDE + t;
++        }
++    }
++    __device__ __forceinline__ void fetch(int s) {
++#pragma unroll
++        for (int i = 0; i < FETCH; ++i)
++            values[i] = src[i] ? *reinterpret_cast<const uint4*>(src[i] + (size_t) s * 128)
++                               : make_uint4(0u, 0u, 0u, 0u);
++    }
++    __device__ __forceinline__ void commit(uint4* s_act) const {
++#pragma unroll
++        for (int i = 0; i < FETCH; ++i) s_act[slot[i]] = values[i];
++    }
++};
++
+ /// Two F16 WMMAs (K 32) of a wave's 16 weight rows against each live 16-row tile of the staged activations.
+ template <int BN>
+ __device__ __forceinline__ void mma_tiles(v8f (&acc)[BN / 16], v16h a_lo, v16h a_hi, const uint4* s_act, int kb, int sub_lane,
+diff --git a/src/prefill/moe_f16_kq.hpp b/src/prefill/moe_f16_kq.hpp
+index c7f80eb..3df5256 100644
+--- a/src/prefill/moe_f16_kq.hpp
++++ b/src/prefill/moe_f16_kq.hpp
+@@ -23,6 +23,17 @@ void gate_up(const Batch& b, const NativeGeom& g, const int32_t* ts, const int2*
+ 
+ /// The down type has a kernel here (Q5_1).
+ bool covers_down(int d_type);
++
++// Offline experiment only: caller owns the additional F16 storage. These
++// entry points are not called by the production prefill path.
++void prepare_act(const uint8_t* input, void* output, int64_t rows, int cols,
++                 const int32_t* off, int e0, int e1, cudaStream_t stream);
++void gate_up_prepared(const Batch& b, const NativeGeom& g, const int32_t* ts, const int2* tiles,
++                      const int32_t* off, int64_t n, int n_expert, int64_t work_bound,
++                      const uint8_t* act, const int32_t* src, uint8_t* out, cudaStream_t stream);
++void down_prepared(const Batch& b, const NativeGeom& g, const int32_t* ts, const int2* tiles,
++                   const int32_t* off, int64_t n, int n_expert, int64_t work_bound,
++                   const uint8_t* h, float* dm, cudaStream_t stream);
+ /// Down for the same experts and tiles: H (int8, `h`) to the routed rows' FP32 outputs in `dm`.
+ void down(const Batch& b, const NativeGeom& g, const int32_t* ts, const int2* tiles, const int32_t* off, int64_t n, int n_expert,
+           int64_t work_bound, const uint8_t* h, float* dm, cudaStream_t s);
+diff --git a/src/prefill/moe_fused_iq.cu b/src/prefill/moe_fused_iq.cu
+index 0b88f83..e531a2d 100644
+--- a/src/prefill/moe_fused_iq.cu
++++ b/src/prefill/moe_fused_iq.cu
+@@ -2155,6 +2155,53 @@ void experts_native(const Batch& b, const NativeGeom& g, int n_expert, int64_t n
+     ck(cudaGetLastError(), "experts_native");
+ }
+ 
++// Offline experiment entry points. The serving engine continues to call the
++// unchanged experts_native() path and never allocates these buffers.
++void prepare_act_f16_native(const void* xa, int64_t rows, int cols, void* output, void* stream) {
++#if defined(__HIPCC__)
++    if (cols % 64 != 0 || rows < 0 || !output) std::abort();
++    f16kq::prepare_act((const uint8_t*) xa, output, rows, cols, nullptr, 0, 0, (cudaStream_t) stream);
++    ck(cudaGetLastError(), "prepare_act_f16_native");
++#else
++    (void) xa; (void) rows; (void) cols; (void) output; (void) stream;
++    std::fprintf(stderr, "prepared activation experiment requires HIP gfx11\n");
++    std::abort();
++#endif
++}
++
++void experts_native_prepared(const Batch& b, const NativeGeom& g, int n_expert, int64_t n,
++                            const void* scratch, const void* xa, const void* prepared_x,
++                            const int32_t* src, void* ha, void* prepared_h, float* dm, void* stream) {
++#if defined(__HIPCC__)
++    if (b.e1 <= b.e0 || n <= 0) return;
++    const DevInfo& d = dev_info();
++    if (!d.ok || d.w12 || !f16::requested() || !f16kq::covers(g.gu_type) || !f16kq::covers_down(g.d_type)) {
++        std::fprintf(stderr, "prepared activation experiment requires gfx11 F16 Q4_K/Q5_K with Q5_1 down\n");
++        std::abort();
++    }
++    const cudaStream_t s = (cudaStream_t) stream;
++    const Tables tb = tables(const_cast<void*>(scratch), n_expert);
++    const int64_t bound = (n + kTileRows - 1) / kTileRows + (b.e1 - b.e0);
++    if (prepared_x)
++        f16kq::gate_up_prepared(b, g, tb.ts, tb.tiles, tb.off, n, n_expert, bound,
++                              (const uint8_t*) prepared_x, src, (uint8_t*) ha, s);
++    else
++        f16kq::gate_up(b, g, tb.ts, tb.tiles, tb.off, n, n_expert, bound, (const uint8_t*) xa, src, (uint8_t*) ha, s);
++    if (prepared_h) {
++        f16kq::prepare_act((const uint8_t*) ha, prepared_h, n, 640, tb.off, b.e0, b.e1, s);
++        f16kq::down_prepared(b, g, tb.ts, tb.tiles, tb.off, n, n_expert, bound, (const uint8_t*) prepared_h, dm, s);
++    } else {
++        f16kq::down(b, g, tb.ts, tb.tiles, tb.off, n, n_expert, bound, (const uint8_t*) ha, dm, s);
++    }
++    ck(cudaGetLastError(), "experts_native_prepared");
++#else
++    (void) b; (void) g; (void) n_expert; (void) n; (void) scratch; (void) xa;
++    (void) prepared_x; (void) src; (void) ha; (void) prepared_h; (void) dm; (void) stream;
++    std::fprintf(stderr, "prepared activation experiment requires HIP gfx11\n");
++    std::abort();
++#endif
++}
++
+ bool native_wide() { const DevInfo& d = dev_info(); return d.occ_nt > 0 || d.ws; }
+ 
+ void experts_native(const WideBatch& b, const NativeGeom& g, int n_expert, int64_t n, const void* scratch, const void* xa,
+diff --git a/tests/cuda/prefill_fused_iq_test.cpp b/tests/cuda/prefill_fused_iq_test.cpp
+index 9a6282c..3526b67 100644
+--- a/tests/cuda/prefill_fused_iq_test.cpp
++++ b/tests/cuda/prefill_fused_iq_test.cpp
+@@ -240,16 +240,23 @@ void run_mmq(const Pair& p, const Geo& geo, mmq::Context& ctx, MmqBufs& b, const
+ // the fused path: quantize, group on the device, then launches over expert ranges `cuts` (e.g. {0, 20, 64})
+ struct FusedBufs {
+     Dev xa, ha, dm, scratch, slot, src, ids;
++    std::unique_ptr<Dev> prepared_x, prepared_h;
+     FusedBufs(int T, int64_t rows, int E)
+         : xa(fused::act_bytes(T, N)), ha(fused::act_bytes(rows, FF)), dm((size_t) rows * N * 4),
+           scratch(fused::group_bytes(rows, E)), slot((size_t) rows * 4), src((size_t) rows * 4),
+-          ids((size_t) rows * 4) {}
++          ids((size_t) rows * 4) {
++        const char* px = std::getenv("S20_PREPARED_X");
++        const char* ph = std::getenv("S20_PREPARED_H");
++        if (px && std::strcmp(px, "1") == 0) prepared_x = std::make_unique<Dev>((size_t) T * N * 2);
++        if (ph && std::strcmp(ph, "1") == 0) prepared_h = std::make_unique<Dev>((size_t) rows * FF * 2);
++    }
+ };
+ void run_fused(const Pair& p, const Geo& geo, FusedBufs& b, const float* x_dev, int T, int E,
+                const std::vector<int>& cuts, const std::vector<const uint8_t*>& blob, cudaStream_t s) {
+     const int64_t rows = (int64_t) T * K;
+     const fused::NativeGeom ng = geo.native(p);
+     fused::quantize_act_native(x_dev, T, N, b.xa.p, s);
++    if (b.prepared_x) fused::prepare_act_f16_native(b.xa.p, T, N, b.prepared_x->p, s);
+     fused::group(b.ids.as<int32_t>(), rows, K, E, b.scratch.p, b.slot.as<int32_t>(), b.src.as<int32_t>(), s);
+     for (size_t c = 0; c + 1 < cuts.size(); ++c) {
+         for (int e0 = cuts[c]; e0 < cuts[c + 1]; e0 += fused::kMaxBatch) {
+@@ -257,6 +264,11 @@ void run_fused(const Pair& p, const Geo& geo, FusedBufs& b, const float* x_dev,
+             bt.e0 = e0;
+             bt.e1 = std::min(cuts[c + 1], e0 + fused::kMaxBatch);
+             for (int e = bt.e0; e < bt.e1; ++e) bt.blob[e - bt.e0] = blob[(size_t) e];
++            if (b.prepared_x || b.prepared_h)
++                fused::experts_native_prepared(bt, ng, E, rows, b.scratch.p, b.xa.p,
++                                              b.prepared_x ? b.prepared_x->p : nullptr, b.src.as<int32_t>(), b.ha.p,
++                                              b.prepared_h ? b.prepared_h->p : nullptr, b.dm.as<float>(), s);
++            else
+             fused::experts_native(bt, ng, E, rows, b.scratch.p, b.xa.p, b.src.as<int32_t>(), b.ha.p, b.dm.as<float>(), s);
+         }
+     }
+diff --git a/src/prefill/moe_f16_prepared.cu b/src/prefill/moe_f16_prepared.cu
+new file mode 100644
+index 0000000..00e50bd
+--- /dev/null
++++ b/src/prefill/moe_f16_prepared.cu
+@@ -0,0 +1,431 @@
++// Offline prepared-activation candidate, isolated from the control translation unit.
++// Based on src/prefill/moe_f16_kq.cu - see moe_f16_kq.hpp.  gfx11 only (opt-in STRATA_PF_F16=1 with STRATA_PF_FUSED_KQ=1).
++//
++// gufo's routed-expert kernels for the K-quants, on Strata's tables, int8 activations and H (the work item, the
++// activation staging and the epilogues are moe_f16_common.cuh's):
++//   - gate/up (Q4_K, Q5_K): the weight codes stay packed in LDS (one 32-byte nibble group per row and stage) and
++//     each wave turns its own 16 rows into F16 right after the LDS read: w = q * (d sc) - dmin m as one packed FMA;
++//   - down (Q5_1): a K block's 16 code bytes and its high-bit word in LDS, w = q d + m per wave.
++// The output differs from native_w11_kernel's (F16 weights instead of int8 sub-blocks), like STRATA_PF_FUSED_KQ's
++// does from the MMQ path.
++//
++// Adapted from gufo 97b8645f: src/models/qwen38_flash_next/kernels/rocm/kernels.hip.cpp
++// (RoutedF16GEMMKernel and its helpers).
++// MIT License
++// Copyright (c) 2026 gufo contributors
++// Permission is hereby granted, free of charge, to any person obtaining a copy
++// of this software and associated documentation files (the "Software"), to deal
++// in the Software without restriction, including without limitation the rights
++// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++// copies of the Software, and to permit persons to whom the Software is
++// furnished to do so, subject to the following conditions:
++// The above copyright notice and this permission notice shall be included in all
++// copies or substantial portions of the Software.
++// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++// SOFTWARE.
++#include "moe_f16_kq.hpp"
++
++#include "moe_f16_common.cuh"
++
++#include "ggml.h"
++
++#include <algorithm>
++#include <cstring>
++
++namespace strata::prefill::fused::f16kq {
++namespace {
++
++using namespace f16;
++
++constexpr int T_Q4_K = GGML_TYPE_Q4_K, T_Q5_K = GGML_TYPE_Q5_K;
++constexpr int GU_NS = 2560 / 64, D_NS = 640 / 64;   // stages of 64 values
++constexpr int FEAT = 64;                             // features (gate rows = up rows) per gate/up item
++
++// Byte i of the 16-byte K-quant block header (d, dmin, scales[12]).
++__device__ __forceinline__ uint32_t header_byte(const uint4& h, uint32_t i) {
++    const uint32_t word = i < 4 ? h.x : i < 8 ? h.y : i < 12 ? h.z : h.w;
++    return (word >> (8U * (i & 3U))) & 0xFFU;
++}
++// Bit s of each of the four bytes of w, packed into bits 0-3.
++__device__ __forceinline__ uint32_t gather_bit(uint32_t w, int s) { return (((w >> s) & 0x01010101U) * 0x01020408U) >> 24U; }
++// Bits 0-3 of `bits` to bit 4 of each byte.
++__device__ __forceinline__ uint32_t spread_high_bits(uint32_t bits) { return (__umul24(bits, 0x00204081U) & 0x01010101U) << 4U; }
++
++constexpr uint32_t HALF_MAGIC = 0x64646464U;   // the high bytes of 1024.0 as F16
++// Four code bytes (< 32) to four halves: 1024 + q exactly, minus 1024, then q * scale + bias.
++__device__ __forceinline__ void codes_to_halves(uint32_t codes, __half2 magic, __half2 scale2, __half2 bias2, __half2& lo,
++                                                __half2& hi) {
++#if STRATA_F16_DEVICE
++    const uint32_t p0 = __builtin_amdgcn_perm(codes, HALF_MAGIC, 0x01050004U);
++    const uint32_t p1 = __builtin_amdgcn_perm(codes, HALF_MAGIC, 0x03070206U);
++    lo = __hfma2(__hadd2(__builtin_bit_cast(__half2, p0), magic), scale2, bias2);
++    hi = __hfma2(__hadd2(__builtin_bit_cast(__half2, p1), magic), scale2, bias2);
++#else
++    (void) codes; (void) magic; (void) scale2; (void) bias2; lo = hi = __half2{};
++#endif
++}
++
++// Same SwiGLU/int8 layout as gu_epilogue, with eight lanes cooperating on each
++// 32-feature quantization group. All 256 threads process four features each,
++// rather than 32 threads holding 32 values each. Max and integer sum reductions
++// do not reorder the floating-point products or the matrix accumulation.
++template <int BN>
++__device__ __forceinline__ void gu_epilogue_cooperative(const v8f (&acc)[BN / 16], uint8_t* lds, int tid,
++                                                       int live_tiles, int nrows, int row0, int fb,
++                                                       uint8_t* __restrict__ out) {
++#if STRATA_F16_DEVICE
++    const int wave = tid >> 5, lane = tid & 31, sub_lane = lane & 15, half_id = lane >> 4;
++    float* base = reinterpret_cast<float*>(lds);
++    float* scratch = base + wave * GU_EPI_PLANE;
++    const int t = tid >> 4, f0 = (tid & 15) * 4, hh = (tid >> 3) & 1;
++#pragma unroll
++    for (int j = 0; j < BN / 16; ++j) {
++        if (j >= live_tiles) break;
++#pragma unroll
++        for (int l = 0; l < 8; ++l) scratch[sub_lane * GU_EPI_STRIDE + 2 * l + half_id] = acc[j][l];
++        __syncthreads();
++        const int r = j * 16 + t;
++        if (r < nrows) {
++            float hv[4];
++            float am = 0.0f;
++#pragma unroll
++            for (int f = 0; f < 4; ++f) {
++                const int ft = f0 + f;
++                const int idx = (ft >> 4) * GU_EPI_PLANE + t * GU_EPI_STRIDE + (ft & 15);
++                const float gt = base[idx], up = base[idx + 4 * GU_EPI_PLANE];
++                hv[f] = gt / (1.0f + __expf(-gt)) * up;
++                am = fmaxf(am, fabsf(hv[f]));
++            }
++#pragma unroll
++            for (int shift = 1; shift < 8; shift <<= 1)
++                am = fmaxf(am, __shfl_xor_sync(0xffffffffu, am, shift, 8));
++            const float inv = am > 0.0f ? 127.0f / am : 0.0f;
++            uint32_t wd = 0;
++            int csum = 0;
++#pragma unroll
++            for (int f = 0; f < 4; ++f) {
++                const int c = __float2int_rn(hv[f] * inv);
++                csum += c;
++                wd |= (uint32_t) (uint8_t) (int8_t) c << (8 * f);
++            }
++#pragma unroll
++            for (int shift = 1; shift < 8; shift <<= 1)
++                csum += __shfl_xor_sync(0xffffffffu, csum, shift, 8);
++            uint8_t* o = out + (size_t) (row0 + r) * H_LD + (size_t) fb * AB;
++            *reinterpret_cast<uint32_t*>(o + f0) = wd;
++            if ((tid & 7) == 0) {
++                *reinterpret_cast<float*>(o + 64 + 4 * hh) = am / 127.0f;
++                *reinterpret_cast<float*>(o + 72 + 4 * hh) = (float) csum;
++            }
++        }
++        __syncthreads();
++    }
++#else
++    (void) acc; (void) lds; (void) tid; (void) live_tiles; (void) nrows; (void) row0; (void) fb; (void) out;
++    __builtin_trap();
++#endif
++}
++
++// Gate/up (Q4_K / Q5_K): code rows 0..63 are the item's gate rows, 64..127 its up rows; a thread pair per row.
++// Isolated candidate copies keep the original compiled kernel names and bodies intact.
++template <int WT, int BN, bool COOPERATIVE_EPI = false>
++__global__ void __launch_bounds__(THREADS) gate_up_prepared_kernel(const Batch b, const NativeGeom geo, const int32_t* __restrict__ ts,
++                                                          const int2* __restrict__ tiles, const int32_t* __restrict__ off,
++                                                          const uint8_t* __restrict__ act, const int32_t* __restrict__ src,
++                                                          uint8_t* __restrict__ out) {
++#if STRATA_F16_DEVICE
++    constexpr bool Q5K = WT == T_Q5_K;
++    constexpr int BLOCK_CHUNKS = Q5K ? 11 : 9;   // 16-byte chunks per 256-value block
++    constexpr int CODE_CHUNK = Q5K ? 3 : 1;      // the first chunk of qs
++    // LDS (bytes): codes ROWS x 2 chunks (swizzled); Q5_K's high bits and the (scale, bias) half2 per row and K
++    // block; the activations.  The epilogue reuses the front.
++    constexpr int CODE_BYTES = ROWS * 2 * 16;
++    constexpr int HIGH_BYTES = Q5K ? 2 * ROWS * 4 : 0;
++    constexpr int SCALE_BYTES = 2 * ROWS * 4;
++    constexpr int STAGE_BYTES = CODE_BYTES + HIGH_BYTES + SCALE_BYTES + ActStage<BN>::BYTES;
++    static_assert(GU_EPI_BYTES <= STAGE_BYTES, "the epilogue fits the stage");
++    __shared__ __attribute__((aligned(16))) uint8_t lds[STAGE_BYTES];
++    __shared__ int srow[BN];
++    auto* s_codes = reinterpret_cast<uint4*>(lds);
++    auto* s_high = reinterpret_cast<uint32_t*>(lds + CODE_BYTES);
++    auto* s_scale = reinterpret_cast<uint32_t*>(lds + CODE_BYTES + HIGH_BYTES);
++    auto* s_act = reinterpret_cast<uint4*>(lds + CODE_BYTES + HIGH_BYTES + SCALE_BYTES);
++
++    const int tid = threadIdx.x, wave = tid >> 5, sub_lane = tid & 15;
++    const int f_c = tid & 1;   // this thread's chunk (and K block) of its weight row
++    const auto swizzle = [](int row, int c) { return row * 2 + (c ^ ((row >> 2) & 1)); };
++    const __half2 magic = __floats2half2_rn(-1024.0f, -1024.0f);
++
++    int fb, e, row0, nrows;
++    if (!work_item<BN, GU_NFB>(b, ts, tiles, off, blockIdx.x, fb, e, row0, nrows)) return;
++    const int live_tiles = (nrows + 15) / 16;
++    const uint8_t* blob = b.blob[e - b.e0];
++    if (tid < BN) srow[tid] = tid < nrows ? src[row0 + tid] : -1;
++    __syncthreads();
++
++    const uint8_t* f_ptr = blob + ((tid >> 1) >= FEAT ? geo.up_off : 0) + (size_t) (fb * FEAT + ((tid >> 1) & (FEAT - 1))) * geo.gu_row;
++    uint4 f_header = make_uint4(0u, 0u, 0u, 0u), f_codes, f_qh[2] = {};
++    uint4 code_cache[4];   // the block's four nibble groups, this thread's chunk of each
++    uint32_t f_high = 0;
++    int f_sb32 = 0;
++    PreparedActStage<BN> as;
++    as.init(act, 2560 * 2, srow, tid);   // the tokens' activation rows
++
++    const auto fetch_stage = [&](int s) {
++        const int kb0 = 2 * s;
++        const uint4* blk = reinterpret_cast<const uint4*>(f_ptr) + (kb0 / 8) * BLOCK_CHUNKS;
++        if (kb0 % 8 == 0) {   // a new 256-value block every four stages
++            f_header = blk[0];
++#pragma unroll
++            for (int group = 0; group < 4; ++group) code_cache[group] = blk[CODE_CHUNK + group * 2 + f_c];
++            if constexpr (Q5K) {
++                f_qh[0] = blk[1];
++                f_qh[1] = blk[2];
++            }
++        }
++        const int sb32 = (kb0 % 8) + f_c;
++        {
++            const int group = sb32 / 2;   // uniform across the wave
++            const uint32_t low = 0u - (group & 1u), high = 0u - ((group >> 1u) & 1u);
++            const auto select = [](uint32_t a, uint32_t bb, uint32_t mask) {
++                uint32_t value;
++                asm("v_cndmask_b32_e64 %0, %1, %2, %3" : "=v"(value) : "v"(a), "v"(bb), "s"(mask));
++                return value;
++            };
++            const uint4 &c0 = code_cache[0], &c1 = code_cache[1], &c2 = code_cache[2], &c3 = code_cache[3];
++            f_codes = make_uint4(select(select(c0.x, c1.x, low), select(c2.x, c3.x, low), high),
++                                 select(select(c0.y, c1.y, low), select(c2.y, c3.y, low), high),
++                                 select(select(c0.z, c1.z, low), select(c2.z, c3.z, low), high),
++                                 select(select(c0.w, c1.w, low), select(c2.w, c3.w, low), high));
++        }
++        f_sb32 = sb32;
++        if constexpr (Q5K) {
++            const uint32_t qh[8] = {f_qh[0].x, f_qh[0].y, f_qh[0].z, f_qh[0].w, f_qh[1].x, f_qh[1].y, f_qh[1].z, f_qh[1].w};
++            uint32_t hb = 0;
++#pragma unroll
++            for (int i = 0; i < 8; ++i) hb |= gather_bit(qh[i], sb32) << (4 * i);
++            f_high = hb;
++        }
++        as.fetch(s);
++    };
++
++    const auto commit_stage = [&]() {
++        const int row = tid >> 1;
++        s_codes[swizzle(row, f_c)] = f_codes;
++        if constexpr (Q5K) s_high[f_c * ROWS + row] = f_high;
++        const int sb32 = f_sb32;
++        uint32_t sc, mn;
++        if (sb32 < 4) {
++            sc = header_byte(f_header, 4 + sb32) & 0x3FU;
++            mn = header_byte(f_header, 8 + sb32) & 0x3FU;
++        } else {
++            sc = (header_byte(f_header, 8 + sb32) & 0x0FU) | ((header_byte(f_header, sb32) >> 6U) << 4U);
++            mn = (header_byte(f_header, 8 + sb32) >> 4U) | ((header_byte(f_header, 4 + sb32) >> 6U) << 4U);
++        }
++        const __half2 dm = __builtin_bit_cast(__half2, f_header.x);
++        const float scale = __low2float(dm) * (float) sc, offset = __high2float(dm) * (float) mn;
++        s_scale[f_c * ROWS + row] = __builtin_bit_cast(uint32_t, __floats2half2_rn(scale, -offset));
++        as.commit(s_act);
++    };
++
++    v8f acc[BN / 16];
++#pragma unroll
++    for (int j = 0; j < BN / 16; ++j) acc[j] = v8f{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
++
++    const auto compute_stage = [&]() {
++        const int row = wave * 16 + sub_lane;   // waves 0-3: gate rows, 4-7: the matching up rows
++        const uint4 raw0 = s_codes[swizzle(row, 0)], raw1 = s_codes[swizzle(row, 1)];
++#pragma unroll
++        for (int kb = 0; kb < 2; ++kb) {
++            const __half2 sb = __builtin_bit_cast(__half2, s_scale[kb * ROWS + row]);
++            const __half2 scale2 = __low2half2(sb), bias2 = __high2half2(sb);
++            // elements 0-15 of K block 2s + kb are the low (kb = 0) or high (kb = 1) nibbles of chunk 0, 16-31 of chunk 1
++            const unsigned shift = 4U * (unsigned) kb;
++            const uint32_t words[8] = {raw0.x, raw0.y, raw0.z, raw0.w, raw1.x, raw1.y, raw1.z, raw1.w};
++            const uint32_t hb = Q5K ? s_high[kb * ROWS + row] : 0U;
++            __half2 h[16];
++#pragma unroll
++            for (int i = 0; i < 8; ++i) {
++                uint32_t nib = (words[i] >> shift) & 0x0F0F0F0FU;
++                if constexpr (Q5K) nib |= spread_high_bits((hb >> (4 * i)) & 0xFU);
++                codes_to_halves(nib, magic, scale2, bias2, h[2 * i], h[2 * i + 1]);
++            }
++            v16h a_lo, a_hi;
++            __builtin_memcpy(&a_lo, &h[0], 32);
++            __builtin_memcpy(&a_hi, &h[8], 32);
++            mma_tiles<BN>(acc, a_lo, a_hi, s_act, kb, sub_lane, live_tiles);
++        }
++    };
++
++    fetch_stage(0);
++    for (int s = 0; s < GU_NS; ++s) {
++        commit_stage();
++        __syncthreads();
++        if (s + 1 < GU_NS) fetch_stage(s + 1);
++        compute_stage();
++        __syncthreads();
++    }
++    if constexpr (COOPERATIVE_EPI) gu_epilogue_cooperative<BN>(acc, lds, tid, live_tiles, nrows, row0, fb, out);
++    else gu_epilogue<BN>(acc, lds, tid, live_tiles, nrows, row0, fb, out);
++#else
++    (void) b; (void) geo; (void) ts; (void) tiles; (void) off; (void) act; (void) src; (void) out;
++    __builtin_trap();
++#endif
++}
++
++template <int BN>
++__global__ void __launch_bounds__(THREADS) down_prepared_kernel(const Batch b, const NativeGeom geo, const int32_t* __restrict__ ts,
++                                                       const int2* __restrict__ tiles, const int32_t* __restrict__ off,
++                                                       const uint8_t* __restrict__ h, float* __restrict__ dm) {
++#if STRATA_F16_DEVICE
++    constexpr int CODE_BYTES = ROWS * 2 * 16, HIGH_BYTES = 2 * ROWS * 4, SCALE_BYTES = 2 * ROWS * 4;
++    constexpr int STAGE_BYTES = CODE_BYTES + HIGH_BYTES + SCALE_BYTES + ActStage<BN>::BYTES;
++    static_assert(D_EPI_BYTES <= STAGE_BYTES, "the epilogue fits the stage");
++    __shared__ __attribute__((aligned(16))) uint8_t lds[STAGE_BYTES];
++    __shared__ int srow[BN];
++    auto* s_codes = reinterpret_cast<uint4*>(lds);
++    auto* s_high = reinterpret_cast<uint32_t*>(lds + CODE_BYTES);
++    auto* s_scale = reinterpret_cast<uint32_t*>(lds + CODE_BYTES + HIGH_BYTES);
++    auto* s_act = reinterpret_cast<uint4*>(lds + CODE_BYTES + HIGH_BYTES + SCALE_BYTES);
++
++    const int tid = threadIdx.x, wave = tid >> 5, sub_lane = tid & 15;
++    const int f_c = tid & 1;   // this thread's K block of its weight row
++    const auto swizzle = [](int row, int c) { return row * 2 + (c ^ ((row >> 2) & 1)); };
++    const __half2 magic = __floats2half2_rn(-1024.0f, -1024.0f);
++
++    int fb, e, row0, nrows;
++    if (!work_item<BN, D_NFB>(b, ts, tiles, off, blockIdx.x, fb, e, row0, nrows)) return;
++    const int live_tiles = (nrows + 15) / 16;
++    if (tid < BN) srow[tid] = tid < nrows ? row0 + tid : -1;   // H is indexed by the routed row
++    __syncthreads();
++
++    const uint2* f_ptr = reinterpret_cast<const uint2*>(b.blob[e - b.e0] + geo.down_off + (size_t) (fb * ROWS + (tid >> 1)) * geo.d_row);
++    uint4 f_codes;
++    uint32_t f_high = 0, f_dm = 0;
++    PreparedActStage<BN> as;
++    as.init(h, 640 * 2, srow, tid);
++    const auto fetch_stage = [&](int s) {
++        const uint2* words = f_ptr + (2 * s + f_c) * 3;   // block_q5_1: {d, m}, qh, qs[16]
++        const uint2 w0 = words[0], w1 = words[1], w2 = words[2];
++        f_codes = make_uint4(w1.x, w1.y, w2.x, w2.y);
++        f_high = w0.y;
++        f_dm = w0.x;
++        as.fetch(s);
++    };
++    const auto commit_stage = [&]() {
++        const int row = tid >> 1;
++        s_codes[swizzle(row, f_c)] = f_codes;
++        s_high[f_c * ROWS + row] = f_high;
++        s_scale[f_c * ROWS + row] = f_dm;   // the half2 (d, m): w = q d + m
++        as.commit(s_act);
++    };
++    v8f acc[BN / 16];
++#pragma unroll
++    for (int j = 0; j < BN / 16; ++j) acc[j] = v8f{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
++    const auto compute_stage = [&]() {
++        const int row = wave * 16 + sub_lane;
++        const uint4 raw[2] = {s_codes[swizzle(row, 0)], s_codes[swizzle(row, 1)]};
++#pragma unroll
++        for (int kb = 0; kb < 2; ++kb) {
++            const __half2 sb = __builtin_bit_cast(__half2, s_scale[kb * ROWS + row]);
++            const __half2 scale2 = __low2half2(sb), bias2 = __high2half2(sb);
++            // elements 0-15 are the low nibbles of the 16 code bytes, 16-31 the high, plus bit j of the high-bit word
++            const uint32_t words[4] = {raw[kb].x, raw[kb].y, raw[kb].z, raw[kb].w};
++            const uint32_t hb = s_high[kb * ROWS + row];
++            __half2 hh[16];
++#pragma unroll
++            for (int i = 0; i < 4; ++i) {
++                const uint32_t lo = (words[i] & 0x0F0F0F0FU) | spread_high_bits((hb >> (4 * i)) & 0xFU);
++                const uint32_t hi = ((words[i] >> 4U) & 0x0F0F0F0FU) | spread_high_bits((hb >> (16 + 4 * i)) & 0xFU);
++                codes_to_halves(lo, magic, scale2, bias2, hh[2 * i], hh[2 * i + 1]);
++                codes_to_halves(hi, magic, scale2, bias2, hh[8 + 2 * i], hh[8 + 2 * i + 1]);
++            }
++            v16h a_lo, a_hi;
++            __builtin_memcpy(&a_lo, &hh[0], 32);
++            __builtin_memcpy(&a_hi, &hh[8], 32);
++            mma_tiles<BN>(acc, a_lo, a_hi, s_act, kb, sub_lane, live_tiles);
++        }
++    };
++    fetch_stage(0);
++    for (int s = 0; s < D_NS; ++s) {
++        commit_stage();
++        __syncthreads();
++        if (s + 1 < D_NS) fetch_stage(s + 1);
++        compute_stage();
++        __syncthreads();
++    }
++    down_epilogue<BN>(acc, lds, tid, live_tiles, nrows, row0, fb, dm);
++#else
++    (void) b; (void) geo; (void) ts; (void) tiles; (void) off; (void) h; (void) dm;
++    __builtin_trap();
++#endif
++}
++
++// One thread converts eight values using the original FP32-scale then F16
++// rounding. With off, convert only this batch's populated H rows.
++__global__ void prepare_act_kernel(const uint8_t* input, uint4* output, int64_t rows, int cols,
++                                   const int32_t* off, int e0, int e1) {
++#if STRATA_F16_DEVICE
++    const int64_t begin = off ? (int64_t) off[e0] * (cols / 8) : 0;
++    const int64_t end = off ? (int64_t) off[e1] * (cols / 8) : rows * (cols / 8);
++    for (int64_t i = begin + (int64_t) blockIdx.x * blockDim.x + threadIdx.x;
++         i < end; i += (int64_t) gridDim.x * blockDim.x) {
++        const int sub = (int) (i & 7);
++        const uint8_t* p = input + (size_t) (i >> 3) * AB;
++        const uint2 codes = *reinterpret_cast<const uint2*>(p + sub * 8);
++        const float d = *reinterpret_cast<const float*>(p + 64 + 4 * (sub >> 2));
++        const uint32_t words[2] = {codes.x, codes.y};
++        __half2 h[4];
++#pragma unroll
++        for (int j = 0; j < 4; ++j) {
++            const uint32_t wd = words[j >> 1] >> (16 * (j & 1));
++            const float lo = (float) (int8_t) (wd & 0xFFu), hi = (float) (int8_t) ((wd >> 8) & 0xFFu);
++            h[j] = __floats2half2_rn(lo * d, hi * d);
++        }
++        output[i] = make_uint4(__builtin_bit_cast(uint32_t, h[0]), __builtin_bit_cast(uint32_t, h[1]),
++                               __builtin_bit_cast(uint32_t, h[2]), __builtin_bit_cast(uint32_t, h[3]));
++    }
++#else
++    (void) input; (void) output; (void) rows; (void) cols; (void) off; (void) e0; (void) e1;
++    __builtin_trap();
++#endif
++}
++
++}  // namespace
++
++void prepare_act(const uint8_t* input, void* output, int64_t rows, int cols,
++                 const int32_t* off, int e0, int e1, cudaStream_t stream) {
++    if (rows <= 0) return;
++    const unsigned grid = (unsigned) std::min<int64_t>(1024, (rows * (cols / 8) + 255) / 256);
++    prepare_act_kernel<<<grid, 256, 0, stream>>>(input, (uint4*) output, rows, cols, off, e0, e1);
++}
++
++void gate_up_prepared(const Batch& b, const NativeGeom& g, const int32_t* ts, const int2* tiles,
++                      const int32_t* off, int64_t n, int n_expert, int64_t work_bound,
++                      const uint8_t* act, const int32_t* src, uint8_t* out, cudaStream_t stream) {
++    const unsigned grid = (unsigned) std::max<int64_t>(1, work_bound * GU_NFB);
++    const bool q5k = g.gu_type == T_Q5_K;
++    if (pick_bn(n, n_expert) == 2 * kTileRows) {
++        if (q5k) gate_up_prepared_kernel<T_Q5_K, 2 * kTileRows><<<grid, THREADS, 0, stream>>>(b, g, ts, tiles, off, act, src, out);
++        else gate_up_prepared_kernel<T_Q4_K, 2 * kTileRows><<<grid, THREADS, 0, stream>>>(b, g, ts, tiles, off, act, src, out);
++    } else {
++        if (q5k) gate_up_prepared_kernel<T_Q5_K, kTileRows><<<grid, THREADS, 0, stream>>>(b, g, ts, tiles, off, act, src, out);
++        else gate_up_prepared_kernel<T_Q4_K, kTileRows><<<grid, THREADS, 0, stream>>>(b, g, ts, tiles, off, act, src, out);
++    }
++}
++
++void down_prepared(const Batch& b, const NativeGeom& g, const int32_t* ts, const int2* tiles,
++                   const int32_t* off, int64_t n, int n_expert, int64_t work_bound,
++                   const uint8_t* h, float* dm, cudaStream_t stream) {
++    const unsigned grid = (unsigned) std::max<int64_t>(1, work_bound * D_NFB);
++    if (pick_bn(n, n_expert) == 2 * kTileRows)
++        down_prepared_kernel<2 * kTileRows><<<grid, THREADS, 0, stream>>>(b, g, ts, tiles, off, h, dm);
++    else down_prepared_kernel<kTileRows><<<grid, THREADS, 0, stream>>>(b, g, ts, tiles, off, h, dm);
++}
++
++}  // namespace strata::prefill::fused::f16kq

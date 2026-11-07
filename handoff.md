@@ -4,16 +4,30 @@ Repository: [Qwen3.8 inference on Strix Halo](https://github.com/LeoStehlik/qwen
 renamed from the earlier 27B/DFlash2-specific name on 7 November. The default
 branch landing page links this active investigation; clone URLs are updated.
 
-**Recommendation after the latest experiments: stop this raw-prefill search
-at the working baseline.** The hardware ceiling is unproven, but local tuning
-has yielded diminishing returns. The higher targets—1,700–2,000 tok/s prefill
-and 50–70 tok/s generation—remain unmet. Read the
-[checkpoint and remaining opportunities](docs/STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md)
-before resuming experiments. No benchmark is running; the endpoint remains
-loaded. The goal remains active while next steps are discussed; the checkpoint
-also records the proposed bounded MTP comparison and expert-trace decision.
+**The user authorized the bounded follow-up proposed at the stopping checkpoint.**
+The [MTP 4/6/8/4 comparison](docs/STRATA-MTP-WINDOW-2026-11-07.md) found no
+reliable generation improvement. Window 4 and the original runtime override
+were restored at 21:16:19 UTC; serving is loaded. The subsequent
+[expert ATT/source mapping](docs/STRATA-EXPERT-ATT-2026-11-07.md) identified
+repeated activation conversion, prompting a
+[prepared-activation prototype](docs/STRATA-EXPERT-PREPARED-2026-11-07.md).
+Ten reference runs preserved exact intermediate/output hashes, and all ten
+original compiled kernels remained identical after isolating the candidate.
+With actual captured routing and preparation cost included, gate/up input
+preparation changed operator throughput by +1.21% then −0.83%; down input
+preparation by −0.59% then +0.11%. Neither is repeatable. Extra memory fits
+(80/200 MiB independently), but this implementation is rejected; no combined
+performance run or full-model integration was justified. Serving stayed loaded
+and idle, with zero actual requests during these operator runs.
 
-**Current live state, restored at 19:55:46 UTC:** the packaged optimized endpoint has
+The bounded MTP/trace/one-rewrite follow-up is complete. Retain window 4 and
+the packaged baseline. The goal remains active; the higher targets—1,700–2,000
+tok/s prefill and 50–70 tok/s generation—remain unmet, and the hardware ceiling
+remains unproven. Do not repeat these losing screens or silently promote the
+small earlier operator candidates. Further kernel work needs a different
+mechanism and a new bounded experiment; no 100–200 / 10–20 tok/s gain emerged.
+
+**Current live state, last restored at 21:16:19 UTC:** the packaged optimized endpoint has
 `STRATA_CACHE_MESSAGE_BOUNDARY=1` for a [limited live trial](docs/STRATA-CACHE-LIVE-TRIAL-2026-11-07.md).
 Short-read remains 64 and stream minimum 128; no experimental source kernel
 or tracing is serving. Health and actual-process flags were verified, and the
@@ -85,7 +99,8 @@ This validates that task by the user's assessment; broader quality is not proven
 The measured packaged configuration remains the baseline and serves private
 8083. No losing kernel experiment or partial tuning table is deployed.
 The thinking-enabled synthetic probe was interrupted for that live test;
-spec-6/spec-8 were not run. The [expert profile and routing replay](experiments/strata-expert-profile/README.md)
+spec-6/spec-8 were not run at that time; the later comparison linked above now
+covers them. The [expert profile and routing replay](experiments/strata-expert-profile/README.md)
 now separate the expert cost: gate/up about 62%, down about 37%, grouping
 negligible. All 192 full layer/chunk routing records from a public 64K probe
 were captured. Three real-routing replays were only 1–3% slower than uniform

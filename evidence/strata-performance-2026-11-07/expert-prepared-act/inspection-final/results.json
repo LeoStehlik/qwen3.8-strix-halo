@@ -1,0 +1,361 @@
+{
+  "original_kernels": {
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi13ELi128ELb1EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph": {
+      "original": {
+        "instruction_count": 2825,
+        "sha256": "61be3972f2af909d9e8a140ccf26c12b41f45999674e2d8d2b7a08b6b8e75432",
+        "resources": {
+          "group_segment_fixed_size": 23168,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 185,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 32,
+          "sgpr_spill_count": 0
+        }
+      },
+      "rebuilt": {
+        "instruction_count": 2825,
+        "sha256": "61be3972f2af909d9e8a140ccf26c12b41f45999674e2d8d2b7a08b6b8e75432",
+        "resources": {
+          "group_segment_fixed_size": 23168,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 185,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 32,
+          "sgpr_spill_count": 0
+        }
+      },
+      "identical": true
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi12ELi128ELb1EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph": {
+      "original": {
+        "instruction_count": 2681,
+        "sha256": "4b4b190482d9810711ccea64d5057dc28a6e874ccdcccf491198d3495f7e9c80",
+        "resources": {
+          "group_segment_fixed_size": 22144,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 176,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 32,
+          "sgpr_spill_count": 0
+        }
+      },
+      "rebuilt": {
+        "instruction_count": 2681,
+        "sha256": "4b4b190482d9810711ccea64d5057dc28a6e874ccdcccf491198d3495f7e9c80",
+        "resources": {
+          "group_segment_fixed_size": 22144,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 176,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 32,
+          "sgpr_spill_count": 0
+        }
+      },
+      "identical": true
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi13ELi64ELb1EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph": {
+      "original": {
+        "instruction_count": 1672,
+        "sha256": "e800f4ddb88d0f1680248571b24a516655aef8d09543fbcc90c19e4f3e966711",
+        "resources": {
+          "group_segment_fixed_size": 14720,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 137,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 26,
+          "sgpr_spill_count": 0
+        }
+      },
+      "rebuilt": {
+        "instruction_count": 1672,
+        "sha256": "e800f4ddb88d0f1680248571b24a516655aef8d09543fbcc90c19e4f3e966711",
+        "resources": {
+          "group_segment_fixed_size": 14720,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 137,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 26,
+          "sgpr_spill_count": 0
+        }
+      },
+      "identical": true
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi12ELi64ELb1EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph": {
+      "original": {
+        "instruction_count": 1819,
+        "sha256": "38aa4795e29c5ef566d123ed9cc18a2f532fbd7bb5bbaa6e3814baa01746aa0d",
+        "resources": {
+          "group_segment_fixed_size": 13696,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 130,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 24,
+          "sgpr_spill_count": 0
+        }
+      },
+      "rebuilt": {
+        "instruction_count": 1819,
+        "sha256": "38aa4795e29c5ef566d123ed9cc18a2f532fbd7bb5bbaa6e3814baa01746aa0d",
+        "resources": {
+          "group_segment_fixed_size": 13696,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 130,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 24,
+          "sgpr_spill_count": 0
+        }
+      },
+      "identical": true
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi13ELi128ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph": {
+      "original": {
+        "instruction_count": 7943,
+        "sha256": "2e441c92421e2a669c6f9dd74870fb543af8ad1557b50311891cbb77980146a0",
+        "resources": {
+          "group_segment_fixed_size": 23168,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 184,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 32,
+          "sgpr_spill_count": 0
+        }
+      },
+      "rebuilt": {
+        "instruction_count": 7943,
+        "sha256": "2e441c92421e2a669c6f9dd74870fb543af8ad1557b50311891cbb77980146a0",
+        "resources": {
+          "group_segment_fixed_size": 23168,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 184,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 32,
+          "sgpr_spill_count": 0
+        }
+      },
+      "identical": true
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi12ELi128ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph": {
+      "original": {
+        "instruction_count": 7795,
+        "sha256": "1bdaa4d53553cf7eef9b84d36223cd18335c57652a5c246c7a855eca23f93f13",
+        "resources": {
+          "group_segment_fixed_size": 22144,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 175,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 32,
+          "sgpr_spill_count": 0
+        }
+      },
+      "rebuilt": {
+        "instruction_count": 7795,
+        "sha256": "1bdaa4d53553cf7eef9b84d36223cd18335c57652a5c246c7a855eca23f93f13",
+        "resources": {
+          "group_segment_fixed_size": 22144,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 175,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 32,
+          "sgpr_spill_count": 0
+        }
+      },
+      "identical": true
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi13ELi64ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph": {
+      "original": {
+        "instruction_count": 4212,
+        "sha256": "69c8fa62fee24b73d3214a67d72a8b4070b3613b52d969adf67172a3fb4f20a4",
+        "resources": {
+          "group_segment_fixed_size": 14720,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 136,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 26,
+          "sgpr_spill_count": 0
+        }
+      },
+      "rebuilt": {
+        "instruction_count": 4212,
+        "sha256": "69c8fa62fee24b73d3214a67d72a8b4070b3613b52d969adf67172a3fb4f20a4",
+        "resources": {
+          "group_segment_fixed_size": 14720,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 136,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 26,
+          "sgpr_spill_count": 0
+        }
+      },
+      "identical": true
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi12ELi64ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph": {
+      "original": {
+        "instruction_count": 4358,
+        "sha256": "b173a2b99ce4e7f4686ce3972627ada34eb14086e587cf67b6411a30d25a21e7",
+        "resources": {
+          "group_segment_fixed_size": 13696,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 129,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 23,
+          "sgpr_spill_count": 0
+        }
+      },
+      "rebuilt": {
+        "instruction_count": 4358,
+        "sha256": "b173a2b99ce4e7f4686ce3972627ada34eb14086e587cf67b6411a30d25a21e7",
+        "resources": {
+          "group_segment_fixed_size": 13696,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 129,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 23,
+          "sgpr_spill_count": 0
+        }
+      },
+      "identical": true
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_111down_kernelILi128EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhPf": {
+      "original": {
+        "instruction_count": 1705,
+        "sha256": "4f0ddd5b7777e4c570cd36ec89a82b02a6bfec646aeb711e3b556ffc4bb5f583",
+        "resources": {
+          "group_segment_fixed_size": 23168,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 148,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 24,
+          "sgpr_spill_count": 0
+        }
+      },
+      "rebuilt": {
+        "instruction_count": 1705,
+        "sha256": "4f0ddd5b7777e4c570cd36ec89a82b02a6bfec646aeb711e3b556ffc4bb5f583",
+        "resources": {
+          "group_segment_fixed_size": 23168,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 148,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 24,
+          "sgpr_spill_count": 0
+        }
+      },
+      "identical": true
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_111down_kernelILi64EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhPf": {
+      "original": {
+        "instruction_count": 1031,
+        "sha256": "bd006ab8890057d28d53af321bd4cf35143872ec010ba76085f9411a36d7f39c",
+        "resources": {
+          "group_segment_fixed_size": 14720,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 105,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 20,
+          "sgpr_spill_count": 0
+        }
+      },
+      "rebuilt": {
+        "instruction_count": 1031,
+        "sha256": "bd006ab8890057d28d53af321bd4cf35143872ec010ba76085f9411a36d7f39c",
+        "resources": {
+          "group_segment_fixed_size": 14720,
+          "private_segment_fixed_size": 0,
+          "vgpr_count": 105,
+          "vgpr_spill_count": 0,
+          "sgpr_count": 20,
+          "sgpr_spill_count": 0
+        }
+      },
+      "identical": true
+    }
+  },
+  "prepared_kernels": {
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_118prepare_act_kernelEPKhP15HIP_vector_typeIjLj4EEliPKiii": {
+      "instruction_count": 134,
+      "sha256": "4ff838df6d3a107d5ccaca4f7ccff84f56c2f88f3c3b45c65e2acc5f69556713",
+      "resources": {
+        "group_segment_fixed_size": 0,
+        "private_segment_fixed_size": 0,
+        "vgpr_count": 17,
+        "vgpr_spill_count": 0,
+        "sgpr_count": 15,
+        "sgpr_spill_count": 0
+      }
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_123gate_up_prepared_kernelILi13ELi128ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph": {
+      "instruction_count": 7769,
+      "sha256": "8ab2b4f604db4074bfe6d7c9d31c72213557e57d9526c94da9015dabdb176bbf",
+      "resources": {
+        "group_segment_fixed_size": 23168,
+        "private_segment_fixed_size": 0,
+        "vgpr_count": 180,
+        "vgpr_spill_count": 0,
+        "sgpr_count": 28,
+        "sgpr_spill_count": 0
+      }
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_123gate_up_prepared_kernelILi12ELi128ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph": {
+      "instruction_count": 7977,
+      "sha256": "cce11bd18642a3a77a9af69bc7f7d2b72715a4ad12028bb7764958f825ce1693",
+      "resources": {
+        "group_segment_fixed_size": 22144,
+        "private_segment_fixed_size": 0,
+        "vgpr_count": 177,
+        "vgpr_spill_count": 0,
+        "sgpr_count": 28,
+        "sgpr_spill_count": 0
+      }
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_123gate_up_prepared_kernelILi13ELi64ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph": {
+      "instruction_count": 4426,
+      "sha256": "7ad91df7aab71f6ef5d84148d3ed07460a7b81b1da4884935991c81875e3cce3",
+      "resources": {
+        "group_segment_fixed_size": 14720,
+        "private_segment_fixed_size": 0,
+        "vgpr_count": 135,
+        "vgpr_spill_count": 0,
+        "sgpr_count": 23,
+        "sgpr_spill_count": 0
+      }
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_123gate_up_prepared_kernelILi12ELi64ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph": {
+      "instruction_count": 4227,
+      "sha256": "b384e3ed6becc7f2e1265856995ac1f76915aba1899ba24a50226131dcaba2e4",
+      "resources": {
+        "group_segment_fixed_size": 13696,
+        "private_segment_fixed_size": 0,
+        "vgpr_count": 127,
+        "vgpr_spill_count": 0,
+        "sgpr_count": 23,
+        "sgpr_spill_count": 0
+      }
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_120down_prepared_kernelILi128EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhPf": {
+      "instruction_count": 1532,
+      "sha256": "ed09d1a732da2d0fe2773e9ad531568715bf848b1c83c2b72adb0721480be238",
+      "resources": {
+        "group_segment_fixed_size": 23168,
+        "private_segment_fixed_size": 0,
+        "vgpr_count": 144,
+        "vgpr_spill_count": 0,
+        "sgpr_count": 24,
+        "sgpr_spill_count": 0
+      }
+    },
+    "_ZN6strata7prefill5fused5f16kq12_GLOBAL__N_120down_prepared_kernelILi64EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhPf": {
+      "instruction_count": 952,
+      "sha256": "729fc2757f2b6de62cfe708721d7808d2d573f2d26eecbe09c4096254a0a0388",
+      "resources": {
+        "group_segment_fixed_size": 14720,
+        "private_segment_fixed_size": 0,
+        "vgpr_count": 98,
+        "vgpr_spill_count": 0,
+        "sgpr_count": 20,
+        "sgpr_spill_count": 0
+      }
+    }
+  },
+  "control_code_object_sha256": "e813df47e57d706f0be5ac63803c5a3070b385157dd76cb5c82946be08f8c042"
+}
