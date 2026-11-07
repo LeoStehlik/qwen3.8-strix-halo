@@ -1,0 +1,9 @@
+{
+  "engine_sha256": "bce2f61ca0f970a1640aafa77925c0908f060243cffcd1ad10e3843b35eed476",
+  "fixture_sha256": "6efd5cb8693d5c7fc9fa826da0e454895172071c7d30283f6eb6c04978875346",
+  "fixture_source": "https://github.com/LeoStehlik/qwen3.6-35b-a3b-strix-halo/blob/fc06ab712eb6a89e49d5c935ae47dba190c1a0a5/benchmarks/fixtures/prompt.txt",
+  "kernel_documentation": "https://docs.kernel.org/7.2/gpu/amdgpu/thermal.html#power-dpm-force-performance-level",
+  "server_restarted": false,
+  "original_clock_policy": "auto",
+  "fixture_protocol": "same public reference material; distinct leading nonce per arm to enforce cold cache; therefore not exact output-parity testing"
+}

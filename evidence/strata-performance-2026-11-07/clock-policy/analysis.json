@@ -1,0 +1,293 @@
+{
+  "selection": "Telemetry samples with state=reading and prompt_tokens>60000; sensor figures are min/median/max. KFD ranges are sampled per-process counters, not disjoint wall durations. Arm deltas include warm-up and generation.",
+  "arms": [
+    {
+      "path": "aba64/01-auto",
+      "mode": "auto",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 65549,
+        "prompt_ms": 46887.6,
+        "prompt_per_token_ms": 0.715,
+        "prompt_per_second": 1398.0,
+        "predicted_n": 128,
+        "predicted_ms": 3634.6,
+        "predicted_per_token_ms": 28.395,
+        "predicted_per_second": 35.2,
+        "draft_n": 105,
+        "draft_n_accepted": 72
+      },
+      "elapsed_s": 50.566949871999896,
+      "ttft_s": 46.965541225999914,
+      "reading_samples": 93,
+      "sensors_mhz_c_w": {
+        "freq1_input": {
+          "min": 1063.0,
+          "median": 2617.0,
+          "max": 2682.0
+        },
+        "temp1_input": {
+          "min": 34.0,
+          "median": 65.0,
+          "max": 74.0
+        },
+        "power1_average": {
+          "min": 35.54,
+          "median": 120.136,
+          "max": 134.694
+        }
+      },
+      "kfd_arm_delta_ms": {
+        "27969/stats_35564": 109,
+        "27978/stats_35564": 378
+      },
+      "kfd_reading_range_ms": {
+        "27969/stats_35564": 109,
+        "27978/stats_35564": 378
+      },
+      "vm_delta": {
+        "pswpin": 8680,
+        "pgscan_kswapd": 74752,
+        "pgscan_file": 74752,
+        "pgmigrate_success": 66148,
+        "pgmigrate_fail": 17937,
+        "compact_migrate_scanned": 1033084,
+        "compact_free_scanned": 3903767,
+        "compact_isolated": 150883,
+        "compact_daemon_wake": 1,
+        "compact_daemon_migrate_scanned": 1033084,
+        "compact_daemon_free_scanned": 3903767
+      }
+    },
+    {
+      "path": "aba64/02-high",
+      "mode": "high",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 65546,
+        "prompt_ms": 46264.4,
+        "prompt_per_token_ms": 0.706,
+        "prompt_per_second": 1416.8,
+        "predicted_n": 128,
+        "predicted_ms": 3075.9,
+        "predicted_per_token_ms": 24.03,
+        "predicted_per_second": 41.6,
+        "draft_n": 109,
+        "draft_n_accepted": 73
+      },
+      "elapsed_s": 49.3790456379993,
+      "ttft_s": 46.33527242399941,
+      "reading_samples": 92,
+      "sensors_mhz_c_w": {
+        "freq1_input": {
+          "min": 2520.0,
+          "median": 2541.0,
+          "max": 2806.0
+        },
+        "temp1_input": {
+          "min": 66.0,
+          "median": 75.0,
+          "max": 79.0
+        },
+        "power1_average": {
+          "min": 80.29,
+          "median": 120.118,
+          "max": 133.318
+        }
+      },
+      "kfd_arm_delta_ms": {
+        "27969/stats_35564": 0,
+        "27978/stats_35564": 32
+      },
+      "kfd_reading_range_ms": {
+        "27969/stats_35564": 0,
+        "27978/stats_35564": 0
+      },
+      "vm_delta": {
+        "pswpin": 147,
+        "pgscan_kswapd": 72192,
+        "pgscan_file": 72192,
+        "pgmigrate_fail": 4,
+        "compact_migrate_scanned": 2695,
+        "compact_isolated": 71,
+        "compact_daemon_wake": 191,
+        "compact_daemon_migrate_scanned": 2695
+      }
+    },
+    {
+      "path": "aba64/03-auto",
+      "mode": "auto",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 65549,
+        "prompt_ms": 47012.6,
+        "prompt_per_token_ms": 0.717,
+        "prompt_per_second": 1394.3,
+        "predicted_n": 128,
+        "predicted_ms": 3101.0,
+        "predicted_per_token_ms": 24.227,
+        "predicted_per_second": 41.3,
+        "draft_n": 117,
+        "draft_n_accepted": 75
+      },
+      "elapsed_s": 50.15608027500093,
+      "ttft_s": 47.08802319800088,
+      "reading_samples": 93,
+      "sensors_mhz_c_w": {
+        "freq1_input": {
+          "min": 1749.0,
+          "median": 2569.0,
+          "max": 2658.0
+        },
+        "temp1_input": {
+          "min": 72.0,
+          "median": 78.0,
+          "max": 82.0
+        },
+        "power1_average": {
+          "min": 71.268,
+          "median": 120.118,
+          "max": 135.598
+        }
+      },
+      "kfd_arm_delta_ms": {
+        "27969/stats_35564": 0,
+        "27978/stats_35564": 567
+      },
+      "kfd_reading_range_ms": {
+        "27969/stats_35564": 0,
+        "27978/stats_35564": 0
+      },
+      "vm_delta": {
+        "pswpin": 149,
+        "pgscan_kswapd": 277364,
+        "pgscan_direct": 139134,
+        "pgscan_file": 416498,
+        "pgmigrate_success": 127149,
+        "pgmigrate_fail": 10360,
+        "compact_migrate_scanned": 1048576,
+        "compact_free_scanned": 3415977,
+        "compact_isolated": 264915,
+        "compact_daemon_wake": 1,
+        "compact_daemon_migrate_scanned": 1048576,
+        "compact_daemon_free_scanned": 3415977
+      }
+    },
+    {
+      "path": "peak64/01-profile_peak",
+      "mode": "profile_peak",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 65547,
+        "prompt_ms": 51397.8,
+        "prompt_per_token_ms": 0.784,
+        "prompt_per_second": 1275.3,
+        "predicted_n": 128,
+        "predicted_ms": 3470.9,
+        "predicted_per_token_ms": 27.116,
+        "predicted_per_second": 36.9,
+        "draft_n": 118,
+        "draft_n_accepted": 69
+      },
+      "elapsed_s": 54.912323680000554,
+      "ttft_s": 51.47424474900072,
+      "reading_samples": 102,
+      "sensors_mhz_c_w": {
+        "freq1_input": {
+          "min": 2198.0,
+          "median": 2207.0,
+          "max": 2656.0
+        },
+        "temp1_input": {
+          "min": 70.0,
+          "median": 77.0,
+          "max": 81.0
+        },
+        "power1_average": {
+          "min": 119.647,
+          "median": 120.0575,
+          "max": 139.986
+        }
+      },
+      "kfd_arm_delta_ms": {
+        "27969/stats_35564": 0,
+        "27978/stats_35564": 636
+      },
+      "kfd_reading_range_ms": {
+        "27969/stats_35564": 0,
+        "27978/stats_35564": 482
+      },
+      "vm_delta": {
+        "pswpin": 137,
+        "pgscan_kswapd": 373376,
+        "pgscan_direct": 149376,
+        "pgscan_file": 522752,
+        "pgmigrate_success": 143989,
+        "pgmigrate_fail": 24564,
+        "compact_migrate_scanned": 3967488,
+        "compact_free_scanned": 4849432,
+        "compact_isolated": 312690,
+        "compact_daemon_wake": 1,
+        "compact_daemon_migrate_scanned": 3967488,
+        "compact_daemon_free_scanned": 4849432
+      }
+    },
+    {
+      "path": "peak64/02-auto",
+      "mode": "auto",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 65546,
+        "prompt_ms": 46960.3,
+        "prompt_per_token_ms": 0.716,
+        "prompt_per_second": 1395.8,
+        "predicted_n": 128,
+        "predicted_ms": 3184.9,
+        "predicted_per_token_ms": 24.882,
+        "predicted_per_second": 40.2,
+        "draft_n": 111,
+        "draft_n_accepted": 73
+      },
+      "elapsed_s": 50.19708673000059,
+      "ttft_s": 47.044627795999986,
+      "reading_samples": 93,
+      "sensors_mhz_c_w": {
+        "freq1_input": {
+          "min": 1591.0,
+          "median": 2552.0,
+          "max": 2576.0
+        },
+        "temp1_input": {
+          "min": 64.0,
+          "median": 82.0,
+          "max": 85.0
+        },
+        "power1_average": {
+          "min": 72.79,
+          "median": 120.146,
+          "max": 132.612
+        }
+      },
+      "kfd_arm_delta_ms": {
+        "27969/stats_35564": 0,
+        "27978/stats_35564": 371
+      },
+      "kfd_reading_range_ms": {
+        "27969/stats_35564": 0,
+        "27978/stats_35564": 142
+      },
+      "vm_delta": {
+        "pswpin": 65,
+        "pgmigrate_success": 72346,
+        "pgmigrate_fail": 25685,
+        "compact_migrate_scanned": 1122816,
+        "compact_free_scanned": 1990297,
+        "compact_isolated": 170594,
+        "compact_daemon_migrate_scanned": 1122816,
+        "compact_daemon_free_scanned": 1990297
+      }
+    }
+  ],
+  "high_vs_bracketing_auto_pct": 1.477488568367491,
+  "peak_vs_bracketing_auto_pct": -8.583457687432883
+}

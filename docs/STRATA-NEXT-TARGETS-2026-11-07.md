@@ -129,6 +129,13 @@ GDN gave no convincing win; residual write is already around 191–195 GB/s;
 hipBLASLt calibration picked the existing solution 2390. Proactive compaction
 zero did not fix stalls and was restored to 20.
 
+The [factory clock-policy screen](STRATA-CLOCK-POLICY-2026-11-07.md) also
+retained automatic clocks: cold 64K auto/high/auto/peak/auto measured
+1,398/1,417/1,394/1,275/1,396 tok/s. High's single +1.48% arm is not established
+as repeatable; peak was slower. Original auto restored at 19:21:03 UTC with
+the boundary-checkpoint live trial unchanged. No service restart, source
+promotion, power-limit change or new throughput baseline.
+
 See [the full performance record](STRATA-PERFORMANCE-2026-11-07.md) and
 [the current handoff](../handoff.md). This is the resumed objective and
 experiment order, not a claim that the new target is already attainable.

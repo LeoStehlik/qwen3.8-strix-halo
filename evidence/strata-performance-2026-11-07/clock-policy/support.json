@@ -1,0 +1,24 @@
+{
+  "original": "auto",
+  "probes": [
+    {
+      "mode": "high",
+      "exit": 0,
+      "error": "",
+      "readback": "high",
+      "sclk": "0: 2900Mhz \n1: 614Mhz *\n2: 2900Mhz"
+    },
+    {
+      "mode": "profile_peak",
+      "exit": 0,
+      "error": "",
+      "readback": "profile_peak",
+      "sclk": "0: 2900Mhz \n1: 657Mhz *\n2: 2900Mhz"
+    }
+  ],
+  "restore": {
+    "exit": 0,
+    "readback": "auto",
+    "error": ""
+  }
+}

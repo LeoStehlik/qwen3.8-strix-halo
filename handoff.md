@@ -12,6 +12,15 @@ Mac's configured provider passed a read-only health check. Real OpenClaw reuse
 and quality validation are pending. This is runtime-only; boot promotion is
 still pending. Do not confuse it with the undeployed 8/32 candidate below.
 
+The subsequent [factory clock-policy screen](docs/STRATA-CLOCK-POLICY-2026-11-07.md)
+kept this endpoint/configuration running. Cold 64K `auto / high / auto /
+profile_peak / auto` measured **1,398 / 1,417 / 1,394 / 1,275 / 1,396 tok/s**.
+High's single-arm +1.48% is inconclusive amid uneven memory stalls; peak lost
+8.58%. Neither is selected. **Automatic clocks restored, endpoint loaded and
+idle at 19:21:03 UTC.** Boundary checkpoint remains on, 64/128 unchanged;
+no real OpenClaw request arrived during this screen. No restart or persistent
+clock change. The new raw-throughput targets remain unmet.
+
 The user reviewed Francis's real GitHub beta-release/co-authored-PR investigation
 and was pleased with the result. The first 13 completed backend calls (greeting and initial background work
 included) averaged
