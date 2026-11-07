@@ -11,7 +11,9 @@ ap=argparse.ArgumentParser(description=__doc__)
 ap.add_argument('--source',type=Path,required=True)
 ap.add_argument('--sdk',type=Path,required=True)
 ap.add_argument('--out',type=Path,required=True)
-ap.add_argument('--row-stream',action='store_true',help='Add the isolated fragment-load scheduling candidate')
+mode=ap.add_mutually_exclusive_group()
+mode.add_argument('--row-stream',action='store_true',help='Add the isolated fragment-load scheduling candidate')
+mode.add_argument('--tiles',action='store_true',help='Compare the narrow K64 and wide K32 tile candidates')
 a=ap.parse_args()
 a.source=a.source.resolve();a.sdk=a.sdk.resolve();a.out=a.out.resolve()
 a.out.mkdir(parents=True,exist_ok=True)
@@ -52,11 +54,13 @@ cmd=[str(a.sdk/'bin/hipcc'),'-O3','-std=c++17','--offload-arch=gfx1151','-DSTRAT
      '-I'+str(a.source/'include'),'-I'+str(a.source/'src/prefill'),'-I'+str(a.out),
      '-x','hip',str(Path(__file__).with_name('grouping.hip').resolve()),'-o',str(a.out/'grouping')]
 if a.row_stream:cmd.insert(1,'-DPROJECTION_ROW_STREAM=1')
+if a.tiles:cmd.insert(1,'-DPROJECTION_TILE_SCREEN=1')
 meta={'argv':cmd,'source_sha256':hashlib.sha256(raw).hexdigest(),
       'generated_sha256':hashlib.sha256(generated.read_bytes()).hexdigest(),
       'probe_sha256':hashlib.sha256(Path(__file__).with_name('grouping.hip').read_bytes()).hexdigest(),
       'change':'Only template the BK64 kernel block-group size; preserve GM=8 for its original wrapper.',
-      'row_stream_candidate':a.row_stream}
+      'row_stream_candidate':a.row_stream,'tile_candidates':a.tiles}
+if a.tiles:meta['tile_source_sha256']=hashlib.sha256(Path(__file__).with_name('tile-kernels.cuh').read_bytes()).hexdigest()
 with (a.out/'build.stdout').open('w') as out,(a.out/'build.stderr').open('w') as err:
     result=subprocess.run(cmd,env=env,stdout=out,stderr=err)
 meta['exit_code']=result.returncode

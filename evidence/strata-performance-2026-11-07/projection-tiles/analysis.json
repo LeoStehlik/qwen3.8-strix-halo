@@ -1,0 +1,156 @@
+{
+  "shapes": {
+    "gdn-qkv": {
+      "m": 16384,
+      "n": 10240,
+      "k": 2560,
+      "x_padding": 0,
+      "weight_padding": 64,
+      "groups": {
+        "8": {
+          "samples": 61,
+          "median_ms": 19.796303,
+          "min_ms": 19.304882,
+          "max_ms": 21.998093,
+          "operator_speedup_pct": 0.0
+        },
+        "128": {
+          "samples": 61,
+          "median_ms": 22.85322,
+          "min_ms": 22.566416,
+          "max_ms": 37.661369,
+          "operator_speedup_pct": -13.37630758378906
+        },
+        "512": {
+          "samples": 61,
+          "median_ms": 27.724745,
+          "min_ms": 27.21958,
+          "max_ms": 34.958153,
+          "operator_speedup_pct": -28.596987997545142
+        }
+      }
+    },
+    "gdn-gate": {
+      "m": 16384,
+      "n": 6144,
+      "k": 2560,
+      "x_padding": 0,
+      "weight_padding": 64,
+      "groups": {
+        "8": {
+          "samples": 61,
+          "median_ms": 11.828185,
+          "min_ms": 11.396966,
+          "max_ms": 12.007795,
+          "operator_speedup_pct": 0.0
+        },
+        "128": {
+          "samples": 61,
+          "median_ms": 13.681982,
+          "min_ms": 13.392329,
+          "max_ms": 13.924023,
+          "operator_speedup_pct": -13.549184613749677
+        },
+        "512": {
+          "samples": 61,
+          "median_ms": 17.450964,
+          "min_ms": 17.052755,
+          "max_ms": 17.74835,
+          "operator_speedup_pct": -32.22044925426469
+        }
+      }
+    },
+    "out-projection": {
+      "m": 16384,
+      "n": 2560,
+      "k": 6144,
+      "x_padding": 64,
+      "weight_padding": 64,
+      "groups": {
+        "8": {
+          "samples": 61,
+          "median_ms": 11.275615,
+          "min_ms": 10.905937,
+          "max_ms": 11.505836,
+          "operator_speedup_pct": 0.0
+        },
+        "128": {
+          "samples": 61,
+          "median_ms": 13.030189,
+          "min_ms": 12.703631,
+          "max_ms": 13.452648,
+          "operator_speedup_pct": -13.465453187210096
+        },
+        "512": {
+          "samples": 61,
+          "median_ms": 16.277536,
+          "min_ms": 15.840496,
+          "max_ms": 17.469839,
+          "operator_speedup_pct": -30.728981339681884
+        }
+      }
+    }
+  },
+  "cpu_reference_checks": [
+    {
+      "kind": "cpu_reference",
+      "m": 129,
+      "n": 1031,
+      "k": 64,
+      "acc": 0,
+      "nonidentical": 25537,
+      "max_abs": 1.19209289551e-07,
+      "atol": 1e-06,
+      "failures": 0
+    },
+    {
+      "kind": "cpu_reference",
+      "m": 2049,
+      "n": 1025,
+      "k": 64,
+      "acc": 0,
+      "nonidentical": 405653,
+      "max_abs": 1.34110450745e-07,
+      "atol": 1e-06,
+      "failures": 0
+    },
+    {
+      "kind": "cpu_reference",
+      "m": 129,
+      "n": 1031,
+      "k": 64,
+      "acc": 1,
+      "nonidentical": 12584,
+      "max_abs": 1.19209289551e-07,
+      "atol": 1e-06,
+      "failures": 0
+    },
+    {
+      "kind": "cpu_reference",
+      "m": 2049,
+      "n": 1025,
+      "k": 64,
+      "acc": 1,
+      "nonidentical": 198861,
+      "max_abs": 1.34110450745e-07,
+      "atol": 1e-06,
+      "failures": 0
+    }
+  ],
+  "gpu_parity_checks": 21,
+  "gpu_elements_compared": 944626308,
+  "comparison_kind": "tile_shapes",
+  "variant_labels": {
+    "8": "128x256 K64, 256 threads, control",
+    "128": "128x128 K64, 256 threads",
+    "512": "128x512 K32, 512 threads"
+  },
+  "decision": "Tile screen only; inspect resources and repeat any winner before integration.",
+  "limits": [
+    "Synthetic values at real matrix dimensions, not captured model activations.",
+    "Same-source operator control; not an installed-package throughput comparison.",
+    "GPU event samples include scheduling stalls; medians do not remove their end-to-end cost.",
+    "Full output comparison is to GPU group 8; independent CPU tolerance is tested only at two smaller boundary shapes.",
+    "No full model, checkpoint, tool continuation or cross-backend validation; no serving change."
+  ]
+}

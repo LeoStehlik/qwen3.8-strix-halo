@@ -1,0 +1,81 @@
+{
+  "commands": [
+    [
+      "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/bin/llvm-objcopy",
+      "--dump-section",
+      ".hip_fatbin=/home/less/.cache/strata-evaluation-20261107/projection-tiles/device.fatbin",
+      "/home/less/.cache/strata-evaluation-20261107/projection-tiles/grouping"
+    ],
+    [
+      "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/bin/clang-offload-bundler",
+      "--type=o",
+      "--unbundle",
+      "--input=/home/less/.cache/strata-evaluation-20261107/projection-tiles/device.fatbin",
+      "--targets=hipv4-amdgcn-amd-amdhsa--gfx1151",
+      "--output=/home/less/.cache/strata-evaluation-20261107/projection-tiles/device.co"
+    ],
+    [
+      "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/bin/llvm-objdump",
+      "-d",
+      "/home/less/.cache/strata-evaluation-20261107/projection-tiles/device.co"
+    ],
+    [
+      "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/bin/llvm-readelf",
+      "--notes",
+      "/home/less/.cache/strata-evaluation-20261107/projection-tiles/device.co"
+    ]
+  ],
+  "binary_sha256": "55d328deb564512c81aeb875b43110cf652bbaf30dbf15b7a0854a7c3778805f",
+  "kernels": {
+    "control": {
+      "symbol": "0000000000010600 <_ZN3pfg11kernel_bk64ILi8EEEvPKDF16_S2_Pfiiiiiii>:",
+      "instruction_count": 3119,
+      "instruction_sha256": "4322783fb051e85745734ccd1f83f3cd55edede6d5169093d678174b3c935007",
+      "resources": {
+        "group_segment_fixed_size": 55296,
+        "max_flat_workgroup_size": 256,
+        "private_segment_fixed_size": 0,
+        "sgpr_count": 24,
+        "sgpr_spill_count": 0,
+        "vgpr_count": 248,
+        "vgpr_spill_count": 0,
+        "wavefront_size": 32,
+        "workgroup_processor_mode": 1
+      }
+    },
+    "narrow": {
+      "symbol": "0000000000034d00 <_ZN3pfg11kernel_tileILb0EEEvPKDF16_S2_Pfiiiiiii>:",
+      "instruction_count": 1685,
+      "instruction_sha256": "255a00e097b85e773660de52e1d114552b7b49d9db37675aa95082d2d937149a",
+      "resources": {
+        "group_segment_fixed_size": 36864,
+        "max_flat_workgroup_size": 256,
+        "private_segment_fixed_size": 0,
+        "sgpr_count": 23,
+        "sgpr_spill_count": 0,
+        "vgpr_count": 247,
+        "vgpr_spill_count": 0,
+        "wavefront_size": 32,
+        "workgroup_processor_mode": 1
+      }
+    },
+    "wide": {
+      "symbol": "0000000000037300 <_ZN3pfg11kernel_tileILb1EEEvPKDF16_S2_Pfiiiiiii>:",
+      "instruction_count": 2946,
+      "instruction_sha256": "1ef3279996ab176743524113d41fd1dd3103fdae173e23707d05a7f026e4986c",
+      "resources": {
+        "group_segment_fixed_size": 51200,
+        "max_flat_workgroup_size": 512,
+        "private_segment_fixed_size": 56,
+        "sgpr_count": 21,
+        "sgpr_spill_count": 0,
+        "vgpr_count": 256,
+        "vgpr_spill_count": 17,
+        "wavefront_size": 32,
+        "workgroup_processor_mode": 1
+      }
+    }
+  },
+  "expected_control_sha256": "4322783fb051e85745734ccd1f83f3cd55edede6d5169093d678174b3c935007",
+  "control_unchanged": true
+}

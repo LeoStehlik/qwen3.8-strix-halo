@@ -10,10 +10,13 @@ run=json.loads((a.directory/'run.json').read_text());assert run['completed']
 assert run['service_requests_before']==run['service_requests_after']
 build=json.loads((a.directory/'build.json').read_text())
 row_stream=build.get('row_stream_candidate',False)
+tiles=build.get('tile_candidates',False)
 report={'shapes':{},'cpu_reference_checks':[],'gpu_parity_checks':0,'gpu_elements_compared':0,
-        'comparison_kind':'fragment_load_order' if row_stream else 'block_grouping',
-        'variant_labels':{'8':'existing group 8 control','99':'row-stream fragments, still group 8'} if row_stream else {},
-        'decision':'Fragment-load scheduling rejected as neutral; resources unchanged.' if row_stream else
+        'comparison_kind':'tile_shapes' if tiles else 'fragment_load_order' if row_stream else 'block_grouping',
+        'variant_labels':{'8':'128x256 K64, 256 threads, control','128':'128x128 K64, 256 threads','512':'128x512 K32, 512 threads'} if tiles else
+                         {'8':'existing group 8 control','99':'row-stream fragments, still group 8'} if row_stream else {},
+        'decision':'Tile screen only; inspect resources and repeat any winner before integration.' if tiles else
+                   'Fragment-load scheduling rejected as neutral; resources unchanged.' if row_stream else
                    'No scheduling selector promoted; best operator median gains are small and have no full-model confirmation.'}
 for name in ['correctness','gdn-qkv','gdn-gate','out-projection']:
     rows=[json.loads(s) for s in (a.directory/(name+'.jsonl')).read_text().splitlines()]

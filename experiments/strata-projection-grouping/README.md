@@ -1,5 +1,14 @@
 # Projection block grouping: no substantial gain
 
+The later resource profile and tile experiments use the same probe. See the
+[projection profile](../../docs/STRATA-PROJECTION-PROFILE-2026-11-07.md) and
+[final checkpoint](../../docs/STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md).
+The fragment-load reorder was neutral; narrower K64 and wider K32 tiles were
+slower. None is deployed. `build.py --row-stream` and `build.py --tiles` select
+these independent experiments; use separate output directories and
+`run.py --rounds 61`. `inspect-code.py` archives compiler resource metadata and
+checks the unchanged control instruction hash.
+
 Changing the padded FP16 projection kernel's launch grouping from its existing
 8 token tiles per group did not uncover a useful large improvement. Best
 operator medians improved by **0.2–1.2%**; several settings were substantially

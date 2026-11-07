@@ -1,5 +1,12 @@
 # Flash-Next: resumed optimization target, 2026-11-07
 
+**Latest recommendation:** stop the current raw-prefill tuning round and retain
+the working endpoint. The target is unmet and the hardware ceiling unproven.
+The [checkpoint](STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md) records the final
+rejected tile experiments and prioritizes possible later work. The experiment
+ladder below is retained for a future resumption, not an instruction to keep
+running benchmarks while next steps are being discussed.
+
 The user raised the objective and manually resumed the Codex goal. These
 objectives supersede the earlier 1,100 / 50–60 tok/s target, even if the goal
 panel still displays that older wording:
@@ -111,9 +118,12 @@ waves per sampled SIMD, substantial shared-memory waits and barriers alongside
 matrix work. L2 external requests do not establish a DRAM bottleneck; a repeat
 changed traffic at similar time. A fragment-load reorder preserved exact GPU
 outputs but remained within −0.05% to +0.21% of control, with unchanged resource
-allocation, and is rejected. Next test narrower K64 and wider K32 projection
-tiles separately to measure residency versus data reuse and synchronization.
-No tile candidate has been implemented or promoted; serving is unchanged.
+allocation, and is rejected. The subsequent narrow K64 and wide K32 candidates
+were implemented and tested independently: narrow lost 13.4–13.5% operator
+throughput, wide lost 28.6–32.2%. All 21 GPU output comparisons matched exactly.
+Wide spills registers; narrow lowers LDS without a measured speed benefit.
+Both are rejected in their current form. No source candidate is serving.
+See the [final tile evidence and assessment](STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md).
 
 A 64K profile of this configuration charged 24.9% to routed experts, 23.9% to
 GDN work, 20.9% to hyper-connections and 20.1% to attention-related work.

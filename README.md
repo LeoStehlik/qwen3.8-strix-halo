@@ -7,7 +7,13 @@ current Flash-Next work and the earlier 27B/DFlash2 deployment.
 
 ## Current direction — 2026-11-07
 
-**Optimization resumed: target 1,700–2,000 tok/s prefill, then 50–70 tok/s generation.** The selected packaged
+**Recommended stopping point: retain the working baseline.** The higher target
+of 1,700–2,000 tok/s prefill and 50–70 tok/s generation remains unmet; the
+hardware ceiling is unproven. The latest tile changes lost performance, and
+further credible gains require more substantial kernel work. Read the
+[optimization checkpoint and remaining opportunities](docs/STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md).
+
+The selected packaged
 configuration reached 1,416 tok/s cold prefill at 64K, 1,363 at 128K and 1,301
 at 192K, retaining the same model quantization and 262,144 context capacity.
 Generation on that fixture is about 37–41 tok/s, below the 50–70 target.

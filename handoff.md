@@ -4,9 +4,14 @@ Repository: [Qwen3.8 inference on Strix Halo](https://github.com/LeoStehlik/qwen
 renamed from the earlier 27B/DFlash2-specific name on 7 November. The default
 branch landing page links this active investigation; clone URLs are updated.
 
-**Performance investigation resumed with higher targets: 1,700–2,000 tok/s
-prefill first, then 50–70 tok/s sustained generation.** These supersede the old
-goal wording. Read the [updated objective and experiment order](docs/STRATA-NEXT-TARGETS-2026-11-07.md).
+**Recommendation after the latest experiments: stop this raw-prefill search
+at the working baseline.** The hardware ceiling is unproven, but local tuning
+has yielded diminishing returns. The higher targets—1,700–2,000 tok/s prefill
+and 50–70 tok/s generation—remain unmet. Read the
+[checkpoint and remaining opportunities](docs/STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md)
+before resuming experiments. No benchmark is running; the endpoint remains
+loaded. The goal remains active while next steps are discussed; the checkpoint
+also records the proposed bounded MTP comparison and expert-trace decision.
 
 **Current live state, restored at 19:55:46 UTC:** the packaged optimized endpoint has
 `STRATA_CACHE_MESSAGE_BOUNDARY=1` for a [limited live trial](docs/STRATA-CACHE-LIVE-TRIAL-2026-11-07.md).
@@ -54,9 +59,14 @@ but showed lower read traffic at similar duration, so a simple bandwidth-only
 diagnosis is unsupported. The fragment-load scheduling candidate was neutral
 (−0.05/+0.20/+0.21% operator medians), preserved all 14 GPU comparisons and
 left resources unchanged. Reject it; code/evidence archived, nothing serving.
-Next compare narrower K64 tiles for residency and wider K32 tiles for reuse
-independently, checking their synchronization and traffic costs. Geometries
-and validation gates are in the report; neither has been built yet.
+The subsequent independent tile screen rejected both candidates: narrow
+128×128/K64 was 13.4–13.5% slower; wide 128×512/K32 was 28.6–32.2% slower.
+All 21 GPU comparisons matched exactly. Narrow lowered LDS from 54 to 36 KiB
+without a performance gain; wide incurred 17 VGPR spills and 56 scratch bytes.
+The control's instructions were unchanged. These are isolated operator results,
+not model-level measurements. No spill-free wide rewrite or further unrolling
+experiment was started. Code, resource inspection and 61-sample distributions
+are in the [checkpoint](docs/STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md).
 
 The earlier [factory clock-policy screen](docs/STRATA-CLOCK-POLICY-2026-11-07.md)
 kept this endpoint/configuration running. Cold 64K `auto / high / auto /

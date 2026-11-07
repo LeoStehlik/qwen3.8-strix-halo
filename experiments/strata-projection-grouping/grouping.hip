@@ -1,6 +1,9 @@
 // Isolated launch-order screen of the existing padded FP16 projection kernel.
 // The generated header changes only its compile-time block grouping.
 #include "wmma_gemm_grouping.generated.cuh"
+#ifdef PROJECTION_TILE_SCREEN
+#include "tile-kernels.cuh"
+#endif
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
@@ -28,6 +31,10 @@ void launch(int group,const _Float16* x,const _Float16* w,float* y,int m,int n,i
     switch(group) {GO(1);GO(2);GO(4);GO(8);GO(16);GO(32);GO(64);
 #ifdef PROJECTION_ROW_STREAM
         case 99: pfg::kernel_bk64_rowstream<<<grid,256>>>(x,w,y,m,n,k,ldy,acc,ldx,ldw);break;
+#endif
+#ifdef PROJECTION_TILE_SCREEN
+        case 128: pfg::kernel_tile<false><<<((m+127)/128)*((n+127)/128),256>>>(x,w,y,m,n,k,ldy,acc,ldx,ldw);break;
+        case 512: pfg::kernel_tile<true><<<((m+127)/128)*((n+511)/512),512>>>(x,w,y,m,n,k,ldy,acc,ldx,ldw);break;
 #endif
         default:exit(3);}
 #undef GO
@@ -66,6 +73,8 @@ void run(int m,int n,int k,int xpad,int reps,bool cpu,int acc=0) {
     }
 #ifdef PROJECTION_ROW_STREAM
     const int groups[]={8,99};
+#elif defined(PROJECTION_TILE_SCREEN)
+    const int groups[]={8,128,512};
 #else
     const int groups[]={1,2,4,8,16,32,64};
 #endif
