@@ -69,8 +69,14 @@ canaries, with identical outputs. Both 43- and 267-token tails benefited:
 first-continuation latency fell about 32% and 36%, respectively. Multi-second
 cold variability coincided with GPU queue evictions before the extra checkpoint
 was reached; checkpoint copies themselves took 24–41 ms. A 43-token window
-read took 516 ms, almost the same as 267 tokens batched (533 ms). Next compare
-the short-read cutoff independently, then run a limited actual-traffic trial.
+read took 516 ms, almost the same as 267 tokens batched (533 ms). The subsequent
+[64/8/64 cutoff comparison](docs/STRATA-SHORT-READ-2026-11-07.md) rejected 8:
+the short continuation took 4.180 s versus 3.522/3.520 s at 64, with its
+43-token segment rising from ~514 to 1,201 ms. All 12 value canaries passed;
+one cold response changed only JSON whitespace, so raw hashes were not all
+identical. Next isolate the small-batch fused-expert threshold while holding
+the short-read cutoff fixed, then compare any winner with 64/128. A limited
+actual-traffic cache trial is still pending.
 The flag remains off. This is avoided work, not higher raw prefill throughput.
 The original user payload was not fully captured, so the historical task's
 exact cache miss remains unproven. Source/model throughput targets remain active.
@@ -166,6 +172,10 @@ is off. No source experiment, trace flag or short-read override is deployed.
 Latest restoration, after the traced cache comparison: **18:38:35 UTC**.
 Health and idle state verified on 8083; only `90-live-preview.conf` remains.
 The temporary trace override is removed and the same baseline is serving.
+
+Latest restoration, after the short-read comparison: **18:49:50 UTC**.
+`91-cache-short-read.conf` is removed. Default short-read 64, stream minimum
+128, message-boundary off, no tracing; no source kernel changes deployed.
 
 **Flash-Next is connected to the existing `tiercelmoe` provider.** Select
 `/model qwen-flash-next`, or the full reference

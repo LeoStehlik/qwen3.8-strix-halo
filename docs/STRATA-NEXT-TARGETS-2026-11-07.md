@@ -66,9 +66,13 @@ startup varied materially. A traced follow-up passed 12 moving-context canaries
 with matching outputs at 43- and 267-token tails. It found multi-second GPU
 eviction activity before the extra checkpoint, versus 24–41 ms checkpoint
 copies. The larger tail also benefited. Keep the option **undeployed** while
-comparing the short-read cutoff, then use a limited real-traffic trial.
+checking the small-batch expert path, then use a limited real-traffic trial.
+The [short-read 64/8/64 comparison](STRATA-SHORT-READ-2026-11-07.md) rejected
+8 at the current stream minimum of 128: about 19% slower continuation latency.
+Source inspection shows the threshold excludes 43-token batches from fused
+experts. Lowering that threshold remains an untested hypothesis.
 It is work avoided, not a higher raw-prefill rate. The unchanged preview was
-restored after the trace at 18:38:35 UTC. No Mac gateway restart or configuration change.
+restored after the short-read test at 18:49:50 UTC. No Mac gateway restart or configuration change.
 
 ## Next experiment priorities
 

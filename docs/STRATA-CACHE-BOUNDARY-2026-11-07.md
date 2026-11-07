@@ -158,9 +158,11 @@ with both message sizes; cold timing is strongly affected by memory stalls.
 Two enabled arms have now run, one untraced and one traced, with different
 fixtures. They are not a large production latency distribution.
 
-Next compare the short-read cutoff independently, preserving the six-token
-header's current path and testing both message sizes. Do not assume that the
-batched path wins for 43 tokens merely because it handles 267 efficiently.
+The [separate short-read comparison](STRATA-SHORT-READ-2026-11-07.md) has now
+rejected a cutoff of 8 with the current expert threshold: the 43-token
+continuation became about 19% slower. Keep 64. Source inspection identifies
+the small-batch expert dispatch threshold as the next independent hypothesis;
+it has not yet been lowered or measured.
 Memory management remains a separate source of stalls; the earlier compaction
 setting experiments did not establish a stable win and remain reverted.
 
@@ -180,6 +182,8 @@ and boot promotion remains pending.
 After the traced follow-up, the same preview was restored at **18:38:35 UTC**,
 loaded and idle. `91-cache-boundary-trace.conf` was removed. Neither the cache
 option nor tracing is enabled in serving; the short-read setting is unchanged.
+
+The later short-read diagnostic restored the same baseline at **18:49:50 UTC**.
 
 ## Reproduction
 

@@ -1,0 +1,28 @@
+{
+  "utc": "2026-11-07T18:49:50.406797+00:00",
+  "health": {
+    "status": "ok",
+    "max_context": 262144,
+    "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+    "images": true,
+    "api_key": true,
+    "image_generation": false,
+    "loaded": true,
+    "service": "strata"
+  },
+  "live": {
+    "state": "idle",
+    "queued": 0,
+    "phase": null,
+    "prompt_tokens": null,
+    "prompt_read": null,
+    "prompt_total": null,
+    "generated": null,
+    "max_tokens": null,
+    "elapsed_s": null,
+    "tok_s": null,
+    "tok_s_mean": null,
+    "prefill_tok_s_mean": null,
+    "tok_s_window_s": null
+  }
+}

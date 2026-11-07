@@ -1,0 +1,36 @@
+{
+  "engine_sha256": "bce2f61ca0f970a1640aafa77925c0908f060243cffcd1ad10e3843b35eed476",
+  "source_base": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "varied_engine_argument": {
+    "--short-read": [
+      64,
+      8,
+      64
+    ]
+  },
+  "fixed_environment": {
+    "STRATA_CACHE_MESSAGE_BOUNDARY": "1",
+    "STRATA_TRACE": "1",
+    "STRATA_PREFILL_STREAM_MIN": "128"
+  },
+  "same_model_context_quant": true,
+  "runtime_tail_tokens": [
+    43,
+    267
+  ],
+  "turns_per_case": 2,
+  "mode": "moving",
+  "no_real_tools_executed": true,
+  "decision": "Reject short-read 8 with stream minimum 128; keep original serving default 64.",
+  "serving_afterwards": {
+    "message_boundary": "unset, default off",
+    "trace": "unset",
+    "short_read": "default 64",
+    "stream_min": 128
+  },
+  "limits": [
+    "One cold output changed JSON whitespace; parsed state values still matched.",
+    "Cold timing and one large-tail control overlapped memory stalls.",
+    "Lowering stream minimum is a source-based hypothesis, not yet tested."
+  ]
+}

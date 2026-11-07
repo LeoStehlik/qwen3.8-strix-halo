@@ -6,10 +6,12 @@ from pathlib import Path
 ap=argparse.ArgumentParser(description=__doc__)
 ap.add_argument('--root', type=Path, required=True)
 ap.add_argument('--out', type=Path)
+ap.add_argument('--arms', nargs=3, default=['off1', 'on1', 'off2'],
+                help='Ordered control, candidate, return-control directory names')
 args=ap.parse_args()
 root=args.root
 arms={}
-for name in ['off1','on1','off2']:
+for name in args.arms:
  p=root/name
  if not (p/'engine.log').exists():continue
  groups=[];cur=None
@@ -48,7 +50,7 @@ for name in ['off1','on1','off2']:
     'vmstat_delta':{k:b['vmstat'][k]-v for k,v in a['vmstat'].items() if b['vmstat'][k]!=v}})
  arms[name]=result
 j={'arms':arms,'limits':['Trace preparation and prompt total are elapsed intervals. Read segments can include periodic checkpoint saves; do not add nested timings as disjoint costs.','KFD counters are per process/GPU; vision and main-engine evictions may overlap and must not be summed as wall time.','VM counters are host-wide and cover the whole request, not an individually attributed stage.','Diagnostic trace changes logging overhead; use the earlier untraced comparison for primary warm performance.']}
-complete=set(arms)=={'off1','on1','off2'} and all(len(rows)==4 for rows in arms.values())
+complete=set(arms)==set(args.arms) and all(len(rows)==4 for rows in arms.values())
 j['complete_comparison']=complete
 j['matching_hashes']={key:all(len({arms[a][i][key] for a in arms})==1 for i in range(4))
     for key in ['request_sha256','rendered_sha256','output_sha256']} if complete else None

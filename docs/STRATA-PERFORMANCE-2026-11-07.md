@@ -685,3 +685,10 @@ took 516 ms for 43 tokens, versus 533 ms for 267 tokens batched: compare the
 short-read threshold separately before any assumption of a win. Full timings,
 memory counters and caveats are in the boundary-cache report. No serving
 promotion; the unchanged preview was restored at 18:38:35 UTC.
+
+The [short-read follow-up](STRATA-SHORT-READ-2026-11-07.md) rejected cutoff 8
+with the current stream minimum of 128. The 43-token continuation took
+3.522 / 4.180 / 3.520 s at cutoffs 64 / 8 / 64. All value canaries passed;
+one cold JSON response changed whitespace, so raw hashes were not all equal.
+The source's small-batch fused-expert threshold is a new, untested lead.
+The unchanged serving configuration was restored at 18:49:50 UTC.
