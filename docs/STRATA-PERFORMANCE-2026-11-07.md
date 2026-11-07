@@ -659,3 +659,19 @@ Background skill-learning ran after the answer was delivered and must be
 accounted separately. The earlier first-13-call aggregate mixes these phases;
 it is not a main-task-only latency measurement. All public evidence is stripped
 of transcript text, tool arguments/results and user/channel identifiers.
+
+
+## Checkpoint placement for moving runtime context
+
+The [boundary-cache comparison](STRATA-CACHE-BOUNDARY-2026-11-07.md) tested the
+packaged `STRATA_CACHE_MESSAGE_BOUNDARY=1` option off/on/off. Moving-context
+continuations took 19.161 / 10.583 / 19.333 seconds for three requests, processing
+22,501 / 5,757 / 22,501 tokens. All per-position output hashes matched across
+arms. The fixed-context case showed no latency benefit and its follow-up answer
+canaries failed identically in every arm; those positions establish parity only.
+Cold timing varied materially, including between controls. No live adoption yet.
+This reduces duplicate work rather than increasing raw token throughput. It is
+consistent with the audited OpenClaw cache pattern, whose complete historical
+wire payload is unavailable. Next: checkpoint timing/memory counters and
+representative runtime-context lengths, then actual traffic. The original
+preview was restored at 18:21:53 UTC; temporary overrides are removed.

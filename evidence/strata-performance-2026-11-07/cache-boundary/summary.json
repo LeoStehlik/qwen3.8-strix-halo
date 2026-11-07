@@ -1,0 +1,106 @@
+{
+  "protocol": "strata-message-boundary-v2",
+  "arms": {
+    "off1": {
+      "moving": {
+        "cold_elapsed_s": 19.799138825999762,
+        "warm_elapsed_s": 19.161174799997752,
+        "warm_prefill_ms": 16721.0,
+        "warm_read_tokens": 22501,
+        "all_elapsed_s": 38.960313625997514,
+        "canaries_correct": 4,
+        "cache_tokens": [
+          0,
+          16856,
+          16856,
+          16856
+        ]
+      },
+      "fixed": {
+        "cold_elapsed_s": 16.827110513999287,
+        "warm_elapsed_s": 7.561421202999554,
+        "warm_prefill_ms": 6063.299999999999,
+        "warm_read_tokens": 5564,
+        "all_elapsed_s": 24.38853171699884,
+        "canaries_correct": 1,
+        "cache_tokens": [
+          0,
+          20607,
+          22509,
+          24378
+        ]
+      }
+    },
+    "on1": {
+      "moving": {
+        "cold_elapsed_s": 25.93965275699884,
+        "warm_elapsed_s": 10.582792651999625,
+        "warm_prefill_ms": 8164.3,
+        "warm_read_tokens": 5757,
+        "all_elapsed_s": 36.522445408998465,
+        "canaries_correct": 4,
+        "cache_tokens": [
+          0,
+          20568,
+          22437,
+          24307
+        ]
+      },
+      "fixed": {
+        "cold_elapsed_s": 17.615500854999482,
+        "warm_elapsed_s": 7.591478707001443,
+        "warm_prefill_ms": 6091.8,
+        "warm_read_tokens": 5564,
+        "all_elapsed_s": 25.206979562000924,
+        "canaries_correct": 1,
+        "cache_tokens": [
+          0,
+          20607,
+          22509,
+          24378
+        ]
+      }
+    },
+    "off2": {
+      "moving": {
+        "cold_elapsed_s": 24.334166615999493,
+        "warm_elapsed_s": 19.332513278000988,
+        "warm_prefill_ms": 16781.3,
+        "warm_read_tokens": 22501,
+        "all_elapsed_s": 43.66667989400048,
+        "canaries_correct": 4,
+        "cache_tokens": [
+          0,
+          16856,
+          16856,
+          16856
+        ]
+      },
+      "fixed": {
+        "cold_elapsed_s": 17.523017179000817,
+        "warm_elapsed_s": 7.547975253995901,
+        "warm_prefill_ms": 6044.0,
+        "warm_read_tokens": 5564,
+        "all_elapsed_s": 25.070992432996718,
+        "canaries_correct": 1,
+        "cache_tokens": [
+          0,
+          20607,
+          22509,
+          24378
+        ]
+      }
+    }
+  },
+  "request_sha256_all_matched": true,
+  "rendered_sha256_all_matched": true,
+  "output_sha256_all_matched": true,
+  "moving_warm_latency_reduction_percent": 45.015439255620336,
+  "moving_warm_read_reduction_percent": 74.4144704679792,
+  "limits": [
+    "Synthetic backend-only replay; original full provider payload was not captured.",
+    "All moving-context canaries correct. Fixed-context followups emitted the same raw lookup text in every arm, so they support output/cache parity only, not canary correctness.",
+    "First cold-request timing varied substantially; one enabled arm is insufficient to attribute its cold penalty.",
+    "This reduces repeated work; it does not establish higher raw cold-prefill throughput."
+  ]
+}

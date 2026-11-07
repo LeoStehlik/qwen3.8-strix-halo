@@ -55,6 +55,20 @@ turns spent **~6.65 s in session setup** and ~2.3 s in prompt assembly. The
 later skill-learning notification was not delayed answer delivery. No Mac
 configuration was changed and no new agent task was launched for this audit.
 
+The [boundary-checkpoint follow-up](docs/STRATA-CACHE-BOUNDARY-2026-11-07.md)
+confirmed that OpenClaw's installed message helper moves transient runtime
+context behind tool history. An isolated packaged-engine off/on/off replay of
+that pattern tested existing `STRATA_CACHE_MESSAGE_BOUNDARY=1`: **45% shorter
+warm continuation latency, 74% fewer reread tokens**, all eight output hashes
+identical across the three arms. All moving-context canaries passed. The fixed
+case already cached efficiently; three follow-ups emitted identical unwanted
+lookup text in every arm and count only as output/cache parity. Cold timings
+varied (control 19.8/24.3 s, enabled 25.9 s), so the option is **not promoted**.
+Next inspect checkpoint timing/memory counters and representative runtime-tail
+lengths; the 43-token fixture is below the default short-read threshold.
+The original user payload was not fully captured, so the historical task's
+exact cache miss remains unproven. Source/model throughput targets remain active.
+
 Fresh packaged 64K screens: control **1,389.1 tok/s**, HC exact **1,217.2**,
 HC fused **1,382.8**. The exact arm includes a separate 5.83-second cache-park
 stall; its GPU timeline was also slower (47.904 versus 47.029 seconds).
@@ -132,6 +146,10 @@ After prepared-row tests, the unchanged packaged preview was restored at
 **17:45:26 UTC**. The private-address health/model checks passed again during
 the latency audit. The listener binds its Tailscale address, not loopback.
 No experimental kernel is serving and boot promotion remains pending.
+
+After the cache comparison, the same preview was restored at **18:21:53 UTC**,
+loaded and idle. `91-cache-boundary.conf` is removed; the message-boundary flag
+is off. No source experiment, trace flag or short-read override is deployed.
 
 **Flash-Next is connected to the existing `tiercelmoe` provider.** Select
 `/model qwen-flash-next`, or the full reference

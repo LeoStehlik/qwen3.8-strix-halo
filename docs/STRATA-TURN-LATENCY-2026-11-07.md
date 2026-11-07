@@ -53,6 +53,11 @@ that parking cost is small compared with repeated prefill.
 This establishes repeated processing of a growing tail, not its cause or
 the amount safely avoidable. Candidate causes include changes in rendered
 prefix tokens, message/turn boundary selection, and checkpoint retention.
+The [subsequent isolated replay](STRATA-CACHE-BOUNDARY-2026-11-07.md) demonstrates
+one such interaction and a concrete existing option: moving runtime context
+invalidates the latest checkpoint while an extra checkpoint before it preserves
+much more history. It reduced synthetic continuation latency by 45%, but is
+not yet enabled in serving or proven against the original wire payload.
 Next: compare consecutive provider payloads and rendered token-prefix lengths
 using content-free hashes/positions, then compare the matching checkpoint.
 Do not reuse state across differing tokens or disable reasoning to manufacture

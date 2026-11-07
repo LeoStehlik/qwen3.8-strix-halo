@@ -1,0 +1,74 @@
+{
+  "version": "2026.10.9",
+  "source": [
+    {
+      "name": "runtime-context-prompt-DkBUcs_i.mjs",
+      "sha256": "3e3f43553dca781b3c933556db5a99d823e3371829fb1f3d2e080400da2ebe2a"
+    },
+    {
+      "name": "internal-runtime-context-D5iQhnLo.mjs",
+      "sha256": "cb45f3c13615feb12fe58667caeb15ed566dd43e203ed6833949b85e2e85dd31"
+    }
+  ],
+  "synthetic": true,
+  "scope": "Pure message projection only; no agent, session, provider request or tool execution",
+  "runs": [
+    {
+      "turn": 0,
+      "before": [
+        "runtime_context",
+        "user",
+        "assistant",
+        "toolResult"
+      ],
+      "after": [
+        "user",
+        "assistant",
+        "toolResult",
+        "runtime_context"
+      ]
+    },
+    {
+      "turn": 1,
+      "before": [
+        "runtime_context",
+        "user",
+        "assistant",
+        "toolResult",
+        "assistant",
+        "toolResult"
+      ],
+      "after": [
+        "user",
+        "assistant",
+        "toolResult",
+        "assistant",
+        "toolResult",
+        "runtime_context"
+      ]
+    },
+    {
+      "turn": 2,
+      "before": [
+        "runtime_context",
+        "user",
+        "assistant",
+        "toolResult",
+        "assistant",
+        "toolResult",
+        "assistant",
+        "toolResult"
+      ],
+      "after": [
+        "user",
+        "assistant",
+        "toolResult",
+        "assistant",
+        "toolResult",
+        "assistant",
+        "toolResult",
+        "runtime_context"
+      ]
+    }
+  ]
+}

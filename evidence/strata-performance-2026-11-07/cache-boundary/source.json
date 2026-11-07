@@ -1,0 +1,13 @@
+{
+  "packaged_engine_sha256": "bce2f61ca0f970a1640aafa77925c0908f060243cffcd1ad10e3843b35eed476",
+  "source_selector_base": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "selector_test": "c++ -std=c++17 -O2 -Iinclude src/program/message_boundary_test.cpp -o /tmp/message_boundary_test && /tmp/message_boundary_test",
+  "benchmark_flags": {
+    "STRATA_CACHE_MESSAGE_BOUNDARY": "0 / 1 / 0"
+  },
+  "serving_flag_afterwards": "unset; default off",
+  "preliminary_failures": {
+    "initial-format-check": "Control stopped because a correct JSON object had a Markdown fence; parser was corrected to separate state from format.",
+    "initial-auto-tool-choice": "Control stopped after the model generated a lookup in the fixed-context case; no tool executed. Final protocol explicitly requests tool_choice=none and records every model outcome."
+  }
+}

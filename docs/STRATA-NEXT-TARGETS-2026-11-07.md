@@ -56,6 +56,17 @@ finer setup spans. Later skill-learning calls happened after answer delivery;
 do not label them idle time or charge them to the answer. This is read-only
 evidence from the existing task, not a new synthetic OpenClaw run.
 
+A [backend-only boundary-checkpoint replay](STRATA-CACHE-BOUNDARY-2026-11-07.md)
+now demonstrates the interaction with moving runtime context. The existing
+`STRATA_CACHE_MESSAGE_BOUNDARY=1` option reduced three continuation times by
+45% and reread tokens by 74%, with identical outputs across off/on/off arms.
+All moving-context state canaries passed; fixed-context follow-ups only passed
+output parity, emitting the same unwanted lookup text in every arm. Cold
+startup varied materially. Keep the option **undeployed** pending checkpoint/
+memory timing and representative-tail checks, then a real-traffic trial.
+It is work avoided, not a higher raw-prefill rate. The unchanged preview was
+restored at 18:21:53 UTC. No Mac gateway restart or configuration change.
+
 ## Next experiment priorities
 
 A 64K profile of this configuration charged 24.9% to routed experts, 23.9% to
