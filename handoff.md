@@ -11,8 +11,15 @@ This validates that task by the user's assessment; broader quality is not proven
 The measured packaged configuration remains the baseline and serves private
 8083. No losing kernel experiment or partial tuning table is deployed.
 The thinking-enabled synthetic probe was interrupted for that live test;
-spec-6/spec-8 were not run. The next prefill experiment separates expert-kernel
-costs and captures row distributions before changing the kernel pipeline.
+spec-6/spec-8 were not run. The [expert profile and routing replay](experiments/strata-expert-profile/README.md)
+now separate the expert cost: gate/up about 62%, down about 37%, grouping
+negligible. All 192 full layer/chunk routing records from a public 64K probe
+were captured. Three real-routing replays were only 1–3% slower than uniform
+routing, with row ownership/reference checks passing. No register spills
+were reported. Expert hardware counters returned unexplained zeros despite
+a successful copy-counter control; bandwidth/occupancy classification remains
+unresolved. The next isolated code candidate is a cooperative gate/up
+SwiGLU/int8 epilogue. No production source patch is deployed.
 
 The investigation resumed after the user's clean reboot at 14:51:52 UTC.
 The original-policy F16 comparison completed: cold 16K **1,074.3 / 40.3 tok/s**,
@@ -65,6 +72,11 @@ optimized preview; `90-benchmark.conf` was removed. The old 27B and Qwen3.6 unit
 OpenClaw gateway restart or Mac reboot was performed. Persistent 8083 config
 is still the original installer layout; do not enable it blindly. The optimized
 preview is selected for live testing; boot promotion remains pending. Read the [performance record](docs/STRATA-PERFORMANCE-2026-11-07.md).
+
+After the routing capture, `91-routing-profile.conf` was removed and the
+original optimized preview loaded again at **16:35:56 UTC**. Authenticated
+health, metrics and model listing passed; the endpoint was idle. The Mac
+gateway was untouched. Diagnostic sync/dump overhead is absent from serving.
 
 **Flash-Next is connected to the existing `tiercelmoe` provider.** Select
 `/model qwen-flash-next`, or the full reference

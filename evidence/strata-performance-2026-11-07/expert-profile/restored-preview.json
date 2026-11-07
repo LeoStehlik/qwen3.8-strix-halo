@@ -1,0 +1,11 @@
+{
+  "utc": "2026-11-07T16:35:56.325797+00:00",
+  "load_seconds": 90.05994916100008,
+  "live": {
+    "state": "idle",
+    "queued": 0
+  },
+  "models": [
+    "qwen3.8-flash-next-unsloth-ud-q4_k_xl"
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "case": "valid",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "truncated-rejected",
+    "passed": true,
+    "exit_code": 1
+  },
+  {
+    "case": "truncated-explicit",
+    "passed": true,
+    "exit_code": 0
+  },
+  {
+    "case": "short-header",
+    "passed": true,
+    "exit_code": 1
+  },
+  {
+    "case": "invalid-layer",
+    "passed": true,
+    "exit_code": 1
+  },
+  {
+    "case": "invalid-id",
+    "passed": true,
+    "exit_code": 1
+  }
+]

@@ -1,0 +1,15 @@
+W1107 16:33:11.785592   15613 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.000810 sec
+W1107 16:33:11.804245   15613 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq --no-ref --only=Q4_K / Q5_1 --chunks=16384' ::     0.000000 sec
+W1107 16:33:11.963508   15613 tool.cpp:3082] HSA version 1.21.0 initialized (instance=0)
+W1107 16:33:15.785273   15613 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq --no-ref --only=Q4_K / Q5_1 --chunks=16384' ::     3.981027 sec
+E1107 16:33:15.799971   15613 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-profile/replay-replay-harness-control/expert_kernel_stats.csv
+E1107 16:33:15.800132   15613 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-profile/replay-replay-harness-control/expert_kernel_trace.csv
+E1107 16:33:15.803288   15613 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-profile/replay-replay-harness-control/expert_agent_info.csv
+E1107 16:33:15.803361   15613 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-profile/replay-replay-harness-control/expert_domain_stats.csv
+W1107 16:33:15.804477   15613 simple_timer.cpp:55] [rocprofv3] output generation ::     0.018497 sec
+W1107 16:33:15.804573   15613 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.018628 sec
+  (fused back to back: median 57.938 ms, min 57.616; alternating min 57.848; MMQ min 1.000)
+  fused output bits hash 507bd523cd60c84a
+Q4_K / Q5_1 - timing part: 16384 tokens x top 10 over 512 experts, one layer: MMQ path 1.000 ms, fused 57.949 ms (0.02x); fused vs MMQ rel RMS 0.000e+00 worst row 0.000e+00
+  sample of 96 pairs vs FP32 reference: MMQ rel RMS 0.000e+00 worst 0.000e+00, fused rel RMS 6.339e-03 worst 5.314e-02
+prefill fused MoE (native formats) parity passed

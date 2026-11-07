@@ -12,6 +12,14 @@ Keep the existing UD-Q4_K_XL model, full context capacity and useful agent
 behaviour. The earlier 1,100 / 50–60 target below is historical. Tool-call
 changes remain out of scope unless validation exposes a relevant regression.
 
+The subsequent [expert profile and actual-routing replay](../experiments/strata-expert-profile/README.md)
+split the dominant native operator into about 62% gate/up and 37% down.
+All 192 full layer/chunk routing records were captured from a public 64K probe;
+three selected distributions added only 1–3% over a uniform operator control.
+No production kernel change resulted. Hardware counter zeros in the expert
+run remain unexplained; a copy control returned plausible traffic counters.
+The optimized endpoint was restored at 16:35:56 UTC, with the Mac untouched.
+
 ## Initial deployment missed the target
 
 The first real OpenClaw request supplied 187,737 input tokens. It was cancelled

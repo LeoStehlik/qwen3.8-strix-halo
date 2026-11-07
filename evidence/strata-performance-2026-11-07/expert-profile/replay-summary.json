@@ -1,0 +1,118 @@
+[
+  {
+    "name": "replay-least-padding",
+    "stages": {
+      "gate_up": {
+        "mean_layer_ms": 35.6193094375,
+        "calls": 64
+      },
+      "down": {
+        "mean_layer_ms": 21.8204981875,
+        "calls": 64
+      },
+      "quantize": {
+        "mean_layer_ms": 1.0090420625,
+        "calls": 16
+      },
+      "group_count": {
+        "mean_layer_ms": 0.00668475,
+        "calls": 16
+      },
+      "group_place": {
+        "mean_layer_ms": 0.0248429375,
+        "calls": 16
+      },
+      "group_scan": {
+        "mean_layer_ms": 0.0034714375,
+        "calls": 16
+      }
+    }
+  },
+  {
+    "name": "replay-median-padding",
+    "stages": {
+      "gate_up": {
+        "mean_layer_ms": 35.9106083125,
+        "calls": 64
+      },
+      "down": {
+        "mean_layer_ms": 22.2781169375,
+        "calls": 64
+      },
+      "quantize": {
+        "mean_layer_ms": 1.0043534375,
+        "calls": 16
+      },
+      "group_count": {
+        "mean_layer_ms": 0.0085305,
+        "calls": 16
+      },
+      "group_place": {
+        "mean_layer_ms": 0.0244623125,
+        "calls": 16
+      },
+      "group_scan": {
+        "mean_layer_ms": 0.0037769375,
+        "calls": 16
+      }
+    }
+  },
+  {
+    "name": "replay-most-padding",
+    "stages": {
+      "gate_up": {
+        "mean_layer_ms": 36.1791218125,
+        "calls": 64
+      },
+      "down": {
+        "mean_layer_ms": 22.464564625,
+        "calls": 64
+      },
+      "quantize": {
+        "mean_layer_ms": 1.0063605625,
+        "calls": 16
+      },
+      "group_count": {
+        "mean_layer_ms": 0.00718075,
+        "calls": 16
+      },
+      "group_place": {
+        "mean_layer_ms": 0.0244173125,
+        "calls": 16
+      },
+      "group_scan": {
+        "mean_layer_ms": 0.0054775625,
+        "calls": 16
+      }
+    }
+  },
+  {
+    "name": "replay-replay-harness-control",
+    "stages": {
+      "gate_up": {
+        "mean_layer_ms": 35.6603714375,
+        "calls": 64
+      },
+      "down": {
+        "mean_layer_ms": 21.117612375,
+        "calls": 64
+      },
+      "quantize": {
+        "mean_layer_ms": 1.015338625,
+        "calls": 16
+      },
+      "group_count": {
+        "mean_layer_ms": 0.0068174375,
+        "calls": 16
+      },
+      "group_place": {
+        "mean_layer_ms": 0.0256645625,
+        "calls": 16
+      },
+      "group_scan": {
+        "mean_layer_ms": 0.002983,
+        "calls": 16
+      }
+    }
+  }
+]

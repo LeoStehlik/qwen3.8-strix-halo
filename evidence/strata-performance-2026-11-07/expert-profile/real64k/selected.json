@@ -1,0 +1,47 @@
+[
+  {
+    "index": 48,
+    "layer": 0,
+    "position": 144,
+    "zero_experts": 12,
+    "median_rows": 224.0,
+    "max_rows": 2488,
+    "tile_capacity": {
+      "16": 167632,
+      "64": 179008,
+      "128": 196352
+    },
+    "label": "least-padding",
+    "ids": "/home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/least-padding.ids.i32"
+  },
+  {
+    "index": 78,
+    "layer": 30,
+    "position": 144,
+    "zero_experts": 9,
+    "median_rows": 137.0,
+    "max_rows": 3231,
+    "tile_capacity": {
+      "16": 167616,
+      "64": 180672,
+      "128": 200960
+    },
+    "label": "median-padding",
+    "ids": "/home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/median-padding.ids.i32"
+  },
+  {
+    "index": 111,
+    "layer": 15,
+    "position": 16528,
+    "zero_experts": 20,
+    "median_rows": 67.0,
+    "max_rows": 7404,
+    "tile_capacity": {
+      "16": 167776,
+      "64": 183232,
+      "128": 205184
+    },
+    "label": "most-padding",
+    "ids": "/home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/most-padding.ids.i32"
+  }
+]

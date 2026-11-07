@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/home/less/.local/opt/rocm-7.14.1-strata-lab/bin/rocprofv3",
+    "--pmc",
+    "GL2C_EA_RDREQ_32B_sum GL2C_EA_RDREQ_64B_sum GL2C_EA_RDREQ_128B_sum GL2C_EA_WRREQ_64B_sum SQ_WAVES_sum",
+    "--kernel-include-regex",
+    ".*copy.*",
+    "--kernel-iteration-range",
+    "5",
+    "-d",
+    "/home/less/.cache/strata-evaluation-20261107/expert-profile/counter-copy-control",
+    "-o",
+    "copy",
+    "--output-format",
+    "csv",
+    "--",
+    "/home/less/.cache/strata-evaluation-20261107/grwrite/copy-bandwidth"
+  ],
+  "env": {
+    "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib"
+  }
+}

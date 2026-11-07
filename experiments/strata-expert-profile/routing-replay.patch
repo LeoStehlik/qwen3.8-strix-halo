@@ -1,0 +1,33 @@
+diff --git a/tests/cuda/prefill_fused_iq_test.cpp b/tests/cuda/prefill_fused_iq_test.cpp
+index 90f52f5..922d109 100644
+--- a/tests/cuda/prefill_fused_iq_test.cpp
++++ b/tests/cuda/prefill_fused_iq_test.cpp
+@@ -453,7 +453,27 @@ void timing_part(const Pair& p, int T, cudaStream_t s) {
+     std::vector<const uint8_t*> blob((size_t) E);
+     for (int e = 0; e < E; ++e) blob[(size_t) e] = blobs.as<uint8_t>() + (size_t) e * stride;
+     const std::vector<float> x = make_x(T, rng, -1);
+-    const std::vector<int32_t> ids = make_ids(T, E, rng, 0, 0);
++    std::vector<int32_t> ids = make_ids(T, E, rng, 0, 0);
++    // Optional replay of routing from a public engine probe. Activations and weights
++    // remain the same synthetic data; only the expert row distribution changes.
++    // Native little-endian int32 ids in token/top-k order, exactly T * K entries.
++    if (const char* path = std::getenv("S20_ROUTE_IDS")) {
++        std::FILE* f = std::fopen(path, "rb");
++        if (!f) throw std::runtime_error("cannot open S20_ROUTE_IDS");
++        const size_t got = std::fread(ids.data(), sizeof(int32_t), ids.size(), f);
++        const int extra = std::fgetc(f);
++        const bool failed = std::ferror(f) != 0;
++        std::fclose(f);
++        if (got != ids.size() || extra != EOF || failed)
++            throw std::runtime_error("S20_ROUTE_IDS must contain exactly T * K int32 ids");
++        for (size_t i = 0; i < ids.size(); ++i) {
++            if (ids[i] < 0 || ids[i] >= E)
++                throw std::runtime_error("S20_ROUTE_IDS expert id out of range");
++            for (size_t j = i - i % K; j < i; ++j)
++                if (ids[j] == ids[i]) throw std::runtime_error("S20_ROUTE_IDS repeats an expert within a token");
++        }
++        std::printf("  replayed routing from %s (%zu pairs)\n", path, ids.size());
++    }
+     const Routing r = sort_rows(ids, E);
+     Dev x_dev(x.size() * 4), src_dev((size_t) rows * 4);
+     ck(cudaMemcpy(x_dev.p, x.data(), x.size() * 4, cudaMemcpyHostToDevice), "x");

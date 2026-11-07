@@ -1,0 +1,14 @@
+{
+  "source_commit": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "source_diff_files": [
+    "tests/cuda/prefill_fused_iq_test.cpp"
+  ],
+  "patch_sha256": "91e6250a4645197f530b835bf47652f9527f80aec8fc9012e0ec3e2a5b327ceb",
+  "binaries": {
+    "hip_prefill_fused_iq.control": "386a8cc87c3a97ffe5dc4b8a606e7e2bd626dd2c25f87a26cd60854e825fdacc",
+    "hip_prefill_fused_iq": "e9b5476e8029315fe33db53588c64d76b683736546a98a65eda3dc09da65cb3b"
+  },
+  "production_kernel_changes": false,
+  "patch_apply_check": "passed",
+  "gpu_backend_tested": "HIP gfx1151 only"
+}

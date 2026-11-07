@@ -1,0 +1,6 @@
+"Correlation_Id","Dispatch_Id","Agent_Id","Queue_Id","Process_Id","Thread_Id","Grid_Size","Kernel_Id","Kernel_Name","Workgroup_Size","LDS_Block_Size","Scratch_Size","VGPR_Count","Accum_VGPR_Count","SGPR_Count","Counter_Name","Counter_Value","Start_Timestamp","End_Timestamp"
+7,7,"Agent 1",1,15666,15666,196608,19,"copy4(HIP_vector_type<float, 4u> const*, HIP_vector_type<float, 4u>*, unsigned long)",256,0,0,16,0,128,"GL2C_EA_RDREQ_128B_sum",5242883.000000,6134060837653,6134067146457
+7,7,"Agent 1",1,15666,15666,196608,19,"copy4(HIP_vector_type<float, 4u> const*, HIP_vector_type<float, 4u>*, unsigned long)",256,0,0,16,0,128,"GL2C_EA_RDREQ_32B_sum",0.00000000e+00,6134060837653,6134067146457
+7,7,"Agent 1",1,15666,15666,196608,19,"copy4(HIP_vector_type<float, 4u> const*, HIP_vector_type<float, 4u>*, unsigned long)",256,0,0,16,0,128,"GL2C_EA_RDREQ_64B_sum",684.000000,6134060837653,6134067146457
+7,7,"Agent 1",1,15666,15666,196608,19,"copy4(HIP_vector_type<float, 4u> const*, HIP_vector_type<float, 4u>*, unsigned long)",256,0,0,16,0,128,"GL2C_EA_WRREQ_64B_sum",10471274.000000,6134060837653,6134067146457
+7,7,"Agent 1",1,15666,15666,196608,19,"copy4(HIP_vector_type<float, 4u> const*, HIP_vector_type<float, 4u>*, unsigned long)",256,0,0,16,0,128,"SQ_WAVES_sum",6144.000000,6134060837653,6134067146457

@@ -1,0 +1,16 @@
+W1107 16:33:16.062399   15624 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.000656 sec
+W1107 16:33:16.071370   15624 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq --no-ref --only=Q4_K / Q5_1 --chunks=16384' ::     0.000000 sec
+W1107 16:33:16.094992   15624 tool.cpp:3082] HSA version 1.21.0 initialized (instance=0)
+W1107 16:33:19.889665   15624 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq --no-ref --only=Q4_K / Q5_1 --chunks=16384' ::     3.818294 sec
+E1107 16:33:19.900844   15624 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-profile/replay-least-padding/expert_kernel_stats.csv
+E1107 16:33:19.900977   15624 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-profile/replay-least-padding/expert_kernel_trace.csv
+E1107 16:33:19.904069   15624 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-profile/replay-least-padding/expert_agent_info.csv
+E1107 16:33:19.904144   15624 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-profile/replay-least-padding/expert_domain_stats.csv
+W1107 16:33:19.905227   15624 simple_timer.cpp:55] [rocprofv3] output generation ::     0.014065 sec
+W1107 16:33:19.905330   15624 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.014259 sec
+  replayed routing from /home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/least-padding.ids.i32 (163840 pairs)
+  (fused back to back: median 58.463 ms, min 58.047; alternating min 58.247; MMQ min 1.000)
+  fused output bits hash 1d93796a69b50cdd
+Q4_K / Q5_1 - timing part: 16384 tokens x top 10 over 512 experts, one layer: MMQ path 1.000 ms, fused 58.521 ms (0.02x); fused vs MMQ rel RMS 0.000e+00 worst row 0.000e+00
+  sample of 96 pairs vs FP32 reference: MMQ rel RMS 0.000e+00 worst 0.000e+00, fused rel RMS 6.337e-03 worst 5.304e-02
+prefill fused MoE (native formats) parity passed

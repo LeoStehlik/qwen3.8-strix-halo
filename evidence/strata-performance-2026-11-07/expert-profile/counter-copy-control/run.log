@@ -1,0 +1,13 @@
+W1107 16:34:06.517924   15666 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.162260 sec
+W1107 16:34:06.518338   15666 simple_timer.cpp:55] [rocprofv3] '/home/less/.cache/strata-evaluation-20261107/grwrite/copy-bandwidth' ::     0.000000 sec
+W1107 16:34:06.680458   15666 tool.cpp:3082] HSA version 1.21.0 initialized (instance=0)
+W1107 16:34:07.561155   15666 simple_timer.cpp:55] [rocprofv3] '/home/less/.cache/strata-evaluation-20261107/grwrite/copy-bandwidth' ::     1.042815 sec
+E1107 16:34:07.569145   15666 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-profile/counter-copy-control/copy_counter_collection.csv
+E1107 16:34:07.572358   15666 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/expert-profile/counter-copy-control/copy_agent_info.csv
+W1107 16:34:07.573347   15666 simple_timer.cpp:55] [rocprofv3] output generation ::     0.011418 sec
+W1107 16:34:07.573385   15666 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.011460 sec
+vector copy grid=768 bytes-per-buffer=671088640 median=6.305 ms min=6.291 ms median-bandwidth=212.9 GB/s (read+write)
+vector copy grid=3072 bytes-per-buffer=671088640 median=6.257 ms min=6.231 ms median-bandwidth=214.5 GB/s (read+write)
+vector copy grid=12288 bytes-per-buffer=671088640 median=6.227 ms min=6.210 ms median-bandwidth=215.5 GB/s (read+write)
+vector copy grid=163840 bytes-per-buffer=671088640 median=5.790 ms min=5.774 ms median-bandwidth=231.8 GB/s (read+write)
+copy validation passed

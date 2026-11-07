@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "/home/less/.local/opt/rocm-7.14.1-strata-lab/bin/rocprofv3",
+    "--kernel-trace",
+    "--stats",
+    "-d",
+    "/home/less/.cache/strata-evaluation-20261107/expert-profile/replay-least-padding",
+    "-o",
+    "expert",
+    "--output-format",
+    "csv",
+    "--",
+    "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+    "--no-ref",
+    "--only=Q4_K / Q5_1",
+    "--chunks=16384"
+  ],
+  "env": {
+    "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+    "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+    "HIP_PLATFORM": "amd",
+    "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+    "STRATA_PF_F16": "1",
+    "S20_NOMMQ": "1",
+    "S20_ROUTE_IDS": "/home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/least-padding.ids.i32"
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "binary_sha256": "386a8cc87c3a97ffe5dc4b8a606e7e2bd626dd2c25f87a26cd60854e825fdacc",
+  "scope": "unmodified operator; synthetic uniform routing; last 16 complete iterations per trace; profiler overhead included",
+  "runs": [
+    {
+      "tokens": 256,
+      "mean_rows_per_expert": 5.0,
+      "stages": {
+        "gate_up": {
+          "calls": 64,
+          "mean_layer_ms": 4.4179505625,
+          "median_dispatch_ms": 1.104264,
+          "lds_bytes": 13824,
+          "scratch_bytes": 0,
+          "vgpr_count": 136,
+          "grid_threads": 430080
+        },
+        "down": {
+          "calls": 64,
+          "mean_layer_ms": 3.0636805,
+          "median_dispatch_ms": 0.7665255,
+          "lds_bytes": 14848,
+          "scratch_bytes": 0,
+          "vgpr_count": 112,
+          "grid_threads": 860160
+        },
+        "quantize": {
+          "calls": 16,
+          "mean_layer_ms": 0.013725125,
+          "median_dispatch_ms": 0.013585,
+          "lds_bytes": 0,
+          "scratch_bytes": 0,
+          "vgpr_count": 24,
+          "grid_threads": 327680
+        },
+        "group_count": {
+          "calls": 16,
+          "mean_layer_ms": 0.0016255,
+          "median_dispatch_ms": 0.001603,
+          "lds_bytes": 0,
+          "scratch_bytes": 0,
+          "vgpr_count": 16,
+          "grid_threads": 3072
+        },
+        "group_place": {
+          "calls": 16,
+          "mean_layer_ms": 0.0016255,
+          "median_dispatch_ms": 0.001603,
+          "lds_bytes": 0,
+          "scratch_bytes": 0,
+          "vgpr_count": 16,
+          "grid_threads": 2560
+        },
+        "group_scan": {
+          "calls": 16,
+          "mean_layer_ms": 0.0016630625,
+          "median_dispatch_ms": 0.001643,
+          "lds_bytes": 512,
+          "scratch_bytes": 0,
+          "vgpr_count": 32,
+          "grid_threads": 512
+        }
+      }
+    },
+    {
+      "tokens": 2048,
+      "mean_rows_per_expert": 40.0,
+      "stages": {
+        "gate_up": {
+          "calls": 64,
+          "mean_layer_ms": 6.27886975,
+          "median_dispatch_ms": 1.5694575,
+          "lds_bytes": 13824,
+          "scratch_bytes": 0,
+          "vgpr_count": 136,
+          "grid_threads": 1146880
+        },
+        "down": {
+          "calls": 64,
+          "mean_layer_ms": 4.15887575,
+          "median_dispatch_ms": 1.0402465,
+          "lds_bytes": 14848,
+          "scratch_bytes": 0,
+          "vgpr_count": 112,
+          "grid_threads": 2293760
+        },
+        "quantize": {
+          "calls": 16,
+          "mean_layer_ms": 0.12266475,
+          "median_dispatch_ms": 0.122585,
+          "lds_bytes": 0,
+          "scratch_bytes": 0,
+          "vgpr_count": 24,
+          "grid_threads": 2621440
+        },
+        "group_count": {
+          "calls": 16,
+          "mean_layer_ms": 0.0025923125,
+          "median_dispatch_ms": 0.002545,
+          "lds_bytes": 0,
+          "scratch_bytes": 0,
+          "vgpr_count": 16,
+          "grid_threads": 20480
+        },
+        "group_place": {
+          "calls": 16,
+          "mean_layer_ms": 0.0036113125,
+          "median_dispatch_ms": 0.003566,
+          "lds_bytes": 0,
+          "scratch_bytes": 0,
+          "vgpr_count": 16,
+          "grid_threads": 20480
+        },
+        "group_scan": {
+          "calls": 16,
+          "mean_layer_ms": 0.002161375,
+          "median_dispatch_ms": 0.002164,
+          "lds_bytes": 512,
+          "scratch_bytes": 0,
+          "vgpr_count": 32,
+          "grid_threads": 512
+        }
+      }
+    },
+    {
+      "tokens": 8192,
+      "mean_rows_per_expert": 160.0,
+      "stages": {
+        "gate_up": {
+          "calls": 64,
+          "mean_layer_ms": 19.3321094375,
+          "median_dispatch_ms": 4.827349,
+          "lds_bytes": 22528,
+          "scratch_bytes": 0,
+          "vgpr_count": 176,
+          "grid_threads": 3604480
+        },
+        "down": {
+          "calls": 64,
+          "mean_layer_ms": 11.463947,
+          "median_dispatch_ms": 2.8636495,
+          "lds_bytes": 23552,
+          "scratch_bytes": 0,
+          "vgpr_count": 152,
+          "grid_threads": 7208960
+        },
+        "quantize": {
+          "calls": 16,
+          "mean_layer_ms": 0.522167125,
+          "median_dispatch_ms": 0.522377,
+          "lds_bytes": 0,
+          "scratch_bytes": 0,
+          "vgpr_count": 24,
+          "grid_threads": 10485760
+        },
+        "group_count": {
+          "calls": 16,
+          "mean_layer_ms": 0.005948375,
+          "median_dispatch_ms": 0.0059705,
+          "lds_bytes": 0,
+          "scratch_bytes": 0,
+          "vgpr_count": 16,
+          "grid_threads": 81920
+        },
+        "group_place": {
+          "calls": 16,
+          "mean_layer_ms": 0.0128586875,
+          "median_dispatch_ms": 0.0128435,
+          "lds_bytes": 0,
+          "scratch_bytes": 0,
+          "vgpr_count": 16,
+          "grid_threads": 81920
+        },
+        "group_scan": {
+          "calls": 16,
+          "mean_layer_ms": 0.002394375,
+          "median_dispatch_ms": 0.0023845,
+          "lds_bytes": 512,
+          "scratch_bytes": 0,
+          "vgpr_count": 32,
+          "grid_threads": 512
+        }
+      }
+    },
+    {
+      "tokens": 16384,
+      "mean_rows_per_expert": 320.0,
+      "stages": {
+        "gate_up": {
+          "calls": 64,
+          "mean_layer_ms": 35.3546366875,
+          "median_dispatch_ms": 8.831889,
+          "lds_bytes": 22528,
+          "scratch_bytes": 0,
+          "vgpr_count": 176,
+          "grid_threads": 6881280
+        },
+        "down": {
+          "calls": 64,
+          "mean_layer_ms": 20.9626805625,
+          "median_dispatch_ms": 5.2341945,
+          "lds_bytes": 23552,
+          "scratch_bytes": 0,
+          "vgpr_count": 152,
+          "grid_threads": 13762560
+        },
+        "quantize": {
+          "calls": 16,
+          "mean_layer_ms": 1.0124735,
+          "median_dispatch_ms": 1.013077,
+          "lds_bytes": 0,
+          "scratch_bytes": 0,
+          "vgpr_count": 24,
+          "grid_threads": 20971520
+        },
+        "group_count": {
+          "calls": 16,
+          "mean_layer_ms": 0.00667725,
+          "median_dispatch_ms": 0.006653,
+          "lds_bytes": 0,
+          "scratch_bytes": 0,
+          "vgpr_count": 16,
+          "grid_threads": 81920
+        },
+        "group_place": {
+          "calls": 16,
+          "mean_layer_ms": 0.0255693125,
+          "median_dispatch_ms": 0.025567,
+          "lds_bytes": 0,
+          "scratch_bytes": 0,
+          "vgpr_count": 16,
+          "grid_threads": 163840
+        },
+        "group_scan": {
+          "calls": 16,
+          "mean_layer_ms": 0.0029503125,
+          "median_dispatch_ms": 0.002965,
+          "lds_bytes": 512,
+          "scratch_bytes": 0,
+          "vgpr_count": 32,
+          "grid_threads": 512
+        }
+      }
+    }
+  ]
+}

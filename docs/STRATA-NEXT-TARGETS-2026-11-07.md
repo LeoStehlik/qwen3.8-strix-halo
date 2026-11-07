@@ -45,10 +45,14 @@ Actual attention is only 10% of total; recurrence alone is 6.7%. The larger
 target will probably require gains across multiple substantial operations.
 A 2x expert improvement alone would predict about 14% overall, not 2x prefill.
 
-1. Split the expert interval into gate/up, down and surrounding work. Capture
-   row-count distributions from a public large-context request and inspect
-   resource usage before choosing another kernel layout or pipeline change.
-   The rejected bounded-dispatch patch is not a candidate for promotion.
+1. The [expert interval split and routing capture](../experiments/strata-expert-profile/README.md)
+   are complete: roughly 62% gate/up, 37% down, negligible grouping; no scratch
+   spills. Three captured 16K distributions cost only 1–3% more than uniform
+   routing. Test a cooperative gate/up SwiGLU/int8 epilogue independently;
+   it is a source-based hypothesis, not a measured improvement. Expert memory
+   counters returned unexplained zeros even though a copy control worked, so
+   resolve that before claiming bandwidth/occupancy limits. The rejected
+   bounded-dispatch patch is not a candidate for promotion.
 2. Measure attention's memory reuse and remaining scheduling cost. The current
    source already defaults to trimmed shared-memory rows and read prefetch;
    enabling those again is not a new optimization. Old experimental flag names
