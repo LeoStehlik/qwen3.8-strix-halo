@@ -1,4 +1,23 @@
-# Qwen3.8 27B + DFlash2 on AMD Strix Halo
+# Qwen3.8 inference on Strix Halo
+
+Reproducible Qwen3.8 inference on AMD Ryzen AI Max+ 395 / Radeon 8060S systems.
+This repository covers Strata and llama.cpp deployments, long-context
+performance experiments, and OpenClaw integration. It includes both the
+current Flash-Next work and the earlier 27B/DFlash2 deployment.
+
+## Current work: Flash-Next on Strata
+
+The active deployment, performance investigation and OpenClaw handoff are
+on the `investigate/strata-performance-20261107` branch:
+
+- [Flash-Next deployment guide](https://github.com/LeoStehlik/qwen3.8-strix-halo/blob/investigate/strata-performance-20261107/docs/STRATA-FLASH-NEXT.md)
+- [Current handoff and serving state](https://github.com/LeoStehlik/qwen3.8-strix-halo/blob/investigate/strata-performance-20261107/handoff.md)
+- [Performance objectives and evidence](https://github.com/LeoStehlik/qwen3.8-strix-halo/blob/investigate/strata-performance-20261107/docs/STRATA-NEXT-TARGETS-2026-11-07.md)
+
+The instructions and measurements below describe the earlier 27B setup.
+Use the linked Strata guide for Flash-Next.
+
+## Earlier 27B/DFlash2 deployment
 
 A reproducible local deployment of Qwen3.8-27B on a Ryzen AI Max+ 395 / Radeon
 8060S, using llama.cpp Vulkan, DFlash2 speculative decoding, vision, a 245,760
@@ -24,7 +43,7 @@ demand. A streaming front proxy collapses concurrent byte-identical inference
 requests into one upstream generation, which avoids duplicate work from client
 retries without caching completed responses.
 
-## Measured result
+## Earlier 27B measurements
 
 On the reference 128 GB Strix Halo machine, the controlled DFlash width sweep
 produced:
@@ -77,13 +96,13 @@ For agent and tool-calling traffic, the current starting point is:
 Sampling is deliberately set by the client rather than globally by the server.
 Thinking is enabled by default, and reasoning is preserved across tool turns.
 
-## Quick start
+## 27B/DFlash2 quick start
 
 Prerequisites: x86-64 Linux, a Strix Halo iGPU accessible through `/dev/dri`,
 `curl`, `git`, Python 3, the Hugging Face `hf` CLI, and the system Vulkan loader.
 
 ```bash
-git clone git@github.com:LeoStehlik/qwen3.8-27b-strix-halo-dflash2.git
+git clone git@github.com:LeoStehlik/qwen3.8-strix-halo.git qwen38-dflash2
 cd qwen38-dflash2
 
 ./scripts/download-runtime.sh
@@ -115,7 +134,7 @@ Vision check:
 
 Full installation and operational details are in [docs/INSTALL.md](docs/INSTALL.md).
 
-## Configuration summary
+## 27B configuration summary
 
 | Setting | Value |
 |---|---|
