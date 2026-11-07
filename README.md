@@ -19,7 +19,10 @@ The extra 280 MiB fits; this implementation is rejected. No source patch is
 serving. The later [cost-aware MTP comparison](docs/STRATA-MTP-COST-2026-11-07.md)
 also found no reliable gain; the original policy is restored. A
 [selective prepared-weight cache](docs/STRATA-EXPERT-WEIGHT-CAPACITY-2026-11-07.md)
-has routing/capacity analysis only, with no speedup demonstrated. The earlier
+received capacity/routing analysis, followed by a separate operator test of a
+[direct FP16 weight loader](docs/STRATA-EXPERT-PREPARED-WEIGHTS-2026-11-07.md).
+It preserved checked outputs but lost even without expansion cost, including
+in a favorable high-reuse case. No cache manager or new source kernel is serving. The earlier
 [checkpoint](docs/STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md) records the
 decision to narrow this investigation.
 

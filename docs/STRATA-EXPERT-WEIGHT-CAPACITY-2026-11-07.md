@@ -1,5 +1,11 @@
 # Spare RAM and prepared expert weights
 
+Follow-up: a [direct FP16 weight loader](STRATA-EXPERT-PREPARED-WEIGHTS-2026-11-07.md)
+was subsequently built and checked. It lost in both captured-routing and
+favorable high-reuse screens, even with expansion excluded. No live cache was
+built. The capacity arithmetic below remains useful, but is not evidence of
+an available speedup.
+
 The rejected prepared-activation experiment used only 280 MiB. Preparing
 **weights** is a different proposal with a much larger footprint. The same
 model has 48 layers × 512 experts. Each expert's two 640×2,560 gate/up

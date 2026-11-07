@@ -12,7 +12,10 @@ follow-up; future-tense proposals below are historical, not pending tasks.
 The subsequent [cost-aware MTP comparison](STRATA-MTP-COST-2026-11-07.md)
 found no reliable gain either. A
 [selective prepared-weight capacity analysis](STRATA-EXPERT-WEIGHT-CAPACITY-2026-11-07.md)
-is now recorded, but no corresponding kernel or performance result exists.
+is now recorded. The later
+[direct FP16 prepared-weight kernel](STRATA-EXPERT-PREPARED-WEIGHTS-2026-11-07.md)
+preserved checked outputs but lost even with expansion excluded, including
+in a favorable reuse case. No cache integration followed.
 
 The user asked to step back after roughly seven hours and assess whether
 further low-level work or hardware tuning has a credible larger payoff.

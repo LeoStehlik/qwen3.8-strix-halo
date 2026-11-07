@@ -1,0 +1,85 @@
+{
+  "decision": "Reject this directly loaded FP16 prepared-weight implementation; no cache manager or integration.",
+  "reference_runs": 10,
+  "reference_all_exact": true,
+  "original_kernels_identical": 10,
+  "screens": {
+    "warm-median": {
+      "controls_ms": [
+        58.414,
+        57.863
+      ],
+      "mean_control_ms": 58.1385,
+      "arms": {
+        "gu": {
+          "median_ms": 105.311,
+          "throughput_change_pct": -44.793516346820375,
+          "first_expansion": [
+            [
+              "184.586",
+              "3355443200",
+              "0",
+              "0"
+            ]
+          ],
+          "output_hash": "019f42e2855f67cc"
+        },
+        "down": {
+          "median_ms": 63.018,
+          "throughput_change_pct": -7.74302580215177,
+          "first_expansion": [
+            [
+              "71.189",
+              "0",
+              "1677721600",
+              "0"
+            ]
+          ],
+          "output_hash": "019f42e2855f67cc"
+        }
+      }
+    },
+    "warm-concentrated": {
+      "controls_ms": [
+        52.926,
+        53.641
+      ],
+      "mean_control_ms": 53.283500000000004,
+      "arms": {
+        "gu": {
+          "median_ms": 55.198,
+          "throughput_change_pct": -3.468422768940893,
+          "first_expansion": [
+            [
+              "3.501",
+              "104857600",
+              "0",
+              "0"
+            ]
+          ],
+          "output_hash": "5e88cd6dd4ef2076"
+        },
+        "down": {
+          "median_ms": 55.743,
+          "throughput_change_pct": -4.412213192687863,
+          "first_expansion": [
+            [
+              "89.993",
+              "0",
+              "52428800",
+              "0"
+            ]
+          ],
+          "output_hash": "5e88cd6dd4ef2076"
+        }
+      }
+    }
+  },
+  "limits": [
+    "Complete operator throughput, not whole-model throughput.",
+    "Expansion excluded from warm timings; allocation and first expansion reported separately.",
+    "First expansion includes initialization/queue effects and is not a stable conversion-throughput measurement.",
+    "Captured-routing fixture uses synthetic weights/activations. Concentrated E=16 is deliberately favorable and not a model workload.",
+    "No combined performance run, cold expansion-every-run screen, or full-model validation: neither independent warm path won."
+  ]
+}

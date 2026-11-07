@@ -15,6 +15,9 @@ reliable improvement; serving was restored at 21:59:11 UTC. The
 [prepared-weight capacity study](STRATA-EXPERT-WEIGHT-CAPACITY-2026-11-07.md)
 provides constraints for another possible mechanism, not a measured gain.
 Keep it distinct from the rejected prepared-activation implementation.
+The subsequent [prepared-weight operator](STRATA-EXPERT-PREPARED-WEIGHTS-2026-11-07.md)
+preserved checked outputs but lost in both captured-routing and high-reuse
+screens. It is also rejected; no live cache or source patch is promoted.
 
 The user raised the objective and manually resumed the Codex goal. These
 objectives supersede the earlier 1,100 / 50–60 tok/s target, even if the goal

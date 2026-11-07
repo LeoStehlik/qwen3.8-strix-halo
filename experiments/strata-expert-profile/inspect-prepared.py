@@ -10,6 +10,7 @@ import subprocess
 ap = argparse.ArgumentParser(description=__doc__)
 for key in ('source', 'sdk', 'control_object', 'out'):
     ap.add_argument('--' + key.replace('_', '-'), type=Path, required=True)
+ap.add_argument('--candidate-source', default='moe_f16_prepared', help='Candidate translation-unit basename without .cu')
 a = ap.parse_args()
 a.out.mkdir(parents=True, exist_ok=False)
 llvm = a.sdk / 'lib/llvm/bin'
@@ -46,7 +47,7 @@ def inspect(label, obj):
 
 control = inspect('original', a.control_object)
 versions = {}
-for label, filename in [('rebuilt', 'moe_f16_kq'), ('prepared', 'moe_f16_prepared')]:
+for label, filename in [('rebuilt', 'moe_f16_kq'), ('prepared', a.candidate_source)]:
     host = a.source / f'build-halo-lab/CMakeFiles/strata_mmq.dir/src/prefill/{filename}.cu.o'
     fatbin, device = a.out / (label + '.fatbin'), a.out / (label + '.co')
     run([llvm / 'llvm-objcopy', '--dump-section', f'.hip_fatbin={fatbin}', host])

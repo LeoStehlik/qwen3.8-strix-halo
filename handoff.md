@@ -5,6 +5,15 @@ renamed from the earlier 27B/DFlash2-specific name on 7 November. The default
 branch landing page links this active investigation; clone URLs are updated.
 
 **The user authorized the bounded follow-up proposed at the stopping checkpoint.**
+Latest: the [prepared FP16 weight prototype](docs/STRATA-EXPERT-PREPARED-WEIGHTS-2026-11-07.md)
+preserves all ten reference hashes and all eight timing-run hashes, but loses
+even when expansion is excluded. Captured routing: complete operator about
+58 ms control, 105 ms prepared gate/up, 63 ms prepared down. A deliberately
+favorable 16-expert/high-reuse case also loses, about 53 vs 55 ms. Reject this
+direct FP16 loader; no selective-cache manager, combined performance screen,
+or full-model integration was justified. All ten original kernel instruction
+sequences remain identical. Serving stayed loaded and idle throughout.
+
 The subsequent [cost-aware MTP screen](docs/STRATA-MTP-COST-2026-11-07.md)
 also found no reliable gain: off/on/off gave 41.42/39.86/41.31 tok/s at 16K
 and 41.35/40.77/38.95 at 64K. The latter is inconclusive within control drift;
@@ -18,8 +27,10 @@ narrows the spare-RAM idea: full FP16 expert copies would add 225 GiB if the
 original quantized copies remain for decode. An 8 GiB selective cache, ranked
 on the first full chunk, covers 23.2% of routed rows in the next three chunks;
 16 GiB covers 34.5%. This is one repeated-source fixture, not a measured time
-saving or a safe live allocation recommendation. No prepared-weight kernel or
-cache manager has been built. An operator win must precede any such integration.
+saving or a safe live allocation recommendation. The later direct FP16 kernel
+screen above failed; no cache manager has been built. A compact representation
+or a different load pipeline remains untested and needs an independent operator
+win before any cache integration. Spare capacity alone has not delivered speed.
 
 The [MTP 4/6/8/4 comparison](docs/STRATA-MTP-WINDOW-2026-11-07.md) found no
 reliable generation improvement. Window 4 and the original runtime override
