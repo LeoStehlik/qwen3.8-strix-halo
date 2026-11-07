@@ -1,0 +1,134 @@
+{
+  "shapes": {
+    "gdn-qkv": {
+      "m": 16384,
+      "n": 10240,
+      "k": 2560,
+      "x_padding": 0,
+      "weight_padding": 64,
+      "groups": {
+        "8": {
+          "samples": 61,
+          "median_ms": 20.025278,
+          "min_ms": 19.733744,
+          "max_ms": 20.340015,
+          "operator_speedup_pct": 0.0
+        },
+        "99": {
+          "samples": 61,
+          "median_ms": 20.034494,
+          "min_ms": 19.702888,
+          "max_ms": 20.883055,
+          "operator_speedup_pct": -0.04600066265710856
+        }
+      }
+    },
+    "gdn-gate": {
+      "m": 16384,
+      "n": 6144,
+      "k": 2560,
+      "x_padding": 0,
+      "weight_padding": 64,
+      "groups": {
+        "8": {
+          "samples": 61,
+          "median_ms": 12.58533,
+          "min_ms": 11.697512,
+          "max_ms": 12.906723,
+          "operator_speedup_pct": 0.0
+        },
+        "99": {
+          "samples": 61,
+          "median_ms": 12.560688,
+          "min_ms": 11.946479,
+          "max_ms": 13.039126,
+          "operator_speedup_pct": 0.19618352115744475
+        }
+      }
+    },
+    "out-projection": {
+      "m": 16384,
+      "n": 2560,
+      "k": 6144,
+      "x_padding": 64,
+      "weight_padding": 64,
+      "groups": {
+        "8": {
+          "samples": 61,
+          "median_ms": 11.286512,
+          "min_ms": 11.175669,
+          "max_ms": 95.946945,
+          "operator_speedup_pct": 0.0
+        },
+        "99": {
+          "samples": 61,
+          "median_ms": 11.262989,
+          "min_ms": 10.810086,
+          "max_ms": 11.615194,
+          "operator_speedup_pct": 0.20885219722757142
+        }
+      }
+    }
+  },
+  "cpu_reference_checks": [
+    {
+      "kind": "cpu_reference",
+      "m": 129,
+      "n": 1031,
+      "k": 64,
+      "acc": 0,
+      "nonidentical": 25537,
+      "max_abs": 1.19209289551e-07,
+      "atol": 1e-06,
+      "failures": 0
+    },
+    {
+      "kind": "cpu_reference",
+      "m": 2049,
+      "n": 1025,
+      "k": 64,
+      "acc": 0,
+      "nonidentical": 405653,
+      "max_abs": 1.34110450745e-07,
+      "atol": 1e-06,
+      "failures": 0
+    },
+    {
+      "kind": "cpu_reference",
+      "m": 129,
+      "n": 1031,
+      "k": 64,
+      "acc": 1,
+      "nonidentical": 12584,
+      "max_abs": 1.19209289551e-07,
+      "atol": 1e-06,
+      "failures": 0
+    },
+    {
+      "kind": "cpu_reference",
+      "m": 2049,
+      "n": 1025,
+      "k": 64,
+      "acc": 1,
+      "nonidentical": 198861,
+      "max_abs": 1.34110450745e-07,
+      "atol": 1e-06,
+      "failures": 0
+    }
+  ],
+  "gpu_parity_checks": 14,
+  "gpu_elements_compared": 629750872,
+  "comparison_kind": "fragment_load_order",
+  "variant_labels": {
+    "8": "existing group 8 control",
+    "99": "row-stream fragments, still group 8"
+  },
+  "decision": "Fragment-load scheduling rejected as neutral; resources unchanged.",
+  "limits": [
+    "Synthetic values at real matrix dimensions, not captured model activations.",
+    "Same-source operator control; not an installed-package throughput comparison.",
+    "GPU event samples include scheduling stalls; medians do not remove their end-to-end cost.",
+    "Full output comparison is to GPU group 8; independent CPU tolerance is tested only at two smaller boundary shapes.",
+    "No full model, checkpoint, tool continuation or cross-backend validation; no serving change."
+  ]
+}

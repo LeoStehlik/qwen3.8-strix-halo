@@ -25,7 +25,11 @@ __global__ void compare(const float* a,const float* b,size_t n,unsigned long lon
 void launch(int group,const _Float16* x,const _Float16* w,float* y,int m,int n,int k,int ldy,int acc,int ldx,int ldw) {
     unsigned grid=((m+127)/128)*((n+255)/256);
 #define GO(G) case G: pfg::kernel_bk64<G><<<grid,256>>>(x,w,y,m,n,k,ldy,acc,ldx,ldw); break
-    switch(group) {GO(1);GO(2);GO(4);GO(8);GO(16);GO(32);GO(64); default:exit(3);}
+    switch(group) {GO(1);GO(2);GO(4);GO(8);GO(16);GO(32);GO(64);
+#ifdef PROJECTION_ROW_STREAM
+        case 99: pfg::kernel_bk64_rowstream<<<grid,256>>>(x,w,y,m,n,k,ldy,acc,ldx,ldw);break;
+#endif
+        default:exit(3);}
 #undef GO
     CK(hipGetLastError());
 }
@@ -60,7 +64,12 @@ void run(int m,int n,int k,int xpad,int reps,bool cpu,int acc=0) {
         printf("{\"kind\":\"cpu_reference\",\"m\":%d,\"n\":%d,\"k\":%d,\"acc\":%d,\"nonidentical\":%zu,\"max_abs\":%.12g,\"atol\":1e-6,\"failures\":%zu}\n",m,n,k,acc,nonidentical,max_abs,failures);
         if(failures)exit(4);
     }
+#ifdef PROJECTION_ROW_STREAM
+    const int groups[]={8,99};
+#else
     const int groups[]={1,2,4,8,16,32,64};
+#endif
+    constexpr int ngroups=sizeof(groups)/sizeof(groups[0]);
     for(int g:groups){
         fill<<<(ny+255)/256,256>>>(y,ny);launch(g,x,w,y,m,n,k,ldy,acc,ldx,ldw);CK(hipMemset(bad,0,8));
         compare<<<(ny+255)/256,256>>>(y,ref,ny,bad);CK(hipGetLastError());unsigned long long failures;
@@ -71,8 +80,8 @@ void run(int m,int n,int k,int xpad,int reps,bool cpu,int acc=0) {
     hipEvent_t begin,end;CK(hipEventCreate(&begin));CK(hipEventCreate(&end));
     // Rotate and reverse group order each round so one setting is not always
     // measured first. Output comparison above is outside the timing window.
-    for(int round=0;round<reps;round++)for(int j=0;j<7;j++){
-        int idx=(round%2)?(round+6-j)%7:(round+j)%7;int g=groups[idx];
+    for(int round=0;round<reps;round++)for(int j=0;j<ngroups;j++){
+        int idx=(round+(round%2?-j:j)+ngroups)%ngroups;int g=groups[idx];
         CK(hipEventRecord(begin));launch(g,x,w,y,m,n,k,ldy,0,ldx,ldw);CK(hipEventRecord(end));CK(hipEventSynchronize(end));
         float ms;CK(hipEventElapsedTime(&ms,begin,end));
         printf("{\"kind\":\"timing\",\"m\":%d,\"n\":%d,\"k\":%d,\"xpad\":%d,\"group\":%d,\"round\":%d,\"ms\":%.6f}\n",m,n,k,xpad,g,round,ms);

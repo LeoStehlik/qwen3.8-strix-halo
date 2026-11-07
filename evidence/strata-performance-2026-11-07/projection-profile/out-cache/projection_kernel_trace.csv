@@ -1,0 +1,75 @@
+"Kind","Agent_Id","Queue_Id","Stream_Id","Thread_Id","Dispatch_Id","Kernel_Id","Kernel_Name","Correlation_Id","Start_Timestamp","End_Timestamp","LDS_Block_Size","Scratch_Size","VGPR_Count","Accum_VGPR_Count","SGPR_Count","Workgroup_Size_X","Workgroup_Size_Y","Workgroup_Size_Z","Grid_Size_X","Grid_Size_Y","Grid_Size_Z"
+"KERNEL_DISPATCH","Agent 1",1,0,34527,1,9,"initialize(_Float16*, unsigned long, unsigned int)",1,19669532254063,19669533757706,0,0,8,0,128,256,1,1,101711872,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,2,9,"initialize(_Float16*, unsigned long, unsigned int)",2,19669533853049,19669534083793,0,0,8,0,128,256,1,1,15892480,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,3,11,"fill(float*, unsigned long)",3,19669534098892,19669534768643,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,4,10,"void pfg::kernel_bk64<8>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",4,19669534782692,19669546368403,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,5,11,"fill(float*, unsigned long)",5,19669546446626,19669547058309,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,6,18,"void pfg::kernel_bk64<1>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",6,19669547074910,19669559754470,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,7,24,"__amd_rocclr_fillBufferAligned",7,19669559766761,19669559769446,0,0,16,0,128,256,1,1,256,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,8,12,"compare(float const*, float const*, unsigned long, unsigned long long*)",8,19669559779906,19669561186849,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,9,26,"__amd_rocclr_copyBuffer",9,19669561197388,19669561201636,0,0,16,0,128,512,1,1,512,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,10,11,"fill(float*, unsigned long)",10,19669561247552,19669561835271,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,11,5,"void pfg::kernel_bk64<2>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",11,19669561850772,19669574035577,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,12,24,"__amd_rocclr_fillBufferAligned",12,19669574050644,19669574053129,0,0,16,0,128,256,1,1,256,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,13,12,"compare(float const*, float const*, unsigned long, unsigned long long*)",13,19669574063347,19669575469363,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,14,26,"__amd_rocclr_copyBuffer",14,19669575479502,19669575482908,0,0,16,0,128,512,1,1,512,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,15,11,"fill(float*, unsigned long)",15,19669575520858,19669576102604,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,16,4,"void pfg::kernel_bk64<4>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",16,19669576117792,19669588261682,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,17,24,"__amd_rocclr_fillBufferAligned",17,19669588282720,19669588284564,0,0,16,0,128,256,1,1,256,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,18,12,"compare(float const*, float const*, unsigned long, unsigned long long*)",18,19669588294732,19669589752884,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,19,26,"__amd_rocclr_copyBuffer",19,19669589762011,19669589765297,0,0,16,0,128,512,1,1,512,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,20,11,"fill(float*, unsigned long)",20,19669589782909,19669590384371,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,21,10,"void pfg::kernel_bk64<8>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",21,19669590399206,19669602548992,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,22,24,"__amd_rocclr_fillBufferAligned",22,19669602574999,19669602577403,0,0,16,0,128,256,1,1,256,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,23,12,"compare(float const*, float const*, unsigned long, unsigned long long*)",23,19669602587089,19669604055741,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,24,26,"__amd_rocclr_copyBuffer",24,19669604069576,19669604072862,0,0,16,0,128,512,1,1,512,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,25,11,"fill(float*, unsigned long)",25,19669604090254,19669604692918,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,26,3,"void pfg::kernel_bk64<16>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",26,19669604708268,19669622524369,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,27,24,"__amd_rocclr_fillBufferAligned",27,19669622536179,19669622538744,0,0,16,0,128,256,1,1,256,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,28,12,"compare(float const*, float const*, unsigned long, unsigned long long*)",28,19669622548550,19669623995923,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,29,26,"__amd_rocclr_copyBuffer",29,19669624005350,19669624009197,0,0,16,0,128,512,1,1,512,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,30,11,"fill(float*, unsigned long)",30,19669624032980,19669624606671,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,31,2,"void pfg::kernel_bk64<32>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",31,19669624621140,19669705340049,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,32,24,"__amd_rocclr_fillBufferAligned",32,19669705361848,19669705364493,0,0,16,0,128,256,1,1,256,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,33,12,"compare(float const*, float const*, unsigned long, unsigned long long*)",33,19669705375033,19669723240479,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,34,26,"__amd_rocclr_copyBuffer",34,19669723250483,19669723254130,0,0,16,0,128,512,1,1,512,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,35,11,"fill(float*, unsigned long)",35,19669723283433,19669723860370,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,36,1,"void pfg::kernel_bk64<64>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",36,19669723873849,19669736950116,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,37,24,"__amd_rocclr_fillBufferAligned",37,19669736960775,19669736963220,0,0,16,0,128,256,1,1,256,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,38,12,"compare(float const*, float const*, unsigned long, unsigned long long*)",38,19669736972837,19669738426499,0,0,8,0,128,256,1,1,41943040,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,39,26,"__amd_rocclr_copyBuffer",39,19669738436117,19669738439523,0,0,16,0,128,512,1,1,512,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,40,18,"void pfg::kernel_bk64<1>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",40,19669738483303,19669750703041,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,41,5,"void pfg::kernel_bk64<2>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",41,19669750743151,19669763450503,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,42,4,"void pfg::kernel_bk64<4>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",42,19669763491016,19669776183660,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,43,10,"void pfg::kernel_bk64<8>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",43,19669776685379,19669789831735,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,44,3,"void pfg::kernel_bk64<16>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",44,19669789894660,19669803062896,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,45,2,"void pfg::kernel_bk64<32>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",45,19669803093191,19669816544585,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,46,1,"void pfg::kernel_bk64<64>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",46,19669816585891,19669830377273,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,47,18,"void pfg::kernel_bk64<1>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",47,19669830419369,19669843760727,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,48,1,"void pfg::kernel_bk64<64>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",48,19669843800399,19669857558039,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,49,2,"void pfg::kernel_bk64<32>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",49,19669857584658,19669870745645,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,50,3,"void pfg::kernel_bk64<16>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",50,19669870774268,19669883454654,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,51,10,"void pfg::kernel_bk64<8>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",51,19669883491976,19669896085602,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,52,4,"void pfg::kernel_bk64<4>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",52,19669896138327,19669908746420,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,53,5,"void pfg::kernel_bk64<2>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",53,19669908772578,19669921329937,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,54,4,"void pfg::kernel_bk64<4>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",54,19669921355734,19669934289744,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,55,10,"void pfg::kernel_bk64<8>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",55,19669935643714,19669948076485,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,56,3,"void pfg::kernel_bk64<16>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",56,19669948470981,19669961044649,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,57,2,"void pfg::kernel_bk64<32>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",57,19669961076606,19669973907705,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,58,1,"void pfg::kernel_bk64<64>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",58,19669973934103,19669987226768,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,59,18,"void pfg::kernel_bk64<1>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",59,19669987251974,19669999834698,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,60,5,"void pfg::kernel_bk64<2>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",60,19669999866647,19670012506275,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,61,4,"void pfg::kernel_bk64<4>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",61,19670012542661,19670025113404,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,62,5,"void pfg::kernel_bk64<2>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",62,19670025140273,19670037634195,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,63,18,"void pfg::kernel_bk64<1>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",63,19670037672546,19670050322033,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,64,1,"void pfg::kernel_bk64<64>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",64,19670050347560,19670063716926,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,65,2,"void pfg::kernel_bk64<32>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",65,19670063743034,19670076678365,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,66,3,"void pfg::kernel_bk64<16>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",66,19670076703676,19670089463726,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,67,10,"void pfg::kernel_bk64<8>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",67,19670089498338,19670102176598,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,68,3,"void pfg::kernel_bk64<16>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",68,19670102252998,19670114876517,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,69,2,"void pfg::kernel_bk64<32>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",69,19670114910940,19670127676841,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,70,1,"void pfg::kernel_bk64<64>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",70,19670127707066,19670140953486,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,71,18,"void pfg::kernel_bk64<1>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",71,19670140990187,19670153585578,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,72,5,"void pfg::kernel_bk64<2>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",72,19670153685389,19670166168495,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,73,4,"void pfg::kernel_bk64<4>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",73,19670166218415,19670178709094,55296,0,248,0,128,256,1,1,327680,1,1
+"KERNEL_DISPATCH","Agent 1",1,0,34527,74,10,"void pfg::kernel_bk64<8>(_Float16 const*, _Float16 const*, float*, int, int, int, int, int, int, int)",74,19670178753768,19670191274061,55296,0,248,0,128,256,1,1,327680,1,1

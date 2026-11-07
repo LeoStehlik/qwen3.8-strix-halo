@@ -1,0 +1,14 @@
+{"kind":"parity","m":16384,"n":10240,"k":2560,"acc":0,"group":1,"elements":167772160,"mismatches":0}
+{"kind":"parity","m":16384,"n":10240,"k":2560,"acc":0,"group":2,"elements":167772160,"mismatches":0}
+{"kind":"parity","m":16384,"n":10240,"k":2560,"acc":0,"group":4,"elements":167772160,"mismatches":0}
+{"kind":"parity","m":16384,"n":10240,"k":2560,"acc":0,"group":8,"elements":167772160,"mismatches":0}
+{"kind":"parity","m":16384,"n":10240,"k":2560,"acc":0,"group":16,"elements":167772160,"mismatches":0}
+{"kind":"parity","m":16384,"n":10240,"k":2560,"acc":0,"group":32,"elements":167772160,"mismatches":0}
+{"kind":"parity","m":16384,"n":10240,"k":2560,"acc":0,"group":64,"elements":167772160,"mismatches":0}
+{"kind":"timing","m":16384,"n":10240,"k":2560,"xpad":0,"group":1,"round":0,"ms":34.553009}
+{"kind":"timing","m":16384,"n":10240,"k":2560,"xpad":0,"group":2,"round":0,"ms":21.044865}
+{"kind":"timing","m":16384,"n":10240,"k":2560,"xpad":0,"group":4,"round":0,"ms":20.761629}
+{"kind":"timing","m":16384,"n":10240,"k":2560,"xpad":0,"group":8,"round":0,"ms":20.688456}
+{"kind":"timing","m":16384,"n":10240,"k":2560,"xpad":0,"group":16,"round":0,"ms":21.653784}
+{"kind":"timing","m":16384,"n":10240,"k":2560,"xpad":0,"group":32,"round":0,"ms":22.994837}
+{"kind":"timing","m":16384,"n":10240,"k":2560,"xpad":0,"group":64,"round":0,"ms":30.600765}

@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/home/less/.local/opt/rocm-7.14.1-strata-lab/bin/hipcc",
+    "-DPROJECTION_ROW_STREAM=1",
+    "-O3",
+    "-std=c++17",
+    "--offload-arch=gfx1151",
+    "-DSTRATA_WMMA_GFX11=1",
+    "-DSTRATA_USE_HIP=1",
+    "-I/home/less/src/strata-f16-dispatch-20261107/include",
+    "-I/home/less/src/strata-f16-dispatch-20261107/src/prefill",
+    "-I/home/less/.cache/strata-evaluation-20261107/projection-rowstream",
+    "-x",
+    "hip",
+    "/home/less/worktrees/qwen38-strata-20261106/experiments/strata-projection-grouping/grouping.hip",
+    "-o",
+    "/home/less/.cache/strata-evaluation-20261107/projection-rowstream/grouping"
+  ],
+  "source_sha256": "eca51cd8a3cdd63690fb47bdb267dfaf4f721b3f0e2786b3ffc4f45ae5487860",
+  "generated_sha256": "c55050d750279db0884db1c3c705510030c72cc88dd7cc46f3f4716fce45e1db",
+  "probe_sha256": "fb9850f812a6b5d455d33e365aa83a9c97ed2c6a25cb783aa1aa512793e90458",
+  "change": "Only template the BK64 kernel block-group size; preserve GM=8 for its original wrapper.",
+  "row_stream_candidate": true,
+  "exit_code": 0,
+  "binary_sha256": "7090f3589f06c565f00fafa1d77cd7aa324e37e599bb08c048012cfc14553866"
+}

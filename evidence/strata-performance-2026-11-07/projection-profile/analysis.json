@@ -1,0 +1,4813 @@
+{
+  "counter_shapes": {
+    "qkv": {
+      "passes": {
+        "memory": {
+          "dispatches": {
+            "43": {
+              "duration_ms": 21.612779,
+              "GL2C_EA_RDREQ_128B_sum": 32010457.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 18451.0,
+              "GL2C_EA_WRREQ_64B_sum": 10476930.0,
+              "SQ_WAVES_sum": 40960.0,
+              "l2_external_read_bytes": 4098519360.0,
+              "l2_external_write_bytes": 670523520.0,
+              "l2_external_GB_s": 220.6584761728235
+            },
+            "51": {
+              "duration_ms": 21.363224,
+              "GL2C_EA_RDREQ_128B_sum": 32241403.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 21887.0,
+              "GL2C_EA_WRREQ_64B_sum": 10467992.0,
+              "SQ_WAVES_sum": 40960.0,
+              "l2_external_read_bytes": 4128300352.0,
+              "l2_external_write_bytes": 669951488.0,
+              "l2_external_GB_s": 224.6033576205539
+            },
+            "55": {
+              "duration_ms": 21.39831,
+              "GL2C_EA_RDREQ_128B_sum": 31956827.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 21964.0,
+              "GL2C_EA_WRREQ_64B_sum": 10471216.0,
+              "SQ_WAVES_sum": 40960.0,
+              "l2_external_read_bytes": 4091879552.0,
+              "l2_external_write_bytes": 670157824.0,
+              "l2_external_GB_s": 222.54268566069004
+            },
+            "67": {
+              "duration_ms": 92.623904,
+              "GL2C_EA_RDREQ_128B_sum": 0.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 0.0,
+              "GL2C_EA_WRREQ_64B_sum": 0.0,
+              "SQ_WAVES_sum": 0.0,
+              "invalid_reason": "Wave count does not match launch geometry; counters unusable"
+            },
+            "74": {
+              "duration_ms": 21.661194,
+              "GL2C_EA_RDREQ_128B_sum": 25157836.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 21171.0,
+              "GL2C_EA_WRREQ_64B_sum": 10469954.0,
+              "SQ_WAVES_sum": 40960.0,
+              "l2_external_read_bytes": 3221557952.0,
+              "l2_external_write_bytes": 670077056.0,
+              "l2_external_GB_s": 179.65930262200692
+            }
+          },
+          "invalid_dispatch_ids": [
+            "67"
+          ],
+          "valid_dispatches": 4,
+          "medians": {
+            "duration_ms": 21.5055445,
+            "GL2C_EA_RDREQ_128B_sum": 31983642.0,
+            "GL2C_EA_RDREQ_32B_sum": 0.0,
+            "GL2C_EA_RDREQ_64B_sum": 21529.0,
+            "GL2C_EA_WRREQ_64B_sum": 10470585.0,
+            "SQ_WAVES_sum": 40960.0,
+            "l2_external_read_bytes": 4095199456.0,
+            "l2_external_write_bytes": 670117440.0,
+            "l2_external_GB_s": 221.60058091675677
+          }
+        },
+        "cache": {
+          "dispatches": {
+            "43": {
+              "duration_ms": 21.948561,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 26056817.0,
+              "GL2C_MISS_sum": 40890008.0,
+              "SQ_WAVES_sum": 40960.0,
+              "l2_hit_pct": 38.92166208031524
+            },
+            "51": {
+              "duration_ms": 21.839163,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 30619390.0,
+              "GL2C_MISS_sum": 37252407.0,
+              "SQ_WAVES_sum": 40960.0,
+              "l2_hit_pct": 45.113569042528816
+            },
+            "55": {
+              "duration_ms": 21.950203,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 27663479.0,
+              "GL2C_MISS_sum": 39377927.0,
+              "SQ_WAVES_sum": 40960.0,
+              "l2_hit_pct": 41.2632739235809
+            },
+            "67": {
+              "duration_ms": 21.191132,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 28269559.0,
+              "GL2C_MISS_sum": 38976807.0,
+              "SQ_WAVES_sum": 40960.0,
+              "l2_hit_pct": 42.03879061658142
+            },
+            "74": {
+              "duration_ms": 21.00984,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 35902064.0,
+              "GL2C_MISS_sum": 26226365.0,
+              "SQ_WAVES_sum": 40960.0,
+              "l2_hit_pct": 57.78685310069566
+            }
+          },
+          "invalid_dispatch_ids": [],
+          "valid_dispatches": 5,
+          "medians": {
+            "duration_ms": 21.839163,
+            "GL2C_EA_RDREQ_96B_sum": 0.0,
+            "GL2C_HIT_sum": 28269559.0,
+            "GL2C_MISS_sum": 38976807.0,
+            "SQ_WAVES_sum": 40960.0,
+            "l2_hit_pct": 42.03879061658142
+          }
+        },
+        "alu": {
+          "dispatches": {
+            "43": {
+              "duration_ms": 21.117475,
+              "SQ_BUSY_CYCLES": 1022618919.0,
+              "SQ_INSTS_LDS": 124518400.0,
+              "SQ_INSTS_SALU": 35799040.0,
+              "SQ_INSTS_VALU": 190054400.0
+            },
+            "51": {
+              "duration_ms": 20.807191,
+              "SQ_BUSY_CYCLES": 1029820402.0,
+              "SQ_INSTS_LDS": 124518400.0,
+              "SQ_INSTS_SALU": 35799040.0,
+              "SQ_INSTS_VALU": 190054400.0
+            },
+            "55": {
+              "duration_ms": 21.302736,
+              "SQ_BUSY_CYCLES": 1009857947.0,
+              "SQ_INSTS_LDS": 124518400.0,
+              "SQ_INSTS_SALU": 35799040.0,
+              "SQ_INSTS_VALU": 190054400.0
+            },
+            "67": {
+              "duration_ms": 21.384926,
+              "SQ_BUSY_CYCLES": 1038398954.0,
+              "SQ_INSTS_LDS": 124518400.0,
+              "SQ_INSTS_SALU": 35799040.0,
+              "SQ_INSTS_VALU": 190054400.0
+            },
+            "74": {
+              "duration_ms": 20.93883,
+              "SQ_BUSY_CYCLES": 1033269696.0,
+              "SQ_INSTS_LDS": 124518400.0,
+              "SQ_INSTS_SALU": 35799040.0,
+              "SQ_INSTS_VALU": 190054400.0
+            }
+          },
+          "invalid_dispatch_ids": [],
+          "valid_dispatches": 5,
+          "medians": {
+            "duration_ms": 21.117475,
+            "SQ_BUSY_CYCLES": 1029820402.0,
+            "SQ_INSTS_LDS": 124518400.0,
+            "SQ_INSTS_SALU": 35799040.0,
+            "SQ_INSTS_VALU": 190054400.0
+          }
+        }
+      },
+      "resources": {
+        "LDS_Block_Size": 55296,
+        "Scratch_Size": 0,
+        "VGPR_Count": 248,
+        "SGPR_Count": 128,
+        "Workgroup_Size": 256
+      }
+    },
+    "gate": {
+      "passes": {
+        "memory": {
+          "dispatches": {
+            "43": {
+              "duration_ms": 12.792908,
+              "GL2C_EA_RDREQ_128B_sum": 16013627.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 2.0,
+              "GL2C_EA_WRREQ_64B_sum": 6270126.0,
+              "SQ_WAVES_sum": 24576.0,
+              "l2_external_read_bytes": 2049744384.0,
+              "l2_external_write_bytes": 401288064.0,
+              "l2_external_GB_s": 191.59306453231744
+            },
+            "51": {
+              "duration_ms": 12.678177,
+              "GL2C_EA_RDREQ_128B_sum": 15511255.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 0.0,
+              "GL2C_EA_WRREQ_64B_sum": 6271676.0,
+              "SQ_WAVES_sum": 24576.0,
+              "l2_external_read_bytes": 1985440640.0,
+              "l2_external_write_bytes": 401387264.0,
+              "l2_external_GB_s": 188.26270559245228
+            },
+            "55": {
+              "duration_ms": 12.518726,
+              "GL2C_EA_RDREQ_128B_sum": 21687709.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 0.0,
+              "GL2C_EA_WRREQ_64B_sum": 6272496.0,
+              "SQ_WAVES_sum": 24576.0,
+              "l2_external_read_bytes": 2776026752.0,
+              "l2_external_write_bytes": 401439744.0,
+              "l2_external_GB_s": 253.8170813867162
+            },
+            "67": {
+              "duration_ms": 12.609693,
+              "GL2C_EA_RDREQ_128B_sum": 13677540.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 0.0,
+              "GL2C_EA_WRREQ_64B_sum": 6268530.0,
+              "SQ_WAVES_sum": 24576.0,
+              "l2_external_read_bytes": 1750725120.0,
+              "l2_external_write_bytes": 401185920.0,
+              "l2_external_GB_s": 170.6553077858438
+            },
+            "74": {
+              "duration_ms": 13.38303,
+              "GL2C_EA_RDREQ_128B_sum": 19325705.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 2.0,
+              "GL2C_EA_WRREQ_64B_sum": 6272482.0,
+              "SQ_WAVES_sum": 24576.0,
+              "l2_external_read_bytes": 2473690368.0,
+              "l2_external_write_bytes": 401438848.0,
+              "l2_external_GB_s": 214.83395135481277
+            }
+          },
+          "invalid_dispatch_ids": [],
+          "valid_dispatches": 5,
+          "medians": {
+            "duration_ms": 12.678177,
+            "GL2C_EA_RDREQ_128B_sum": 16013627.0,
+            "GL2C_EA_RDREQ_32B_sum": 0.0,
+            "GL2C_EA_RDREQ_64B_sum": 0.0,
+            "GL2C_EA_WRREQ_64B_sum": 6271676.0,
+            "SQ_WAVES_sum": 24576.0,
+            "l2_external_read_bytes": 2049744384.0,
+            "l2_external_write_bytes": 401387264.0,
+            "l2_external_GB_s": 191.59306453231744
+          }
+        },
+        "cache": {
+          "dispatches": {
+            "43": {
+              "duration_ms": 13.251234,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 14756843.0,
+              "GL2C_MISS_sum": 25526290.0,
+              "SQ_WAVES_sum": 24576.0,
+              "l2_hit_pct": 36.632808575241654
+            },
+            "51": {
+              "duration_ms": 13.202421,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 13978455.0,
+              "GL2C_MISS_sum": 26246678.0,
+              "SQ_WAVES_sum": 24576.0,
+              "l2_hit_pct": 34.75055011005184
+            },
+            "55": {
+              "duration_ms": 13.267103,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 15137280.0,
+              "GL2C_MISS_sum": 25847538.0,
+              "SQ_WAVES_sum": 24576.0,
+              "l2_hit_pct": 36.93387146430661
+            },
+            "67": {
+              "duration_ms": 13.307895,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 15366296.0,
+              "GL2C_MISS_sum": 25579112.0,
+              "SQ_WAVES_sum": 24576.0,
+              "l2_hit_pct": 37.528740707627094
+            },
+            "74": {
+              "duration_ms": 13.008306,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 15587811.0,
+              "GL2C_MISS_sum": 24381620.0,
+              "SQ_WAVES_sum": 24576.0,
+              "l2_hit_pct": 38.99933176431759
+            }
+          },
+          "invalid_dispatch_ids": [],
+          "valid_dispatches": 5,
+          "medians": {
+            "duration_ms": 13.251234,
+            "GL2C_EA_RDREQ_96B_sum": 0.0,
+            "GL2C_HIT_sum": 15137280.0,
+            "GL2C_MISS_sum": 25579112.0,
+            "SQ_WAVES_sum": 24576.0,
+            "l2_hit_pct": 36.93387146430661
+          }
+        },
+        "alu": {
+          "dispatches": {
+            "43": {
+              "duration_ms": 13.250952,
+              "SQ_BUSY_CYCLES": 604547179.0,
+              "SQ_INSTS_LDS": 74711040.0,
+              "SQ_INSTS_SALU": 21479424.0,
+              "SQ_INSTS_VALU": 114032640.0
+            },
+            "51": {
+              "duration_ms": 13.563282,
+              "SQ_BUSY_CYCLES": 601390191.0,
+              "SQ_INSTS_LDS": 74711040.0,
+              "SQ_INSTS_SALU": 21479424.0,
+              "SQ_INSTS_VALU": 114032640.0
+            },
+            "55": {
+              "duration_ms": 12.928404,
+              "SQ_BUSY_CYCLES": 607550003.0,
+              "SQ_INSTS_LDS": 74711040.0,
+              "SQ_INSTS_SALU": 21479424.0,
+              "SQ_INSTS_VALU": 114032640.0
+            },
+            "67": {
+              "duration_ms": 12.943467,
+              "SQ_BUSY_CYCLES": 603208758.0,
+              "SQ_INSTS_LDS": 74711040.0,
+              "SQ_INSTS_SALU": 21479424.0,
+              "SQ_INSTS_VALU": 114032640.0
+            },
+            "74": {
+              "duration_ms": 13.372175,
+              "SQ_BUSY_CYCLES": 602012124.0,
+              "SQ_INSTS_LDS": 74711040.0,
+              "SQ_INSTS_SALU": 21479424.0,
+              "SQ_INSTS_VALU": 114032640.0
+            }
+          },
+          "invalid_dispatch_ids": [],
+          "valid_dispatches": 5,
+          "medians": {
+            "duration_ms": 13.250952,
+            "SQ_BUSY_CYCLES": 603208758.0,
+            "SQ_INSTS_LDS": 74711040.0,
+            "SQ_INSTS_SALU": 21479424.0,
+            "SQ_INSTS_VALU": 114032640.0
+          }
+        }
+      },
+      "resources": {
+        "LDS_Block_Size": 55296,
+        "Scratch_Size": 0,
+        "VGPR_Count": 248,
+        "SGPR_Count": 128,
+        "Workgroup_Size": 256
+      }
+    },
+    "out": {
+      "passes": {
+        "memory": {
+          "dispatches": {
+            "43": {
+              "duration_ms": 12.717655,
+              "GL2C_EA_RDREQ_128B_sum": 17238083.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 271.0,
+              "GL2C_EA_WRREQ_64B_sum": 2606360.0,
+              "SQ_WAVES_sum": 10240.0,
+              "l2_external_read_bytes": 2206491968.0,
+              "l2_external_write_bytes": 166807040.0,
+              "l2_external_GB_s": 186.6145140751184
+            },
+            "51": {
+              "duration_ms": 12.451053,
+              "GL2C_EA_RDREQ_128B_sum": 18233254.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 7.0,
+              "GL2C_EA_WRREQ_64B_sum": 2609746.0,
+              "SQ_WAVES_sum": 10240.0,
+              "l2_external_read_bytes": 2333856960.0,
+              "l2_external_write_bytes": 167023744.0,
+              "l2_external_GB_s": 200.85696398529507
+            },
+            "55": {
+              "duration_ms": 12.320966,
+              "GL2C_EA_RDREQ_128B_sum": 16120813.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 9.0,
+              "GL2C_EA_WRREQ_64B_sum": 2605222.0,
+              "SQ_WAVES_sum": 10240.0,
+              "l2_external_read_bytes": 2063464640.0,
+              "l2_external_write_bytes": 166734208.0,
+              "l2_external_GB_s": 181.00844105892347
+            },
+            "67": {
+              "duration_ms": 12.225159,
+              "GL2C_EA_RDREQ_128B_sum": 17436871.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 274.0,
+              "GL2C_EA_WRREQ_64B_sum": 2611436.0,
+              "SQ_WAVES_sum": 10240.0,
+              "l2_external_read_bytes": 2231937024.0,
+              "l2_external_write_bytes": 167131904.0,
+              "l2_external_GB_s": 196.2403047682243
+            },
+            "74": {
+              "duration_ms": 12.547344,
+              "GL2C_EA_RDREQ_128B_sum": 18878265.0,
+              "GL2C_EA_RDREQ_32B_sum": 0.0,
+              "GL2C_EA_RDREQ_64B_sum": 2.0,
+              "GL2C_EA_WRREQ_64B_sum": 2608204.0,
+              "SQ_WAVES_sum": 10240.0,
+              "l2_external_read_bytes": 2416418048.0,
+              "l2_external_write_bytes": 166925056.0,
+              "l2_external_GB_s": 205.88764474776494
+            }
+          },
+          "invalid_dispatch_ids": [],
+          "valid_dispatches": 5,
+          "medians": {
+            "duration_ms": 12.451053,
+            "GL2C_EA_RDREQ_128B_sum": 17436871.0,
+            "GL2C_EA_RDREQ_32B_sum": 0.0,
+            "GL2C_EA_RDREQ_64B_sum": 9.0,
+            "GL2C_EA_WRREQ_64B_sum": 2608204.0,
+            "SQ_WAVES_sum": 10240.0,
+            "l2_external_read_bytes": 2231937024.0,
+            "l2_external_write_bytes": 166925056.0,
+            "l2_external_GB_s": 196.2403047682243
+          }
+        },
+        "cache": {
+          "dispatches": {
+            "43": {
+              "duration_ms": 13.146356,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 17156828.0,
+              "GL2C_MISS_sum": 19392569.0,
+              "SQ_WAVES_sum": 10240.0,
+              "l2_hit_pct": 46.941480320455085
+            },
+            "51": {
+              "duration_ms": 12.593626,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 19984255.0,
+              "GL2C_MISS_sum": 16258377.0,
+              "SQ_WAVES_sum": 10240.0,
+              "l2_hit_pct": 55.14018683852762
+            },
+            "55": {
+              "duration_ms": 12.432771,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 17327787.0,
+              "GL2C_MISS_sum": 19323456.0,
+              "SQ_WAVES_sum": 10240.0,
+              "l2_hit_pct": 47.27748796950761
+            },
+            "67": {
+              "duration_ms": 12.67826,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 16317061.0,
+              "GL2C_MISS_sum": 19848184.0,
+              "SQ_WAVES_sum": 10240.0,
+              "l2_hit_pct": 45.11807123109494
+            },
+            "74": {
+              "duration_ms": 12.520293,
+              "GL2C_EA_RDREQ_96B_sum": 0.0,
+              "GL2C_HIT_sum": 18797572.0,
+              "GL2C_MISS_sum": 18358953.0,
+              "SQ_WAVES_sum": 10240.0,
+              "l2_hit_pct": 50.590231460019474
+            }
+          },
+          "invalid_dispatch_ids": [],
+          "valid_dispatches": 5,
+          "medians": {
+            "duration_ms": 12.593626,
+            "GL2C_EA_RDREQ_96B_sum": 0.0,
+            "GL2C_HIT_sum": 17327787.0,
+            "GL2C_MISS_sum": 19323456.0,
+            "SQ_WAVES_sum": 10240.0,
+            "l2_hit_pct": 47.27748796950761
+          }
+        },
+        "alu": {
+          "dispatches": {
+            "43": {
+              "duration_ms": 12.402964,
+              "SQ_BUSY_CYCLES": 569076430.0,
+              "SQ_INSTS_LDS": 74711040.0,
+              "SQ_INSTS_SALU": 14684160.0,
+              "SQ_INSTS_VALU": 97976320.0
+            },
+            "51": {
+              "duration_ms": 13.180669,
+              "SQ_BUSY_CYCLES": 567969216.0,
+              "SQ_INSTS_LDS": 74711040.0,
+              "SQ_INSTS_SALU": 14684160.0,
+              "SQ_INSTS_VALU": 97976320.0
+            },
+            "55": {
+              "duration_ms": 12.622438,
+              "SQ_BUSY_CYCLES": 568454480.0,
+              "SQ_INSTS_LDS": 74711040.0,
+              "SQ_INSTS_SALU": 14684160.0,
+              "SQ_INSTS_VALU": 97976320.0
+            },
+            "67": {
+              "duration_ms": 12.98362,
+              "SQ_BUSY_CYCLES": 567773804.0,
+              "SQ_INSTS_LDS": 74711040.0,
+              "SQ_INSTS_SALU": 14684160.0,
+              "SQ_INSTS_VALU": 97976320.0
+            },
+            "74": {
+              "duration_ms": 12.474611,
+              "SQ_BUSY_CYCLES": 568836765.0,
+              "SQ_INSTS_LDS": 74711040.0,
+              "SQ_INSTS_SALU": 14684160.0,
+              "SQ_INSTS_VALU": 97976320.0
+            }
+          },
+          "invalid_dispatch_ids": [],
+          "valid_dispatches": 5,
+          "medians": {
+            "duration_ms": 12.622438,
+            "SQ_BUSY_CYCLES": 568454480.0,
+            "SQ_INSTS_LDS": 74711040.0,
+            "SQ_INSTS_SALU": 14684160.0,
+            "SQ_INSTS_VALU": 97976320.0
+          }
+        }
+      },
+      "resources": {
+        "LDS_Block_Size": 55296,
+        "Scratch_Size": 0,
+        "VGPR_Count": 248,
+        "SGPR_Count": 128,
+        "Workgroup_Size": 256
+      }
+    }
+  },
+  "att": {
+    "qkv": {
+      "groups": {
+        "other": {
+          "Hitcount": 0,
+          "Latency": 0,
+          "Stall": 0,
+          "Idle": 0,
+          "fraction_of_summed_latency": 0.0
+        },
+        "scalar_other": {
+          "Hitcount": 734720,
+          "Latency": 1462299,
+          "Stall": 196067,
+          "Idle": 3834282,
+          "fraction_of_summed_latency": 0.023943717897192258
+        },
+        "vector_alu": {
+          "Hitcount": 1064960,
+          "Latency": 2292714,
+          "Stall": 929770,
+          "Idle": 19777201,
+          "fraction_of_summed_latency": 0.03754095245564912
+        },
+        "lds_wait": {
+          "Hitcount": 594944,
+          "Latency": 19715046,
+          "Stall": 19120102,
+          "Idle": 0,
+          "fraction_of_summed_latency": 0.3228146225595235
+        },
+        "global_memory": {
+          "Hitcount": 351744,
+          "Latency": 876221,
+          "Stall": 147645,
+          "Idle": 3837457,
+          "fraction_of_summed_latency": 0.01434726306972493
+        },
+        "vector_memory_wait": {
+          "Hitcount": 185856,
+          "Latency": 4881717,
+          "Stall": 4695861,
+          "Idle": 0,
+          "fraction_of_summed_latency": 0.07993334790075607
+        },
+        "lds": {
+          "Hitcount": 1556480,
+          "Latency": 6397754,
+          "Stall": 3858234,
+          "Idle": 48588513,
+          "fraction_of_summed_latency": 0.10475697306202995
+        },
+        "barrier": {
+          "Hitcount": 40448,
+          "Latency": 10167826,
+          "Stall": 76,
+          "Idle": 0,
+          "fraction_of_summed_latency": 0.16648821983174217
+        },
+        "wmma": {
+          "Hitcount": 1310720,
+          "Latency": 15278768,
+          "Stall": 13968048,
+          "Idle": 9132963,
+          "fraction_of_summed_latency": 0.25017490322338204
+        }
+      },
+      "summed_instruction_latency": 61072345,
+      "wave_count": 512,
+      "selected_simd_peak_waves": 4,
+      "selected_simd_time_weighted_waves": 3.9841769267660463,
+      "residency_cycles_by_wave_count": {
+        "0": 104178,
+        "1": 3202,
+        "2": 65365,
+        "3": 19508,
+        "4": 36245422
+      },
+      "wave_intervals": [
+        {
+          "begin": 23875729,
+          "end": 24151225,
+          "cu": 1,
+          "id": 83
+        },
+        {
+          "begin": 20230293,
+          "end": 20513240,
+          "cu": 1,
+          "id": 71
+        },
+        {
+          "begin": 24749265,
+          "end": 25028970,
+          "cu": 1,
+          "id": 86
+        },
+        {
+          "begin": 34211770,
+          "end": 34513325,
+          "cu": 1,
+          "id": 120
+        },
+        {
+          "begin": 31749119,
+          "end": 32026698,
+          "cu": 1,
+          "id": 111
+        },
+        {
+          "begin": 3944401,
+          "end": 4213652,
+          "cu": 1,
+          "id": 14
+        },
+        {
+          "begin": 31218138,
+          "end": 31481939,
+          "cu": 1,
+          "id": 109
+        },
+        {
+          "begin": 4216202,
+          "end": 4490448,
+          "cu": 1,
+          "id": 15
+        },
+        {
+          "begin": 29236885,
+          "end": 29502499,
+          "cu": 1,
+          "id": 102
+        },
+        {
+          "begin": 32831749,
+          "end": 33103753,
+          "cu": 1,
+          "id": 115
+        },
+        {
+          "begin": 31748273,
+          "end": 32025235,
+          "cu": 1,
+          "id": 111
+        },
+        {
+          "begin": 23592314,
+          "end": 23875674,
+          "cu": 1,
+          "id": 82
+        },
+        {
+          "begin": 27041409,
+          "end": 27319850,
+          "cu": 1,
+          "id": 94
+        },
+        {
+          "begin": 10357740,
+          "end": 10678850,
+          "cu": 1,
+          "id": 37
+        },
+        {
+          "begin": 8153774,
+          "end": 8422807,
+          "cu": 1,
+          "id": 29
+        },
+        {
+          "begin": 8154316,
+          "end": 8423717,
+          "cu": 1,
+          "id": 29
+        },
+        {
+          "begin": 13057549,
+          "end": 13322761,
+          "cu": 1,
+          "id": 46
+        },
+        {
+          "begin": 18272532,
+          "end": 18543186,
+          "cu": 1,
+          "id": 64
+        },
+        {
+          "begin": 15358005,
+          "end": 15650090,
+          "cu": 1,
+          "id": 54
+        },
+        {
+          "begin": 25951066,
+          "end": 26218052,
+          "cu": 1,
+          "id": 90
+        },
+        {
+          "begin": 25674837,
+          "end": 25942821,
+          "cu": 1,
+          "id": 89
+        },
+        {
+          "begin": 29502620,
+          "end": 29888856,
+          "cu": 1,
+          "id": 103
+        },
+        {
+          "begin": 33647446,
+          "end": 33915753,
+          "cu": 1,
+          "id": 118
+        },
+        {
+          "begin": 15290,
+          "end": 348887,
+          "cu": 1,
+          "id": 0
+        },
+        {
+          "begin": 8979597,
+          "end": 9267224,
+          "cu": 1,
+          "id": 32
+        },
+        {
+          "begin": 23292705,
+          "end": 23592238,
+          "cu": 1,
+          "id": 81
+        },
+        {
+          "begin": 11636349,
+          "end": 11915718,
+          "cu": 1,
+          "id": 41
+        },
+        {
+          "begin": 8688358,
+          "end": 8979533,
+          "cu": 1,
+          "id": 31
+        },
+        {
+          "begin": 2588523,
+          "end": 2864489,
+          "cu": 1,
+          "id": 9
+        },
+        {
+          "begin": 15081120,
+          "end": 15357803,
+          "cu": 1,
+          "id": 53
+        },
+        {
+          "begin": 32301898,
+          "end": 32566327,
+          "cu": 1,
+          "id": 113
+        },
+        {
+          "begin": 16832906,
+          "end": 17150137,
+          "cu": 1,
+          "id": 59
+        },
+        {
+          "begin": 28162708,
+          "end": 28425508,
+          "cu": 1,
+          "id": 98
+        },
+        {
+          "begin": 7065770,
+          "end": 7334259,
+          "cu": 1,
+          "id": 25
+        },
+        {
+          "begin": 632139,
+          "end": 926346,
+          "cu": 1,
+          "id": 2
+        },
+        {
+          "begin": 32831540,
+          "end": 33103661,
+          "cu": 1,
+          "id": 115
+        },
+        {
+          "begin": 16272047,
+          "end": 16559288,
+          "cu": 1,
+          "id": 57
+        },
+        {
+          "begin": 35332182,
+          "end": 35650038,
+          "cu": 1,
+          "id": 124
+        },
+        {
+          "begin": 7624385,
+          "end": 7893918,
+          "cu": 1,
+          "id": 27
+        },
+        {
+          "begin": 16272012,
+          "end": 16558256,
+          "cu": 1,
+          "id": 57
+        },
+        {
+          "begin": 26507656,
+          "end": 26778542,
+          "cu": 1,
+          "id": 92
+        },
+        {
+          "begin": 17151233,
+          "end": 17424387,
+          "cu": 1,
+          "id": 60
+        },
+        {
+          "begin": 35650491,
+          "end": 35919763,
+          "cu": 1,
+          "id": 125
+        },
+        {
+          "begin": 28700865,
+          "end": 28970713,
+          "cu": 1,
+          "id": 100
+        },
+        {
+          "begin": 18272691,
+          "end": 18543951,
+          "cu": 1,
+          "id": 64
+        },
+        {
+          "begin": 12197063,
+          "end": 12508578,
+          "cu": 1,
+          "id": 43
+        },
+        {
+          "begin": 35920409,
+          "end": 36188187,
+          "cu": 1,
+          "id": 126
+        },
+        {
+          "begin": 9267282,
+          "end": 9532924,
+          "cu": 1,
+          "id": 33
+        },
+        {
+          "begin": 13929181,
+          "end": 14207854,
+          "cu": 1,
+          "id": 49
+        },
+        {
+          "begin": 33647450,
+          "end": 33915762,
+          "cu": 1,
+          "id": 118
+        },
+        {
+          "begin": 4505458,
+          "end": 4772623,
+          "cu": 1,
+          "id": 16
+        },
+        {
+          "begin": 25386797,
+          "end": 25673793,
+          "cu": 1,
+          "id": 88
+        },
+        {
+          "begin": 2588527,
+          "end": 2864294,
+          "cu": 1,
+          "id": 9
+        },
+        {
+          "begin": 23590969,
+          "end": 23874514,
+          "cu": 1,
+          "id": 82
+        },
+        {
+          "begin": 33915937,
+          "end": 34211860,
+          "cu": 1,
+          "id": 119
+        },
+        {
+          "begin": 15358009,
+          "end": 15650074,
+          "cu": 1,
+          "id": 54
+        },
+        {
+          "begin": 29503842,
+          "end": 29890033,
+          "cu": 1,
+          "id": 103
+        },
+        {
+          "begin": 10681227,
+          "end": 10952337,
+          "cu": 1,
+          "id": 38
+        },
+        {
+          "begin": 35920405,
+          "end": 36188184,
+          "cu": 1,
+          "id": 126
+        },
+        {
+          "begin": 16832902,
+          "end": 17150279,
+          "cu": 1,
+          "id": 59
+        },
+        {
+          "begin": 7335079,
+          "end": 7624361,
+          "cu": 1,
+          "id": 26
+        },
+        {
+          "begin": 17688058,
+          "end": 17991744,
+          "cu": 1,
+          "id": 62
+        },
+        {
+          "begin": 19382880,
+          "end": 19658136,
+          "cu": 1,
+          "id": 68
+        },
+        {
+          "begin": 22084601,
+          "end": 22390391,
+          "cu": 1,
+          "id": 77
+        },
+        {
+          "begin": 35332178,
+          "end": 35650022,
+          "cu": 1,
+          "id": 124
+        },
+        {
+          "begin": 18272536,
+          "end": 18543224,
+          "cu": 1,
+          "id": 64
+        },
+        {
+          "begin": 349173,
+          "end": 632061,
+          "cu": 1,
+          "id": 1
+        },
+        {
+          "begin": 10952649,
+          "end": 11227791,
+          "cu": 1,
+          "id": 39
+        },
+        {
+          "begin": 32567021,
+          "end": 32831511,
+          "cu": 1,
+          "id": 114
+        },
+        {
+          "begin": 3123519,
+          "end": 3392048,
+          "cu": 1,
+          "id": 11
+        },
+        {
+          "begin": 4772975,
+          "end": 5051624,
+          "cu": 1,
+          "id": 17
+        },
+        {
+          "begin": 28425489,
+          "end": 28695205,
+          "cu": 1,
+          "id": 99
+        },
+        {
+          "begin": 8423793,
+          "end": 8688534,
+          "cu": 1,
+          "id": 30
+        },
+        {
+          "begin": 26779388,
+          "end": 27041825,
+          "cu": 1,
+          "id": 93
+        },
+        {
+          "begin": 15652634,
+          "end": 15962418,
+          "cu": 1,
+          "id": 55
+        },
+        {
+          "begin": 2020154,
+          "end": 2306238,
+          "cu": 1,
+          "id": 7
+        },
+        {
+          "begin": 8688354,
+          "end": 8979538,
+          "cu": 1,
+          "id": 31
+        },
+        {
+          "begin": 26507851,
+          "end": 26779309,
+          "cu": 1,
+          "id": 92
+        },
+        {
+          "begin": 28425493,
+          "end": 28695212,
+          "cu": 1,
+          "id": 99
+        },
+        {
+          "begin": 15966628,
+          "end": 16271896,
+          "cu": 1,
+          "id": 56
+        },
+        {
+          "begin": 17425753,
+          "end": 17688070,
+          "cu": 1,
+          "id": 61
+        },
+        {
+          "begin": 5639117,
+          "end": 5910231,
+          "cu": 1,
+          "id": 20
+        },
+        {
+          "begin": 19925278,
+          "end": 20230231,
+          "cu": 1,
+          "id": 70
+        },
+        {
+          "begin": 35920178,
+          "end": 36188034,
+          "cu": 1,
+          "id": 126
+        },
+        {
+          "begin": 5367522,
+          "end": 5638109,
+          "cu": 1,
+          "id": 19
+        },
+        {
+          "begin": 30417646,
+          "end": 30681549,
+          "cu": 1,
+          "id": 106
+        },
+        {
+          "begin": 34516564,
+          "end": 34788925,
+          "cu": 1,
+          "id": 121
+        },
+        {
+          "begin": 4216279,
+          "end": 4490597,
+          "cu": 1,
+          "id": 15
+        },
+        {
+          "begin": 28162767,
+          "end": 28425451,
+          "cu": 1,
+          "id": 98
+        },
+        {
+          "begin": 926400,
+          "end": 1209343,
+          "cu": 1,
+          "id": 3
+        },
+        {
+          "begin": 34789001,
+          "end": 35067656,
+          "cu": 1,
+          "id": 122
+        },
+        {
+          "begin": 23292701,
+          "end": 23592254,
+          "cu": 1,
+          "id": 81
+        },
+        {
+          "begin": 27901325,
+          "end": 28162646,
+          "cu": 1,
+          "id": 97
+        },
+        {
+          "begin": 2588669,
+          "end": 2864183,
+          "cu": 1,
+          "id": 9
+        },
+        {
+          "begin": 9801860,
+          "end": 10083802,
+          "cu": 1,
+          "id": 35
+        },
+        {
+          "begin": 13057545,
+          "end": 13322647,
+          "cu": 1,
+          "id": 46
+        },
+        {
+          "begin": 32301841,
+          "end": 32566369,
+          "cu": 1,
+          "id": 113
+        },
+        {
+          "begin": 12196443,
+          "end": 12507701,
+          "cu": 1,
+          "id": 43
+        },
+        {
+          "begin": 12777189,
+          "end": 13057481,
+          "cu": 1,
+          "id": 45
+        },
+        {
+          "begin": 25388086,
+          "end": 25674571,
+          "cu": 1,
+          "id": 88
+        },
+        {
+          "begin": 32025809,
+          "end": 32299386,
+          "cu": 1,
+          "id": 112
+        },
+        {
+          "begin": 29891017,
+          "end": 30160566,
+          "cu": 1,
+          "id": 104
+        },
+        {
+          "begin": 22689568,
+          "end": 22983161,
+          "cu": 1,
+          "id": 79
+        },
+        {
+          "begin": 20230272,
+          "end": 20514092,
+          "cu": 1,
+          "id": 71
+        },
+        {
+          "begin": 20230268,
+          "end": 20513941,
+          "cu": 1,
+          "id": 71
+        },
+        {
+          "begin": 9532994,
+          "end": 9801616,
+          "cu": 1,
+          "id": 34
+        },
+        {
+          "begin": 8153778,
+          "end": 8422978,
+          "cu": 1,
+          "id": 29
+        },
+        {
+          "begin": 14208255,
+          "end": 14480779,
+          "cu": 1,
+          "id": 50
+        },
+        {
+          "begin": 15653333,
+          "end": 15962864,
+          "cu": 1,
+          "id": 55
+        },
+        {
+          "begin": 15653337,
+          "end": 15962910,
+          "cu": 1,
+          "id": 55
+        },
+        {
+          "begin": 31482199,
+          "end": 31748178,
+          "cu": 1,
+          "id": 110
+        },
+        {
+          "begin": 26507855,
+          "end": 26779310,
+          "cu": 1,
+          "id": 92
+        },
+        {
+          "begin": 19658832,
+          "end": 19924071,
+          "cu": 1,
+          "id": 69
+        },
+        {
+          "begin": 9801856,
+          "end": 10083807,
+          "cu": 1,
+          "id": 35
+        },
+        {
+          "begin": 7894171,
+          "end": 8153648,
+          "cu": 1,
+          "id": 28
+        },
+        {
+          "begin": 1494625,
+          "end": 1756442,
+          "cu": 1,
+          "id": 5
+        },
+        {
+          "begin": 5910305,
+          "end": 6170531,
+          "cu": 1,
+          "id": 21
+        },
+        {
+          "begin": 32567025,
+          "end": 32831509,
+          "cu": 1,
+          "id": 114
+        },
+        {
+          "begin": 17151229,
+          "end": 17424527,
+          "cu": 1,
+          "id": 60
+        },
+        {
+          "begin": 14797003,
+          "end": 15076872,
+          "cu": 1,
+          "id": 52
+        },
+        {
+          "begin": 5052751,
+          "end": 5367468,
+          "cu": 1,
+          "id": 18
+        },
+        {
+          "begin": 30955829,
+          "end": 31218015,
+          "cu": 1,
+          "id": 108
+        },
+        {
+          "begin": 7335083,
+          "end": 7624368,
+          "cu": 1,
+          "id": 26
+        },
+        {
+          "begin": 35331716,
+          "end": 35648835,
+          "cu": 1,
+          "id": 124
+        },
+        {
+          "begin": 35067442,
+          "end": 35331468,
+          "cu": 1,
+          "id": 123
+        },
+        {
+          "begin": 34788997,
+          "end": 35067657,
+          "cu": 1,
+          "id": 122
+        },
+        {
+          "begin": 22084908,
+          "end": 22391935,
+          "cu": 1,
+          "id": 77
+        },
+        {
+          "begin": 20524707,
+          "end": 20926763,
+          "cu": 1,
+          "id": 72
+        },
+        {
+          "begin": 28700876,
+          "end": 28970740,
+          "cu": 1,
+          "id": 100
+        },
+        {
+          "begin": 12508632,
+          "end": 12779152,
+          "cu": 1,
+          "id": 44
+        },
+        {
+          "begin": 4504270,
+          "end": 4772532,
+          "cu": 1,
+          "id": 16
+        },
+        {
+          "begin": 19658836,
+          "end": 19924275,
+          "cu": 1,
+          "id": 69
+        },
+        {
+          "begin": 8688605,
+          "end": 8980012,
+          "cu": 1,
+          "id": 31
+        },
+        {
+          "begin": 14797150,
+          "end": 15077451,
+          "cu": 1,
+          "id": 52
+        },
+        {
+          "begin": 11228317,
+          "end": 11634888,
+          "cu": 1,
+          "id": 40
+        },
+        {
+          "begin": 24153511,
+          "end": 24477098,
+          "cu": 1,
+          "id": 84
+        },
+        {
+          "begin": 24153012,
+          "end": 24476971,
+          "cu": 1,
+          "id": 84
+        },
+        {
+          "begin": 34788395,
+          "end": 35067400,
+          "cu": 1,
+          "id": 122
+        },
+        {
+          "begin": 2020979,
+          "end": 2306547,
+          "cu": 1,
+          "id": 7
+        },
+        {
+          "begin": 9267565,
+          "end": 9532957,
+          "cu": 1,
+          "id": 33
+        },
+        {
+          "begin": 22084904,
+          "end": 22391927,
+          "cu": 1,
+          "id": 77
+        },
+        {
+          "begin": 22084605,
+          "end": 22390362,
+          "cu": 1,
+          "id": 77
+        },
+        {
+          "begin": 35331712,
+          "end": 35648312,
+          "cu": 1,
+          "id": 124
+        },
+        {
+          "begin": 24748636,
+          "end": 25027430,
+          "cu": 1,
+          "id": 86
+        },
+        {
+          "begin": 29890056,
+          "end": 30156803,
+          "cu": 1,
+          "id": 104
+        },
+        {
+          "begin": 5368101,
+          "end": 5639040,
+          "cu": 1,
+          "id": 19
+        },
+        {
+          "begin": 5639113,
+          "end": 5910232,
+          "cu": 1,
+          "id": 20
+        },
+        {
+          "begin": 11228321,
+          "end": 11634852,
+          "cu": 1,
+          "id": 40
+        },
+        {
+          "begin": 34516491,
+          "end": 34788324,
+          "cu": 1,
+          "id": 121
+        },
+        {
+          "begin": 13057536,
+          "end": 13322946,
+          "cu": 1,
+          "id": 46
+        },
+        {
+          "begin": 12779211,
+          "end": 13057504,
+          "cu": 1,
+          "id": 45
+        },
+        {
+          "begin": 28162704,
+          "end": 28425500,
+          "cu": 1,
+          "id": 98
+        },
+        {
+          "begin": 19925282,
+          "end": 20230235,
+          "cu": 1,
+          "id": 70
+        },
+        {
+          "begin": 16560509,
+          "end": 16830883,
+          "cu": 1,
+          "id": 58
+        },
+        {
+          "begin": 19658191,
+          "end": 19923784,
+          "cu": 1,
+          "id": 69
+        },
+        {
+          "begin": 12508636,
+          "end": 12777890,
+          "cu": 1,
+          "id": 44
+        },
+        {
+          "begin": 22393079,
+          "end": 22688473,
+          "cu": 1,
+          "id": 78
+        },
+        {
+          "begin": 27319911,
+          "end": 27636950,
+          "cu": 1,
+          "id": 95
+        },
+        {
+          "begin": 21241906,
+          "end": 21540666,
+          "cu": 1,
+          "id": 74
+        },
+        {
+          "begin": 6439451,
+          "end": 6721138,
+          "cu": 1,
+          "id": 23
+        },
+        {
+          "begin": 1209103,
+          "end": 1494131,
+          "cu": 1,
+          "id": 4
+        },
+        {
+          "begin": 30953158,
+          "end": 31217159,
+          "cu": 1,
+          "id": 108
+        },
+        {
+          "begin": 35067731,
+          "end": 35332091,
+          "cu": 1,
+          "id": 123
+        },
+        {
+          "begin": 17991804,
+          "end": 18272452,
+          "cu": 1,
+          "id": 63
+        },
+        {
+          "begin": 14480187,
+          "end": 14794477,
+          "cu": 1,
+          "id": 51
+        },
+        {
+          "begin": 19113329,
+          "end": 19382911,
+          "cu": 1,
+          "id": 67
+        },
+        {
+          "begin": 3673529,
+          "end": 3941436,
+          "cu": 1,
+          "id": 13
+        },
+        {
+          "begin": 2864267,
+          "end": 3122274,
+          "cu": 1,
+          "id": 10
+        },
+        {
+          "begin": 11916212,
+          "end": 12196768,
+          "cu": 1,
+          "id": 42
+        },
+        {
+          "begin": 15081143,
+          "end": 15357933,
+          "cu": 1,
+          "id": 53
+        },
+        {
+          "begin": 30417642,
+          "end": 30681544,
+          "cu": 1,
+          "id": 106
+        },
+        {
+          "begin": 16832795,
+          "end": 17150049,
+          "cu": 1,
+          "id": 59
+        },
+        {
+          "begin": 8154320,
+          "end": 8423610,
+          "cu": 1,
+          "id": 29
+        },
+        {
+          "begin": 10681223,
+          "end": 10952516,
+          "cu": 1,
+          "id": 38
+        },
+        {
+          "begin": 14797146,
+          "end": 15078291,
+          "cu": 1,
+          "id": 52
+        },
+        {
+          "begin": 925510,
+          "end": 1208926,
+          "cu": 1,
+          "id": 3
+        },
+        {
+          "begin": 21541022,
+          "end": 21803931,
+          "cu": 1,
+          "id": 75
+        },
+        {
+          "begin": 23875733,
+          "end": 24151189,
+          "cu": 1,
+          "id": 83
+        },
+        {
+          "begin": 33383375,
+          "end": 33647150,
+          "cu": 1,
+          "id": 117
+        },
+        {
+          "begin": 6439642,
+          "end": 6721308,
+          "cu": 1,
+          "id": 23
+        },
+        {
+          "begin": 5909845,
+          "end": 6169843,
+          "cu": 1,
+          "id": 21
+        },
+        {
+          "begin": 20524622,
+          "end": 20925803,
+          "cu": 1,
+          "id": 72
+        },
+        {
+          "begin": 25942982,
+          "end": 26216117,
+          "cu": 1,
+          "id": 90
+        },
+        {
+          "begin": 29891021,
+          "end": 30160880,
+          "cu": 1,
+          "id": 104
+        },
+        {
+          "begin": 28425626,
+          "end": 28695332,
+          "cu": 1,
+          "id": 99
+        },
+        {
+          "begin": 11636326,
+          "end": 11916141,
+          "cu": 1,
+          "id": 41
+        },
+        {
+          "begin": 32566500,
+          "end": 32831499,
+          "cu": 1,
+          "id": 114
+        },
+        {
+          "begin": 31218142,
+          "end": 31482038,
+          "cu": 1,
+          "id": 109
+        },
+        {
+          "begin": 6170856,
+          "end": 6439379,
+          "cu": 1,
+          "id": 22
+        },
+        {
+          "begin": 28972542,
+          "end": 29235628,
+          "cu": 1,
+          "id": 101
+        },
+        {
+          "begin": 6170860,
+          "end": 6439267,
+          "cu": 1,
+          "id": 22
+        },
+        {
+          "begin": 5052755,
+          "end": 5367453,
+          "cu": 1,
+          "id": 18
+        },
+        {
+          "begin": 19382994,
+          "end": 19658683,
+          "cu": 1,
+          "id": 68
+        },
+        {
+          "begin": 14208277,
+          "end": 14480106,
+          "cu": 1,
+          "id": 50
+        },
+        {
+          "begin": 6170216,
+          "end": 6438762,
+          "cu": 1,
+          "id": 22
+        },
+        {
+          "begin": 1756622,
+          "end": 2019386,
+          "cu": 1,
+          "id": 6
+        },
+        {
+          "begin": 4772988,
+          "end": 5052560,
+          "cu": 1,
+          "id": 17
+        },
+        {
+          "begin": 26218027,
+          "end": 26507460,
+          "cu": 1,
+          "id": 91
+        },
+        {
+          "begin": 9533211,
+          "end": 9802048,
+          "cu": 1,
+          "id": 34
+        },
+        {
+          "begin": 13629507,
+          "end": 13927644,
+          "cu": 1,
+          "id": 48
+        },
+        {
+          "begin": 16272016,
+          "end": 16558276,
+          "cu": 1,
+          "id": 57
+        },
+        {
+          "begin": 22689589,
+          "end": 22985215,
+          "cu": 1,
+          "id": 79
+        },
+        {
+          "begin": 33915941,
+          "end": 34211859,
+          "cu": 1,
+          "id": 119
+        },
+        {
+          "begin": 21241910,
+          "end": 21540655,
+          "cu": 1,
+          "id": 74
+        },
+        {
+          "begin": 17151654,
+          "end": 17425515,
+          "cu": 1,
+          "id": 60
+        },
+        {
+          "begin": 18816472,
+          "end": 19113179,
+          "cu": 1,
+          "id": 66
+        },
+        {
+          "begin": 22394435,
+          "end": 22688654,
+          "cu": 1,
+          "id": 78
+        },
+        {
+          "begin": 35067735,
+          "end": 35332107,
+          "cu": 1,
+          "id": 123
+        },
+        {
+          "begin": 27637230,
+          "end": 27901250,
+          "cu": 1,
+          "id": 96
+        },
+        {
+          "begin": 11916216,
+          "end": 12196611,
+          "cu": 1,
+          "id": 42
+        },
+        {
+          "begin": 1756905,
+          "end": 2019633,
+          "cu": 1,
+          "id": 6
+        },
+        {
+          "begin": 28700861,
+          "end": 28970707,
+          "cu": 1,
+          "id": 100
+        },
+        {
+          "begin": 28700872,
+          "end": 28970723,
+          "cu": 1,
+          "id": 100
+        },
+        {
+          "begin": 32831536,
+          "end": 33103655,
+          "cu": 1,
+          "id": 115
+        },
+        {
+          "begin": 21233621,
+          "end": 21540340,
+          "cu": 1,
+          "id": 74
+        },
+        {
+          "begin": 22985271,
+          "end": 23292689,
+          "cu": 1,
+          "id": 80
+        },
+        {
+          "begin": 926404,
+          "end": 1209358,
+          "cu": 1,
+          "id": 3
+        },
+        {
+          "begin": 15967033,
+          "end": 16271992,
+          "cu": 1,
+          "id": 56
+        },
+        {
+          "begin": 23874880,
+          "end": 24150516,
+          "cu": 1,
+          "id": 83
+        },
+        {
+          "begin": 33103814,
+          "end": 33383157,
+          "cu": 1,
+          "id": 116
+        },
+        {
+          "begin": 632135,
+          "end": 926306,
+          "cu": 1,
+          "id": 2
+        },
+        {
+          "begin": 8688609,
+          "end": 8980030,
+          "cu": 1,
+          "id": 31
+        },
+        {
+          "begin": 10681182,
+          "end": 10952953,
+          "cu": 1,
+          "id": 38
+        },
+        {
+          "begin": 12507777,
+          "end": 12777113,
+          "cu": 1,
+          "id": 44
+        },
+        {
+          "begin": 25674841,
+          "end": 25942911,
+          "cu": 1,
+          "id": 89
+        },
+        {
+          "begin": 10952653,
+          "end": 11228085,
+          "cu": 1,
+          "id": 39
+        },
+        {
+          "begin": 14480183,
+          "end": 14794492,
+          "cu": 1,
+          "id": 51
+        },
+        {
+          "begin": 20524618,
+          "end": 20925785,
+          "cu": 1,
+          "id": 72
+        },
+        {
+          "begin": 32026755,
+          "end": 32299424,
+          "cu": 1,
+          "id": 112
+        },
+        {
+          "begin": 349177,
+          "end": 632060,
+          "cu": 1,
+          "id": 1
+        },
+        {
+          "begin": 32301845,
+          "end": 32566479,
+          "cu": 1,
+          "id": 113
+        },
+        {
+          "begin": 19382990,
+          "end": 19658760,
+          "cu": 1,
+          "id": 68
+        },
+        {
+          "begin": 14208273,
+          "end": 14480112,
+          "cu": 1,
+          "id": 50
+        },
+        {
+          "begin": 3944482,
+          "end": 4214283,
+          "cu": 1,
+          "id": 14
+        },
+        {
+          "begin": 24477031,
+          "end": 24748535,
+          "cu": 1,
+          "id": 85
+        },
+        {
+          "begin": 16560513,
+          "end": 16830882,
+          "cu": 1,
+          "id": 58
+        },
+        {
+          "begin": 18543677,
+          "end": 18811556,
+          "cu": 1,
+          "id": 65
+        },
+        {
+          "begin": 10681178,
+          "end": 10953003,
+          "cu": 1,
+          "id": 38
+        },
+        {
+          "begin": 15357958,
+          "end": 15649641,
+          "cu": 1,
+          "id": 54
+        },
+        {
+          "begin": 19658195,
+          "end": 19923785,
+          "cu": 1,
+          "id": 69
+        },
+        {
+          "begin": 32566496,
+          "end": 32831403,
+          "cu": 1,
+          "id": 114
+        },
+        {
+          "begin": 7894548,
+          "end": 8154087,
+          "cu": 1,
+          "id": 28
+        },
+        {
+          "begin": 9267286,
+          "end": 9532940,
+          "cu": 1,
+          "id": 33
+        },
+        {
+          "begin": 13629532,
+          "end": 13928025,
+          "cu": 1,
+          "id": 48
+        },
+        {
+          "begin": 27637234,
+          "end": 27901172,
+          "cu": 1,
+          "id": 96
+        },
+        {
+          "begin": 3673820,
+          "end": 3941961,
+          "cu": 1,
+          "id": 13
+        },
+        {
+          "begin": 15967029,
+          "end": 16271977,
+          "cu": 1,
+          "id": 56
+        },
+        {
+          "begin": 3944397,
+          "end": 4213660,
+          "cu": 1,
+          "id": 14
+        },
+        {
+          "begin": 12196439,
+          "end": 12507684,
+          "cu": 1,
+          "id": 43
+        },
+        {
+          "begin": 33647205,
+          "end": 33915513,
+          "cu": 1,
+          "id": 118
+        },
+        {
+          "begin": 10083879,
+          "end": 10357699,
+          "cu": 1,
+          "id": 36
+        },
+        {
+          "begin": 34788399,
+          "end": 35067277,
+          "cu": 1,
+          "id": 122
+        },
+        {
+          "begin": 1209099,
+          "end": 1494585,
+          "cu": 1,
+          "id": 4
+        },
+        {
+          "begin": 29236881,
+          "end": 29502438,
+          "cu": 1,
+          "id": 102
+        },
+        {
+          "begin": 25031092,
+          "end": 25386625,
+          "cu": 1,
+          "id": 87
+        },
+        {
+          "begin": 19924941,
+          "end": 20230206,
+          "cu": 1,
+          "id": 70
+        },
+        {
+          "begin": 21806176,
+          "end": 22084762,
+          "cu": 1,
+          "id": 76
+        },
+        {
+          "begin": 13929177,
+          "end": 14207871,
+          "cu": 1,
+          "id": 49
+        },
+        {
+          "begin": 23292734,
+          "end": 23590742,
+          "cu": 1,
+          "id": 81
+        },
+        {
+          "begin": 7335070,
+          "end": 7624344,
+          "cu": 1,
+          "id": 26
+        },
+        {
+          "begin": 17425749,
+          "end": 17688097,
+          "cu": 1,
+          "id": 61
+        },
+        {
+          "begin": 30160938,
+          "end": 30420170,
+          "cu": 1,
+          "id": 105
+        },
+        {
+          "begin": 19924945,
+          "end": 20230214,
+          "cu": 1,
+          "id": 70
+        },
+        {
+          "begin": 7335066,
+          "end": 7624330,
+          "cu": 1,
+          "id": 26
+        },
+        {
+          "begin": 8423789,
+          "end": 8688469,
+          "cu": 1,
+          "id": 30
+        },
+        {
+          "begin": 27041915,
+          "end": 27319919,
+          "cu": 1,
+          "id": 94
+        },
+        {
+          "begin": 7065745,
+          "end": 7334242,
+          "cu": 1,
+          "id": 25
+        },
+        {
+          "begin": 3401403,
+          "end": 3669813,
+          "cu": 1,
+          "id": 12
+        },
+        {
+          "begin": 16832799,
+          "end": 17150048,
+          "cu": 1,
+          "id": 59
+        },
+        {
+          "begin": 6728834,
+          "end": 7062898,
+          "cu": 1,
+          "id": 24
+        },
+        {
+          "begin": 5638557,
+          "end": 5909698,
+          "cu": 1,
+          "id": 20
+        },
+        {
+          "begin": 5367526,
+          "end": 5638062,
+          "cu": 1,
+          "id": 19
+        },
+        {
+          "begin": 19112473,
+          "end": 19382826,
+          "cu": 1,
+          "id": 67
+        },
+        {
+          "begin": 21804031,
+          "end": 22083727,
+          "cu": 1,
+          "id": 76
+        },
+        {
+          "begin": 17991868,
+          "end": 18272616,
+          "cu": 1,
+          "id": 63
+        },
+        {
+          "begin": 29237324,
+          "end": 29503452,
+          "cu": 1,
+          "id": 102
+        },
+        {
+          "begin": 13929164,
+          "end": 14207813,
+          "cu": 1,
+          "id": 49
+        },
+        {
+          "begin": 20926027,
+          "end": 21231312,
+          "cu": 1,
+          "id": 73
+        },
+        {
+          "begin": 10357744,
+          "end": 10678699,
+          "cu": 1,
+          "id": 37
+        },
+        {
+          "begin": 17425039,
+          "end": 17687843,
+          "cu": 1,
+          "id": 61
+        },
+        {
+          "begin": 9532998,
+          "end": 9801624,
+          "cu": 1,
+          "id": 34
+        },
+        {
+          "begin": 25675498,
+          "end": 25951004,
+          "cu": 1,
+          "id": 89
+        },
+        {
+          "begin": 30683905,
+          "end": 30955769,
+          "cu": 1,
+          "id": 107
+        },
+        {
+          "begin": 24477027,
+          "end": 24748561,
+          "cu": 1,
+          "id": 85
+        },
+        {
+          "begin": 18816468,
+          "end": 19113271,
+          "cu": 1,
+          "id": 66
+        },
+        {
+          "begin": 4772979,
+          "end": 5051606,
+          "cu": 1,
+          "id": 17
+        },
+        {
+          "begin": 18272687,
+          "end": 18543924,
+          "cu": 1,
+          "id": 64
+        },
+        {
+          "begin": 18544643,
+          "end": 18816412,
+          "cu": 1,
+          "id": 65
+        },
+        {
+          "begin": 31218809,
+          "end": 31482772,
+          "cu": 1,
+          "id": 109
+        },
+        {
+          "begin": 30681625,
+          "end": 30952757,
+          "cu": 1,
+          "id": 107
+        },
+        {
+          "begin": 8423049,
+          "end": 8688300,
+          "cu": 1,
+          "id": 30
+        },
+        {
+          "begin": 17151650,
+          "end": 17425516,
+          "cu": 1,
+          "id": 60
+        },
+        {
+          "begin": 35920174,
+          "end": 36188125,
+          "cu": 1,
+          "id": 126
+        },
+        {
+          "begin": 7894552,
+          "end": 8154171,
+          "cu": 1,
+          "id": 28
+        },
+        {
+          "begin": 1756626,
+          "end": 2019356,
+          "cu": 1,
+          "id": 6
+        },
+        {
+          "begin": 20230289,
+          "end": 20513051,
+          "cu": 1,
+          "id": 71
+        },
+        {
+          "begin": 11915862,
+          "end": 12195896,
+          "cu": 1,
+          "id": 42
+        },
+        {
+          "begin": 22689585,
+          "end": 22985214,
+          "cu": 1,
+          "id": 79
+        },
+        {
+          "begin": 29237320,
+          "end": 29503355,
+          "cu": 1,
+          "id": 102
+        },
+        {
+          "begin": 21804027,
+          "end": 22083748,
+          "cu": 1,
+          "id": 76
+        },
+        {
+          "begin": 13323245,
+          "end": 13629360,
+          "cu": 1,
+          "id": 47
+        },
+        {
+          "begin": 4772992,
+          "end": 5052559,
+          "cu": 1,
+          "id": 17
+        },
+        {
+          "begin": 31748269,
+          "end": 32025479,
+          "cu": 1,
+          "id": 111
+        },
+        {
+          "begin": 925506,
+          "end": 1209045,
+          "cu": 1,
+          "id": 3
+        },
+        {
+          "begin": 9802125,
+          "end": 10083842,
+          "cu": 1,
+          "id": 35
+        },
+        {
+          "begin": 28972546,
+          "end": 29235632,
+          "cu": 1,
+          "id": 101
+        },
+        {
+          "begin": 7065774,
+          "end": 7334262,
+          "cu": 1,
+          "id": 25
+        },
+        {
+          "begin": 22394431,
+          "end": 22688612,
+          "cu": 1,
+          "id": 78
+        },
+        {
+          "begin": 30157083,
+          "end": 30417571,
+          "cu": 1,
+          "id": 105
+        },
+        {
+          "begin": 5052894,
+          "end": 5368025,
+          "cu": 1,
+          "id": 18
+        },
+        {
+          "begin": 2020983,
+          "end": 2306603,
+          "cu": 1,
+          "id": 7
+        },
+        {
+          "begin": 30420993,
+          "end": 30683830,
+          "cu": 1,
+          "id": 106
+        },
+        {
+          "begin": 24477170,
+          "end": 24749182,
+          "cu": 1,
+          "id": 85
+        },
+        {
+          "begin": 18543673,
+          "end": 18811660,
+          "cu": 1,
+          "id": 65
+        },
+        {
+          "begin": 26779384,
+          "end": 27041769,
+          "cu": 1,
+          "id": 93
+        },
+        {
+          "begin": 28425630,
+          "end": 28695228,
+          "cu": 1,
+          "id": 99
+        },
+        {
+          "begin": 4505454,
+          "end": 4772655,
+          "cu": 1,
+          "id": 16
+        },
+        {
+          "begin": 35067438,
+          "end": 35331641,
+          "cu": 1,
+          "id": 123
+        },
+        {
+          "begin": 3123523,
+          "end": 3392047,
+          "cu": 1,
+          "id": 11
+        },
+        {
+          "begin": 13323588,
+          "end": 13629492,
+          "cu": 1,
+          "id": 47
+        },
+        {
+          "begin": 36188192,
+          "end": 36452818,
+          "cu": 1,
+          "id": 127
+        },
+        {
+          "begin": 10953197,
+          "end": 11228246,
+          "cu": 1,
+          "id": 39
+        },
+        {
+          "begin": 7065741,
+          "end": 7334234,
+          "cu": 1,
+          "id": 25
+        },
+        {
+          "begin": 27901789,
+          "end": 28162713,
+          "cu": 1,
+          "id": 97
+        },
+        {
+          "begin": 15652638,
+          "end": 15962363,
+          "cu": 1,
+          "id": 55
+        },
+        {
+          "begin": 32831745,
+          "end": 33103741,
+          "cu": 1,
+          "id": 115
+        },
+        {
+          "begin": 33383371,
+          "end": 33647046,
+          "cu": 1,
+          "id": 117
+        },
+        {
+          "begin": 30683909,
+          "end": 30955774,
+          "cu": 1,
+          "id": 107
+        },
+        {
+          "begin": 30160934,
+          "end": 30420255,
+          "cu": 1,
+          "id": 105
+        },
+        {
+          "begin": 26218486,
+          "end": 26507778,
+          "cu": 1,
+          "id": 91
+        },
+        {
+          "begin": 30953154,
+          "end": 31217620,
+          "cu": 1,
+          "id": 108
+        },
+        {
+          "begin": 4216198,
+          "end": 4490491,
+          "cu": 1,
+          "id": 15
+        },
+        {
+          "begin": 11228140,
+          "end": 11634518,
+          "cu": 1,
+          "id": 40
+        },
+        {
+          "begin": 3400986,
+          "end": 3666912,
+          "cu": 1,
+          "id": 12
+        },
+        {
+          "begin": 31482203,
+          "end": 31748198,
+          "cu": 1,
+          "id": 110
+        },
+        {
+          "begin": 6170212,
+          "end": 6438934,
+          "cu": 1,
+          "id": 22
+        },
+        {
+          "begin": 11636330,
+          "end": 11915956,
+          "cu": 1,
+          "id": 41
+        },
+        {
+          "begin": 9533207,
+          "end": 9802046,
+          "cu": 1,
+          "id": 34
+        },
+        {
+          "begin": 25942986,
+          "end": 26215587,
+          "cu": 1,
+          "id": 90
+        },
+        {
+          "begin": 2306467,
+          "end": 2579269,
+          "cu": 1,
+          "id": 8
+        },
+        {
+          "begin": 2864263,
+          "end": 3122100,
+          "cu": 1,
+          "id": 10
+        },
+        {
+          "begin": 25675502,
+          "end": 25951005,
+          "cu": 1,
+          "id": 89
+        },
+        {
+          "begin": 34516560,
+          "end": 34788731,
+          "cu": 1,
+          "id": 121
+        },
+        {
+          "begin": 18544639,
+          "end": 18816410,
+          "cu": 1,
+          "id": 65
+        },
+        {
+          "begin": 17688209,
+          "end": 17991811,
+          "cu": 1,
+          "id": 62
+        },
+        {
+          "begin": 35651310,
+          "end": 35919920,
+          "cu": 1,
+          "id": 125
+        },
+        {
+          "begin": 3400982,
+          "end": 3666935,
+          "cu": 1,
+          "id": 12
+        },
+        {
+          "begin": 11228144,
+          "end": 11634721,
+          "cu": 1,
+          "id": 40
+        },
+        {
+          "begin": 5909841,
+          "end": 6170141,
+          "cu": 1,
+          "id": 21
+        },
+        {
+          "begin": 2864564,
+          "end": 3123096,
+          "cu": 1,
+          "id": 10
+        },
+        {
+          "begin": 12507773,
+          "end": 12777068,
+          "cu": 1,
+          "id": 44
+        },
+        {
+          "begin": 6439455,
+          "end": 6721252,
+          "cu": 1,
+          "id": 23
+        },
+        {
+          "begin": 7624410,
+          "end": 7894307,
+          "cu": 1,
+          "id": 27
+        },
+        {
+          "begin": 28972524,
+          "end": 29235644,
+          "cu": 1,
+          "id": 101
+        },
+        {
+          "begin": 1496111,
+          "end": 1756820,
+          "cu": 1,
+          "id": 5
+        },
+        {
+          "begin": 631902,
+          "end": 925288,
+          "cu": 1,
+          "id": 2
+        },
+        {
+          "begin": 2306760,
+          "end": 2579272,
+          "cu": 1,
+          "id": 8
+        },
+        {
+          "begin": 27901785,
+          "end": 28162697,
+          "cu": 1,
+          "id": 97
+        },
+        {
+          "begin": 27638174,
+          "end": 27901713,
+          "cu": 1,
+          "id": 96
+        },
+        {
+          "begin": 22985275,
+          "end": 23292690,
+          "cu": 1,
+          "id": 80
+        },
+        {
+          "begin": 30955833,
+          "end": 31218178,
+          "cu": 1,
+          "id": 108
+        },
+        {
+          "begin": 14796999,
+          "end": 15076814,
+          "cu": 1,
+          "id": 52
+        },
+        {
+          "begin": 32026759,
+          "end": 32299423,
+          "cu": 1,
+          "id": 112
+        },
+        {
+          "begin": 15286,
+          "end": 347810,
+          "cu": 1,
+          "id": 0
+        },
+        {
+          "begin": 26778677,
+          "end": 27041329,
+          "cu": 1,
+          "id": 93
+        },
+        {
+          "begin": 5638553,
+          "end": 5909770,
+          "cu": 1,
+          "id": 20
+        },
+        {
+          "begin": 12197059,
+          "end": 12508440,
+          "cu": 1,
+          "id": 43
+        },
+        {
+          "begin": 2864560,
+          "end": 3123097,
+          "cu": 1,
+          "id": 10
+        },
+        {
+          "begin": 16562221,
+          "end": 16830916,
+          "cu": 1,
+          "id": 58
+        },
+        {
+          "begin": 35651314,
+          "end": 35919951,
+          "cu": 1,
+          "id": 125
+        },
+        {
+          "begin": 24153016,
+          "end": 24476970,
+          "cu": 1,
+          "id": 84
+        },
+        {
+          "begin": 14208251,
+          "end": 14480722,
+          "cu": 1,
+          "id": 50
+        },
+        {
+          "begin": 14480851,
+          "end": 14794677,
+          "cu": 1,
+          "id": 51
+        },
+        {
+          "begin": 29502616,
+          "end": 29888695,
+          "cu": 1,
+          "id": 103
+        },
+        {
+          "begin": 27041919,
+          "end": 27319920,
+          "cu": 1,
+          "id": 94
+        },
+        {
+          "begin": 2588673,
+          "end": 2864192,
+          "cu": 1,
+          "id": 9
+        },
+        {
+          "begin": 11915858,
+          "end": 12195848,
+          "cu": 1,
+          "id": 42
+        },
+        {
+          "begin": 4504274,
+          "end": 4772531,
+          "cu": 1,
+          "id": 16
+        },
+        {
+          "begin": 33383627,
+          "end": 33647375,
+          "cu": 1,
+          "id": 117
+        },
+        {
+          "begin": 12777185,
+          "end": 13057466,
+          "cu": 1,
+          "id": 45
+        },
+        {
+          "begin": 22983216,
+          "end": 23292664,
+          "cu": 1,
+          "id": 80
+        },
+        {
+          "begin": 23590965,
+          "end": 23874217,
+          "cu": 1,
+          "id": 82
+        },
+        {
+          "begin": 19382884,
+          "end": 19658121,
+          "cu": 1,
+          "id": 68
+        },
+        {
+          "begin": 22983220,
+          "end": 23292553,
+          "cu": 1,
+          "id": 80
+        },
+        {
+          "begin": 7624406,
+          "end": 7894237,
+          "cu": 1,
+          "id": 27
+        },
+        {
+          "begin": 15357954,
+          "end": 15649627,
+          "cu": 1,
+          "id": 54
+        },
+        {
+          "begin": 27638170,
+          "end": 27901686,
+          "cu": 1,
+          "id": 96
+        },
+        {
+          "begin": 15966624,
+          "end": 16271972,
+          "cu": 1,
+          "id": 56
+        },
+        {
+          "begin": 17688205,
+          "end": 17991812,
+          "cu": 1,
+          "id": 62
+        },
+        {
+          "begin": 23874884,
+          "end": 24150632,
+          "cu": 1,
+          "id": 83
+        },
+        {
+          "begin": 36188251,
+          "end": 36452491,
+          "cu": 1,
+          "id": 127
+        },
+        {
+          "begin": 13057540,
+          "end": 13322955,
+          "cu": 1,
+          "id": 46
+        },
+        {
+          "begin": 31749115,
+          "end": 32026700,
+          "cu": 1,
+          "id": 111
+        },
+        {
+          "begin": 1496107,
+          "end": 1756830,
+          "cu": 1,
+          "id": 5
+        },
+        {
+          "begin": 20928761,
+          "end": 21241023,
+          "cu": 1,
+          "id": 73
+        },
+        {
+          "begin": 33103802,
+          "end": 33383548,
+          "cu": 1,
+          "id": 116
+        },
+        {
+          "begin": 25386801,
+          "end": 25673783,
+          "cu": 1,
+          "id": 88
+        },
+        {
+          "begin": 13323584,
+          "end": 13629491,
+          "cu": 1,
+          "id": 47
+        },
+        {
+          "begin": 3944478,
+          "end": 4214281,
+          "cu": 1,
+          "id": 14
+        },
+        {
+          "begin": 18811732,
+          "end": 19112398,
+          "cu": 1,
+          "id": 66
+        },
+        {
+          "begin": 8980102,
+          "end": 9267466,
+          "cu": 1,
+          "id": 32
+        },
+        {
+          "begin": 1756901,
+          "end": 2019662,
+          "cu": 1,
+          "id": 6
+        },
+        {
+          "begin": 20928765,
+          "end": 21241019,
+          "cu": 1,
+          "id": 73
+        },
+        {
+          "begin": 9802121,
+          "end": 10083824,
+          "cu": 1,
+          "id": 35
+        },
+        {
+          "begin": 31482897,
+          "end": 31748956,
+          "cu": 1,
+          "id": 110
+        },
+        {
+          "begin": 15206,
+          "end": 349102,
+          "cu": 1,
+          "id": 0
+        },
+        {
+          "begin": 30157079,
+          "end": 30417011,
+          "cu": 1,
+          "id": 105
+        },
+        {
+          "begin": 10953201,
+          "end": 11228140,
+          "cu": 1,
+          "id": 39
+        },
+        {
+          "begin": 27319907,
+          "end": 27636974,
+          "cu": 1,
+          "id": 95
+        },
+        {
+          "begin": 13929160,
+          "end": 14207553,
+          "cu": 1,
+          "id": 49
+        },
+        {
+          "begin": 29890060,
+          "end": 30156821,
+          "cu": 1,
+          "id": 104
+        },
+        {
+          "begin": 3673533,
+          "end": 3941433,
+          "cu": 1,
+          "id": 13
+        },
+        {
+          "begin": 28972528,
+          "end": 29235643,
+          "cu": 1,
+          "id": 101
+        },
+        {
+          "begin": 22689564,
+          "end": 22982464,
+          "cu": 1,
+          "id": 79
+        },
+        {
+          "begin": 33103818,
+          "end": 33383137,
+          "cu": 1,
+          "id": 116
+        },
+        {
+          "begin": 26507660,
+          "end": 26778623,
+          "cu": 1,
+          "id": 92
+        },
+        {
+          "begin": 13323249,
+          "end": 13629465,
+          "cu": 1,
+          "id": 47
+        },
+        {
+          "begin": 10083883,
+          "end": 10357703,
+          "cu": 1,
+          "id": 36
+        },
+        {
+          "begin": 6729029,
+          "end": 7063453,
+          "cu": 1,
+          "id": 24
+        },
+        {
+          "begin": 27319981,
+          "end": 27637023,
+          "cu": 1,
+          "id": 95
+        },
+        {
+          "begin": 348942,
+          "end": 631830,
+          "cu": 1,
+          "id": 1
+        },
+        {
+          "begin": 348946,
+          "end": 631847,
+          "cu": 1,
+          "id": 1
+        },
+        {
+          "begin": 10083866,
+          "end": 10357726,
+          "cu": 1,
+          "id": 36
+        },
+        {
+          "begin": 21806180,
+          "end": 22084761,
+          "cu": 1,
+          "id": 76
+        },
+        {
+          "begin": 11636353,
+          "end": 11915803,
+          "cu": 1,
+          "id": 41
+        },
+        {
+          "begin": 5910309,
+          "end": 6170587,
+          "cu": 1,
+          "id": 21
+        },
+        {
+          "begin": 21541831,
+          "end": 21806122,
+          "cu": 1,
+          "id": 75
+        },
+        {
+          "begin": 25951062,
+          "end": 26218415,
+          "cu": 1,
+          "id": 90
+        },
+        {
+          "begin": 26218031,
+          "end": 26507523,
+          "cu": 1,
+          "id": 91
+        },
+        {
+          "begin": 2306764,
+          "end": 2579333,
+          "cu": 1,
+          "id": 8
+        },
+        {
+          "begin": 33103798,
+          "end": 33383547,
+          "cu": 1,
+          "id": 116
+        },
+        {
+          "begin": 35650495,
+          "end": 35919613,
+          "cu": 1,
+          "id": 125
+        },
+        {
+          "begin": 26778681,
+          "end": 27041017,
+          "cu": 1,
+          "id": 93
+        },
+        {
+          "begin": 27041405,
+          "end": 27319849,
+          "cu": 1,
+          "id": 94
+        },
+        {
+          "begin": 15210,
+          "end": 349076,
+          "cu": 1,
+          "id": 0
+        },
+        {
+          "begin": 16562225,
+          "end": 16830915,
+          "cu": 1,
+          "id": 58
+        },
+        {
+          "begin": 1494629,
+          "end": 1756543,
+          "cu": 1,
+          "id": 5
+        },
+        {
+          "begin": 27319977,
+          "end": 27637006,
+          "cu": 1,
+          "id": 95
+        },
+        {
+          "begin": 23592310,
+          "end": 23875637,
+          "cu": 1,
+          "id": 82
+        },
+        {
+          "begin": 21541835,
+          "end": 21806115,
+          "cu": 1,
+          "id": 75
+        },
+        {
+          "begin": 33915796,
+          "end": 34211715,
+          "cu": 1,
+          "id": 119
+        },
+        {
+          "begin": 36188255,
+          "end": 36452513,
+          "cu": 1,
+          "id": 127
+        },
+        {
+          "begin": 25030871,
+          "end": 25383935,
+          "cu": 1,
+          "id": 87
+        },
+        {
+          "begin": 17991800,
+          "end": 18272478,
+          "cu": 1,
+          "id": 63
+        },
+        {
+          "begin": 6439638,
+          "end": 6721253,
+          "cu": 1,
+          "id": 23
+        },
+        {
+          "begin": 19113325,
+          "end": 19382918,
+          "cu": 1,
+          "id": 67
+        },
+        {
+          "begin": 3122870,
+          "end": 3391618,
+          "cu": 1,
+          "id": 11
+        },
+        {
+          "begin": 30681621,
+          "end": 30952645,
+          "cu": 1,
+          "id": 107
+        },
+        {
+          "begin": 33383631,
+          "end": 33647332,
+          "cu": 1,
+          "id": 117
+        },
+        {
+          "begin": 27901321,
+          "end": 28162647,
+          "cu": 1,
+          "id": 97
+        },
+        {
+          "begin": 5368097,
+          "end": 5638628,
+          "cu": 1,
+          "id": 19
+        },
+        {
+          "begin": 4216283,
+          "end": 4490595,
+          "cu": 1,
+          "id": 15
+        },
+        {
+          "begin": 32301894,
+          "end": 32566359,
+          "cu": 1,
+          "id": 113
+        },
+        {
+          "begin": 9267569,
+          "end": 9533135,
+          "cu": 1,
+          "id": 33
+        },
+        {
+          "begin": 15081124,
+          "end": 15357900,
+          "cu": 1,
+          "id": 53
+        },
+        {
+          "begin": 34516487,
+          "end": 34788221,
+          "cu": 1,
+          "id": 121
+        },
+        {
+          "begin": 1209433,
+          "end": 1495069,
+          "cu": 1,
+          "id": 4
+        },
+        {
+          "begin": 34211774,
+          "end": 34513602,
+          "cu": 1,
+          "id": 120
+        },
+        {
+          "begin": 8423053,
+          "end": 8688262,
+          "cu": 1,
+          "id": 30
+        },
+        {
+          "begin": 13629536,
+          "end": 13927806,
+          "cu": 1,
+          "id": 48
+        },
+        {
+          "begin": 6728830,
+          "end": 7063248,
+          "cu": 1,
+          "id": 24
+        },
+        {
+          "begin": 31218805,
+          "end": 31482774,
+          "cu": 1,
+          "id": 109
+        },
+        {
+          "begin": 8979593,
+          "end": 9267226,
+          "cu": 1,
+          "id": 32
+        },
+        {
+          "begin": 20926023,
+          "end": 21232073,
+          "cu": 1,
+          "id": 73
+        },
+        {
+          "begin": 19112469,
+          "end": 19382819,
+          "cu": 1,
+          "id": 67
+        },
+        {
+          "begin": 2020158,
+          "end": 2306178,
+          "cu": 1,
+          "id": 7
+        },
+        {
+          "begin": 7894167,
+          "end": 8153612,
+          "cu": 1,
+          "id": 28
+        },
+        {
+          "begin": 25031088,
+          "end": 25386617,
+          "cu": 1,
+          "id": 87
+        },
+        {
+          "begin": 33915792,
+          "end": 34211601,
+          "cu": 1,
+          "id": 119
+        },
+        {
+          "begin": 33647209,
+          "end": 33915510,
+          "cu": 1,
+          "id": 118
+        },
+        {
+          "begin": 13629503,
+          "end": 13927661,
+          "cu": 1,
+          "id": 48
+        },
+        {
+          "begin": 24477174,
+          "end": 24749190,
+          "cu": 1,
+          "id": 85
+        },
+        {
+          "begin": 30420989,
+          "end": 30683831,
+          "cu": 1,
+          "id": 106
+        },
+        {
+          "begin": 6729025,
+          "end": 7063501,
+          "cu": 1,
+          "id": 24
+        },
+        {
+          "begin": 16272051,
+          "end": 16559289,
+          "cu": 1,
+          "id": 57
+        },
+        {
+          "begin": 24748632,
+          "end": 25027568,
+          "cu": 1,
+          "id": 86
+        },
+        {
+          "begin": 25030867,
+          "end": 25383921,
+          "cu": 1,
+          "id": 87
+        },
+        {
+          "begin": 34211937,
+          "end": 34514093,
+          "cu": 1,
+          "id": 120
+        },
+        {
+          "begin": 22393075,
+          "end": 22688531,
+          "cu": 1,
+          "id": 78
+        },
+        {
+          "begin": 2306471,
+          "end": 2579208,
+          "cu": 1,
+          "id": 8
+        },
+        {
+          "begin": 7624381,
+          "end": 7893869,
+          "cu": 1,
+          "id": 27
+        },
+        {
+          "begin": 26218490,
+          "end": 26507777,
+          "cu": 1,
+          "id": 91
+        },
+        {
+          "begin": 8980106,
+          "end": 9267494,
+          "cu": 1,
+          "id": 32
+        },
+        {
+          "begin": 18811736,
+          "end": 19112298,
+          "cu": 1,
+          "id": 66
+        },
+        {
+          "begin": 24749261,
+          "end": 25029068,
+          "cu": 1,
+          "id": 86
+        },
+        {
+          "begin": 12779207,
+          "end": 13057505,
+          "cu": 1,
+          "id": 45
+        },
+        {
+          "begin": 1209429,
+          "end": 1495071,
+          "cu": 1,
+          "id": 4
+        },
+        {
+          "begin": 10357775,
+          "end": 10679264,
+          "cu": 1,
+          "id": 37
+        },
+        {
+          "begin": 32025805,
+          "end": 32299396,
+          "cu": 1,
+          "id": 112
+        },
+        {
+          "begin": 34211933,
+          "end": 34514094,
+          "cu": 1,
+          "id": 120
+        },
+        {
+          "begin": 24153507,
+          "end": 24477054,
+          "cu": 1,
+          "id": 84
+        },
+        {
+          "begin": 14480855,
+          "end": 14794698,
+          "cu": 1,
+          "id": 51
+        },
+        {
+          "begin": 36188196,
+          "end": 36452881,
+          "cu": 1,
+          "id": 127
+        },
+        {
+          "begin": 3401407,
+          "end": 3669828,
+          "cu": 1,
+          "id": 12
+        },
+        {
+          "begin": 15081147,
+          "end": 15357951,
+          "cu": 1,
+          "id": 53
+        },
+        {
+          "begin": 17425035,
+          "end": 17687836,
+          "cu": 1,
+          "id": 61
+        },
+        {
+          "begin": 17688062,
+          "end": 17991743,
+          "cu": 1,
+          "id": 62
+        },
+        {
+          "begin": 20524711,
+          "end": 20926897,
+          "cu": 1,
+          "id": 72
+        },
+        {
+          "begin": 25388082,
+          "end": 25674572,
+          "cu": 1,
+          "id": 88
+        },
+        {
+          "begin": 21233625,
+          "end": 21540294,
+          "cu": 1,
+          "id": 74
+        },
+        {
+          "begin": 5052890,
+          "end": 5368018,
+          "cu": 1,
+          "id": 18
+        },
+        {
+          "begin": 28162771,
+          "end": 28425440,
+          "cu": 1,
+          "id": 98
+        },
+        {
+          "begin": 631906,
+          "end": 925434,
+          "cu": 1,
+          "id": 2
+        },
+        {
+          "begin": 3673824,
+          "end": 3941998,
+          "cu": 1,
+          "id": 13
+        },
+        {
+          "begin": 31482893,
+          "end": 31749061,
+          "cu": 1,
+          "id": 110
+        },
+        {
+          "begin": 17991872,
+          "end": 18272612,
+          "cu": 1,
+          "id": 63
+        },
+        {
+          "begin": 29503846,
+          "end": 29890118,
+          "cu": 1,
+          "id": 103
+        },
+        {
+          "begin": 10357771,
+          "end": 10679244,
+          "cu": 1,
+          "id": 37
+        },
+        {
+          "begin": 23292730,
+          "end": 23590828,
+          "cu": 1,
+          "id": 81
+        },
+        {
+          "begin": 3122874,
+          "end": 3391638,
+          "cu": 1,
+          "id": 11
+        },
+        {
+          "begin": 21541018,
+          "end": 21803922,
+          "cu": 1,
+          "id": 75
+        },
+        {
+          "begin": 10083862,
+          "end": 10357733,
+          "cu": 1,
+          "id": 36
+        }
+      ],
+      "top_latency_instructions": [
+        {
+          "CodeObj": "1",
+          "Vaddr": "68596",
+          "Instruction": "s_barrier",
+          "Hitcount": "19968",
+          "Latency": "7603511",
+          "Stall": "29",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "68704",
+          "Instruction": "s_waitcnt lgkmcnt(0)",
+          "Hitcount": "19968",
+          "Latency": "2912824",
+          "Stall": "2892856",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "68592",
+          "Instruction": "s_waitcnt vmcnt(0)",
+          "Hitcount": "19968",
+          "Latency": "2601187",
+          "Stall": "2581219",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "68708",
+          "Instruction": "s_barrier",
+          "Hitcount": "19968",
+          "Latency": "2116222",
+          "Stall": "45",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "67532",
+          "Instruction": "s_waitcnt lgkmcnt(6)",
+          "Hitcount": "20480",
+          "Latency": "1458670",
+          "Stall": "1438190",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "67596",
+          "Instruction": "s_waitcnt lgkmcnt(0)",
+          "Hitcount": "20480",
+          "Latency": "1263872",
+          "Stall": "1243392",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "66304",
+          "Instruction": "s_waitcnt vmcnt(11)",
+          "Hitcount": "512",
+          "Latency": "1076785",
+          "Stall": "1076273",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "68100",
+          "Instruction": "s_waitcnt lgkmcnt(6)",
+          "Hitcount": "20480",
+          "Latency": "985042",
+          "Stall": "964562",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "68164",
+          "Instruction": "s_waitcnt lgkmcnt(0)",
+          "Hitcount": "20480",
+          "Latency": "982897",
+          "Stall": "962417",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "68384",
+          "Instruction": "s_waitcnt lgkmcnt(6)",
+          "Hitcount": "20480",
+          "Latency": "932787",
+          "Stall": "912307",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "67816",
+          "Instruction": "s_waitcnt lgkmcnt(6)",
+          "Hitcount": "20480",
+          "Latency": "919735",
+          "Stall": "899255",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "68268",
+          "Instruction": "s_waitcnt lgkmcnt(0)",
+          "Hitcount": "20480",
+          "Latency": "886265",
+          "Stall": "865785",
+          "Idle": "0",
+          "Source": ""
+        }
+      ]
+    },
+    "out": {
+      "groups": {
+        "other": {
+          "Hitcount": 0,
+          "Latency": 0,
+          "Stall": 0,
+          "Idle": 0,
+          "fraction_of_summed_latency": 0.0
+        },
+        "scalar_other": {
+          "Hitcount": 305536,
+          "Latency": 625010,
+          "Stall": 97023,
+          "Idle": 1195353,
+          "fraction_of_summed_latency": 0.018945725729269183
+        },
+        "vector_alu": {
+          "Hitcount": 438272,
+          "Latency": 919420,
+          "Stall": 406652,
+          "Idle": 10131324,
+          "fraction_of_summed_latency": 0.027870080718715978
+        },
+        "lds_wait": {
+          "Hitcount": 356608,
+          "Latency": 11659664,
+          "Stall": 11303056,
+          "Idle": 0,
+          "fraction_of_summed_latency": 0.3534356190131896
+        },
+        "global_memory": {
+          "Hitcount": 188288,
+          "Latency": 406114,
+          "Stall": 37602,
+          "Idle": 2185476,
+          "fraction_of_summed_latency": 0.012310402167671597
+        },
+        "vector_memory_wait": {
+          "Hitcount": 110976,
+          "Latency": 813922,
+          "Stall": 702946,
+          "Idle": 0,
+          "fraction_of_summed_latency": 0.024672154008765032
+        },
+        "lds": {
+          "Hitcount": 933888,
+          "Latency": 3647354,
+          "Stall": 2123642,
+          "Idle": 29023253,
+          "fraction_of_summed_latency": 0.11056106065751407
+        },
+        "barrier": {
+          "Hitcount": 24448,
+          "Latency": 5405734,
+          "Stall": 23,
+          "Idle": 0,
+          "fraction_of_summed_latency": 0.1638622641707896
+        },
+        "wmma": {
+          "Hitcount": 786432,
+          "Latency": 9512281,
+          "Stall": 8725849,
+          "Idle": 5696493,
+          "fraction_of_summed_latency": 0.28834269353408487
+        }
+      },
+      "summed_instruction_latency": 32989499,
+      "wave_count": 128,
+      "selected_simd_peak_waves": 4,
+      "selected_simd_time_weighted_waves": 3.997714853969978,
+      "residency_cycles_by_wave_count": {
+        "0": 341,
+        "1": 164,
+        "2": 16482,
+        "3": 11253,
+        "4": 20133710
+      },
+      "wave_intervals": [
+        {
+          "begin": 8896696,
+          "end": 9503023,
+          "cu": 1,
+          "id": 14
+        },
+        {
+          "begin": 9503153,
+          "end": 10119644,
+          "cu": 1,
+          "id": 15
+        },
+        {
+          "begin": 18328306,
+          "end": 18938656,
+          "cu": 1,
+          "id": 29
+        },
+        {
+          "begin": 18328944,
+          "end": 18939100,
+          "cu": 1,
+          "id": 29
+        },
+        {
+          "begin": 13521,
+          "end": 663349,
+          "cu": 1,
+          "id": 0
+        },
+        {
+          "begin": 19570353,
+          "end": 20174957,
+          "cu": 1,
+          "id": 31
+        },
+        {
+          "begin": 5761369,
+          "end": 6379182,
+          "cu": 1,
+          "id": 9
+        },
+        {
+          "begin": 15787647,
+          "end": 16399960,
+          "cu": 1,
+          "id": 25
+        },
+        {
+          "begin": 1295725,
+          "end": 1951697,
+          "cu": 1,
+          "id": 2
+        },
+        {
+          "begin": 17064941,
+          "end": 17686621,
+          "cu": 1,
+          "id": 27
+        },
+        {
+          "begin": 10119727,
+          "end": 10750735,
+          "cu": 1,
+          "id": 16
+        },
+        {
+          "begin": 5761324,
+          "end": 6377719,
+          "cu": 1,
+          "id": 9
+        },
+        {
+          "begin": 16400150,
+          "end": 17067067,
+          "cu": 1,
+          "id": 26
+        },
+        {
+          "begin": 663650,
+          "end": 1295583,
+          "cu": 1,
+          "id": 1
+        },
+        {
+          "begin": 7025569,
+          "end": 7641094,
+          "cu": 1,
+          "id": 11
+        },
+        {
+          "begin": 10750952,
+          "end": 11356638,
+          "cu": 1,
+          "id": 17
+        },
+        {
+          "begin": 18939191,
+          "end": 19571395,
+          "cu": 1,
+          "id": 30
+        },
+        {
+          "begin": 4513827,
+          "end": 5122698,
+          "cu": 1,
+          "id": 7
+        },
+        {
+          "begin": 19570349,
+          "end": 20175082,
+          "cu": 1,
+          "id": 31
+        },
+        {
+          "begin": 12628211,
+          "end": 13269488,
+          "cu": 1,
+          "id": 20
+        },
+        {
+          "begin": 12024222,
+          "end": 12628727,
+          "cu": 1,
+          "id": 19
+        },
+        {
+          "begin": 9503157,
+          "end": 10119660,
+          "cu": 1,
+          "id": 15
+        },
+        {
+          "begin": 1951774,
+          "end": 2577159,
+          "cu": 1,
+          "id": 3
+        },
+        {
+          "begin": 5761328,
+          "end": 6377379,
+          "cu": 1,
+          "id": 9
+        },
+        {
+          "begin": 18328310,
+          "end": 18938637,
+          "cu": 1,
+          "id": 29
+        },
+        {
+          "begin": 17688246,
+          "end": 18328190,
+          "cu": 1,
+          "id": 28
+        },
+        {
+          "begin": 3269641,
+          "end": 3874577,
+          "cu": 1,
+          "id": 5
+        },
+        {
+          "begin": 13269542,
+          "end": 13876226,
+          "cu": 1,
+          "id": 21
+        },
+        {
+          "begin": 11356769,
+          "end": 12023547,
+          "cu": 1,
+          "id": 18
+        },
+        {
+          "begin": 16400154,
+          "end": 17067068,
+          "cu": 1,
+          "id": 26
+        },
+        {
+          "begin": 10119714,
+          "end": 10750878,
+          "cu": 1,
+          "id": 16
+        },
+        {
+          "begin": 19572078,
+          "end": 20175387,
+          "cu": 1,
+          "id": 31
+        },
+        {
+          "begin": 4514350,
+          "end": 5122975,
+          "cu": 1,
+          "id": 7
+        },
+        {
+          "begin": 12021200,
+          "end": 12628044,
+          "cu": 1,
+          "id": 19
+        },
+        {
+          "begin": 12628207,
+          "end": 13269500,
+          "cu": 1,
+          "id": 20
+        },
+        {
+          "begin": 14551337,
+          "end": 15159925,
+          "cu": 1,
+          "id": 23
+        },
+        {
+          "begin": 2577350,
+          "end": 3268266,
+          "cu": 1,
+          "id": 4
+        },
+        {
+          "begin": 8282584,
+          "end": 8897168,
+          "cu": 1,
+          "id": 13
+        },
+        {
+          "begin": 6379223,
+          "end": 7025476,
+          "cu": 1,
+          "id": 10
+        },
+        {
+          "begin": 18328948,
+          "end": 18939115,
+          "cu": 1,
+          "id": 29
+        },
+        {
+          "begin": 1952706,
+          "end": 2577271,
+          "cu": 1,
+          "id": 3
+        },
+        {
+          "begin": 14551364,
+          "end": 15160755,
+          "cu": 1,
+          "id": 23
+        },
+        {
+          "begin": 13270206,
+          "end": 13877111,
+          "cu": 1,
+          "id": 21
+        },
+        {
+          "begin": 13876301,
+          "end": 14551300,
+          "cu": 1,
+          "id": 22
+        },
+        {
+          "begin": 13877206,
+          "end": 14551313,
+          "cu": 1,
+          "id": 22
+        },
+        {
+          "begin": 11356773,
+          "end": 12022463,
+          "cu": 1,
+          "id": 18
+        },
+        {
+          "begin": 13877202,
+          "end": 14551322,
+          "cu": 1,
+          "id": 22
+        },
+        {
+          "begin": 3874666,
+          "end": 4514278,
+          "cu": 1,
+          "id": 6
+        },
+        {
+          "begin": 10750801,
+          "end": 11356510,
+          "cu": 1,
+          "id": 17
+        },
+        {
+          "begin": 3874483,
+          "end": 4513380,
+          "cu": 1,
+          "id": 6
+        },
+        {
+          "begin": 1951778,
+          "end": 2576702,
+          "cu": 1,
+          "id": 3
+        },
+        {
+          "begin": 1295721,
+          "end": 1951672,
+          "cu": 1,
+          "id": 2
+        },
+        {
+          "begin": 19572082,
+          "end": 20175326,
+          "cu": 1,
+          "id": 31
+        },
+        {
+          "begin": 663654,
+          "end": 1295650,
+          "cu": 1,
+          "id": 1
+        },
+        {
+          "begin": 8897245,
+          "end": 9503453,
+          "cu": 1,
+          "id": 14
+        },
+        {
+          "begin": 17690364,
+          "end": 18328319,
+          "cu": 1,
+          "id": 28
+        },
+        {
+          "begin": 8282047,
+          "end": 8896641,
+          "cu": 1,
+          "id": 13
+        },
+        {
+          "begin": 8897241,
+          "end": 9503437,
+          "cu": 1,
+          "id": 14
+        },
+        {
+          "begin": 2577346,
+          "end": 3268247,
+          "cu": 1,
+          "id": 4
+        },
+        {
+          "begin": 16399278,
+          "end": 17062078,
+          "cu": 1,
+          "id": 26
+        },
+        {
+          "begin": 16399274,
+          "end": 17064883,
+          "cu": 1,
+          "id": 26
+        },
+        {
+          "begin": 18939187,
+          "end": 19571396,
+          "cu": 1,
+          "id": 30
+        },
+        {
+          "begin": 15787430,
+          "end": 16398970,
+          "cu": 1,
+          "id": 25
+        },
+        {
+          "begin": 7641075,
+          "end": 8281597,
+          "cu": 1,
+          "id": 12
+        },
+        {
+          "begin": 15160199,
+          "end": 15787350,
+          "cu": 1,
+          "id": 24
+        },
+        {
+          "begin": 12628803,
+          "end": 13269536,
+          "cu": 1,
+          "id": 20
+        },
+        {
+          "begin": 12024226,
+          "end": 12628654,
+          "cu": 1,
+          "id": 19
+        },
+        {
+          "begin": 10750956,
+          "end": 11356666,
+          "cu": 1,
+          "id": 17
+        },
+        {
+          "begin": 18938710,
+          "end": 19568090,
+          "cu": 1,
+          "id": 30
+        },
+        {
+          "begin": 17690368,
+          "end": 18328873,
+          "cu": 1,
+          "id": 28
+        },
+        {
+          "begin": 3874670,
+          "end": 4514240,
+          "cu": 1,
+          "id": 6
+        },
+        {
+          "begin": 10750805,
+          "end": 11356569,
+          "cu": 1,
+          "id": 17
+        },
+        {
+          "begin": 1952702,
+          "end": 2577273,
+          "cu": 1,
+          "id": 3
+        },
+        {
+          "begin": 15787651,
+          "end": 16399999,
+          "cu": 1,
+          "id": 25
+        },
+        {
+          "begin": 11356630,
+          "end": 12017954,
+          "cu": 1,
+          "id": 18
+        },
+        {
+          "begin": 4514354,
+          "end": 5122977,
+          "cu": 1,
+          "id": 7
+        },
+        {
+          "begin": 10119723,
+          "end": 10750747,
+          "cu": 1,
+          "id": 16
+        },
+        {
+          "begin": 7024956,
+          "end": 7641016,
+          "cu": 1,
+          "id": 11
+        },
+        {
+          "begin": 15787426,
+          "end": 16399047,
+          "cu": 1,
+          "id": 25
+        },
+        {
+          "begin": 9503524,
+          "end": 10119670,
+          "cu": 1,
+          "id": 15
+        },
+        {
+          "begin": 7641071,
+          "end": 8282006,
+          "cu": 1,
+          "id": 12
+        },
+        {
+          "begin": 13876297,
+          "end": 14551283,
+          "cu": 1,
+          "id": 22
+        },
+        {
+          "begin": 5122994,
+          "end": 5761315,
+          "cu": 1,
+          "id": 8
+        },
+        {
+          "begin": 6377778,
+          "end": 7024899,
+          "cu": 1,
+          "id": 10
+        },
+        {
+          "begin": 7641154,
+          "end": 8282509,
+          "cu": 1,
+          "id": 12
+        },
+        {
+          "begin": 13269538,
+          "end": 13876208,
+          "cu": 1,
+          "id": 21
+        },
+        {
+          "begin": 6377774,
+          "end": 7024898,
+          "cu": 1,
+          "id": 10
+        },
+        {
+          "begin": 14551341,
+          "end": 15160124,
+          "cu": 1,
+          "id": 23
+        },
+        {
+          "begin": 17067128,
+          "end": 17688638,
+          "cu": 1,
+          "id": 27
+        },
+        {
+          "begin": 3267622,
+          "end": 3874425,
+          "cu": 1,
+          "id": 5
+        },
+        {
+          "begin": 1295933,
+          "end": 1952641,
+          "cu": 1,
+          "id": 2
+        },
+        {
+          "begin": 5123015,
+          "end": 5761285,
+          "cu": 1,
+          "id": 8
+        },
+        {
+          "begin": 13517,
+          "end": 663327,
+          "cu": 1,
+          "id": 0
+        },
+        {
+          "begin": 12628799,
+          "end": 13269525,
+          "cu": 1,
+          "id": 20
+        },
+        {
+          "begin": 6379219,
+          "end": 7025498,
+          "cu": 1,
+          "id": 10
+        },
+        {
+          "begin": 5761373,
+          "end": 6379178,
+          "cu": 1,
+          "id": 9
+        },
+        {
+          "begin": 10119718,
+          "end": 10750877,
+          "cu": 1,
+          "id": 16
+        },
+        {
+          "begin": 17067124,
+          "end": 17688621,
+          "cu": 1,
+          "id": 27
+        },
+        {
+          "begin": 3267618,
+          "end": 3874361,
+          "cu": 1,
+          "id": 5
+        },
+        {
+          "begin": 8896700,
+          "end": 9503099,
+          "cu": 1,
+          "id": 14
+        },
+        {
+          "begin": 3874479,
+          "end": 4513790,
+          "cu": 1,
+          "id": 6
+        },
+        {
+          "begin": 13437,
+          "end": 663362,
+          "cu": 1,
+          "id": 0
+        },
+        {
+          "begin": 8282043,
+          "end": 8896625,
+          "cu": 1,
+          "id": 13
+        },
+        {
+          "begin": 15160831,
+          "end": 15787576,
+          "cu": 1,
+          "id": 24
+        },
+        {
+          "begin": 663666,
+          "end": 1295777,
+          "cu": 1,
+          "id": 1
+        },
+        {
+          "begin": 663670,
+          "end": 1295862,
+          "cu": 1,
+          "id": 1
+        },
+        {
+          "begin": 13270210,
+          "end": 13877147,
+          "cu": 1,
+          "id": 21
+        },
+        {
+          "begin": 5123019,
+          "end": 5761283,
+          "cu": 1,
+          "id": 8
+        },
+        {
+          "begin": 13441,
+          "end": 663380,
+          "cu": 1,
+          "id": 0
+        },
+        {
+          "begin": 3269645,
+          "end": 3874595,
+          "cu": 1,
+          "id": 5
+        },
+        {
+          "begin": 14551360,
+          "end": 15160573,
+          "cu": 1,
+          "id": 23
+        },
+        {
+          "begin": 7024960,
+          "end": 7641011,
+          "cu": 1,
+          "id": 11
+        },
+        {
+          "begin": 12021196,
+          "end": 12628136,
+          "cu": 1,
+          "id": 19
+        },
+        {
+          "begin": 9503528,
+          "end": 10119686,
+          "cu": 1,
+          "id": 15
+        },
+        {
+          "begin": 2577217,
+          "end": 3266257,
+          "cu": 1,
+          "id": 4
+        },
+        {
+          "begin": 18938714,
+          "end": 19568601,
+          "cu": 1,
+          "id": 30
+        },
+        {
+          "begin": 15160195,
+          "end": 15787370,
+          "cu": 1,
+          "id": 24
+        },
+        {
+          "begin": 4513831,
+          "end": 5122973,
+          "cu": 1,
+          "id": 7
+        },
+        {
+          "begin": 17688242,
+          "end": 18328252,
+          "cu": 1,
+          "id": 28
+        },
+        {
+          "begin": 15160827,
+          "end": 15787509,
+          "cu": 1,
+          "id": 24
+        },
+        {
+          "begin": 5122998,
+          "end": 5761296,
+          "cu": 1,
+          "id": 8
+        },
+        {
+          "begin": 17064937,
+          "end": 17685701,
+          "cu": 1,
+          "id": 27
+        },
+        {
+          "begin": 2577213,
+          "end": 3265561,
+          "cu": 1,
+          "id": 4
+        },
+        {
+          "begin": 7641158,
+          "end": 8282510,
+          "cu": 1,
+          "id": 12
+        },
+        {
+          "begin": 11356626,
+          "end": 12017070,
+          "cu": 1,
+          "id": 18
+        },
+        {
+          "begin": 1295937,
+          "end": 1952640,
+          "cu": 1,
+          "id": 2
+        },
+        {
+          "begin": 8282588,
+          "end": 8897166,
+          "cu": 1,
+          "id": 13
+        },
+        {
+          "begin": 7025573,
+          "end": 7641100,
+          "cu": 1,
+          "id": 11
+        }
+      ],
+      "top_latency_instructions": [
+        {
+          "CodeObj": "1",
+          "Vaddr": "68596",
+          "Instruction": "s_barrier",
+          "Hitcount": "12160",
+          "Latency": "3959265",
+          "Stall": "5",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "68704",
+          "Instruction": "s_waitcnt lgkmcnt(0)",
+          "Hitcount": "12160",
+          "Latency": "1775754",
+          "Stall": "1763594",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "68708",
+          "Instruction": "s_barrier",
+          "Hitcount": "12160",
+          "Latency": "1338099",
+          "Stall": "18",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "67532",
+          "Instruction": "s_waitcnt lgkmcnt(6)",
+          "Hitcount": "12288",
+          "Latency": "860314",
+          "Stall": "848026",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "67596",
+          "Instruction": "s_waitcnt lgkmcnt(0)",
+          "Hitcount": "12288",
+          "Latency": "705784",
+          "Stall": "693496",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "68100",
+          "Instruction": "s_waitcnt lgkmcnt(6)",
+          "Hitcount": "12288",
+          "Latency": "604609",
+          "Stall": "592321",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "68164",
+          "Instruction": "s_waitcnt lgkmcnt(0)",
+          "Hitcount": "12288",
+          "Latency": "591534",
+          "Stall": "579246",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "68384",
+          "Instruction": "s_waitcnt lgkmcnt(6)",
+          "Hitcount": "12288",
+          "Latency": "569448",
+          "Stall": "557160",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "67816",
+          "Instruction": "s_waitcnt lgkmcnt(6)",
+          "Hitcount": "12288",
+          "Latency": "554549",
+          "Stall": "542261",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "68268",
+          "Instruction": "s_waitcnt lgkmcnt(0)",
+          "Hitcount": "12288",
+          "Latency": "521144",
+          "Stall": "508856",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "67984",
+          "Instruction": "s_waitcnt lgkmcnt(0)",
+          "Hitcount": "12288",
+          "Latency": "514404",
+          "Stall": "502116",
+          "Idle": "0",
+          "Source": ""
+        },
+        {
+          "CodeObj": "1",
+          "Vaddr": "67880",
+          "Instruction": "s_waitcnt lgkmcnt(0)",
+          "Hitcount": "12288",
+          "Latency": "511167",
+          "Stall": "498879",
+          "Idle": "0",
+          "Source": ""
+        }
+      ]
+    }
+  },
+  "limits": [
+    "L2 external request bytes are not direct DRAM traffic; gfx1151 also has an L3 cache.",
+    "Counter passes serialize/instrument dispatches; use the untraced screen for operator timings.",
+    "ATT covers one dispatch, one WGP and one selected SIMD per shape, not whole-GPU occupancy.",
+    "Summed instruction latencies overlap across waves and are not wall-time percentages or additive speedup predictions."
+  ],
+  "counter_samples": 45,
+  "valid_counter_samples": 44
+}

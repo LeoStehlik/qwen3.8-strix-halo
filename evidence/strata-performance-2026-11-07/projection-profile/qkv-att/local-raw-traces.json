@@ -1,0 +1,11 @@
+{
+  "files": [
+    {
+      "file": "projection_52771_shader_engine_0_43.att",
+      "bytes": 41803904,
+      "sha256": "70c0d984c36397205096835d8e9a79dd91a0197f186721742f4b0644a991a6c9"
+    }
+  ],
+  "published": false,
+  "location": "Local experiment cache; reproduce using command.json"
+}

@@ -44,6 +44,20 @@ and idle with the same PID and zero requests. No source worktree or serving
 binary changes. Before changing projection tiles, measure the current kernel's
 resource limits; block order alone did not reveal significant headroom.
 
+That [projection resource profile](docs/STRATA-PROJECTION-PROFILE-2026-11-07.md)
+is now complete: 248 VGPRs, 54 KiB LDS, no spills, and four resident waves
+on the sampled SIMD in two traces. LDS waits, matrix instructions and
+barriers dominate summed instruction latency; those shares are not wall
+time. L2 external traffic is not DRAM bandwidth. One of 45 counter records
+returned zeros and was excluded explicitly; a five-dispatch repeat worked
+but showed lower read traffic at similar duration, so a simple bandwidth-only
+diagnosis is unsupported. The fragment-load scheduling candidate was neutral
+(−0.05/+0.20/+0.21% operator medians), preserved all 14 GPU comparisons and
+left resources unchanged. Reject it; code/evidence archived, nothing serving.
+Next compare narrower K64 tiles for residency and wider K32 tiles for reuse
+independently, checking their synchronization and traffic costs. Geometries
+and validation gates are in the report; neither has been built yet.
+
 The earlier [factory clock-policy screen](docs/STRATA-CLOCK-POLICY-2026-11-07.md)
 kept this endpoint/configuration running. Cold 64K `auto / high / auto /
 profile_peak / auto` measured **1,398 / 1,417 / 1,394 / 1,275 / 1,396 tok/s**.

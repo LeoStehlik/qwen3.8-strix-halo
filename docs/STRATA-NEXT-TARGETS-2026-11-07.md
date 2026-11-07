@@ -105,6 +105,16 @@ unchanged, not a new full-model result. Next investigate the projection
 kernel's LDS/register usage and instruction/memory limits before changing its
 tile shape. Launch-order tuning alone is not a promising source of the needed gain.
 
+The [projection resource profile](STRATA-PROJECTION-PROFILE-2026-11-07.md)
+now supplies that evidence: 54 KiB LDS / 248 VGPRs, no spills, observed four
+waves per sampled SIMD, substantial shared-memory waits and barriers alongside
+matrix work. L2 external requests do not establish a DRAM bottleneck; a repeat
+changed traffic at similar time. A fragment-load reorder preserved exact GPU
+outputs but remained within −0.05% to +0.21% of control, with unchanged resource
+allocation, and is rejected. Next test narrower K64 and wider K32 projection
+tiles separately to measure residency versus data reuse and synchronization.
+No tile candidate has been implemented or promoted; serving is unchanged.
+
 A 64K profile of this configuration charged 24.9% to routed experts, 23.9% to
 GDN work, 20.9% to hyper-connections and 20.1% to attention-related work.
 Actual attention is only 10% of total; recurrence alone is 6.7%. The larger

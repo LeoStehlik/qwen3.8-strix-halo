@@ -1,0 +1,35 @@
+{
+  "control": {
+    "symbol": "0000000000014600 <_ZN3pfg11kernel_bk64ILi8EEEvPKDF16_S2_Pfiiiiiii>:",
+    "instruction_count": 3119,
+    "instruction_sha256": "4322783fb051e85745734ccd1f83f3cd55edede6d5169093d678174b3c935007",
+    "resources": {
+      "group_segment_fixed_size": "55296",
+      "private_segment_fixed_size": "0",
+      "sgpr_count": "24",
+      "sgpr_spill_count": "0",
+      "vgpr_count": "248",
+      "vgpr_spill_count": "0",
+      "wavefront_size": "32",
+      "workgroup_processor_mode": "1"
+    }
+  },
+  "rowstream": {
+    "symbol": "0000000000006f00 <_ZN3pfg21kernel_bk64_rowstreamEPKDF16_S1_Pfiiiiiii>:",
+    "instruction_count": 3119,
+    "instruction_sha256": "558725d4a50176fa3f1d47453a85c7713273037baa06f95af929869d98654269",
+    "resources": {
+      "group_segment_fixed_size": "55296",
+      "private_segment_fixed_size": "0",
+      "sgpr_count": "24",
+      "sgpr_spill_count": "0",
+      "vgpr_count": "248",
+      "vgpr_spill_count": "0",
+      "wavefront_size": "32",
+      "workgroup_processor_mode": "1"
+    }
+  },
+  "instructions_identical": false,
+  "prior_grouping_control_instruction_sha256": "4322783fb051e85745734ccd1f83f3cd55edede6d5169093d678174b3c935007",
+  "prior_control_unchanged": true
+}

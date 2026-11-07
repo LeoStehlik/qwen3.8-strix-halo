@@ -1,0 +1,70 @@
+{
+  "dispatches": {
+    "43": {
+      "duration_ms": 20.643292,
+      "GL2C_EA_RDREQ_128B_sum": 25192310.0,
+      "GL2C_EA_RDREQ_32B_sum": 0.0,
+      "GL2C_EA_RDREQ_64B_sum": 27444.0,
+      "GL2C_EA_WRREQ_64B_sum": 10468942.0,
+      "SQ_WAVES_sum": 40960.0,
+      "read_bytes": 3226372096.0,
+      "write_bytes": 670012288.0,
+      "GB_s": 188.7482085706098
+    },
+    "51": {
+      "duration_ms": 21.722149,
+      "GL2C_EA_RDREQ_128B_sum": 26454894.0,
+      "GL2C_EA_RDREQ_32B_sum": 0.0,
+      "GL2C_EA_RDREQ_64B_sum": 27206.0,
+      "GL2C_EA_WRREQ_64B_sum": 10474640.0,
+      "SQ_WAVES_sum": 40960.0,
+      "read_bytes": 3387967616.0,
+      "write_bytes": 670376960.0,
+      "GB_s": 186.8297918405771
+    },
+    "55": {
+      "duration_ms": 21.563461,
+      "GL2C_EA_RDREQ_128B_sum": 27421900.0,
+      "GL2C_EA_RDREQ_32B_sum": 0.0,
+      "GL2C_EA_RDREQ_64B_sum": 28454.0,
+      "GL2C_EA_WRREQ_64B_sum": 10469744.0,
+      "SQ_WAVES_sum": 40960.0,
+      "read_bytes": 3511824256.0,
+      "write_bytes": 670063616.0,
+      "GB_s": 193.9339826756011
+    },
+    "67": {
+      "duration_ms": 21.68512,
+      "GL2C_EA_RDREQ_128B_sum": 24387248.0,
+      "GL2C_EA_RDREQ_32B_sum": 0.0,
+      "GL2C_EA_RDREQ_64B_sum": 24247.0,
+      "GL2C_EA_WRREQ_64B_sum": 10470456.0,
+      "SQ_WAVES_sum": 40960.0,
+      "read_bytes": 3123119552.0,
+      "write_bytes": 670109184.0,
+      "GB_s": 174.9231148363486
+    },
+    "74": {
+      "duration_ms": 21.530197,
+      "GL2C_EA_RDREQ_128B_sum": 26608622.0,
+      "GL2C_EA_RDREQ_32B_sum": 0.0,
+      "GL2C_EA_RDREQ_64B_sum": 26593.0,
+      "GL2C_EA_WRREQ_64B_sum": 10468732.0,
+      "SQ_WAVES_sum": 40960.0,
+      "read_bytes": 3407605568.0,
+      "write_bytes": 669998848.0,
+      "GB_s": 189.3900188651316
+    }
+  },
+  "medians": {
+    "duration_ms": 21.563461,
+    "GL2C_EA_RDREQ_128B_sum": 26454894.0,
+    "GL2C_EA_RDREQ_32B_sum": 0.0,
+    "GL2C_EA_RDREQ_64B_sum": 27206.0,
+    "GL2C_EA_WRREQ_64B_sum": 10469744.0,
+    "SQ_WAVES_sum": 40960.0,
+    "read_bytes": 3387967616.0,
+    "write_bytes": 670063616.0,
+    "GB_s": 188.7482085706098
+  }
+}

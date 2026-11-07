@@ -1,0 +1,9 @@
+W1107 20:19:33.835329   34418 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.119438 sec
+W1107 20:19:33.835692   34418 simple_timer.cpp:55] [rocprofv3] '/home/less/.cache/strata-evaluation-20261107/projection-grouping-screen/grouping 10240 2560 0 5' ::     0.000000 sec
+W1107 20:19:33.852017   34418 tool.cpp:3082] HSA version 1.21.0 initialized (instance=0)
+W1107 20:19:36.233604   34418 simple_timer.cpp:55] [rocprofv3] '/home/less/.cache/strata-evaluation-20261107/projection-grouping-screen/grouping 10240 2560 0 5' ::     2.397910 sec
+E1107 20:19:36.242903   34418 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/projection-profile/qkv-cache/projection_kernel_trace.csv
+E1107 20:19:36.253361   34418 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/projection-profile/qkv-cache/projection_counter_collection.csv
+E1107 20:19:36.256879   34418 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/projection-profile/qkv-cache/projection_agent_info.csv
+W1107 20:19:36.259061   34418 simple_timer.cpp:55] [rocprofv3] output generation ::     0.023210 sec
+W1107 20:19:36.259107   34418 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.023321 sec
