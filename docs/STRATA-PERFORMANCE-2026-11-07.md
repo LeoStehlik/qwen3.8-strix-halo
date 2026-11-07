@@ -20,6 +20,49 @@ No production kernel change resulted. Hardware counter zeros in the expert
 run remain unexplained; a copy control returned plausible traffic counters.
 The optimized endpoint was restored at 16:35:56 UTC, with the Mac untouched.
 
+## Subsequent expert and HC screens
+
+The [cooperative epilogue experiment](../experiments/strata-cooperative-epilogue/README.md)
+improved the complete expert operator by 2.4–2.5% on three captured 16K
+routing distributions, with identical output hashes. Twelve reference
+processes also matched all intermediate int8 bytes for the three model weight
+format pairs and both tile sizes. Its estimated whole-prefill contribution
+is only about 0.6%; a model-level gain has not been measured. It remains an
+undeployed, opt-in source experiment. Four-stage gate/up loop unrolling was
+slower and was removed. Increasing the hipBLASLt heuristic request to 128 and
+testing 256 MiB workspace retained the existing solutions; no table changed.
+
+Memory-counter collection works when gate/up and down are collected
+separately; a filter including both reproduces the earlier zeros. The
+underlying profiler cause remains unresolved. Gate/up instruction counters
+still returned zero. Do not infer a hardware roofline from those results.
+
+Two existing packaged HC options were then compared with a fresh control.
+All used the same 65,551-token public prompt, nonce seed `hc-down-compare-v1`,
+zero reused tokens, greedy/non-thinking sampling, 16 output tokens and
+`STRATA_PREFILL_TIMING=1`. Our source epilogue was not involved.
+
+| Configuration | Prompt ms | Prefill tok/s | GPU timeline ms | HC down+silu ms | HC inject ms | Prior conversation park ms |
+|---|---:|---:|---:|---:|---:|---:|
+| Packaged control | 47,191.0 | 1,389.1 | 47,029 | 1,897 | 694 | 45.6 |
+| `STRATA_HCD_EXACT=1` | 53,853.6 | 1,217.2 | 47,904 | 2,042 | 708 | 5,829.9 |
+| `STRATA_PF_HCDOWN=1` | 47,406.1 | 1,382.8 | 47,250 | 2,415 | 8 | 40.2 |
+
+All three produced the same 16-token output hash. That limited observation
+does not establish broad model-quality equivalence. The exact variant's
+request-time regression includes a separate cache-parking stall; even its
+GPU and HC-stage times showed no improvement. Kernel eviction/migration
+counters remain in the telemetry, so causal attribution of the entire
+regression to the option would be unjustified. The fused variant saved
+168 ms across down/inject but showed no whole-request gain. Neither option
+was promoted. No driver or host memory policy was changed.
+
+[Comparison data](../evidence/strata-performance-2026-11-07/hcd-comparison.json)
+and per-arm logs/telemetry are retained. The larger 1,700–2,000 prefill and
+50–70 generation objectives remain unmet. Next: capture actual attention
+selections and test KV reuse/scheduling opportunities on the existing kernel;
+its trimming and read-prefetch defaults are already enabled.
+
 ## Initial deployment missed the target
 
 The first real OpenClaw request supplied 187,737 input tokens. It was cancelled

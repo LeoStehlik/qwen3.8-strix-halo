@@ -1,0 +1,26 @@
+{
+  "SQ_WAVES_sum": {
+    "samples": 136,
+    "nonzero": 136,
+    "min": 215040.0,
+    "max": 215040.0
+  },
+  "SQ_INSTS_LDS_sum": {
+    "samples": 136,
+    "nonzero": 0,
+    "min": 0.0,
+    "max": 0.0
+  },
+  "SQ_INSTS_SALU_sum": {
+    "samples": 136,
+    "nonzero": 0,
+    "min": 0.0,
+    "max": 0.0
+  },
+  "SQ_INSTS_VALU_sum": {
+    "samples": 136,
+    "nonzero": 0,
+    "min": 0.0,
+    "max": 0.0
+  }
+}

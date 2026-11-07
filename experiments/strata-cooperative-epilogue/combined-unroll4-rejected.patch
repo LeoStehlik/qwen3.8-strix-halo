@@ -1,0 +1,157 @@
+diff --git a/src/prefill/moe_f16_kq.cu b/src/prefill/moe_f16_kq.cu
+index 824b8cc..3d32c3b 100644
+--- a/src/prefill/moe_f16_kq.cu
++++ b/src/prefill/moe_f16_kq.cu
+@@ -34,6 +34,7 @@
+ #include "ggml.h"
+ 
+ #include <algorithm>
++#include <cstring>
+ 
+ namespace strata::prefill::fused::f16kq {
+ namespace {
+@@ -68,8 +69,69 @@ __device__ __forceinline__ void codes_to_halves(uint32_t codes, __half2 magic, _
+ #endif
+ }
+ 
++// Same SwiGLU/int8 layout as gu_epilogue, with eight lanes cooperating on each
++// 32-feature quantization group. All 256 threads process four features each,
++// rather than 32 threads holding 32 values each. Max and integer sum reductions
++// do not reorder the floating-point products or the matrix accumulation.
++template <int BN>
++__device__ __forceinline__ void gu_epilogue_cooperative(const v8f (&acc)[BN / 16], uint8_t* lds, int tid,
++                                                       int live_tiles, int nrows, int row0, int fb,
++                                                       uint8_t* __restrict__ out) {
++#if STRATA_F16_DEVICE
++    const int wave = tid >> 5, lane = tid & 31, sub_lane = lane & 15, half_id = lane >> 4;
++    float* base = reinterpret_cast<float*>(lds);
++    float* scratch = base + wave * GU_EPI_PLANE;
++    const int t = tid >> 4, f0 = (tid & 15) * 4, hh = (tid >> 3) & 1;
++#pragma unroll
++    for (int j = 0; j < BN / 16; ++j) {
++        if (j >= live_tiles) break;
++#pragma unroll
++        for (int l = 0; l < 8; ++l) scratch[sub_lane * GU_EPI_STRIDE + 2 * l + half_id] = acc[j][l];
++        __syncthreads();
++        const int r = j * 16 + t;
++        if (r < nrows) {
++            float hv[4];
++            float am = 0.0f;
++#pragma unroll
++            for (int f = 0; f < 4; ++f) {
++                const int ft = f0 + f;
++                const int idx = (ft >> 4) * GU_EPI_PLANE + t * GU_EPI_STRIDE + (ft & 15);
++                const float gt = base[idx], up = base[idx + 4 * GU_EPI_PLANE];
++                hv[f] = gt / (1.0f + __expf(-gt)) * up;
++                am = fmaxf(am, fabsf(hv[f]));
++            }
++#pragma unroll
++            for (int shift = 1; shift < 8; shift <<= 1)
++                am = fmaxf(am, __shfl_xor_sync(0xffffffffu, am, shift, 8));
++            const float inv = am > 0.0f ? 127.0f / am : 0.0f;
++            uint32_t wd = 0;
++            int csum = 0;
++#pragma unroll
++            for (int f = 0; f < 4; ++f) {
++                const int c = __float2int_rn(hv[f] * inv);
++                csum += c;
++                wd |= (uint32_t) (uint8_t) (int8_t) c << (8 * f);
++            }
++#pragma unroll
++            for (int shift = 1; shift < 8; shift <<= 1)
++                csum += __shfl_xor_sync(0xffffffffu, csum, shift, 8);
++            uint8_t* o = out + (size_t) (row0 + r) * H_LD + (size_t) fb * AB;
++            *reinterpret_cast<uint32_t*>(o + f0) = wd;
++            if ((tid & 7) == 0) {
++                *reinterpret_cast<float*>(o + 64 + 4 * hh) = am / 127.0f;
++                *reinterpret_cast<float*>(o + 72 + 4 * hh) = (float) csum;
++            }
++        }
++        __syncthreads();
++    }
++#else
++    (void) acc; (void) lds; (void) tid; (void) live_tiles; (void) nrows; (void) row0; (void) fb; (void) out;
++    __builtin_trap();
++#endif
++}
++
+ // Gate/up (Q4_K / Q5_K): code rows 0..63 are the item's gate rows, 64..127 its up rows; a thread pair per row.
+-template <int WT, int BN>
++template <int WT, int BN, bool COOPERATIVE_EPI = false, bool UNROLL_FOUR = false>
+ __global__ void __launch_bounds__(THREADS) gate_up_kernel(const Batch b, const NativeGeom geo, const int32_t* __restrict__ ts,
+                                                           const int2* __restrict__ tiles, const int32_t* __restrict__ off,
+                                                           const uint8_t* __restrict__ act, const int32_t* __restrict__ src,
+@@ -199,14 +261,32 @@ __global__ void __launch_bounds__(THREADS) gate_up_kernel(const Batch b, const N
+     };
+ 
+     fetch_stage(0);
+-    for (int s = 0; s < GU_NS; ++s) {
+-        commit_stage();
+-        __syncthreads();
+-        if (s + 1 < GU_NS) fetch_stage(s + 1);
+-        compute_stage();
+-        __syncthreads();
++    if constexpr (UNROLL_FOUR) {
++        // Each 256-value block supplies four stages. Exposing that cycle lets
++        // the compiler specialize packed-code and header selection, without
++        // changing the K traversal, prefetch order, or accumulation order.
++        for (int block = 0; block < GU_NS / 4; ++block) {
++#pragma unroll
++            for (int quarter = 0; quarter < 4; ++quarter) {
++                const int s = block * 4 + quarter;
++                commit_stage();
++                __syncthreads();
++                if (s + 1 < GU_NS) fetch_stage(s + 1);
++                compute_stage();
++                __syncthreads();
++            }
++        }
++    } else {
++        for (int s = 0; s < GU_NS; ++s) {
++            commit_stage();
++            __syncthreads();
++            if (s + 1 < GU_NS) fetch_stage(s + 1);
++            compute_stage();
++            __syncthreads();
++        }
+     }
+-    gu_epilogue<BN>(acc, lds, tid, live_tiles, nrows, row0, fb, out);
++    if constexpr (COOPERATIVE_EPI) gu_epilogue_cooperative<BN>(acc, lds, tid, live_tiles, nrows, row0, fb, out);
++    else gu_epilogue<BN>(acc, lds, tid, live_tiles, nrows, row0, fb, out);
+ #else
+     (void) b; (void) geo; (void) ts; (void) tiles; (void) off; (void) act; (void) src; (void) out;
+     __builtin_trap();
+@@ -315,12 +395,29 @@ void gate_up(const Batch& b, const NativeGeom& g, const int32_t* ts, const int2*
+     // of a tile are consecutive, so they meet its activations in L2)
+     const unsigned grid = (unsigned) std::max<int64_t>(1, work_bound * GU_NFB);
+     const bool q5k = g.gu_type == T_Q5_K;
++    static const bool cooperative_epi = [] {
++        const char* v = std::getenv("STRATA_PF_F16_GU_EPI");
++        return v != nullptr && std::strcmp(v, "1") == 0;
++    }();
++    static const bool unroll_four = [] {
++        const char* v = std::getenv("STRATA_PF_F16_GU_UNROLL4");
++        return v != nullptr && std::strcmp(v, "1") == 0;
++    }();
++    auto launch = [&]<int WT, int BN>() {
++        if (unroll_four) {
++            if (cooperative_epi) gate_up_kernel<WT, BN, true, true><<<grid, THREADS, 0, s>>>(b, g, ts, tiles, off, act, src, out);
++            else gate_up_kernel<WT, BN, false, true><<<grid, THREADS, 0, s>>>(b, g, ts, tiles, off, act, src, out);
++        } else {
++            if (cooperative_epi) gate_up_kernel<WT, BN, true><<<grid, THREADS, 0, s>>>(b, g, ts, tiles, off, act, src, out);
++            else gate_up_kernel<WT, BN><<<grid, THREADS, 0, s>>>(b, g, ts, tiles, off, act, src, out);
++        }
++    };
+     if (pick_bn(n, n_expert) == 2 * kTileRows) {
+-        if (q5k) gate_up_kernel<T_Q5_K, 2 * kTileRows><<<grid, THREADS, 0, s>>>(b, g, ts, tiles, off, act, src, out);
+-        else gate_up_kernel<T_Q4_K, 2 * kTileRows><<<grid, THREADS, 0, s>>>(b, g, ts, tiles, off, act, src, out);
++        if (q5k) launch.template operator()<T_Q5_K, 2 * kTileRows>();
++        else launch.template operator()<T_Q4_K, 2 * kTileRows>();
+     } else {
+-        if (q5k) gate_up_kernel<T_Q5_K, kTileRows><<<grid, THREADS, 0, s>>>(b, g, ts, tiles, off, act, src, out);
+-        else gate_up_kernel<T_Q4_K, kTileRows><<<grid, THREADS, 0, s>>>(b, g, ts, tiles, off, act, src, out);
++        if (q5k) launch.template operator()<T_Q5_K, kTileRows>();
++        else launch.template operator()<T_Q4_K, kTileRows>();
+     }
+ }
+ 

@@ -1,0 +1,86 @@
+[
+  {
+    "name": "unroll4-0-on0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-ref",
+      "--only=Q4_K / Q5_1",
+      "--chunks=16384"
+    ],
+    "unroll4": "0",
+    "cooperative_epi": "0",
+    "exit_code": 0,
+    "hashes": [
+      "507bd523cd60c84a"
+    ],
+    "ms": [
+      "53.792"
+    ],
+    "back_to_back_ms": [
+      "53.778"
+    ]
+  },
+  {
+    "name": "unroll4-1-on1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-ref",
+      "--only=Q4_K / Q5_1",
+      "--chunks=16384"
+    ],
+    "unroll4": "1",
+    "cooperative_epi": "0",
+    "exit_code": 0,
+    "hashes": [
+      "507bd523cd60c84a"
+    ],
+    "ms": [
+      "54.181"
+    ],
+    "back_to_back_ms": [
+      "54.260"
+    ]
+  },
+  {
+    "name": "unroll4-2-on1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-ref",
+      "--only=Q4_K / Q5_1",
+      "--chunks=16384"
+    ],
+    "unroll4": "1",
+    "cooperative_epi": "0",
+    "exit_code": 0,
+    "hashes": [
+      "507bd523cd60c84a"
+    ],
+    "ms": [
+      "54.077"
+    ],
+    "back_to_back_ms": [
+      "54.144"
+    ]
+  },
+  {
+    "name": "unroll4-3-on0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-ref",
+      "--only=Q4_K / Q5_1",
+      "--chunks=16384"
+    ],
+    "unroll4": "0",
+    "cooperative_epi": "0",
+    "exit_code": 0,
+    "hashes": [
+      "507bd523cd60c84a"
+    ],
+    "ms": [
+      "53.945"
+    ],
+    "back_to_back_ms": [
+      "54.000"
+    ]
+  }
+]

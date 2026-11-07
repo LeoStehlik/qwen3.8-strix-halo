@@ -1,0 +1,13 @@
+{
+  "utc": "2026-11-07T17:06:46.026209+00:00",
+  "load_seconds": 88.05557716599924,
+  "live": {
+    "state": "idle",
+    "queued": 0
+  },
+  "models": [
+    "qwen3.8-flash-next-unsloth-ud-q4_k_xl"
+  ],
+  "hcd_flags_removed": true,
+  "experimental_epilogue_deployed": false
+}

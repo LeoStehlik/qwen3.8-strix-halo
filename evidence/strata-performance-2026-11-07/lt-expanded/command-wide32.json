@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/tune_hipblaslt",
+    "--case",
+    "f16,16384,10240,2560,10240",
+    "--workspace-mib",
+    "32",
+    "--max-algos",
+    "128",
+    "--tuning-out",
+    "/home/less/.cache/strata-evaluation-20261107/lt-expanded/wide32.json"
+  ],
+  "env": {
+    "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+    "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+    "HIP_PLATFORM": "amd",
+    "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib"
+  }
+}

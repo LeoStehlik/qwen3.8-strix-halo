@@ -1,0 +1,9 @@
+{
+  "branch": "experiment/hip-cooperative-epilogue",
+  "commits": [
+    "b9e3974addb50f23878fca673e6fa2e770f5c02b Allow a larger HIP matrix heuristic search without changing defaults",
+    "87faea5ee160ce9f193279c671d9cddc7b58655b Add opt-in cooperative expert epilogue and exact replay checks"
+  ],
+  "published_as_patches": true,
+  "upstream_push": false
+}

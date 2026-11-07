@@ -1,0 +1,51 @@
+[0/2] Re-checking globbed directories...
+[1/5] Building CXX object CMakeFiles/hip_prefill_fused_iq.dir/tests/cuda/prefill_fused_iq_test.cpp.o
+/home/less/src/strata-f16-dispatch-20261107/tests/cuda/prefill_fused_iq_test.cpp: In destructor ‘{anonymous}::Dev::~Dev()’:
+/home/less/src/strata-f16-dispatch-20261107/tests/cuda/prefill_fused_iq_test.cpp:52:22: warning: ignoring returned value of type ‘hipError_t’, declared with attribute ‘nodiscard’ [-Wunused-result]
+   52 |     ~Dev() { cudaFree(p); }
+In file included from /home/less/.local/opt/rocm-7.14.1-strata-lab/include/hip/hip_runtime.h:49,
+                 from /home/less/src/strata-f16-dispatch-20261107/include/strata/hip_compat/cuda_runtime.h:12,
+                 from <command-line>:
+/home/less/.local/opt/rocm-7.14.1-strata-lab/include/hip/hip_runtime_api.h:4926:12: note: in call to ‘hipError_t hipFree(void*)’, declared here
+ 4926 | hipError_t hipFree(void* ptr);
+      |            ^~~~~~~
+/home/less/.local/opt/rocm-7.14.1-strata-lab/include/hip/hip_runtime_api.h:410:3: note: ‘hipError_t’ declared here
+  410 | } hipError_t;
+      |   ^~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/tests/cuda/prefill_fused_iq_test.cpp: In function ‘void {anonymous}::timing_part(const Pair&, int, hipStream_t)’:
+/home/less/src/strata-f16-dispatch-20261107/tests/cuda/prefill_fused_iq_test.cpp:677:21: warning: ignoring returned value of type ‘hipError_t’, declared with attribute ‘nodiscard’ [-Wunused-result]
+  677 |     cudaEventDestroy(a);
+/home/less/.local/opt/rocm-7.14.1-strata-lab/include/hip/hip_runtime_api.h:3651:12: note: in call to ‘hipError_t hipEventDestroy(hipEvent_t)’, declared here
+ 3651 | hipError_t hipEventDestroy(hipEvent_t event);
+      |            ^~~~~~~~~~~~~~~
+/home/less/.local/opt/rocm-7.14.1-strata-lab/include/hip/hip_runtime_api.h:410:3: note: ‘hipError_t’ declared here
+  410 | } hipError_t;
+      |   ^~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/tests/cuda/prefill_fused_iq_test.cpp:678:21: warning: ignoring returned value of type ‘hipError_t’, declared with attribute ‘nodiscard’ [-Wunused-result]
+  678 |     cudaEventDestroy(b);
+/home/less/.local/opt/rocm-7.14.1-strata-lab/include/hip/hip_runtime_api.h:3651:12: note: in call to ‘hipError_t hipEventDestroy(hipEvent_t)’, declared here
+ 3651 | hipError_t hipEventDestroy(hipEvent_t event);
+      |            ^~~~~~~~~~~~~~~
+/home/less/.local/opt/rocm-7.14.1-strata-lab/include/hip/hip_runtime_api.h:410:3: note: ‘hipError_t’ declared here
+  410 | } hipError_t;
+      |   ^~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/tests/cuda/prefill_fused_iq_test.cpp: In function ‘int main(int, char**)’:
+/home/less/src/strata-f16-dispatch-20261107/tests/cuda/prefill_fused_iq_test.cpp:710:35: warning: ignoring returned value of type ‘hipError_t’, declared with attribute ‘nodiscard’ [-Wunused-result]
+  710 |             cudaDeviceGetAttribute(&major, cudaDevAttrComputeCapabilityMajor, 0);
+/home/less/.local/opt/rocm-7.14.1-strata-lab/include/hip/hip_runtime_api.h:2449:12: note: in call to ‘hipError_t hipDeviceGetAttribute(int*, hipDeviceAttribute_t, int)’, declared here
+ 2449 | hipError_t hipDeviceGetAttribute(int* pi, hipDeviceAttribute_t attr, int deviceId);
+      |            ^~~~~~~~~~~~~~~~~~~~~
+/home/less/.local/opt/rocm-7.14.1-strata-lab/include/hip/hip_runtime_api.h:410:3: note: ‘hipError_t’ declared here
+  410 | } hipError_t;
+      |   ^~~~~~~~~~
+/home/less/src/strata-f16-dispatch-20261107/tests/cuda/prefill_fused_iq_test.cpp:764:39: warning: ignoring returned value of type ‘hipError_t’, declared with attribute ‘nodiscard’ [-Wunused-result]
+  764 |                 cudaDeviceGetAttribute(&major, cudaDevAttrComputeCapabilityMajor, 0);
+/home/less/.local/opt/rocm-7.14.1-strata-lab/include/hip/hip_runtime_api.h:2449:12: note: in call to ‘hipError_t hipDeviceGetAttribute(int*, hipDeviceAttribute_t, int)’, declared here
+ 2449 | hipError_t hipDeviceGetAttribute(int* pi, hipDeviceAttribute_t attr, int deviceId);
+      |            ^~~~~~~~~~~~~~~~~~~~~
+/home/less/.local/opt/rocm-7.14.1-strata-lab/include/hip/hip_runtime_api.h:410:3: note: ‘hipError_t’ declared here
+  410 | } hipError_t;
+      |   ^~~~~~~~~~
+[2/5] Building HIP object CMakeFiles/strata_mmq.dir/src/prefill/moe_f16_kq.cu.o
+[3/5] Linking HIP static library libstrata_mmq.a
+[4/5] Linking HIP executable hip_prefill_fused_iq

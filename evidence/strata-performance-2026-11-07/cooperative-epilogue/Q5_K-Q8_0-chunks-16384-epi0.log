@@ -1,0 +1,5 @@
+  (fused back to back: median 57.778 ms, min 57.628; alternating min 57.565; MMQ min 1.000)
+  fused output bits hash 1f32f42d6eea0be6
+Q5_K / Q8_0 - timing part: 16384 tokens x top 10 over 512 experts, one layer: MMQ path 1.000 ms, fused 57.786 ms (0.02x); fused vs MMQ rel RMS 0.000e+00 worst row 0.000e+00
+  sample of 96 pairs vs FP32 reference: MMQ rel RMS 0.000e+00 worst 0.000e+00, fused rel RMS 1.449e-02 worst 4.358e-02
+prefill fused MoE (native formats) parity passed

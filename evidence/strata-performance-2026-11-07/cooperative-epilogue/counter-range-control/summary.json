@@ -1,0 +1,32 @@
+{
+  "GL2C_EA_RDREQ_128B_sum": {
+    "samples": 8,
+    "nonzero": 0,
+    "min": 0.0,
+    "max": 0.0
+  },
+  "GL2C_EA_RDREQ_32B_sum": {
+    "samples": 8,
+    "nonzero": 0,
+    "min": 0.0,
+    "max": 0.0
+  },
+  "GL2C_EA_RDREQ_64B_sum": {
+    "samples": 8,
+    "nonzero": 0,
+    "min": 0.0,
+    "max": 0.0
+  },
+  "GL2C_EA_WRREQ_64B_sum": {
+    "samples": 8,
+    "nonzero": 0,
+    "min": 0.0,
+    "max": 0.0
+  },
+  "SQ_WAVES_sum": {
+    "samples": 8,
+    "nonzero": 8,
+    "min": 215040.0,
+    "max": 430080.0
+  }
+}

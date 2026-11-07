@@ -1,0 +1,17 @@
+{
+  "scope": "last 64 sampled dispatches; reported L2 external request bytes, not a direct DRAM-bandwidth measurement; 96-byte request events not included",
+  "stages": {
+    "gate_up": {
+      "samples": 64,
+      "duration_ms": 8.685626265625,
+      "gl2c_read_write_bytes": 989778379.0,
+      "gl2c_read_write_GB_s": 113.96231605907866
+    },
+    "down_kernel": {
+      "samples": 64,
+      "duration_ms": 5.15151890625,
+      "gl2c_read_write_bytes": 867559426.0,
+      "gl2c_read_write_GB_s": 168.42062437217623
+    }
+  }
+}

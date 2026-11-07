@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Q4_K-Q5_1-chunks-256-2048-8192-epi0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq.cooperative",
+      "--no-ref",
+      "--only=Q4_K / Q5_1",
+      "--chunks=256,2048,8192"
+    ],
+    "variant": "0",
+    "exit_code": 0,
+    "hashes": [
+      "7380799fd23b9b12",
+      "32c31b5193b743be",
+      "5f7d3323c5cd293c"
+    ],
+    "ms": [
+      "7.508",
+      "10.171",
+      "29.518"
+    ]
+  },
+  {
+    "name": "Q4_K-Q5_1-chunks-256-2048-8192-epi1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq.cooperative",
+      "--no-ref",
+      "--only=Q4_K / Q5_1",
+      "--chunks=256,2048,8192"
+    ],
+    "variant": "1",
+    "exit_code": 0,
+    "hashes": [
+      "7380799fd23b9b12",
+      "32c31b5193b743be",
+      "5f7d3323c5cd293c"
+    ],
+    "ms": [
+      "7.500",
+      "10.071",
+      "29.128"
+    ]
+  },
+  {
+    "name": "Q4_K-Q8_0-chunks-16384-epi0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq.cooperative",
+      "--no-ref",
+      "--only=Q4_K / Q8_0",
+      "--chunks=16384"
+    ],
+    "variant": "0",
+    "exit_code": 0,
+    "hashes": [
+      "00be6ef1ec4d1663"
+    ],
+    "ms": [
+      "54.451"
+    ]
+  },
+  {
+    "name": "Q4_K-Q8_0-chunks-16384-epi1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq.cooperative",
+      "--no-ref",
+      "--only=Q4_K / Q8_0",
+      "--chunks=16384"
+    ],
+    "variant": "1",
+    "exit_code": 0,
+    "hashes": [
+      "00be6ef1ec4d1663"
+    ],
+    "ms": [
+      "53.392"
+    ]
+  },
+  {
+    "name": "Q5_K-Q8_0-chunks-16384-epi0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq.cooperative",
+      "--no-ref",
+      "--only=Q5_K / Q8_0",
+      "--chunks=16384"
+    ],
+    "variant": "0",
+    "exit_code": 0,
+    "hashes": [
+      "1f32f42d6eea0be6"
+    ],
+    "ms": [
+      "57.786"
+    ]
+  },
+  {
+    "name": "Q5_K-Q8_0-chunks-16384-epi1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq.cooperative",
+      "--no-ref",
+      "--only=Q5_K / Q8_0",
+      "--chunks=16384"
+    ],
+    "variant": "1",
+    "exit_code": 0,
+    "hashes": [
+      "1f32f42d6eea0be6"
+    ],
+    "ms": [
+      "57.135"
+    ]
+  }
+]

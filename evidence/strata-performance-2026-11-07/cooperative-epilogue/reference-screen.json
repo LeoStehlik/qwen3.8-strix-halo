@@ -1,0 +1,70 @@
+[
+  {
+    "name": "reference-bn64-epi0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-timing",
+      "--only=Q4_K / Q5_1"
+    ],
+    "bn": 64,
+    "variant": "0",
+    "exit_code": 0,
+    "hashes": [
+      [
+        "c5cf77f999f3ac13",
+        "79b8359e4299f6e5"
+      ]
+    ]
+  },
+  {
+    "name": "reference-bn64-epi1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-timing",
+      "--only=Q4_K / Q5_1"
+    ],
+    "bn": 64,
+    "variant": "1",
+    "exit_code": 0,
+    "hashes": [
+      [
+        "c5cf77f999f3ac13",
+        "79b8359e4299f6e5"
+      ]
+    ]
+  },
+  {
+    "name": "reference-bn128-epi0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-timing",
+      "--only=Q4_K / Q5_1"
+    ],
+    "bn": 128,
+    "variant": "0",
+    "exit_code": 0,
+    "hashes": [
+      [
+        "c5cf77f999f3ac13",
+        "79b8359e4299f6e5"
+      ]
+    ]
+  },
+  {
+    "name": "reference-bn128-epi1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-timing",
+      "--only=Q4_K / Q5_1"
+    ],
+    "bn": 128,
+    "variant": "1",
+    "exit_code": 0,
+    "hashes": [
+      [
+        "c5cf77f999f3ac13",
+        "79b8359e4299f6e5"
+      ]
+    ]
+  }
+]

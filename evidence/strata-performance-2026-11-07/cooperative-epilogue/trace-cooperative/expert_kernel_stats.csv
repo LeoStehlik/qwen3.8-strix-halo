@@ -1,0 +1,8 @@
+"Name","Calls","TotalDurationNs","AverageNs","Percentage","MinNs","MaxNs","StdDev"
+"void strata::prefill::fused::f16kq::(anonymous namespace)::gate_up_kernel<12, 128, true>(strata::prefill::fused::Batch, strata::prefill::fused::NativeGeom, int const*, HIP_vector_type<int, 2u> const*, int const*, unsigned char const*, int const*, unsigned char*)",136,1180927622,8683291.338235,60.39,8027547,9449592,200360.209707
+"void strata::prefill::fused::f16kq::(anonymous namespace)::down_kernel<128>(strata::prefill::fused::Batch, strata::prefill::fused::NativeGeom, int const*, HIP_vector_type<int, 2u> const*, int const*, unsigned char const*, float*)",136,730240384,5369414.588235,37.34,5257991,5740117,100145.883024
+"strata::prefill::fused::(anonymous namespace)::quant_act_nat_kernel(float const*, long, unsigned char*)",34,36175416,1063982.823529,1.85,1012174,2579876,267877.279564
+"__amd_rocclr_fillBufferAligned",35,7064020,201829.142857,0.3612,2003,6981873,1179743.551259
+"strata::prefill::fused::(anonymous namespace)::place_kernel(int const*, long, int, int, strata::prefill::fused::(anonymous namespace)::Tables, int*, int*)",34,888868,26143.176471,0.0455,23964,27570,746.693620
+"strata::prefill::fused::(anonymous namespace)::count_kernel(int const*, long, int, int*)",34,214553,6310.382353,0.0110,6051,7574,271.358760
+"strata::prefill::fused::(anonymous namespace)::scan_kernel(strata::prefill::fused::(anonymous namespace)::Tables, int)",34,97140,2857.058824,4.967e-03,2525,3206,184.011848

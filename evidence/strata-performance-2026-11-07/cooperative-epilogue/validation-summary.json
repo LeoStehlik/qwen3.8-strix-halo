@@ -1,0 +1,17 @@
+{
+  "reference_processes": 12,
+  "exact_H_and_output_matches": true,
+  "reference_groups": 6,
+  "captured_routing_matches": true,
+  "other_shapes_output_matches": true,
+  "production_deployed": false,
+  "full_model_test": "not run; small isolated gain only",
+  "source_commit": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "binary_sha256": {
+    "hip_prefill_fused_iq.replay-control": "e9b5476e8029315fe33db53588c64d76b683736546a98a65eda3dc09da65cb3b",
+    "hip_prefill_fused_iq.cooperative": "23f32e84c35b76faa11dea074a399d04a1b68687bdf58d3cab0ef127e4be4862",
+    "hip_prefill_fused_iq.unroll4": "6f104c13065403ec7e791bcd8fc55da10285a15e6dc4a46c898fa174d46e3f5a",
+    "hip_prefill_fused_iq": "23f32e84c35b76faa11dea074a399d04a1b68687bdf58d3cab0ef127e4be4862"
+  },
+  "current_binary_matches_cooperative_archive": true
+}

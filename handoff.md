@@ -18,8 +18,22 @@ were captured. Three real-routing replays were only 1–3% slower than uniform
 routing, with row ownership/reference checks passing. No register spills
 were reported. Expert hardware counters returned unexplained zeros despite
 a successful copy-counter control; bandwidth/occupancy classification remains
-unresolved. The next isolated code candidate is a cooperative gate/up
-SwiGLU/int8 epilogue. No production source patch is deployed.
+unresolved. Separate per-kernel memory collection now works; the combined
+filter still gives zeros and gate/up instruction counters remain unusable.
+The [cooperative gate/up epilogue](experiments/strata-cooperative-epilogue/README.md)
+passed exact intermediate/output checks and improved captured-routing
+operator times by 2.4–2.5%, only about 0.6% estimated whole-prefill gain.
+It is retained as an undeployed opt-in candidate, without full-model/state
+validation. A four-stage loop unroll lost and was removed. Broader dense
+tuning retained the existing library solutions. No production source patch
+is deployed. Next active work: actual attention-selection replay and KV reuse.
+
+Fresh packaged 64K screens: control **1,389.1 tok/s**, HC exact **1,217.2**,
+HC fused **1,382.8**. The exact arm includes a separate 5.83-second cache-park
+stall; its GPU timeline was also slower (47.904 versus 47.029 seconds).
+The fused arm saved only 168 ms within down/inject and showed no total gain.
+All short output hashes matched. Neither HC flag is selected. See the
+[full comparison and caveats](docs/STRATA-PERFORMANCE-2026-11-07.md#subsequent-expert-and-hc-screens).
 
 The investigation resumed after the user's clean reboot at 14:51:52 UTC.
 The original-policy F16 comparison completed: cold 16K **1,074.3 / 40.3 tok/s**,
@@ -73,10 +87,11 @@ OpenClaw gateway restart or Mac reboot was performed. Persistent 8083 config
 is still the original installer layout; do not enable it blindly. The optimized
 preview is selected for live testing; boot promotion remains pending. Read the [performance record](docs/STRATA-PERFORMANCE-2026-11-07.md).
 
-After the routing capture, `91-routing-profile.conf` was removed and the
-original optimized preview loaded again at **16:35:56 UTC**. Authenticated
-health, metrics and model listing passed; the endpoint was idle. The Mac
-gateway was untouched. Diagnostic sync/dump overhead is absent from serving.
+After the subsequent expert and HC screens, the unchanged optimized preview
+loaded again at **17:06:46 UTC**. Authenticated health, metrics and model
+listing passed; the endpoint was idle. `90-benchmark.conf` was removed and
+`90-live-preview.conf` restored. Neither HC option nor the source epilogue is
+enabled in serving. The Mac gateway was untouched.
 
 **Flash-Next is connected to the existing `tiercelmoe` provider.** Select
 `/model qwen-flash-next`, or the full reference

@@ -1,0 +1,13 @@
+  (fused back to back: median 7.521 ms, min 7.496; alternating min 7.468; MMQ min 1.000)
+  fused output bits hash 7380799fd23b9b12
+Q4_K / Q5_1 - timing part: 256 tokens x top 10 over 512 experts, one layer: MMQ path 1.000 ms, fused 7.508 ms (0.13x); fused vs MMQ rel RMS 0.000e+00 worst row 0.000e+00
+  sample of 96 pairs vs FP32 reference: MMQ rel RMS 0.000e+00 worst 0.000e+00, fused rel RMS 9.801e-03 worst 7.074e-02
+  (fused back to back: median 10.176 ms, min 10.129; alternating min 10.117; MMQ min 1.000)
+  fused output bits hash 32c31b5193b743be
+Q4_K / Q5_1 - timing part: 2048 tokens x top 10 over 512 experts, one layer: MMQ path 1.000 ms, fused 10.171 ms (0.10x); fused vs MMQ rel RMS 0.000e+00 worst row 0.000e+00
+  sample of 96 pairs vs FP32 reference: MMQ rel RMS 0.000e+00 worst 0.000e+00, fused rel RMS 9.022e-03 worst 8.605e-02
+  (fused back to back: median 29.494 ms, min 29.451; alternating min 29.502; MMQ min 1.000)
+  fused output bits hash 5f7d3323c5cd293c
+Q4_K / Q5_1 - timing part: 8192 tokens x top 10 over 512 experts, one layer: MMQ path 1.000 ms, fused 29.518 ms (0.03x); fused vs MMQ rel RMS 0.000e+00 worst row 0.000e+00
+  sample of 96 pairs vs FP32 reference: MMQ rel RMS 0.000e+00 worst 0.000e+00, fused rel RMS 6.953e-03 worst 5.390e-02
+prefill fused MoE (native formats) parity passed

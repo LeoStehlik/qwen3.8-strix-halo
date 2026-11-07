@@ -48,12 +48,16 @@ A 2x expert improvement alone would predict about 14% overall, not 2x prefill.
 1. The [expert interval split and routing capture](../experiments/strata-expert-profile/README.md)
    are complete: roughly 62% gate/up, 37% down, negligible grouping; no scratch
    spills. Three captured 16K distributions cost only 1–3% more than uniform
-   routing. Test a cooperative gate/up SwiGLU/int8 epilogue independently;
-   it is a source-based hypothesis, not a measured improvement. Expert memory
-   counters returned unexplained zeros even though a copy control worked, so
-   resolve that before claiming bandwidth/occupancy limits. The rejected
-   bounded-dispatch patch is not a candidate for promotion.
-2. Measure attention's memory reuse and remaining scheduling cost. The current
+   routing. The [cooperative gate/up epilogue](../experiments/strata-cooperative-epilogue/README.md)
+   now gives a measured 2.4–2.5% operator improvement on captured routing with
+   exact outputs, only about 0.6% estimated whole-prefill gain. Keep it as an
+   undeployed opt-in candidate; no full-model/state test yet. Four-stage loop
+   unrolling lost and was removed. Separate per-kernel memory counter
+   collection works, while the combined filter gives zeros; do not infer a
+   roofline from the remaining missing instruction counters. Broader dense
+   tuning and packaged HC exact/fused screens gave no promotion-worthy gain.
+   The rejected bounded-dispatch patch is not a candidate for promotion.
+2. **Next active experiment:** measure attention's memory reuse and remaining scheduling cost. The current
    source already defaults to trimmed shared-memory rows and read prefetch;
    enabling those again is not a new optimization. Old experimental flag names
    in comments are not evidence that a switch still exists.

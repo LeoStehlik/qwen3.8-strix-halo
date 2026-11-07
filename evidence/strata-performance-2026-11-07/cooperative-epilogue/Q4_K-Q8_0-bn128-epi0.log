@@ -1,0 +1,5 @@
+Q4_K / Q8_0 - reference part: 256 tokens, 64 experts, rows per expert: max 230, experts without rows 4
+  reference H bytes hash e48459c40501996b output bits hash c21779b658a3049c
+  fused vs the int8-rounded model (same activation / H rounding, double sums): rel RMS 2.556e-03  worst 8.845e-03
+  fused vs FP32 reference: rel RMS 1.439e-02  worst row max rel 6.390e-02
+prefill fused MoE (native formats) parity passed

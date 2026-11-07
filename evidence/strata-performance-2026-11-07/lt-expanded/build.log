@@ -1,0 +1,3 @@
+[0/2] Re-checking globbed directories...
+[1/3] Building CXX object CMakeFiles/tune_hipblaslt.dir/tools/hip/tune_hipblaslt.cpp.o
+[2/3] Linking CXX executable tune_hipblaslt

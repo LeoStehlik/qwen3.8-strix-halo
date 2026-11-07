@@ -1,0 +1,70 @@
+diff --git a/tools/hip/tune_hipblaslt.cpp b/tools/hip/tune_hipblaslt.cpp
+index ded114f..73b83aa 100644
+--- a/tools/hip/tune_hipblaslt.cpp
++++ b/tools/hip/tune_hipblaslt.cpp
+@@ -49,6 +49,7 @@ struct Events {
+ struct Shape { int t, n, k, ldy; bool bf16; };
+ struct Options {
+     size_t workspace = 32U * 1024U * 1024U;
++    int max_algos = 16;
+     std::vector<Shape> shapes;
+     std::vector<int> tokens{4096, 8192};
+     std::string shapes_file, tuning_out;
+@@ -66,7 +67,6 @@ struct Best {
+ 
+ constexpr int WARMUPS = 2;
+ constexpr int REPS = 3;
+-constexpr int MAX_ALGOS = 16;
+ constexpr double REL_L2_TOL = 1e-4;
+ constexpr double MAX_ABS_TOL = 1e-2;
+ constexpr float PADDING_CANARY = 123456.25f;
+@@ -206,7 +206,7 @@ void load_shapes(Options &o) {
+ }
+ void usage(const char *p) {
+     std::printf("Usage: %s [--workspace-mib N] [--shape T,N,K]... [--case dtype,T,N,K,ldy]...\n",p);
+-    std::printf("       [--shapes-file PATH [--tokens T1,T2,...]] [--tuning-out PATH]\n");
++    std::printf("       [--shapes-file PATH [--tokens T1,T2,...]] [--tuning-out PATH] [--max-algos N]\n");
+     std::printf("Defaults: original three shapes, f16+bf16, T=8192, workspace=32 MiB.\n");
+ }
+ Options options(int argc,char **argv) {
+@@ -219,6 +219,9 @@ Options options(int argc,char **argv) {
+             std::string v=next(); char *e=nullptr; unsigned long long x=std::strtoull(v.c_str(),&e,10);
+             if(v.empty()||!e||*e||x>std::numeric_limits<size_t>::max()/(1024ULL*1024ULL)){std::fprintf(stderr,"bad workspace MiB\n");std::exit(2);}
+             o.workspace=(size_t)x*1024U*1024U;
++        } else if(a=="--max-algos") {
++            o.max_algos=positive(next(),"max algorithms");
++            if(o.max_algos>1024){std::fprintf(stderr,"max algorithms must be <= 1024\n");std::exit(2);}
+         } else if(a=="--shape") add_shape(o,next());
+         else if(a=="--case") add_case(o,next());
+         else if(a=="--shapes-file"){o.shapes_file=next();o.explicit_shapes=true;}
+@@ -267,7 +270,7 @@ void emit_best(const Best &b,size_t workspace,const std::string &arch,int versio
+ }
+ 
+ void run_case(hipblasHandle_t blas,hipblasLtHandle_t lt,const Shape&s,int case_id,size_t ws,hipStream_t stream,
+-              const std::string&arch,int version,int hipver,std::vector<Best>&bests) {
++              const std::string&arch,int version,int hipver,std::vector<Best>&bests,int max_algos) {
+     const size_t na=(size_t)s.k*s.n, nb=(size_t)s.k*s.t, out_elems=(size_t)s.ldy*s.t;
+     const hipDataType it=s.bf16?HIP_R_16BF:HIP_R_16F;
+     const hipblasOperation_t ta=HIPBLAS_OP_T,tb=HIPBLAS_OP_N;
+@@ -308,9 +311,10 @@ void run_case(hipblasHandle_t blas,hipblasLtHandle_t lt,const Shape&s,int case_i
+     std::printf("baseline dtype=%s T=%d N=%d K=%d ldy=%d padding_writes=%zu\n",dtype(s.bf16),s.t,s.n,s.k,s.ldy,baseline_padding);
+     float base_mean=(base_ms[0]+base_ms[1]+base_ms[2])/REPS;
+ 
+-    hipblasLtMatmulHeuristicResult_t hs[MAX_ALGOS]{};
++    std::vector<hipblasLtMatmulHeuristicResult_t> hs((size_t)max_algos);
+     int count=0;
+-    const hipblasStatus_t query=hipblasLtMatmulAlgoGetHeuristic(lt,op,ad,bd,cd,cd,pref,MAX_ALGOS,hs,&count);
++    const hipblasStatus_t query=hipblasLtMatmulAlgoGetHeuristic(lt,op,ad,bd,cd,cd,pref,max_algos,hs.data(),&count);
++    std::printf("heuristic_search requested=%d returned=%d\n",max_algos,count);
+     std::printf("case dtype=%s T=%d N=%d K=%d ldy=%d workspace_limit_bytes=%zu baseline=hipblasGemmEx rep1_ms=%.4f rep2_ms=%.4f rep3_ms=%.4f mean_ms=%.4f\n",
+       dtype(s.bf16),s.t,s.n,s.k,s.ldy,ws,base_ms[0],base_ms[1],base_ms[2],base_mean);
+     if(query!=HIPBLAS_STATUS_SUCCESS||count==0){
+@@ -412,7 +416,7 @@ int main(int argc,char **argv){
+       arch.c_str(),version,HIPBLASLT_VERSION_MAJOR,HIPBLASLT_VERSION_MINOR,HIPBLASLT_VERSION_PATCH,hipver);
+     hipStream_t stream=nullptr;HIP_CHECK(hipStreamCreateWithFlags(&stream,hipStreamNonBlocking));
+     std::vector<Best>bests;
+-    for(size_t i=0;i<o.shapes.size();++i)run_case(blas,lt,o.shapes[i],(int)i,o.workspace,stream,arch,version,hipver,bests);
++    for(size_t i=0;i<o.shapes.size();++i)run_case(blas,lt,o.shapes[i],(int)i,o.workspace,stream,arch,version,hipver,bests,o.max_algos);
+     tuning_file(o.tuning_out,arch,version,bests);
+     HIP_CHECK(hipStreamSynchronize(stream));HIP_CHECK(hipStreamDestroy(stream));
+     LT_CHECK(hipblasLtDestroy(lt));BLAS_CHECK(hipblasDestroy(blas));

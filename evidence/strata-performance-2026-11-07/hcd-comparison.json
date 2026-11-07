@@ -1,0 +1,44 @@
+[
+  {
+    "arm": "gpu-mmap-f16-hcd-control",
+    "prompt_tokens": 65551,
+    "cache_tokens": 0,
+    "prompt_ms": 47191.0,
+    "prompt_tps": 1389.1,
+    "gpu_timeline_ms": 47029,
+    "hc_down_silu_ms": 1897,
+    "hc_inject_ms": 694,
+    "hc_write_ms": 4015,
+    "cache_park_ms": 45.6,
+    "messages_sha256": "80856bb85ad575f43acce5ab70aa2186e63bcb05d8ddd12491eaad99d01f107d",
+    "output_sha256": "4d7b3f0d8975470ed5314443539545c349ac07d285ef773b8ccc558c303d82f3"
+  },
+  {
+    "arm": "gpu-mmap-f16-hcd-exact",
+    "prompt_tokens": 65551,
+    "cache_tokens": 0,
+    "prompt_ms": 53853.6,
+    "prompt_tps": 1217.2,
+    "gpu_timeline_ms": 47904,
+    "hc_down_silu_ms": 2042,
+    "hc_inject_ms": 708,
+    "hc_write_ms": 4223,
+    "cache_park_ms": 5829.9,
+    "messages_sha256": "80856bb85ad575f43acce5ab70aa2186e63bcb05d8ddd12491eaad99d01f107d",
+    "output_sha256": "4d7b3f0d8975470ed5314443539545c349ac07d285ef773b8ccc558c303d82f3"
+  },
+  {
+    "arm": "gpu-mmap-f16-hcd-fused",
+    "prompt_tokens": 65551,
+    "cache_tokens": 0,
+    "prompt_ms": 47406.1,
+    "prompt_tps": 1382.8,
+    "gpu_timeline_ms": 47250,
+    "hc_down_silu_ms": 2415,
+    "hc_inject_ms": 8,
+    "hc_write_ms": 4022,
+    "cache_park_ms": 40.2,
+    "messages_sha256": "80856bb85ad575f43acce5ab70aa2186e63bcb05d8ddd12491eaad99d01f107d",
+    "output_sha256": "4d7b3f0d8975470ed5314443539545c349ac07d285ef773b8ccc558c303d82f3"
+  }
+]

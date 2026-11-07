@@ -1,0 +1,246 @@
+[
+  {
+    "name": "Q4_K-Q8_0-bn64-epi0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-timing",
+      "--only=Q4_K / Q8_0"
+    ],
+    "bn": 64,
+    "variant": "0",
+    "exit_code": 0,
+    "hashes": [
+      [
+        "e48459c40501996b",
+        "c21779b658a3049c"
+      ]
+    ]
+  },
+  {
+    "name": "Q4_K-Q8_0-bn64-epi1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-timing",
+      "--only=Q4_K / Q8_0"
+    ],
+    "bn": 64,
+    "variant": "1",
+    "exit_code": 0,
+    "hashes": [
+      [
+        "e48459c40501996b",
+        "c21779b658a3049c"
+      ]
+    ]
+  },
+  {
+    "name": "Q4_K-Q8_0-bn128-epi0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-timing",
+      "--only=Q4_K / Q8_0"
+    ],
+    "bn": 128,
+    "variant": "0",
+    "exit_code": 0,
+    "hashes": [
+      [
+        "e48459c40501996b",
+        "c21779b658a3049c"
+      ]
+    ]
+  },
+  {
+    "name": "Q4_K-Q8_0-bn128-epi1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-timing",
+      "--only=Q4_K / Q8_0"
+    ],
+    "bn": 128,
+    "variant": "1",
+    "exit_code": 0,
+    "hashes": [
+      [
+        "e48459c40501996b",
+        "c21779b658a3049c"
+      ]
+    ]
+  },
+  {
+    "name": "Q5_K-Q8_0-bn64-epi0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-timing",
+      "--only=Q5_K / Q8_0"
+    ],
+    "bn": 64,
+    "variant": "0",
+    "exit_code": 0,
+    "hashes": [
+      [
+        "606a878586253128",
+        "e85d6bfcdd8e481a"
+      ]
+    ]
+  },
+  {
+    "name": "Q5_K-Q8_0-bn64-epi1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-timing",
+      "--only=Q5_K / Q8_0"
+    ],
+    "bn": 64,
+    "variant": "1",
+    "exit_code": 0,
+    "hashes": [
+      [
+        "606a878586253128",
+        "e85d6bfcdd8e481a"
+      ]
+    ]
+  },
+  {
+    "name": "Q5_K-Q8_0-bn128-epi0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-timing",
+      "--only=Q5_K / Q8_0"
+    ],
+    "bn": 128,
+    "variant": "0",
+    "exit_code": 0,
+    "hashes": [
+      [
+        "606a878586253128",
+        "e85d6bfcdd8e481a"
+      ]
+    ]
+  },
+  {
+    "name": "Q5_K-Q8_0-bn128-epi1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-timing",
+      "--only=Q5_K / Q8_0"
+    ],
+    "bn": 128,
+    "variant": "1",
+    "exit_code": 0,
+    "hashes": [
+      [
+        "606a878586253128",
+        "e85d6bfcdd8e481a"
+      ]
+    ]
+  },
+  {
+    "name": "replay-least-padding-epi0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-ref",
+      "--only=Q4_K / Q5_1",
+      "--chunks=16384"
+    ],
+    "variant": "0",
+    "ids": "/home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/least-padding.ids.i32",
+    "exit_code": 0,
+    "hashes": [
+      "1d93796a69b50cdd"
+    ],
+    "ms": [
+      "55.081"
+    ]
+  },
+  {
+    "name": "replay-least-padding-epi1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-ref",
+      "--only=Q4_K / Q5_1",
+      "--chunks=16384"
+    ],
+    "variant": "1",
+    "ids": "/home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/least-padding.ids.i32",
+    "exit_code": 0,
+    "hashes": [
+      "1d93796a69b50cdd"
+    ],
+    "ms": [
+      "53.771"
+    ]
+  },
+  {
+    "name": "replay-median-padding-epi0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-ref",
+      "--only=Q4_K / Q5_1",
+      "--chunks=16384"
+    ],
+    "variant": "0",
+    "ids": "/home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/median-padding.ids.i32",
+    "exit_code": 0,
+    "hashes": [
+      "019f42e2855f67cc"
+    ],
+    "ms": [
+      "55.743"
+    ]
+  },
+  {
+    "name": "replay-median-padding-epi1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-ref",
+      "--only=Q4_K / Q5_1",
+      "--chunks=16384"
+    ],
+    "variant": "1",
+    "ids": "/home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/median-padding.ids.i32",
+    "exit_code": 0,
+    "hashes": [
+      "019f42e2855f67cc"
+    ],
+    "ms": [
+      "54.368"
+    ]
+  },
+  {
+    "name": "replay-most-padding-epi0",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-ref",
+      "--only=Q4_K / Q5_1",
+      "--chunks=16384"
+    ],
+    "variant": "0",
+    "ids": "/home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/most-padding.ids.i32",
+    "exit_code": 0,
+    "hashes": [
+      "2d94e082fc89ce20"
+    ],
+    "ms": [
+      "56.017"
+    ]
+  },
+  {
+    "name": "replay-most-padding-epi1",
+    "argv": [
+      "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+      "--no-ref",
+      "--only=Q4_K / Q5_1",
+      "--chunks=16384"
+    ],
+    "variant": "1",
+    "ids": "/home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/most-padding.ids.i32",
+    "exit_code": 0,
+    "hashes": [
+      "2d94e082fc89ce20"
+    ],
+    "ms": [
+      "54.684"
+    ]
+  }
+]

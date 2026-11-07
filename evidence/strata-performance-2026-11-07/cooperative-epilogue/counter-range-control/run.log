@@ -1,0 +1,14 @@
+W1107 16:47:05.175637   16738 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.157849 sec
+W1107 16:47:05.188566   16738 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq.replay-control --no-ref --only=Q4_K / Q5_1 --chunks=16384' ::     0.000000 sec
+W1107 16:47:05.342503   16738 tool.cpp:3082] HSA version 1.21.0 initialized (instance=0)
+W1107 16:47:09.229212   16738 simple_timer.cpp:55] [rocprofv3] '/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq.replay-control --no-ref --only=Q4_K / Q5_1 --chunks=16384' ::     4.040645 sec
+E1107 16:47:09.237649   16738 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/cooperative-epilogue/counter-range-control/expert_kernel_trace.csv
+E1107 16:47:09.248080   16738 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/cooperative-epilogue/counter-range-control/expert_counter_collection.csv
+E1107 16:47:09.251249   16738 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-evaluation-20261107/cooperative-epilogue/counter-range-control/expert_agent_info.csv
+W1107 16:47:09.253520   16738 simple_timer.cpp:55] [rocprofv3] output generation ::     0.022756 sec
+W1107 16:47:09.253634   16738 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.022926 sec
+  (fused back to back: median 56.561 ms, min 56.177; alternating min 56.159; MMQ min 1.000)
+  fused output bits hash 507bd523cd60c84a
+Q4_K / Q5_1 - timing part: 16384 tokens x top 10 over 512 experts, one layer: MMQ path 1.000 ms, fused 56.606 ms (0.02x); fused vs MMQ rel RMS 0.000e+00 worst row 0.000e+00
+  sample of 96 pairs vs FP32 reference: MMQ rel RMS 0.000e+00 worst 0.000e+00, fused rel RMS 6.339e-03 worst 5.314e-02
+prefill fused MoE (native formats) parity passed

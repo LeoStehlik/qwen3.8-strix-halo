@@ -1,0 +1,38 @@
+{
+  "GL2C_EA_RDREQ_96B_sum": {
+    "samples": 272,
+    "nonzero": 0,
+    "min": 0.0,
+    "max": 0.0
+  },
+  "GRBM_COUNT": {
+    "samples": 272,
+    "nonzero": 0,
+    "min": 0.0,
+    "max": 0.0
+  },
+  "GRBM_GUI_ACTIVE": {
+    "samples": 272,
+    "nonzero": 0,
+    "min": 0.0,
+    "max": 0.0
+  },
+  "SQC_LDS_BANK_CONFLICT_sum": {
+    "samples": 272,
+    "nonzero": 0,
+    "min": 0.0,
+    "max": 0.0
+  },
+  "SQ_BUSY_CYCLES_avr": {
+    "samples": 272,
+    "nonzero": 272,
+    "min": 12156906.95,
+    "max": 20836562.7
+  },
+  "SQ_WAVE_CYCLES_sum": {
+    "samples": 272,
+    "nonzero": 0,
+    "min": 0.0,
+    "max": 0.0
+  }
+}
