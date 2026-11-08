@@ -1,0 +1,14 @@
+{
+  "profile_unchanged_after_trial": true,
+  "temporary_overrides_removed": true,
+  "profiling_environment_removed": true,
+  "tail_role_token": 846,
+  "boundary_checkpoint": true,
+  "unit_enabled": true,
+  "mac_health_http": 200,
+  "mac_loaded": true,
+  "mac_models_http": 200,
+  "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+  "no_openclaw_turn_sent": true,
+  "no_mac_gateway_restart": true
+}

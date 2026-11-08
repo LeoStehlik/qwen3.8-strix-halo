@@ -20,10 +20,12 @@ identical answers and passing tool/state restoration checks. Captured Discord
 requests subsequently processed **72–84% fewer input tokens**. These are cache
 savings, not a raw throughput increase or a sustained decode result.
 
-Current objective: finish cache validation, then determine whether **60–70 tok/s
-generation** is achievable before further optimization. Generation profiling is
-underway in an authorized maintenance window; Francis is using another model.
-The [handoff](handoff.md) records the exact deployment and remaining work.
+The [generation assessment](docs/STRATA-DECODE-ASSESSMENT-2026-11-08.md) is now
+complete: repeated normal runs give **41.42/40.95 tok/s at 49K** and
+**39.85/39.80 at 197K**, with matching outputs. Sustained 60–70 has no demonstrated
+path in the tested configuration; the hardware ceiling remains unproven. The
+persistent endpoint is restored. The [handoff](handoff.md) records the deployment
+and separates uncertain kernel research from validated changes.
 The [compact-weight experiment](docs/STRATA-EXPERT-COMPACT-WEIGHTS-2026-11-07.md)
 is archived: ~2.2% warm operator gain, but preparation-inclusive throughput
 loses 26.2%. Deeper kernels remain [separate research](docs/STRATA-KERNEL-RESEARCH.md).

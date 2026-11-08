@@ -152,5 +152,6 @@ verified role ID, and the [service installer](../scripts/install-strata-service.
 checks it. These preserve the existing API credential. Normal restart and crash
 recovery were tested on November 7; host reboot validation remains unperformed.
 
-Next: profile generation at realistic contexts. Sustained 60–70 tok/s has not
-been demonstrated, and this cache improvement makes no such claim.
+The subsequent [generation assessment](STRATA-DECODE-ASSESSMENT-2026-11-08.md)
+is complete: roughly 40–42 tok/s, with no demonstrated path to sustained 60–70
+under the tested configuration. This cache improvement makes no decode claim.

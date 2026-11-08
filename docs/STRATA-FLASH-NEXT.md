@@ -2,8 +2,8 @@
 
 Status on 2026-11-08: persistent authenticated API at
 `http://100.96.8.54:8083/v1`, OpenClaw provider `tiercelmoe`, alias
-`qwen-flash-next`. The user has moved Francis to another model while the local
-backend is profiled. The gateway was not restarted.
+`qwen-flash-next`. The user moved Francis to another model for profiling. That comparison
+is complete and the persistent endpoint is restored. The gateway was not restarted.
 
 Cold prefill measured 1,416 tok/s at 64K, 1,363 at 128K and 1,301 at 192K.
 The user approved a real research/tool task. Recent generation was around

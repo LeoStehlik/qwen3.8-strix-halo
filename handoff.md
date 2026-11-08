@@ -6,9 +6,10 @@ branch landing page links this active investigation; clone URLs are updated.
 
 ## Current state — November 8
 
-**Objective:** fix avoidable cache misses first, then establish whether sustained
-60–70 tok/s generation is achievable. The user switched Francis off the local
-model and explicitly reserved it for maintenance and profiling. Do not send
+**Objective and result:** avoidable cache misses are fixed; the generation
+feasibility assessment found no demonstrated path to sustained 60–70 tok/s in
+the tested configuration. The user switched Francis off the local model for
+maintenance and profiling; this comparison is now finished and serving restored. Do not send
 synthetic OpenClaw turns, restart the Mac gateway, or reboot either machine.
 
 **Cache fix promoted:** `--tail-role-token 846` in the persistent profile, in
@@ -41,12 +42,23 @@ Model/quant, 262,144 context, INT8 KV, vision, MTP window 4, all 24,576 resident
 experts, short-read 64 and stream minimum 128 remain unchanged. No source kernel
 is deployed. The updated profile/service helpers reproduce the cache setting.
 
-**Next:** normal/profiled/normal generation measurements at about 50K and 200K.
-Recent real traffic was around 41 tok/s; 60–70 is not demonstrated. Detailed GPU
-profiling disables shared-expert overlap, so its stage sums cannot be called the
-normal critical path. Do not repeat the losing MTP or prepared-weight screens
-below without a new mechanism. The [compact-weight findings](docs/STRATA-EXPERT-COMPACT-WEIGHTS-2026-11-07.md)
-and [kernel research](docs/STRATA-KERNEL-RESEARCH.md) remain archived separately.
+**Generation assessment complete:** normal/profiled/normal at 49K and 197K.
+Normal results: **41.42/40.95** and **39.85/39.80 tok/s**, respectively; all
+corresponding output hashes match. Roughly 83% of time is target verification.
+The clean 197K GPU profile attributes 33.9% of GPU time to routed experts;
+halving that entire stage would still be insufficient for 60 tok/s. The 49K
+profile suffered queue evictions and must not drive an attention rewrite.
+Detailed profiling also disables shared-expert overlap. Full
+[assessment and limits](docs/STRATA-DECODE-ASSESSMENT-2026-11-08.md).
+
+No further generation change is promoted. A positive 60–70 feasibility case has
+not emerged, but no hardware ceiling is proved. The persistent profile and unit
+are restored without profiling overrides; authenticated Mac health/model checks
+pass. Francis can return to this provider when the user chooses. Live post-fix
+OpenClaw quality and host reboot validation remain user-time checks, not claims
+made by the offline probes. The [compact-weight findings](docs/STRATA-EXPERT-COMPACT-WEIGHTS-2026-11-07.md)
+and [kernel research](docs/STRATA-KERNEL-RESEARCH.md) remain separate. Do not repeat
+the losing sweeps or start a rewrite without a distinct measured mechanism.
 
 ## November 7 experiment history
 
