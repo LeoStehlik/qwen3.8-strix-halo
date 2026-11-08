@@ -106,12 +106,11 @@ arguments both enabled and disabled:
 [Results](../evidence/openclaw-tool-surface-2026-11-08/parser-repro.json).
 These are parser/contract checks, not a live model quality test.
 
-The narrower OpenClaw fixes to develop are: keep skill search/read primitives
-directly declared, and/or recover an undeclared-name attempt with precise
-wrapper/schema feedback. Recovery should re-enter the authorized tool interface,
-not execute arbitrary XML text. That latter change would help other deferred
-tools as well. Test permission boundaries, quoted XML, unknown names, malformed
-arguments, retry limits and the actual model before deployment.
+Upstream already has fixes for both misleading skill guidance and recovery of
+deferred tool calls returned as text; see the version check below. Prefer
+validating those fixes before developing another workaround. They preserve the
+compact tool interface and route recovery through native tool calling rather
+than executing XML text. No duplicate PR is being prepared.
 
 The installed schema accepts `tools.toolSearch=false`, but it is a global switch;
 the per-agent tool schema has no `toolSearch` field and this version has no
@@ -120,3 +119,46 @@ changes other agents' prompts. It was not applied as part of this investigation.
 
 No live configuration, prompt, kernel, model, service or gateway was changed.
 No message was sent to Discord/Telegram and no synthetic OpenClaw turn was run.
+
+## Upstream fixes and release boundary — checked November 8
+
+The upstream report [#183085](https://github.com/openclaw/openclaw/issues/183085)
+describes the same model/backend combination and hidden skill calls returning
+as plain XML text. Two relevant fixes are already merged:
+
+- [#184133](https://github.com/openclaw/openclaw/pull/184133), merged October 27:
+  skill instructions use the actual Tool Search dispatcher when the named skill
+  tool is deferred. The examples include the correct nested `id`/`args` shape
+  and the reader's `name` argument. Directly callable tools retain direct syntax.
+- [#183165](https://github.com/openclaw/openclaw/pull/183165), merged October 27:
+  terminal text-call detection considers authorized deferred capability names as
+  well as directly visible names. Such attempts enter the existing bounded
+  native correction path. Detection does not execute text or broaden the live
+  tool execution allowlist.
+
+Source inspection, rather than release dates alone, gives this matrix:
+
+| Version | Dispatcher-aware skill guidance | Deferred-name text-call recovery |
+| --- | --- | --- |
+| Installed 2026.10.9 (`8b18b5578f66`) | Missing | Missing |
+| Latest stable tag `v2026.11.1` | Missing | Missing |
+| Prerelease tag `v2026.11.5-beta.1` | Present | Present |
+| Main at `9fb5cdc3039a` | Present | Present |
+
+Tagged source checked:
+[stable guidance](https://github.com/openclaw/openclaw/blob/v2026.11.1/src/agents/system-prompt-skills.ts),
+[stable recovery](https://github.com/openclaw/openclaw/blob/v2026.11.1/src/agents/embedded-agent-runner/run/attempt-result.ts),
+[beta guidance](https://github.com/openclaw/openclaw/blob/v2026.11.5-beta.1/src/agents/system-prompt-skills.ts),
+[beta recovery](https://github.com/openclaw/openclaw/blob/v2026.11.5-beta.1/src/agents/embedded-agent-runner/run/attempt-result.ts).
+The installed package was checked separately. The beta is a candidate for
+validation, not a verified fix on this deployment. No beta package was installed
+or tested here. A stable-only upgrade to the checked tag would not include these
+two changes.
+
+The remaining useful check is the actual OpenClaw-to-Strata route on a build
+containing both fixes: inspect the generated skill instructions, verify exact
+structured search/read arguments and tool-result continuation, and exercise a
+text-call response to verify bounded correction. Preserve the permission and
+undeclared-name checks. Our 36 offline parser checks establish the provider
+contract; they do not establish that the live model will recover on the fixed
+OpenClaw build. A new regression PR would need a reproduced gap after that check.
