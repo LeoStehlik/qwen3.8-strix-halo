@@ -108,7 +108,8 @@ own timestamps. This list describes actions already taken, not commands to repea
    with `hip` and then auto-detection passed. This was not an engine load test.
 8. Published the install/launch scripts, tool smoke check, long-prefill probe,
    expected target hashes and engine evidence on branch
-   `deploy/strata-flash-next-20261106`. Shell/Python syntax and launch-plan checks
+   `deploy/strata-flash-next-20261106` (subsequently merged into `main` and retired).
+   Shell/Python syntax and launch-plan checks
    passed; no model-based test has run.
 9. Found the existing GPU limit was 61,905,670,144 bytes of GTT, with TTM limits
    15,113,689 pages and an 8 GiB BIOS carve-out. The published benchmark used
@@ -143,7 +144,7 @@ own timestamps. This list describes actions already taken, not commands to repea
 | Purpose | Location / value |
 |---|---|
 | Deployment worktree | `/home/less/worktrees/qwen38-strata-20261106` |
-| Git branch | `deploy/strata-flash-next-20261106` |
+| Git branch at this historical checkpoint | `deploy/strata-flash-next-20261106` (now merged into `main` and retired) |
 | Strata command | `/home/less/.local/bin/strata` |
 | Terminal bundle | `/home/less/.local/share/strata/terminal/0.1.57` |
 | Engine bundle | `/home/less/.local/share/strata/components/engine/0.1.57-linux-x86_64-hip-halo` |

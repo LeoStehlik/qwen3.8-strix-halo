@@ -1,5 +1,11 @@
 # Experimental Qwen3.6 35B-A3B ROCmFP4/MTP fast path
 
+**Historical deployment snapshot, 2026-10-31.** Current Qwen3.6 source patches,
+64K prefill measurements, validation decisions and operational state are now
+maintained in the separate
+[Qwen3.6 Strix Halo repository](https://github.com/LeoStehlik/qwen3.6-35b-a3b-strix-halo),
+including its [Francis handoff](https://github.com/LeoStehlik/qwen3.6-35b-a3b-strix-halo/blob/main/handoff.md).
+
 This is the high-throughput companion to the Qwen3.8 Q4/Q5 deployment. It uses
 Strix-specific Vulkan ROCmFP4 kernels and the model's native MTP head. It is a
 separate runtime and API endpoint because the ROCmFP4 tensor type is not

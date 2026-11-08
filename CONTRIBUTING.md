@@ -1,5 +1,10 @@
 # Contributing
 
+`main` is the canonical branch for deployment scripts, documentation and experiment
+evidence. Merge completed work into `main` and retire its topic branch. Keep
+experimental code and measured results clearly labelled in `experiments/` and
+`evidence/`; merging research does not promote it into the serving deployment.
+
 Benchmark contributions are welcome when they are reproducible. Include:
 
 - Hardware, installed memory and power policy

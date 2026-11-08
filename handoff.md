@@ -1,8 +1,9 @@
 # Handoff for Francis — Flash-Next cache and generation investigation, 2026-11-08
 
 Repository: [Qwen3.8 inference on Strix Halo](https://github.com/LeoStehlik/qwen3.8-strix-halo),
-renamed from the earlier 27B/DFlash2-specific name on 7 November. The default
-branch landing page links this active investigation; clone URLs are updated.
+renamed from the earlier 27B/DFlash2-specific name on 7 November. `main` is the
+canonical branch for deployment, experiments, evidence and this handoff. Completed
+topic branches were consolidated into `main` and retired on 8 November.
 
 ## Latest incident — compact tool calls, November 8
 
@@ -447,9 +448,11 @@ its model alias were changed; agent defaults and current session selections were
 not. Do not restart/reboot the Mac or send synthetic agent/channel turns.
 The user can select the new alias after the private listener is restored.
 
-Implementation worktree: `/home/less/worktrees/qwen38-strata-20261106`, branch
-`investigate/strata-performance-20261107` (branched from deployment commit
-`92c5521`). Current local results:
+Implementation and evidence are on `main`. The local worktree
+`/home/less/worktrees/qwen38-strata-20261106` was synchronized to the consolidated
+`main` commit on 8 November and retained in detached state for existing runtime
+paths. Make future repository changes on `main` in `/home/less/qwen38-dflash2`.
+Current local results:
 `~/.cache/strata-evaluation-20261107/`; public synthetic evidence:
 `evidence/strata-2026-11-07/`. Model data: `~/models/strata-flash-next/`.
 Config and engine log: `~/.local/share/strata/flash-next/`.
@@ -477,6 +480,7 @@ model/context; judge useful task completion, not isolated throughput alone.
 
 Local raw evidence: `~/.cache/qwen38-return-20261105/`; historical comparison:
 `~/.cache/qwen38-ubatch-compare.fp9Hef/`. Public evidence excludes user transcripts.
-That profiling work is isolated in `/home/less/worktrees/qwen38-prefill-analysis-20261105` on
-`investigate/dense-prefill-20261105`; no source changes or deployment replacement
-were made by the profiling investigation. The diagnostic listener is stopped.
+That profiling work is archived on `main`; its local worktree at
+`/home/less/worktrees/qwen38-prefill-analysis-20261105` was synchronized to the
+consolidated commit and retained in detached state. The profiling investigation
+made no source changes or deployment replacement. The diagnostic listener is stopped.

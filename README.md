@@ -5,6 +5,19 @@ This repository covers Strata and llama.cpp deployments, long-context
 performance experiments, and OpenClaw integration. It includes both the
 current Flash-Next work and the earlier 27B/DFlash2 deployment.
 
+## Current work: Flash-Next on Strata
+
+`main` is the canonical branch for deployment, performance evidence and the
+Francis handoff. The completed deployment and investigation branches have been
+consolidated here and retired.
+
+- [Flash-Next deployment guide](docs/STRATA-FLASH-NEXT.md)
+- [Current handoff and serving state](handoff.md)
+- [Performance objectives and evidence](docs/STRATA-NEXT-TARGETS-2026-11-07.md)
+
+The earlier 27B/DFlash2 setup remains documented below and in its installation
+guide. Use the Strata guide above for Flash-Next.
+
 ## Current direction — 2026-11-08
 
 The packaged Flash-Next deployment is persistent and enabled at boot, with a
@@ -256,6 +269,12 @@ AMD MXFP4/DFlash2 comparison without changing the known-good Vulkan service.
 The [experimental Qwen3.6 ROCmFP4/MTP fast path](docs/QWEN36-ROCMFP4-MTP.md)
 records the separate Strix-specific MoE deployment that reached 101 tok/s at
 32K depth and supports tools, vision, streaming, and RAM prefix restoration.
+
+Current Qwen3.6 development now lives in the separate
+[Qwen3.6 35B-A3B Strix Halo repository](https://github.com/LeoStehlik/qwen3.6-35b-a3b-strix-halo).
+It contains the ordered source patches, 64K prefill experiments, validation
+limits, deployment instructions, and [Francis handoff](https://github.com/LeoStehlik/qwen3.6-35b-a3b-strix-halo/blob/main/handoff.md).
+The Qwen3.6 page here remains the historical 2026-10-31 deployment snapshot.
 
 ## Repository contents
 
