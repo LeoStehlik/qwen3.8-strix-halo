@@ -1,0 +1,37 @@
+[Unit]
+Description=Strata Flash-Next pinned HIP-Halo OpenClaw endpoint
+After=network-online.target
+# Tailscale or the GPU may become available after the user manager starts.
+StartLimitIntervalSec=0
+
+[Service]
+Type=exec
+WorkingDirectory=%h/.local/share/strata/flash-next
+Environment=STRATA_INSTALL_DIR=%h/.local/share/strata/flash-next
+Environment=STRATA_NO_HANDOVER=1
+Environment=PYTHONNOUSERSITE=1
+Environment=STRATA_ROUTE_TAIL_SKIP=0
+Environment=STRATA_PF_FUSED=1
+Environment=STRATA_PF_FUSED_KQ=1
+Environment=STRATA_PF_GEMM=1
+Environment=STRATA_HC_UPMIX=1
+Environment=STRATA_PA_FAST=1
+Environment=STRATA_HIP_WMMA=1
+Environment=STRATA_SELECT_WMMA=1
+Environment=STRATA_PF_SWITCH_MIN_T=4096
+Environment=STRATA_PREFILL_STREAM_MIN=128
+Environment=STRATA_VERIFY_EARLY_PLE_FLAG=1
+Environment=STRATA_PF_F16=1
+Environment=STRATA_CACHE_MESSAGE_BOUNDARY=1
+ExecStart=%h/.local/share/strata/terminal/0.1.57/bin/strata serve --profile %h/.local/share/strata/flash-next/strata-known-good.json
+ExecStartPost=/usr/bin/python3 %h/.local/libexec/strata-ready.py --profile %h/.local/share/strata/flash-next/strata-known-good.json --timeout 240
+Restart=always
+RestartSec=10
+TimeoutStartSec=300
+TimeoutStopSec=45
+KillMode=control-group
+LimitNOFILE=1048576
+UMask=0077
+
+[Install]
+WantedBy=default.target

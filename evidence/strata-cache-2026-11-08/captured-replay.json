@@ -1,0 +1,81 @@
+{
+  "protocol": "captured-wire-cache-replay-v1",
+  "real_tools_executed": false,
+  "output_limit_probe_only": 8,
+  "quality_claim": false,
+  "rows": [
+    {
+      "capture_index": 6,
+      "original_file_sha256": "637cf721de34638cfc636aae3da95d9bc3dc5fb3ebb53f2a0c20a391f3c739a2",
+      "prompt_tokens": 107425,
+      "reused": 0,
+      "fresh": 107425,
+      "common_prefix_with_prior_replay": null,
+      "expected_reusable_boundary": null,
+      "elapsed_s": 88.96858733000408,
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 107425,
+        "prompt_ms": 87708.4,
+        "prompt_per_token_ms": 0.816,
+        "prompt_per_second": 1224.8,
+        "predicted_n": 8,
+        "predicted_ms": 318.6,
+        "predicted_per_token_ms": 39.825,
+        "predicted_per_second": 25.1,
+        "draft_n": 8,
+        "draft_n_accepted": 4
+      },
+      "finish_reason": "length"
+    },
+    {
+      "capture_index": 8,
+      "original_file_sha256": "48c5747870d2408c0dc0798cd39df128e539de47214385dc36c185a53319f5d6",
+      "prompt_tokens": 108872,
+      "reused": 105745,
+      "fresh": 3127,
+      "common_prefix_with_prior_replay": 105746,
+      "expected_reusable_boundary": 105745,
+      "elapsed_s": 8.283638421009528,
+      "timings": {
+        "cache_n": 105745,
+        "prompt_n": 3127,
+        "prompt_ms": 7932.4,
+        "prompt_per_token_ms": 2.537,
+        "prompt_per_second": 394.2,
+        "predicted_n": 8,
+        "predicted_ms": 298.8,
+        "predicted_per_token_ms": 37.35,
+        "predicted_per_second": 26.8,
+        "draft_n": 6,
+        "draft_n_accepted": 2
+      },
+      "finish_reason": "length"
+    },
+    {
+      "capture_index": 10,
+      "original_file_sha256": "b1bd0755e1b2a56f0962a5309e757f9cc60cea20561e9167ebc922cf8ba26fb3",
+      "prompt_tokens": 109744,
+      "reused": 107781,
+      "fresh": 1963,
+      "common_prefix_with_prior_replay": 107782,
+      "expected_reusable_boundary": 107781,
+      "elapsed_s": 4.733125116996234,
+      "timings": {
+        "cache_n": 107781,
+        "prompt_n": 1963,
+        "prompt_ms": 4401.4,
+        "prompt_per_token_ms": 2.242,
+        "prompt_per_second": 446.0,
+        "predicted_n": 8,
+        "predicted_ms": 285.5,
+        "predicted_per_token_ms": 35.688,
+        "predicted_per_second": 28.0,
+        "draft_n": 10,
+        "draft_n_accepted": 3
+      },
+      "finish_reason": "length"
+    }
+  ],
+  "passed": true
+}

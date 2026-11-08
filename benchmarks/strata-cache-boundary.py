@@ -48,10 +48,15 @@ def main():
     ap.add_argument('--modes', nargs='+', choices=['moving', 'fixed'], default=['moving', 'fixed'])
     ap.add_argument('--runtime-padding-rows', type=int, default=0,
                     help='Additional inert rows in the transient final message')
+    ap.add_argument('--reference-rows', type=int, default=1050,
+                    help='Stable system-reference rows (raise only within the model context)')
+    ap.add_argument('--history-rows', type=int, default=120,
+                    help='Stable history rows; larger fixtures exercise checkpoint retention')
     ap.add_argument('--host-metrics', action='store_true', help='Record Linux VM/KFD counters per request')
     args = ap.parse_args()
     assert 2 <= args.turns <= 8
     assert 0 <= args.runtime_padding_rows <= 200
+    assert 1 <= args.reference_rows <= 12000 and 1 <= args.history_rows <= 12000
     sys.path[:0] = [str(args.terminal), str(args.terminal / 'tools')]
     from serve.frontend import ChatTemplate, openai_to_messages
     from strata_tokenizer import Tokenizer
@@ -68,8 +73,8 @@ def main():
               'description': 'Look up a public record.', 'parameters': {
                   'type': 'object', 'properties': {'sequence': {'type': 'integer'}},
                   'required': ['sequence']}}}]
-    reference = ''.join(f'Reference row {i:05d}: alpha beta gamma delta epsilon.\n' for i in range(1050))
-    history = ''.join(f'History row {i:05d}: red green blue yellow.\n' for i in range(120))
+    reference = ''.join(f'Reference row {i:05d}: alpha beta gamma delta epsilon.\n' for i in range(args.reference_rows))
+    history = ''.join(f'History row {i:05d}: red green blue yellow.\n' for i in range(args.history_rows))
     carrier = {'role': 'user', 'content': 'OpenClaw runtime context:\n'
                'This is transient context for a public backend replay. Answer the original request '
                'using the latest lookup result. Return only the JSON object.\nEnd runtime context.'}
@@ -83,6 +88,7 @@ def main():
     report = {'protocol': 'strata-message-boundary-v2', 'seed': args.seed,
               'synthetic': True, 'offline': args.offline,
               'runtime_padding_rows': args.runtime_padding_rows, 'runs': [], 'completed': False}
+    report.update(reference_rows=args.reference_rows, history_rows=args.history_rows)
 
     def save():
         args.out.parent.mkdir(parents=True, exist_ok=True)

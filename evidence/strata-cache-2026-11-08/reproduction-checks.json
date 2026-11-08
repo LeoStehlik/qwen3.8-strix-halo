@@ -1,0 +1,8 @@
+{
+  "private_profile_engine_options_match": true,
+  "credential_preserved": true,
+  "profile_mode": "0600",
+  "offline_trial_preparation_with_promoted_profile": "passed using pinned Terminal Python",
+  "wire_capture_integrity_unit_tests": 6,
+  "note": "System Python lacks the bundled regex dependency; use pinned Terminal Python for tokenizer-dependent scripts."
+}

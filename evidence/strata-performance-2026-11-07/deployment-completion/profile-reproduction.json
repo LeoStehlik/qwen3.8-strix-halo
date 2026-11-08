@@ -1,0 +1,7 @@
+{
+  "all_engine_options_match": true,
+  "credentials_preserved": true,
+  "vision_preserved": true,
+  "mode": "0600",
+  "initial_attempt": "Unauthenticated installer profile correctly rejected; repeated with explicit private credentials profile."
+}

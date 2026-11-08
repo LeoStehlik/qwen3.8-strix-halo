@@ -5,7 +5,30 @@ This repository covers Strata and llama.cpp deployments, long-context
 performance experiments, and OpenClaw integration. It includes both the
 current Flash-Next work and the earlier 27B/DFlash2 deployment.
 
-## Current direction — 2026-11-07
+## Current direction — 2026-11-08
+
+The packaged Flash-Next deployment is persistent and enabled at boot, with a
+pinned engine and automatic crash recovery. Normal restart took 87.3 seconds;
+forced-process recovery took 96.3 seconds. Host reboot validation remains open.
+No experimental source kernel is serving.
+
+The [cache investigation](docs/STRATA-CACHE-MISSES-2026-11-08.md) found and fixed
+avoidable rereading of changing OpenClaw runtime messages. The existing
+`--tail-role-token 846` option preserved the needed history checkpoint. Public
+control/candidate/control tests reduced follow-up time by **28–42%**, with
+identical answers and passing tool/state restoration checks. Captured Discord
+requests subsequently processed **72–84% fewer input tokens**. These are cache
+savings, not a raw throughput increase or a sustained decode result.
+
+Current objective: finish cache validation, then determine whether **60–70 tok/s
+generation** is achievable before further optimization. Generation profiling is
+underway in an authorized maintenance window; Francis is using another model.
+The [handoff](handoff.md) records the exact deployment and remaining work.
+The [compact-weight experiment](docs/STRATA-EXPERT-COMPACT-WEIGHTS-2026-11-07.md)
+is archived: ~2.2% warm operator gain, but preparation-inclusive throughput
+loses 26.2%. Deeper kernels remain [separate research](docs/STRATA-KERNEL-RESEARCH.md).
+
+### Earlier November 7 experiments
 
 **Bounded follow-up authorized; retain the working baseline.** The higher target
 of 1,700–2,000 tok/s prefill and 50–70 tok/s generation remains unmet; the
@@ -38,9 +61,9 @@ Read the [updated objective](docs/STRATA-NEXT-TARGETS-2026-11-07.md).
 The latest [projection-padding screen](docs/STRATA-PROJECTION-PADDING-2026-11-07.md)
 measured a 3–4% benefit over explicitly disabling padding, with matching
 outputs. **Correction:** padding was already enabled by Strata's hardware
-defaults in our serving baseline; this is an ablation, not a new gain. The independent
-[boundary-checkpoint option](docs/STRATA-CACHE-LIVE-TRIAL-2026-11-07.md) is in
-a live trial. See the handoff for the actual serving configuration.
+defaults in our serving baseline; this is an ablation, not a new gain. The initial
+[boundary-checkpoint trial](docs/STRATA-CACHE-LIVE-TRIAL-2026-11-07.md) was
+superseded by the November 8 cache investigation above.
 
 The expert-dispatch experiment was slower and is rejected with
 [code and evidence](experiments/strata-f16-persistent-dispatch/README.md).
@@ -53,8 +76,8 @@ Flash-Next UD-Q4_K_XL was deployed on packaged Strata v0.2.11 / HIP-Halo 0.1.57
 and connected to OpenClaw's existing `tiercelmoe` provider. For the live preview, select
 `/model qwen-flash-next`. The authenticated private API is
 `http://100.96.8.54:8083/v1`, with 262,144 context, INT8 KV, MTP and vision enabled.
-The Strata unit is serving the live preview and remains disabled at boot;
-the old dense 27B service is also stopped and disabled,
+The Strata unit is enabled at boot with automatic restart;
+the old dense 27B service remains stopped and disabled,
 with all files retained for rollback.
 
 Direct generation, exact tool/result continuation, streaming from the Mac mini

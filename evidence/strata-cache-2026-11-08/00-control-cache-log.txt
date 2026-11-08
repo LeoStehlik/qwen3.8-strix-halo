@@ -1,0 +1,39 @@
+strata trace: checkpoint at 218: sync 0.0 ms, save 23.7 ms (1 stage(s))
+strata serve: prompt 225 tokens = 0 reused + 225 read in 5944 ms (37.9 tok/s), 2 generated in 109 ms (18.3 tok/s), drafts accepted 0 of 3, 1 checkpoints
+strata serve: conversation cache: parked 226 tokens in 41.4 ms; parked=1 bytes=239613192 evictions=0 snapshot_bytes=239613192 reused_kv_bytes=0
+strata trace: checkpoint at 16384: sync 0.0 ms, save 39.2 ms (1 stage(s))
+strata trace: checkpoint at 16853: sync 0.0 ms, save 39.1 ms (1 stage(s))
+strata trace: checkpoint at 33237: sync 0.0 ms, save 42.0 ms (1 stage(s))
+strata trace: checkpoint at 49621: sync 0.0 ms, save 41.5 ms (1 stage(s))
+strata trace: checkpoint at 66005: sync 0.0 ms, save 40.4 ms (1 stage(s))
+strata trace: checkpoint at 68264: sync 0.0 ms, save 39.9 ms (1 stage(s))
+strata serve: message boundary checkpoint: 68264 tokens, 267 tail
+strata trace: checkpoint at 68531: sync 0.0 ms, save 38.9 ms (1 stage(s))
+strata trace: checkpoint at 68531: 1 evicted in 6.0 ms
+strata serve: prompt 68538 tokens = 0 reused + 68538 read in 50931 ms (1345.7 tok/s), 45 generated in 808 ms (55.7 tok/s), drafts accepted 32 of 35, 6 checkpoints
+strata serve: conversation cache: parked 68582 tokens in 310.9 ms; parked=2 bytes=2114205772 evictions=0 snapshot_bytes=1874592580 reused_kv_bytes=0
+strata trace: checkpoint at 70133: sync 0.0 ms, save 38.6 ms (1 stage(s))
+strata serve: message boundary checkpoint: 70133 tokens, 267 tail
+strata trace: checkpoint at 70400: sync 0.0 ms, save 38.4 ms (1 stage(s))
+strata trace: checkpoint at 70400: 1 evicted in 5.1 ms
+strata serve: prompt 70407 tokens = 66005 reused + 4402 read in 4339 ms (1014.4 tok/s), 46 generated in 777 ms (59.2 tok/s), drafts accepted 34 of 35, 6 checkpoints
+strata serve: conversation cache: parked 70452 tokens in 326.8 ms; parked=3 bytes=4017332604 evictions=0 snapshot_bytes=1903126832 reused_kv_bytes=0
+strata trace: checkpoint at 72003: sync 0.0 ms, save 39.4 ms (1 stage(s))
+strata serve: message boundary checkpoint: 72003 tokens, 267 tail
+strata trace: checkpoint at 72270: sync 0.0 ms, save 38.3 ms (1 stage(s))
+strata trace: checkpoint at 72270: 1 evicted in 5.1 ms
+strata serve: prompt 72277 tokens = 66005 reused + 6272 read in 5925 ms (1058.5 tok/s), 47 generated in 949 ms (49.5 tok/s), drafts accepted 33 of 43, 6 checkpoints
+strata serve: conversation cache: parked 72323 tokens in 931.0 ms; parked=4 bytes=5949042464 evictions=0 snapshot_bytes=1931709860 reused_kv_bytes=0
+strata trace: checkpoint at 16384: sync 0.0 ms, save 40.2 ms (1 stage(s))
+strata trace: checkpoint at 16852: sync 0.0 ms, save 39.0 ms (1 stage(s))
+strata trace: checkpoint at 33236: sync 0.0 ms, save 42.2 ms (1 stage(s))
+strata trace: checkpoint at 49620: sync 0.0 ms, save 40.0 ms (1 stage(s))
+strata trace: checkpoint at 66004: sync 0.0 ms, save 38.9 ms (1 stage(s))
+strata trace: checkpoint at 69427: sync 0.0 ms, save 39.2 ms (1 stage(s))
+strata serve: prompt 69434 tokens = 0 reused + 69434 read in 52666 ms (1318.4 tok/s), 46 generated in 824 ms (55.8 tok/s), drafts accepted 33 of 37, 6 checkpoints
+strata serve: conversation cache: parked 69479 tokens in 209.8 ms; parked=3 bytes=5723112972 evictions=2 snapshot_bytes=1888276280 reused_kv_bytes=0
+strata trace: checkpoint at 71295: sync 0.0 ms, save 38.0 ms (1 stage(s))
+strata serve: prompt 71302 tokens = 66004 reused + 5298 read in 4700 ms (1127.1 tok/s), 45 generated in 852 ms (52.8 tok/s), drafts accepted 31 of 37, 6 checkpoints
+strata serve: conversation cache: parked 71346 tokens in 199.3 ms; parked=3 bytes=5736790512 evictions=3 snapshot_bytes=1916804372 reused_kv_bytes=0
+strata trace: checkpoint at 73160: sync 0.0 ms, save 37.8 ms (1 stage(s))
+strata serve: prompt 73167 tokens = 66004 reused + 7163 read in 5882 ms (1217.8 tok/s), 42 generated in 826 ms (50.8 tok/s), drafts accepted 29 of 36, 6 checkpoints

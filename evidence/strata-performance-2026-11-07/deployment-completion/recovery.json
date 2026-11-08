@@ -1,0 +1,29 @@
+{
+  "started_utc": "2026-11-07T22:44:54.534051+00:00",
+  "before": {
+    "ActiveState": "active",
+    "SubState": "running",
+    "MainPID": "46164",
+    "NRestarts": "0"
+  },
+  "requests_before": 4,
+  "signal": "SIGKILL to service main process only",
+  "completed": true,
+  "after": {
+    "ActiveState": "active",
+    "SubState": "running",
+    "MainPID": "46457",
+    "NRestarts": "1"
+  },
+  "health": {
+    "status": "ok",
+    "max_context": 262144,
+    "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+    "images": true,
+    "api_key": true,
+    "image_generation": false,
+    "loaded": true,
+    "service": "strata"
+  },
+  "elapsed_s": 96.34859622099975
+}

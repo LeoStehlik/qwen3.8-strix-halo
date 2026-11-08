@@ -1,8 +1,57 @@
-# Handoff for Francis — Flash-Next performance investigation, 2026-11-07
+# Handoff for Francis — Flash-Next cache and generation investigation, 2026-11-08
 
 Repository: [Qwen3.8 inference on Strix Halo](https://github.com/LeoStehlik/qwen3.8-strix-halo),
 renamed from the earlier 27B/DFlash2-specific name on 7 November. The default
 branch landing page links this active investigation; clone URLs are updated.
+
+## Current state — November 8
+
+**Objective:** fix avoidable cache misses first, then establish whether sustained
+60–70 tok/s generation is achievable. The user switched Francis off the local
+model and explicitly reserved it for maintenance and profiling. Do not send
+synthetic OpenClaw turns, restart the Mac gateway, or reboot either machine.
+
+**Cache fix promoted:** `--tail-role-token 846` in the persistent profile, in
+addition to `STRATA_CACHE_MESSAGE_BOUNDARY=1`. It preserves the checkpoint before
+OpenClaw's changing final user-role runtime carrier, including carriers longer
+than 1,024 tokens. The exact tokenizer and start-position effort template matter.
+[Full diagnosis, controls and limits](docs/STRATA-CACHE-MISSES-2026-11-08.md).
+
+- Public control/candidate/control: 28–42% shorter follow-ups; all 18 canaries and
+  corresponding output hashes match. Exact tool arguments/result continuation
+  and interleaved state restoration pass.
+- Captured Discord request replay: reuse advances to 105,745 then 107,781 tokens,
+  instead of staying at 97,678. Fresh input falls 72–84%. These eight-token probes
+  execute no real tools and establish no answer-quality/decode-speed claim.
+- Authorized instruction edits and different background prompts legitimately
+  invalidate prefixes. Preserve them. The older 230K session's exact miss cause
+  remains unproven because its complete wire prompts were not captured.
+- The user-reported 10:55/11:00 local Discord timeouts were connection refusals
+  during our maintenance, not a demonstrated model generation hang.
+
+**Persistent deployment:** enabled systemd user unit, Linger=yes, pinned packaged
+engine, `Restart=always`, readiness check, no experiment override in steady state.
+Private profile: `~/.local/share/strata/flash-next/strata-known-good.json`.
+Normal restart 87.3 s and forced-process recovery 96.3 s passed on November 7.
+[Evidence](evidence/strata-performance-2026-11-07/deployment-completion/).
+Host reboot validation remains unperformed. Local profiling temporarily redirects
+serving to loopback and restores the persistent profile in `finally`.
+
+Model/quant, 262,144 context, INT8 KV, vision, MTP window 4, all 24,576 resident
+experts, short-read 64 and stream minimum 128 remain unchanged. No source kernel
+is deployed. The updated profile/service helpers reproduce the cache setting.
+
+**Next:** normal/profiled/normal generation measurements at about 50K and 200K.
+Recent real traffic was around 41 tok/s; 60–70 is not demonstrated. Detailed GPU
+profiling disables shared-expert overlap, so its stage sums cannot be called the
+normal critical path. Do not repeat the losing MTP or prepared-weight screens
+below without a new mechanism. The [compact-weight findings](docs/STRATA-EXPERT-COMPACT-WEIGHTS-2026-11-07.md)
+and [kernel research](docs/STRATA-KERNEL-RESEARCH.md) remain archived separately.
+
+## November 7 experiment history
+
+The following restoration times and trial statuses are historical. The current
+persistent state and November 8 objective above supersede them.
 
 **The user authorized the bounded follow-up proposed at the stopping checkpoint.**
 Latest: the [prepared FP16 weight prototype](docs/STRATA-EXPERT-PREPARED-WEIGHTS-2026-11-07.md)
@@ -28,9 +77,8 @@ original quantized copies remain for decode. An 8 GiB selective cache, ranked
 on the first full chunk, covers 23.2% of routed rows in the next three chunks;
 16 GiB covers 34.5%. This is one repeated-source fixture, not a measured time
 saving or a safe live allocation recommendation. The later direct FP16 kernel
-screen above failed; no cache manager has been built. A compact representation
-or a different load pipeline remains untested and needs an independent operator
-win before any cache integration. Spare capacity alone has not delivered speed.
+screen above failed; no cache manager has been built. The later compact representation has a small warm operator win but loses with
+preparation included; see the current finding above. No cache integration follows. Spare capacity alone has not delivered speed.
 
 The [MTP 4/6/8/4 comparison](docs/STRATA-MTP-WINDOW-2026-11-07.md) found no
 reliable generation improvement. Window 4 and the original runtime override
@@ -54,7 +102,7 @@ remains unproven. Do not repeat these losing screens or silently promote the
 small earlier operator candidates. Further kernel work needs a different
 mechanism and a new bounded experiment; no 100–200 / 10–20 tok/s gain emerged.
 
-**Current live state, last restored at 21:59:11 UTC:** the packaged optimized endpoint has
+**Historical trial state, restored November 7 at 21:59:11 UTC:** the packaged optimized endpoint has
 `STRATA_CACHE_MESSAGE_BOUNDARY=1` for a [limited live trial](docs/STRATA-CACHE-LIVE-TRIAL-2026-11-07.md).
 Short-read remains 64 and stream minimum 128; no experimental source kernel
 or tracing is serving. Health and actual-process flags were verified, and the
@@ -329,17 +377,17 @@ Both agents' live `models.list` **default/allowed** views now include Flash-Next
 The gateway was not restarted. Reopen an already-sent chat model menu to refresh it.
 See the [policy check evidence](evidence/strata-2026-11-07/openclaw-picker-policy.json).
 
-## Current listener and resources
+## Persistent listener and resources
 
 - API for the live preview (loaded, Mac access verified): `http://100.96.8.54:8083/v1`, Tailscale
   address only, existing provider credential required.
 - Model: `qwen3.8-flash-next-unsloth-ud-q4_k_xl`.
-- Unit: `strata-flash-next.service`, serving the live preview on 8083, disabled at boot. Automatic systemd restart
-  after failure remains off. Boot validation for this unit is pending.
+- Unit: `strata-flash-next.service`, enabled at boot with `Restart=always` and
+  a loaded-engine readiness check. Normal/crash recovery passed; host reboot validation remains open.
 - Strata v0.2.11, engine/control 0.1.57, signed HIP-Halo build `0bdcef4682c5+rocm`.
 - Context 262,144, INT8 KV, one slot, MTP depth 4, prefill 16,384, GPU vision.
 - Route-tail skipping explicitly off; bundled gfx1151 hipBLASLt tuning active.
-- Current experimental memory layout: all 24,576 experts / 71.73 GiB in the GPU
+- Promoted memory layout: all 24,576 experts / 71.73 GiB in the GPU
   cache, no host expert arena, full GPU KV, own prefill scratch, mmap PLE.
   Model quantization and 262,144 context capacity are unchanged.
 - Roughly 17–20 GiB system RAM available during large-context tests.

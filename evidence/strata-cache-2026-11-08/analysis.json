@@ -1,0 +1,104 @@
+{
+  "protocol": "tail-role-analysis-v1",
+  "cases": [
+    {
+      "padding_rows": 16,
+      "arms": [
+        {
+          "cached_tokens": [
+            0,
+            66005,
+            66005
+          ],
+          "cold_s": 51.83914099499816,
+          "continuation_s": 12.036202616000082,
+          "continuation_prefill_ms": 10264.8,
+          "fresh_continuation_tokens": 10674,
+          "whole_case_s": 63.87534361099824
+        },
+        {
+          "cached_tokens": [
+            0,
+            68264,
+            70133
+          ],
+          "cold_s": 50.34261200300534,
+          "continuation_s": 7.457895203988301,
+          "continuation_prefill_ms": 5702.0,
+          "fresh_continuation_tokens": 4287,
+          "whole_case_s": 57.80050720699364
+        },
+        {
+          "cached_tokens": [
+            0,
+            66005,
+            66005
+          ],
+          "cold_s": 51.04171246899932,
+          "continuation_s": 13.660220482997829,
+          "continuation_prefill_ms": 11873.5,
+          "fresh_continuation_tokens": 10674,
+          "whole_case_s": 64.70193295199715
+        }
+      ],
+      "continuation_seconds_saved_vs_control_mean": 5.390316345510655,
+      "continuation_time_reduction_percent": 41.953826217321755
+    },
+    {
+      "padding_rows": 80,
+      "arms": [
+        {
+          "cached_tokens": [
+            0,
+            66004,
+            66004
+          ],
+          "cold_s": 53.53828398800397,
+          "continuation_s": 12.305689487999189,
+          "continuation_prefill_ms": 10582.3,
+          "fresh_continuation_tokens": 12461,
+          "whole_case_s": 65.84397347600316
+        },
+        {
+          "cached_tokens": [
+            0,
+            68264,
+            70132
+          ],
+          "cold_s": 51.19628497300437,
+          "continuation_s": 8.84944634900603,
+          "continuation_prefill_ms": 7282.1,
+          "fresh_continuation_tokens": 6073,
+          "whole_case_s": 60.0457313220104
+        },
+        {
+          "cached_tokens": [
+            0,
+            66004,
+            66004
+          ],
+          "cold_s": 52.641537136994884,
+          "continuation_s": 12.147118352004327,
+          "continuation_prefill_ms": 10423.0,
+          "fresh_continuation_tokens": 12461,
+          "whole_case_s": 64.78865548899921
+        }
+      ],
+      "continuation_seconds_saved_vs_control_mean": 3.376957570995728,
+      "continuation_time_reduction_percent": 27.6202029075058
+    }
+  ],
+  "all_canaries_pass": true,
+  "all_output_hashes_match": true,
+  "exact_request_and_render_parity": true,
+  "candidate_reuse_reaches_boundary": true,
+  "candidate_tool_state_checks": true,
+  "limits": [
+    "Three requests per case and one control/candidate/control sequence.",
+    "Checkpoint placement changes prefill segmentation; cold time includes that cost.",
+    "Generated answers are short canaries, not representative decode benchmarks.",
+    "Performance improvement is avoided rereading, not increased raw prefill throughput."
+  ],
+  "validation_passed": true,
+  "output_difference_review_required": false
+}

@@ -1,13 +1,39 @@
-# Flash-Next on packaged Strata — deployment in progress
+# Flash-Next on packaged Strata
 
-Status on 2026-11-07: Flash-Next is running at the authenticated private API
-`http://100.96.8.54:8083/v1` and connected to OpenClaw's existing `tiercelmoe`
-provider as `qwen-flash-next`. Generation, synthetic tools/continuation, remote
-streaming and Francis's live catalog passed; the gateway was not restarted.
-**Cold long-context performance and real OpenClaw quality remain unmeasured.**
-The old 27B service is stopped and disabled, with its files retained for rollback.
-See the [OpenClaw connection record](STRATA-OPENCLAW-2026-11-07.md) and
-[first-load record](STRATA-FIRST-LOAD-2026-11-07.md).
+Status on 2026-11-08: persistent authenticated API at
+`http://100.96.8.54:8083/v1`, OpenClaw provider `tiercelmoe`, alias
+`qwen-flash-next`. The user has moved Francis to another model while the local
+backend is profiled. The gateway was not restarted.
+
+Cold prefill measured 1,416 tok/s at 64K, 1,363 at 128K and 1,301 at 192K.
+The user approved a real research/tool task. Recent generation was around
+41 tok/s; sustained 60–70 remains unproven. See the [handoff](../handoff.md).
+The [November 8 cache fix](STRATA-CACHE-MISSES-2026-11-08.md) is persistent.
+The old 27B service is stopped and disabled, with files retained.
+
+## Reproduce the persistent service
+
+After acquiring the pinned Terminal 0.1.57, matching HIP-Halo engine and this
+exact model/tokenizer, prepare a private profile from the installed profile:
+
+```sh
+python3 scripts/prepare-strata-profile.py --source-profile /private/installed-profile.json --out /private/optimized-profile.json
+python3 scripts/install-strata-service.py --source-profile /private/optimized-profile.json
+systemctl --user start strata-flash-next.service
+loginctl show-user "$USER" -p Linger
+```
+
+The installer validates the engine SHA, preserves credentials, backs up existing
+files and enables the unit without restarting an already running process. During
+an authorized maintenance window, use `restart` to apply changes to a running
+service. Linger must be enabled for startup without a login. The helper checks the
+exact model and tokenizer before setting `--tail-role-token 846`; do not copy
+that numeric ID to other models. Profile files remain private.
+
+Normal restart (87.3 s), forced-process recovery (96.3 s), checkpoint/tool checks
+and a remote streaming request passed on November 7. Host reboot validation has
+not been run. [Deployment evidence](../evidence/strata-performance-2026-11-07/deployment-completion/).
+The following acquisition and incident sections are historical.
 
 The November 6 authorized reboot recovered the GPU after a failed live driver
 reload. The [recovery result](STRATA-RECOVERY-RESULT-2026-11-06.md) records the
