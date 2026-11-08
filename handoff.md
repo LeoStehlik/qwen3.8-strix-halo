@@ -11,16 +11,17 @@ or cache regression. Qwen called hidden `skills_search`/`skills_read` directly
 instead of the declared `tool_call` wrapper; its reader argument was also wrong
 (`skillName` instead of `name`). Strata rejected the undeclared names; OpenClaw's
 generic empty-answer retry repeated the failure. The symptom predates the cache
-fix. Thirty-six offline parser checks reproduce it. Nothing live was changed.
+fix. Thirty-six offline parser checks reproduce it. The investigation made no
+changes to the inference backend.
 [Investigation and targeted remedies](docs/OPENCLAW-TOOL-SURFACE-FAILURE-2026-11-08.md).
 
 **Upstream already fixed these paths:**
 [#184133](https://github.com/openclaw/openclaw/pull/184133) makes skill guidance
 dispatcher-aware; [#183165](https://github.com/openclaw/openclaw/pull/183165)
 includes deferred names in bounded native correction. Both changes are present
-in `v2026.11.5-beta.1` source and current main, but missing from installed
-2026.10.9 and checked stable `v2026.11.1`. No duplicate PR, package upgrade or
-live validation was performed. Validate a build containing both fixes before
+in `v2026.11.5-beta.1` source and the main revision examined, but missing from the
+incident's 2026.10.9 version and checked stable `v2026.11.1`. No duplicate PR was
+made. Validate model/tool recovery on a build containing both fixes before
 considering another workaround; parser tests alone do not prove model recovery.
 
 ## Current state — November 8

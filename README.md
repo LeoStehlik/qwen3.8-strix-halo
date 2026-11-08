@@ -34,10 +34,10 @@ The later [OpenClaw skill-call failure](docs/OPENCLAW-TOOL-SURFACE-FAILURE-2026-
 is a compact-tool interface mismatch: direct calls to hidden skill tools were
 rejected and generic recovery failed. It predates the cache fix. Offline parser
 reproduction passed; no live workaround or service change was applied.
-Upstream already merged the relevant guidance and recovery fixes. They are
-present in the checked `v2026.11.5-beta.1` source, but absent from installed
-2026.10.9 and stable `v2026.11.1`. Live validation remains open; no duplicate PR
-or upgrade was made.
+Upstream already merged the relevant guidance and recovery fixes; the
+investigation records their presence in `v2026.11.5-beta.1` source and absence
+from the incident's 2026.10.9 version. No duplicate PR was created. Offline parser
+checks alone do not establish model recovery on a fixed OpenClaw build.
 
 ### Earlier November 7 experiments
 

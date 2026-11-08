@@ -1,5 +1,8 @@
 # OpenClaw skill lookup fails at the compact tool interface
 
+This records the integration failure on OpenClaw 2026.10.9. The version matrix
+below is a snapshot of source inspection, not a deployment inventory.
+
 ## Confirmed failure
 
 On November 8, the Discord request asking whether the agent had used the
@@ -140,8 +143,8 @@ Source inspection, rather than release dates alone, gives this matrix:
 
 | Version | Dispatcher-aware skill guidance | Deferred-name text-call recovery |
 | --- | --- | --- |
-| Installed 2026.10.9 (`8b18b5578f66`) | Missing | Missing |
-| Latest stable tag `v2026.11.1` | Missing | Missing |
+| Incident version 2026.10.9 (`8b18b5578f66`) | Missing | Missing |
+| Stable tag examined: `v2026.11.1` | Missing | Missing |
 | Prerelease tag `v2026.11.5-beta.1` | Present | Present |
 | Main at `9fb5cdc3039a` | Present | Present |
 
@@ -151,9 +154,9 @@ Tagged source checked:
 [beta guidance](https://github.com/openclaw/openclaw/blob/v2026.11.5-beta.1/src/agents/system-prompt-skills.ts),
 [beta recovery](https://github.com/openclaw/openclaw/blob/v2026.11.5-beta.1/src/agents/embedded-agent-runner/run/attempt-result.ts).
 The installed package was checked separately. The beta is a candidate for
-validation, not a verified fix on this deployment. No beta package was installed
-or tested here. A stable-only upgrade to the checked tag would not include these
-two changes.
+validation, not a verified model recovery result. No beta package was installed
+or tested during this investigation. A stable-only upgrade to the checked tag
+would not include these two changes.
 
 The remaining useful check is the actual OpenClaw-to-Strata route on a build
 containing both fixes: inspect the generated skill instructions, verify exact
