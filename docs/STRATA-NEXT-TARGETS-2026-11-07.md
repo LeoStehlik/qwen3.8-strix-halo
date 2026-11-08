@@ -1,5 +1,16 @@
 # Flash-Next: resumed optimization target, 2026-11-07
 
+**Current objective: deployment completion.** The user replaced further throughput
+searches with finishing the checkpoint trial, publishing remaining evidence and
+making the known-good packaged deployment restart reliably. Deeper kernel work
+is a [separate research project](STRATA-KERNEL-RESEARCH.md), with uncertain
+returns. The 1,700–2,000 / 50–70 targets are not completion criteria for this
+revised deployment task. The [compact-weight findings](STRATA-EXPERT-COMPACT-WEIGHTS-2026-11-07.md)
+are now archived: repeated ~2.2% warm expert gain, but preparation-inclusive
+throughput loses 26.2%. No experimental source kernel is serving.
+
+The following performance targets and experiment ordering are historical.
+
 **Latest decision:** the user authorized a bounded MTP comparison and expert
 instruction trace after the [stopping checkpoint](STRATA-OPTIMIZATION-CHECKPOINT-2026-11-07.md).
 The [MTP screen](STRATA-MTP-WINDOW-2026-11-07.md) is complete: no reliable gain,

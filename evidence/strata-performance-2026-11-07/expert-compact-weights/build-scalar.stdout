@@ -1,0 +1,5 @@
+[0/2] Re-checking globbed directories...
+[1/5] Building HIP object CMakeFiles/strata_mmq.dir/src/prefill/moe_f16_kq.cu.o
+[2/5] Building HIP object CMakeFiles/strata_mmq.dir/src/prefill/moe_f16_compact.cu.o
+[3/5] Linking HIP static library libstrata_mmq.a
+[4/5] Linking HIP executable hip_prefill_fused_iq

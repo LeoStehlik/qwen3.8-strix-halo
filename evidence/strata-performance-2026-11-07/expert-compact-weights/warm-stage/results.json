@@ -1,0 +1,124 @@
+{
+  "phase": "screen",
+  "runs": [
+    {
+      "name": "00-control",
+      "mode": "control",
+      "tile_rows": null,
+      "argv": [
+        "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+        "--only=Q4_K / Q5_1",
+        "--no-ref",
+        "--chunks=16384"
+      ],
+      "env": {
+        "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PLATFORM": "amd",
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_PF_F16": "1",
+        "STRATA_PF_F16_GU_EPI": "0",
+        "S20_NOMMQ": "1",
+        "S20_PC": "0",
+        "S20_PC_EACH": "0",
+        "S20_E": "512",
+        "S20_ROUTE_IDS": "/home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/median-padding.ids.i32"
+      },
+      "mem_available_before": 22020497408,
+      "binary_sha256": "dcb5ef60bd5d482ada09216d38802e19f6bbf3b3008bdc54a1453917e28501d7",
+      "exit_code": 0,
+      "serving_requests_after": 0,
+      "parity_passed": true,
+      "reference_hashes": [],
+      "output_hashes": [
+        "019f42e2855f67cc"
+      ],
+      "preparation": [],
+      "median_ms": [
+        57.534
+      ]
+    },
+    {
+      "name": "01-compact",
+      "mode": "compact",
+      "tile_rows": null,
+      "argv": [
+        "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+        "--only=Q4_K / Q5_1",
+        "--no-ref",
+        "--chunks=16384"
+      ],
+      "env": {
+        "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PLATFORM": "amd",
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_PF_F16": "1",
+        "STRATA_PF_F16_GU_EPI": "0",
+        "S20_NOMMQ": "1",
+        "S20_PC": "1",
+        "S20_PC_EACH": "0",
+        "S20_E": "512",
+        "S20_ROUTE_IDS": "/home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/median-padding.ids.i32"
+      },
+      "mem_available_before": 22104088576,
+      "binary_sha256": "dcb5ef60bd5d482ada09216d38802e19f6bbf3b3008bdc54a1453917e28501d7",
+      "exit_code": 0,
+      "serving_requests_after": 0,
+      "parity_passed": true,
+      "reference_hashes": [],
+      "output_hashes": [
+        "019f42e2855f67cc"
+      ],
+      "preparation": [
+        [
+          "23.499",
+          "1048576000",
+          "0"
+        ]
+      ],
+      "median_ms": [
+        56.399
+      ]
+    },
+    {
+      "name": "02-control",
+      "mode": "control",
+      "tile_rows": null,
+      "argv": [
+        "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+        "--only=Q4_K / Q5_1",
+        "--no-ref",
+        "--chunks=16384"
+      ],
+      "env": {
+        "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PLATFORM": "amd",
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_PF_F16": "1",
+        "STRATA_PF_F16_GU_EPI": "0",
+        "S20_NOMMQ": "1",
+        "S20_PC": "0",
+        "S20_PC_EACH": "0",
+        "S20_E": "512",
+        "S20_ROUTE_IDS": "/home/less/.cache/strata-evaluation-20261107/expert-profile/real64k/median-padding.ids.i32"
+      },
+      "mem_available_before": 21838143488,
+      "binary_sha256": "dcb5ef60bd5d482ada09216d38802e19f6bbf3b3008bdc54a1453917e28501d7",
+      "exit_code": 0,
+      "serving_requests_after": 0,
+      "parity_passed": true,
+      "reference_hashes": [],
+      "output_hashes": [
+        "019f42e2855f67cc"
+      ],
+      "preparation": [],
+      "median_ms": [
+        57.85
+      ]
+    }
+  ],
+  "completed": true,
+  "serving_requests_before": 0
+}

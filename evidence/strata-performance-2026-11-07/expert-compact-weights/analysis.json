@@ -1,0 +1,67 @@
+{
+  "decision": "Retain stage-major compact layout only as an undeployed research candidate. Warm benefit is small and preparation-inclusive screen loses; no live cache integration.",
+  "screens": {
+    "warm-median": {
+      "control_ms": [
+        58.63,
+        57.815
+      ],
+      "candidate_ms": [
+        58.928
+      ],
+      "throughput_change_pct": -1.197223730654362,
+      "exact_output_hashes": true
+    },
+    "warm-stage": {
+      "control_ms": [
+        57.534,
+        57.85
+      ],
+      "candidate_ms": [
+        56.399
+      ],
+      "throughput_change_pct": 2.292593840316326,
+      "exact_output_hashes": true
+    },
+    "warm-stage-reverse": {
+      "control_ms": [
+        57.792
+      ],
+      "candidate_ms": [
+        56.532,
+        56.573
+      ],
+      "throughput_change_pct": 2.1917687104902717,
+      "exact_output_hashes": true
+    },
+    "warm-stage-most": {
+      "control_ms": [
+        58.039,
+        59.689
+      ],
+      "candidate_ms": [
+        57.198
+      ],
+      "throughput_change_pct": 2.9126892548690497,
+      "exact_output_hashes": true
+    },
+    "prepare-each-stage": {
+      "control_ms": [
+        57.867,
+        57.946
+      ],
+      "candidate_ms": [
+        78.483
+      ],
+      "throughput_change_pct": -26.21777964654767,
+      "exact_output_hashes": true
+    }
+  },
+  "per_expert_original_gu_bytes": 1843200,
+  "per_expert_prepared_gu_bytes": 2048000,
+  "extra_bytes_for_512_experts_one_layer": 1048576000,
+  "reference_runs_final": 6,
+  "reference_runs_all_variants": 18,
+  "original_kernels_identical": 10,
+  "scope": "Synthetic weights/activations at model geometry; actual captured routing. Exact hashes are operator checks, not full-model quality validation."
+}

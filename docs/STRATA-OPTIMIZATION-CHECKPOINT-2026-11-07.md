@@ -1,5 +1,14 @@
 # Recommended stopping point for this optimization session
 
+**Current objective: deployment completion.** The user replaced further throughput
+searches with finishing the checkpoint trial, publishing remaining evidence and
+making the known-good packaged deployment restart reliably. Deeper kernel work
+is a [separate research project](STRATA-KERNEL-RESEARCH.md), with uncertain
+returns. The 1,700–2,000 / 50–70 targets are not completion criteria for this
+revised deployment task. The [compact-weight findings](STRATA-EXPERT-COMPACT-WEIGHTS-2026-11-07.md)
+are now archived: repeated ~2.2% warm expert gain, but preparation-inclusive
+throughput loses 26.2%. No experimental source kernel is serving.
+
 Subsequent decision: the user authorized the bounded follow-up below. The
 [MTP 4/6/8/4 screen](STRATA-MTP-WINDOW-2026-11-07.md) is now complete and retains
 window 4. The [expert trace](STRATA-EXPERT-ATT-2026-11-07.md) and

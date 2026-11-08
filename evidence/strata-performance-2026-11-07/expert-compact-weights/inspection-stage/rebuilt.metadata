@@ -1,0 +1,572 @@
+Displaying notes found in: .note
+  Owner                Data size 	Description
+  AMDGPU               0x00003279	NT_AMDGPU_METADATA (AMDGPU Metadata)
+    AMDGPU Metadata:
+        ---
+amdhsa.kernels:
+  - .args:
+      - .offset:         0
+        .size:           1032
+        .value_kind:     by_value
+      - .offset:         1032
+        .size:           40
+        .value_kind:     by_value
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1072
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1080
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1088
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1096
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1104
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  write_only
+        .address_space:  global
+        .offset:         1112
+        .size:           8
+        .value_kind:     global_buffer
+    .gfx1250_revision: B0
+    .group_segment_fixed_size: 23168
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 1120
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 256
+    .name:           _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi13ELi128ELb1EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph
+    .private_segment_fixed_size: 0
+    .sgpr_count:     32
+    .sgpr_spill_count: 0
+    .symbol:         _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi13ELi128ELb1EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     185
+    .vgpr_spill_count: 0
+    .wavefront_size: 32
+    .workgroup_processor_mode: 1
+  - .args:
+      - .offset:         0
+        .size:           1032
+        .value_kind:     by_value
+      - .offset:         1032
+        .size:           40
+        .value_kind:     by_value
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1072
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1080
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1088
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1096
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1104
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  write_only
+        .address_space:  global
+        .offset:         1112
+        .size:           8
+        .value_kind:     global_buffer
+    .gfx1250_revision: B0
+    .group_segment_fixed_size: 22144
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 1120
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 256
+    .name:           _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi12ELi128ELb1EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph
+    .private_segment_fixed_size: 0
+    .sgpr_count:     32
+    .sgpr_spill_count: 0
+    .symbol:         _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi12ELi128ELb1EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     176
+    .vgpr_spill_count: 0
+    .wavefront_size: 32
+    .workgroup_processor_mode: 1
+  - .args:
+      - .offset:         0
+        .size:           1032
+        .value_kind:     by_value
+      - .offset:         1032
+        .size:           40
+        .value_kind:     by_value
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1072
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1080
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1088
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1096
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1104
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  write_only
+        .address_space:  global
+        .offset:         1112
+        .size:           8
+        .value_kind:     global_buffer
+    .gfx1250_revision: B0
+    .group_segment_fixed_size: 14720
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 1120
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 256
+    .name:           _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi13ELi64ELb1EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph
+    .private_segment_fixed_size: 0
+    .sgpr_count:     26
+    .sgpr_spill_count: 0
+    .symbol:         _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi13ELi64ELb1EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     137
+    .vgpr_spill_count: 0
+    .wavefront_size: 32
+    .workgroup_processor_mode: 1
+  - .args:
+      - .offset:         0
+        .size:           1032
+        .value_kind:     by_value
+      - .offset:         1032
+        .size:           40
+        .value_kind:     by_value
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1072
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1080
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1088
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1096
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1104
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  write_only
+        .address_space:  global
+        .offset:         1112
+        .size:           8
+        .value_kind:     global_buffer
+    .gfx1250_revision: B0
+    .group_segment_fixed_size: 13696
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 1120
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 256
+    .name:           _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi12ELi64ELb1EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph
+    .private_segment_fixed_size: 0
+    .sgpr_count:     24
+    .sgpr_spill_count: 0
+    .symbol:         _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi12ELi64ELb1EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     130
+    .vgpr_spill_count: 0
+    .wavefront_size: 32
+    .workgroup_processor_mode: 1
+  - .args:
+      - .offset:         0
+        .size:           1032
+        .value_kind:     by_value
+      - .offset:         1032
+        .size:           40
+        .value_kind:     by_value
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1072
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1080
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1088
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1096
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1104
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  write_only
+        .address_space:  global
+        .offset:         1112
+        .size:           8
+        .value_kind:     global_buffer
+    .gfx1250_revision: B0
+    .group_segment_fixed_size: 23168
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 1120
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 256
+    .name:           _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi13ELi128ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph
+    .private_segment_fixed_size: 0
+    .sgpr_count:     32
+    .sgpr_spill_count: 0
+    .symbol:         _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi13ELi128ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     184
+    .vgpr_spill_count: 0
+    .wavefront_size: 32
+    .workgroup_processor_mode: 1
+  - .args:
+      - .offset:         0
+        .size:           1032
+        .value_kind:     by_value
+      - .offset:         1032
+        .size:           40
+        .value_kind:     by_value
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1072
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1080
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1088
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1096
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1104
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  write_only
+        .address_space:  global
+        .offset:         1112
+        .size:           8
+        .value_kind:     global_buffer
+    .gfx1250_revision: B0
+    .group_segment_fixed_size: 22144
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 1120
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 256
+    .name:           _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi12ELi128ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph
+    .private_segment_fixed_size: 0
+    .sgpr_count:     32
+    .sgpr_spill_count: 0
+    .symbol:         _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi12ELi128ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     175
+    .vgpr_spill_count: 0
+    .wavefront_size: 32
+    .workgroup_processor_mode: 1
+  - .args:
+      - .offset:         0
+        .size:           1032
+        .value_kind:     by_value
+      - .offset:         1032
+        .size:           40
+        .value_kind:     by_value
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1072
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1080
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1088
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1096
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1104
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  write_only
+        .address_space:  global
+        .offset:         1112
+        .size:           8
+        .value_kind:     global_buffer
+    .gfx1250_revision: B0
+    .group_segment_fixed_size: 14720
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 1120
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 256
+    .name:           _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi13ELi64ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph
+    .private_segment_fixed_size: 0
+    .sgpr_count:     26
+    .sgpr_spill_count: 0
+    .symbol:         _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi13ELi64ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     136
+    .vgpr_spill_count: 0
+    .wavefront_size: 32
+    .workgroup_processor_mode: 1
+  - .args:
+      - .offset:         0
+        .size:           1032
+        .value_kind:     by_value
+      - .offset:         1032
+        .size:           40
+        .value_kind:     by_value
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1072
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1080
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1088
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1096
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1104
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  write_only
+        .address_space:  global
+        .offset:         1112
+        .size:           8
+        .value_kind:     global_buffer
+    .gfx1250_revision: B0
+    .group_segment_fixed_size: 13696
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 1120
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 256
+    .name:           _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi12ELi64ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph
+    .private_segment_fixed_size: 0
+    .sgpr_count:     23
+    .sgpr_spill_count: 0
+    .symbol:         _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_114gate_up_kernelILi12ELi64ELb0EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhS8_Ph.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     129
+    .vgpr_spill_count: 0
+    .wavefront_size: 32
+    .workgroup_processor_mode: 1
+  - .args:
+      - .offset:         0
+        .size:           1032
+        .value_kind:     by_value
+      - .offset:         1032
+        .size:           40
+        .value_kind:     by_value
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1072
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1080
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1088
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1096
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  write_only
+        .address_space:  global
+        .offset:         1104
+        .size:           8
+        .value_kind:     global_buffer
+    .gfx1250_revision: B0
+    .group_segment_fixed_size: 23168
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 1112
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 256
+    .name:           _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_111down_kernelILi128EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhPf
+    .private_segment_fixed_size: 0
+    .sgpr_count:     24
+    .sgpr_spill_count: 0
+    .symbol:         _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_111down_kernelILi128EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhPf.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     148
+    .vgpr_spill_count: 0
+    .wavefront_size: 32
+    .workgroup_processor_mode: 1
+  - .args:
+      - .offset:         0
+        .size:           1032
+        .value_kind:     by_value
+      - .offset:         1032
+        .size:           40
+        .value_kind:     by_value
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1072
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1080
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1088
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1096
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  write_only
+        .address_space:  global
+        .offset:         1104
+        .size:           8
+        .value_kind:     global_buffer
+    .gfx1250_revision: B0
+    .group_segment_fixed_size: 14720
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 1112
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 256
+    .name:           _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_111down_kernelILi64EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhPf
+    .private_segment_fixed_size: 0
+    .sgpr_count:     20
+    .sgpr_spill_count: 0
+    .symbol:         _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_111down_kernelILi64EEEvNS1_5BatchENS1_10NativeGeomEPKiPK15HIP_vector_typeIiLj2EES8_PKhPf.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     105
+    .vgpr_spill_count: 0
+    .wavefront_size: 32
+    .workgroup_processor_mode: 1
+amdhsa.target:   amdgcn-amd-amdhsa--gfx1151
+amdhsa.version:
+  - 1
+  - 2
+...
+

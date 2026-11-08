@@ -1,0 +1,241 @@
+{
+  "phase": "reference",
+  "runs": [
+    {
+      "name": "00-original-bn64",
+      "mode": "original",
+      "tile_rows": 64,
+      "argv": [
+        "/home/less/.cache/strata-evaluation-20261107/expert-compact-weights/control",
+        "--only=Q4_K / Q5_1",
+        "--no-timing"
+      ],
+      "env": {
+        "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PLATFORM": "amd",
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_PF_F16": "1",
+        "STRATA_PF_F16_GU_EPI": "0",
+        "S20_NOMMQ": "1",
+        "S20_PC": "0",
+        "S20_PC_EACH": "0",
+        "S20_E": "512",
+        "STRATA_PF_F16_BN": "64"
+      },
+      "mem_available_before": 22040227840,
+      "binary_sha256": "23f32e84c35b76faa11dea074a399d04a1b68687bdf58d3cab0ef127e4be4862",
+      "exit_code": 0,
+      "serving_requests_after": 0,
+      "parity_passed": true,
+      "reference_hashes": [
+        [
+          "c5cf77f999f3ac13",
+          "79b8359e4299f6e5"
+        ]
+      ],
+      "output_hashes": [],
+      "preparation": [],
+      "median_ms": []
+    },
+    {
+      "name": "01-control-bn64",
+      "mode": "control",
+      "tile_rows": 64,
+      "argv": [
+        "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+        "--only=Q4_K / Q5_1",
+        "--no-timing"
+      ],
+      "env": {
+        "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PLATFORM": "amd",
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_PF_F16": "1",
+        "STRATA_PF_F16_GU_EPI": "0",
+        "S20_NOMMQ": "1",
+        "S20_PC": "0",
+        "S20_PC_EACH": "0",
+        "S20_E": "512",
+        "STRATA_PF_F16_BN": "64"
+      },
+      "mem_available_before": 21794516992,
+      "binary_sha256": "dcb5ef60bd5d482ada09216d38802e19f6bbf3b3008bdc54a1453917e28501d7",
+      "exit_code": 0,
+      "serving_requests_after": 0,
+      "parity_passed": true,
+      "reference_hashes": [
+        [
+          "c5cf77f999f3ac13",
+          "79b8359e4299f6e5"
+        ]
+      ],
+      "output_hashes": [],
+      "preparation": [],
+      "median_ms": []
+    },
+    {
+      "name": "02-compact-bn64",
+      "mode": "compact",
+      "tile_rows": 64,
+      "argv": [
+        "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+        "--only=Q4_K / Q5_1",
+        "--no-timing"
+      ],
+      "env": {
+        "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PLATFORM": "amd",
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_PF_F16": "1",
+        "STRATA_PF_F16_GU_EPI": "0",
+        "S20_NOMMQ": "1",
+        "S20_PC": "1",
+        "S20_PC_EACH": "0",
+        "S20_E": "512",
+        "STRATA_PF_F16_BN": "64"
+      },
+      "mem_available_before": 21854953472,
+      "binary_sha256": "dcb5ef60bd5d482ada09216d38802e19f6bbf3b3008bdc54a1453917e28501d7",
+      "exit_code": 0,
+      "serving_requests_after": 0,
+      "parity_passed": true,
+      "reference_hashes": [
+        [
+          "c5cf77f999f3ac13",
+          "79b8359e4299f6e5"
+        ]
+      ],
+      "output_hashes": [],
+      "preparation": [
+        [
+          "3.736",
+          "131072000",
+          "0"
+        ]
+      ],
+      "median_ms": []
+    },
+    {
+      "name": "03-original-bn128",
+      "mode": "original",
+      "tile_rows": 128,
+      "argv": [
+        "/home/less/.cache/strata-evaluation-20261107/expert-compact-weights/control",
+        "--only=Q4_K / Q5_1",
+        "--no-timing"
+      ],
+      "env": {
+        "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PLATFORM": "amd",
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_PF_F16": "1",
+        "STRATA_PF_F16_GU_EPI": "0",
+        "S20_NOMMQ": "1",
+        "S20_PC": "0",
+        "S20_PC_EACH": "0",
+        "S20_E": "512",
+        "STRATA_PF_F16_BN": "128"
+      },
+      "mem_available_before": 21929766912,
+      "binary_sha256": "23f32e84c35b76faa11dea074a399d04a1b68687bdf58d3cab0ef127e4be4862",
+      "exit_code": 0,
+      "serving_requests_after": 0,
+      "parity_passed": true,
+      "reference_hashes": [
+        [
+          "c5cf77f999f3ac13",
+          "79b8359e4299f6e5"
+        ]
+      ],
+      "output_hashes": [],
+      "preparation": [],
+      "median_ms": []
+    },
+    {
+      "name": "04-control-bn128",
+      "mode": "control",
+      "tile_rows": 128,
+      "argv": [
+        "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+        "--only=Q4_K / Q5_1",
+        "--no-timing"
+      ],
+      "env": {
+        "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PLATFORM": "amd",
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_PF_F16": "1",
+        "STRATA_PF_F16_GU_EPI": "0",
+        "S20_NOMMQ": "1",
+        "S20_PC": "0",
+        "S20_PC_EACH": "0",
+        "S20_E": "512",
+        "STRATA_PF_F16_BN": "128"
+      },
+      "mem_available_before": 21828911104,
+      "binary_sha256": "dcb5ef60bd5d482ada09216d38802e19f6bbf3b3008bdc54a1453917e28501d7",
+      "exit_code": 0,
+      "serving_requests_after": 0,
+      "parity_passed": true,
+      "reference_hashes": [
+        [
+          "c5cf77f999f3ac13",
+          "79b8359e4299f6e5"
+        ]
+      ],
+      "output_hashes": [],
+      "preparation": [],
+      "median_ms": []
+    },
+    {
+      "name": "05-compact-bn128",
+      "mode": "compact",
+      "tile_rows": 128,
+      "argv": [
+        "/home/less/src/strata-f16-dispatch-20261107/build-halo-lab/hip_prefill_fused_iq",
+        "--only=Q4_K / Q5_1",
+        "--no-timing"
+      ],
+      "env": {
+        "ROCM_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+        "HIP_PLATFORM": "amd",
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_PF_F16": "1",
+        "STRATA_PF_F16_GU_EPI": "0",
+        "S20_NOMMQ": "1",
+        "S20_PC": "1",
+        "S20_PC_EACH": "0",
+        "S20_E": "512",
+        "STRATA_PF_F16_BN": "128"
+      },
+      "mem_available_before": 21979742208,
+      "binary_sha256": "dcb5ef60bd5d482ada09216d38802e19f6bbf3b3008bdc54a1453917e28501d7",
+      "exit_code": 0,
+      "serving_requests_after": 0,
+      "parity_passed": true,
+      "reference_hashes": [
+        [
+          "c5cf77f999f3ac13",
+          "79b8359e4299f6e5"
+        ]
+      ],
+      "output_hashes": [],
+      "preparation": [
+        [
+          "10.184",
+          "131072000",
+          "0"
+        ]
+      ],
+      "median_ms": []
+    }
+  ],
+  "completed": true,
+  "serving_requests_before": 0
+}

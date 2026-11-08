@@ -1,0 +1,12 @@
+-- GLOB mismatch!
+The following files were added:
+  +/home/less/src/strata-f16-dispatch-20261107/src/prefill/moe_f16_compact.cu
+The following files were removed:
+  -/home/less/src/strata-f16-dispatch-20261107/src/prefill/moe_f16_weights.cu
+CMake Warning at cmake/hip_backend.cmake:29 (message):
+  Strata HIP: gfx1151 builds, but it is not validated on a real card yet;
+  please report results
+Call Stack (most recent call first):
+  CMakeLists.txt:159 (include)
+
+

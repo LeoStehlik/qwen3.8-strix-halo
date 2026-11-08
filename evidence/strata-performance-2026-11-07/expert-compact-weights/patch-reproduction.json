@@ -1,0 +1,47 @@
+{
+  "upstream": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "variants": {
+    "stage": {
+      "patches_apply": true,
+      "measured_sources_match": true,
+      "source_sha256": {
+        "CMakeLists.txt": "9370dfc8e5c7a6ee4b94f823588b8c7ac1c4f1e4fb9622c28fcb266e78ac6261",
+        "include/strata/prefill/moe_fused_iq.hpp": "a73dc1a928da0ea062a7e79037b56581cd75017612065860940677a0127e5d6a",
+        "src/prefill/moe_f16_common.cuh": "83728730353690fe25647dbbf12cf9b5c85757594ea7adfa833bf99856426fda",
+        "src/prefill/moe_f16_kq.cu": "2fa281c598eb42b7b1bd0933d3f002aa31bf5e441bbce2fc8e18f8c6abc0aebd",
+        "src/prefill/moe_f16_kq.hpp": "3741029c837788c292a7bd6f1b16c4f5a70512748921b2cae81319692c8960ab",
+        "src/prefill/moe_f16_compact.cu": "1b9f6c516a7f616b7a32fb8a9c69325d003225204aa373bba74fa5375c0aa9a9",
+        "src/prefill/moe_fused_iq.cu": "b49763d99c66f39edd7308b4ceaf2f85adc3a9b034abeb8bfa48df02a2e966c9",
+        "tests/cuda/prefill_fused_iq_test.cpp": "282b8fa43a01b16fdc2b1497b6ec8e81f55a2896b3e1521ec40ee4c23def53ac"
+      }
+    },
+    "row-major": {
+      "patches_apply": true,
+      "measured_sources_match": true,
+      "source_sha256": {
+        "CMakeLists.txt": "9370dfc8e5c7a6ee4b94f823588b8c7ac1c4f1e4fb9622c28fcb266e78ac6261",
+        "include/strata/prefill/moe_fused_iq.hpp": "a73dc1a928da0ea062a7e79037b56581cd75017612065860940677a0127e5d6a",
+        "src/prefill/moe_f16_common.cuh": "83728730353690fe25647dbbf12cf9b5c85757594ea7adfa833bf99856426fda",
+        "src/prefill/moe_f16_kq.cu": "2fa281c598eb42b7b1bd0933d3f002aa31bf5e441bbce2fc8e18f8c6abc0aebd",
+        "src/prefill/moe_f16_kq.hpp": "3741029c837788c292a7bd6f1b16c4f5a70512748921b2cae81319692c8960ab",
+        "src/prefill/moe_f16_compact.cu": "8e12f33bf51b51e6ac19aa2632b3e660f796f05fc6e2b49068fdf921593f7ab3",
+        "src/prefill/moe_fused_iq.cu": "b49763d99c66f39edd7308b4ceaf2f85adc3a9b034abeb8bfa48df02a2e966c9",
+        "tests/cuda/prefill_fused_iq_test.cpp": "282b8fa43a01b16fdc2b1497b6ec8e81f55a2896b3e1521ec40ee4c23def53ac"
+      }
+    },
+    "initial-scratch": {
+      "patches_apply": true,
+      "measured_sources_match": true,
+      "source_sha256": {
+        "CMakeLists.txt": "9370dfc8e5c7a6ee4b94f823588b8c7ac1c4f1e4fb9622c28fcb266e78ac6261",
+        "include/strata/prefill/moe_fused_iq.hpp": "a73dc1a928da0ea062a7e79037b56581cd75017612065860940677a0127e5d6a",
+        "src/prefill/moe_f16_common.cuh": "83728730353690fe25647dbbf12cf9b5c85757594ea7adfa833bf99856426fda",
+        "src/prefill/moe_f16_kq.cu": "2fa281c598eb42b7b1bd0933d3f002aa31bf5e441bbce2fc8e18f8c6abc0aebd",
+        "src/prefill/moe_f16_kq.hpp": "3741029c837788c292a7bd6f1b16c4f5a70512748921b2cae81319692c8960ab",
+        "src/prefill/moe_f16_compact.cu": "1fe1f3954d47754f73527857cf162a62b8b259466bb13fccaafe6f5be60b0bf7",
+        "src/prefill/moe_fused_iq.cu": "b49763d99c66f39edd7308b4ceaf2f85adc3a9b034abeb8bfa48df02a2e966c9",
+        "tests/cuda/prefill_fused_iq_test.cpp": "282b8fa43a01b16fdc2b1497b6ec8e81f55a2896b3e1521ec40ee4c23def53ac"
+      }
+    }
+  }
+}

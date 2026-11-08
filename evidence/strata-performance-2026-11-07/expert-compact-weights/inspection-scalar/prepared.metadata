@@ -1,0 +1,198 @@
+Displaying notes found in: .note
+  Owner                Data size 	Description
+  AMDGPU               0x00000fe7	NT_AMDGPU_METADATA (AMDGPU Metadata)
+    AMDGPU Metadata:
+        ---
+amdhsa.kernels:
+  - .args:
+      - .offset:         0
+        .size:           1032
+        .value_kind:     by_value
+      - .offset:         1032
+        .size:           40
+        .value_kind:     by_value
+      - .address_space:  global
+        .offset:         1072
+        .size:           8
+        .value_kind:     global_buffer
+      - .offset:         1080
+        .size:           4
+        .value_kind:     hidden_block_count_x
+      - .offset:         1084
+        .size:           4
+        .value_kind:     hidden_block_count_y
+      - .offset:         1088
+        .size:           4
+        .value_kind:     hidden_block_count_z
+      - .offset:         1092
+        .size:           2
+        .value_kind:     hidden_group_size_x
+      - .offset:         1094
+        .size:           2
+        .value_kind:     hidden_group_size_y
+      - .offset:         1096
+        .size:           2
+        .value_kind:     hidden_group_size_z
+      - .offset:         1098
+        .size:           2
+        .value_kind:     hidden_remainder_x
+      - .offset:         1100
+        .size:           2
+        .value_kind:     hidden_remainder_y
+      - .offset:         1102
+        .size:           2
+        .value_kind:     hidden_remainder_z
+      - .offset:         1120
+        .size:           8
+        .value_kind:     hidden_global_offset_x
+      - .offset:         1128
+        .size:           8
+        .value_kind:     hidden_global_offset_y
+      - .offset:         1136
+        .size:           8
+        .value_kind:     hidden_global_offset_z
+      - .offset:         1144
+        .size:           2
+        .value_kind:     hidden_grid_dims
+    .gfx1250_revision: B0
+    .group_segment_fixed_size: 0
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 1336
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 1024
+    .name:           _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_122prepare_compact_kernelENS1_5BatchENS1_10NativeGeomEPh
+    .private_segment_fixed_size: 0
+    .sgpr_count:     11
+    .sgpr_spill_count: 0
+    .symbol:         _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_122prepare_compact_kernelENS1_5BatchENS1_10NativeGeomEPh.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     12
+    .vgpr_spill_count: 0
+    .wavefront_size: 32
+    .workgroup_processor_mode: 1
+  - .args:
+      - .offset:         0
+        .size:           1032
+        .value_kind:     by_value
+      - .address_space:  global
+        .offset:         1032
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1040
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1048
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1056
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1064
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1072
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  write_only
+        .address_space:  global
+        .offset:         1080
+        .size:           8
+        .value_kind:     global_buffer
+    .gfx1250_revision: B0
+    .group_segment_fixed_size: 22144
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 1088
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 256
+    .name:           _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_119compact_gate_kernelILi128EEEvNS1_5BatchEPKhPKiPK15HIP_vector_typeIiLj2EES9_S7_S9_Ph
+    .private_segment_fixed_size: 0
+    .sgpr_count:     24
+    .sgpr_spill_count: 0
+    .symbol:         _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_119compact_gate_kernelILi128EEEvNS1_5BatchEPKhPKiPK15HIP_vector_typeIiLj2EES9_S7_S9_Ph.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     156
+    .vgpr_spill_count: 0
+    .wavefront_size: 32
+    .workgroup_processor_mode: 1
+  - .args:
+      - .offset:         0
+        .size:           1032
+        .value_kind:     by_value
+      - .address_space:  global
+        .offset:         1032
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1040
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1048
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1056
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1064
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  read_only
+        .address_space:  global
+        .offset:         1072
+        .size:           8
+        .value_kind:     global_buffer
+      - .actual_access:  write_only
+        .address_space:  global
+        .offset:         1080
+        .size:           8
+        .value_kind:     global_buffer
+    .gfx1250_revision: B0
+    .group_segment_fixed_size: 13696
+    .kernarg_segment_align: 8
+    .kernarg_segment_size: 1088
+    .language:       OpenCL C
+    .language_version:
+      - 2
+      - 0
+    .max_flat_workgroup_size: 256
+    .name:           _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_119compact_gate_kernelILi64EEEvNS1_5BatchEPKhPKiPK15HIP_vector_typeIiLj2EES9_S7_S9_Ph
+    .private_segment_fixed_size: 0
+    .sgpr_count:     21
+    .sgpr_spill_count: 0
+    .symbol:         _ZN6strata7prefill5fused5f16kq12_GLOBAL__N_119compact_gate_kernelILi64EEEvNS1_5BatchEPKhPKiPK15HIP_vector_typeIiLj2EES9_S7_S9_Ph.kd
+    .uniform_work_group_size: 1
+    .uses_dynamic_stack: false
+    .vgpr_count:     112
+    .vgpr_spill_count: 0
+    .wavefront_size: 32
+    .workgroup_processor_mode: 1
+amdhsa.target:   amdgcn-amd-amdhsa--gfx1151
+amdhsa.version:
+  - 1
+  - 2
+...
+
