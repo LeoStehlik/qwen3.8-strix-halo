@@ -4,6 +4,16 @@ Repository: [Qwen3.8 inference on Strix Halo](https://github.com/LeoStehlik/qwen
 renamed from the earlier 27B/DFlash2-specific name on 7 November. The default
 branch landing page links this active investigation; clone URLs are updated.
 
+## Latest incident — compact tool calls, November 8
+
+The `no-slop-ui` lookup failure is an undeclared-tool/interface error, not a timeout
+or cache regression. Qwen called hidden `skills_search`/`skills_read` directly
+instead of the declared `tool_call` wrapper; its reader argument was also wrong
+(`skillName` instead of `name`). Strata rejected the undeclared names; OpenClaw's
+generic empty-answer retry repeated the failure. The symptom predates the cache
+fix. Thirty-six offline parser checks reproduce it. Nothing live was changed.
+[Investigation and targeted remedies](docs/OPENCLAW-TOOL-SURFACE-FAILURE-2026-11-08.md).
+
 ## Current state — November 8
 
 **Objective and result:** avoidable cache misses are fixed; the generation

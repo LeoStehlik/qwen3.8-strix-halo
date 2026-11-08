@@ -1,0 +1,320 @@
+{
+  "protocol": "compact-tool-surface-repro-v1",
+  "inference_requests": 0,
+  "tools_executed": 0,
+  "cases": [
+    {
+      "case": "undeclared_search",
+      "checks": [
+        {
+          "chunk": 1,
+          "stream_tools": false,
+          "calls": 0,
+          "rejected_names": [
+            "skills_search"
+          ],
+          "passed": true
+        },
+        {
+          "chunk": 1,
+          "stream_tools": true,
+          "calls": 0,
+          "rejected_names": [
+            "skills_search"
+          ],
+          "passed": true
+        },
+        {
+          "chunk": 7,
+          "stream_tools": false,
+          "calls": 0,
+          "rejected_names": [
+            "skills_search"
+          ],
+          "passed": true
+        },
+        {
+          "chunk": 7,
+          "stream_tools": true,
+          "calls": 0,
+          "rejected_names": [
+            "skills_search"
+          ],
+          "passed": true
+        },
+        {
+          "chunk": 126,
+          "stream_tools": false,
+          "calls": 0,
+          "rejected_names": [
+            "skills_search"
+          ],
+          "passed": true
+        },
+        {
+          "chunk": 126,
+          "stream_tools": true,
+          "calls": 0,
+          "rejected_names": [
+            "skills_search"
+          ],
+          "passed": true
+        }
+      ],
+      "argument_contract_valid": null
+    },
+    {
+      "case": "undeclared_read",
+      "checks": [
+        {
+          "chunk": 1,
+          "stream_tools": false,
+          "calls": 0,
+          "rejected_names": [
+            "skills_read"
+          ],
+          "passed": true
+        },
+        {
+          "chunk": 1,
+          "stream_tools": true,
+          "calls": 0,
+          "rejected_names": [
+            "skills_read"
+          ],
+          "passed": true
+        },
+        {
+          "chunk": 7,
+          "stream_tools": false,
+          "calls": 0,
+          "rejected_names": [
+            "skills_read"
+          ],
+          "passed": true
+        },
+        {
+          "chunk": 7,
+          "stream_tools": true,
+          "calls": 0,
+          "rejected_names": [
+            "skills_read"
+          ],
+          "passed": true
+        },
+        {
+          "chunk": 105,
+          "stream_tools": false,
+          "calls": 0,
+          "rejected_names": [
+            "skills_read"
+          ],
+          "passed": true
+        },
+        {
+          "chunk": 105,
+          "stream_tools": true,
+          "calls": 0,
+          "rejected_names": [
+            "skills_read"
+          ],
+          "passed": true
+        }
+      ],
+      "argument_contract_valid": null
+    },
+    {
+      "case": "declared_search",
+      "checks": [
+        {
+          "chunk": 1,
+          "stream_tools": false,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 1,
+          "stream_tools": true,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 7,
+          "stream_tools": false,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 7,
+          "stream_tools": true,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 126,
+          "stream_tools": false,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 126,
+          "stream_tools": true,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        }
+      ],
+      "argument_contract_valid": true
+    },
+    {
+      "case": "declared_read_still_wrong_argument",
+      "checks": [
+        {
+          "chunk": 1,
+          "stream_tools": false,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 1,
+          "stream_tools": true,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 7,
+          "stream_tools": false,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 7,
+          "stream_tools": true,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 105,
+          "stream_tools": false,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 105,
+          "stream_tools": true,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        }
+      ],
+      "argument_contract_valid": false
+    },
+    {
+      "case": "correct_wrapped_read",
+      "checks": [
+        {
+          "chunk": 1,
+          "stream_tools": false,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 1,
+          "stream_tools": true,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 7,
+          "stream_tools": false,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 7,
+          "stream_tools": true,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 150,
+          "stream_tools": false,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 150,
+          "stream_tools": true,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        }
+      ],
+      "argument_contract_valid": true
+    },
+    {
+      "case": "correct_direct_read_when_declared",
+      "checks": [
+        {
+          "chunk": 1,
+          "stream_tools": false,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 1,
+          "stream_tools": true,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 7,
+          "stream_tools": false,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 7,
+          "stream_tools": true,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 100,
+          "stream_tools": false,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        },
+        {
+          "chunk": 100,
+          "stream_tools": true,
+          "calls": 1,
+          "rejected_names": [],
+          "passed": true
+        }
+      ],
+      "argument_contract_valid": true
+    }
+  ],
+  "passed": true
+}

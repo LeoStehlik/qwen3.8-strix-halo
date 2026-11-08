@@ -30,6 +30,11 @@ The [compact-weight experiment](docs/STRATA-EXPERT-COMPACT-WEIGHTS-2026-11-07.md
 is archived: ~2.2% warm operator gain, but preparation-inclusive throughput
 loses 26.2%. Deeper kernels remain [separate research](docs/STRATA-KERNEL-RESEARCH.md).
 
+The later [OpenClaw skill-call failure](docs/OPENCLAW-TOOL-SURFACE-FAILURE-2026-11-08.md)
+is a compact-tool interface mismatch: direct calls to hidden skill tools were
+rejected and generic recovery failed. It predates the cache fix. Offline parser
+reproduction passed; no live workaround or service change was applied.
+
 ### Earlier November 7 experiments
 
 **Bounded follow-up authorized; retain the working baseline.** The higher target
