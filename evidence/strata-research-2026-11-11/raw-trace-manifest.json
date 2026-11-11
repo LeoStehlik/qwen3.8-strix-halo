@@ -1,0 +1,7 @@
+{
+  "kernel_trace_csv_sha256": "68c9619d7770be650e0a55cdf075c8ae2e28c8674e9462a4612584a4f3f79e78",
+  "bytes": 445401004,
+  "dispatches": 1407740,
+  "retained_locally": true,
+  "published": "trace-analysis.json: every kernel/shape bucket with all and eviction-filtered duration statistics; raw 425 MiB CSV omitted from Git."
+}

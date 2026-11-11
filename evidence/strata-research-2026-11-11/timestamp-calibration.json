@@ -1,0 +1,47 @@
+{
+  "sdk": "/home/less/.local/opt/rocm-7.14.1-strata-lab",
+  "clock": "CLOCK_MONOTONIC",
+  "all_brackets_pass": true,
+  "samples": [
+    {
+      "before_monotonic_ns": 11388009032885,
+      "sdk_ns": 11388009055186,
+      "after_monotonic_ns": 11388009058351
+    },
+    {
+      "before_monotonic_ns": 11388009075062,
+      "sdk_ns": 11388009077346,
+      "after_monotonic_ns": 11388009078098
+    },
+    {
+      "before_monotonic_ns": 11388009082756,
+      "sdk_ns": 11388009083788,
+      "after_monotonic_ns": 11388009084199
+    },
+    {
+      "before_monotonic_ns": 11388009086553,
+      "sdk_ns": 11388009087264,
+      "after_monotonic_ns": 11388009087485
+    },
+    {
+      "before_monotonic_ns": 11388009089038,
+      "sdk_ns": 11388009089679,
+      "after_monotonic_ns": 11388009089899
+    },
+    {
+      "before_monotonic_ns": 11388009091973,
+      "sdk_ns": 11388009092594,
+      "after_monotonic_ns": 11388009092825
+    },
+    {
+      "before_monotonic_ns": 11388009094368,
+      "sdk_ns": 11388009094969,
+      "after_monotonic_ns": 11388009095199
+    },
+    {
+      "before_monotonic_ns": 11388009097684,
+      "sdk_ns": 11388009098285,
+      "after_monotonic_ns": 11388009098505
+    }
+  ]
+}

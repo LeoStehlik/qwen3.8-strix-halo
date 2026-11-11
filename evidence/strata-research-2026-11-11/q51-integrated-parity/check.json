@@ -1,0 +1,29 @@
+{
+  "argv": [
+    "/home/less/src/strata-decode-q51-subwarp-20261111/build-halo-lab/iq_multi_parity"
+  ],
+  "serving_requests_before": 0,
+  "host_before": {
+    "monotonic_ns": 12750879941340,
+    "evicted_ms": {
+      "30944/stats_35564": 9409,
+      "30959/stats_35564": 14957
+    }
+  },
+  "binary_sha256": "48258eaa8898d174a9cb97882b7138ad971ffc2a87b18842105b8700b8cad592",
+  "exit_code": 0,
+  "host_after": {
+    "monotonic_ns": 12752527256782,
+    "evicted_ms": {
+      "34940/stats_35564": 64,
+      "30944/stats_35564": 9409,
+      "30959/stats_35564": 14957
+    }
+  },
+  "serving_requests_after": 0,
+  "additional_environment": {
+    "STRATA_Q51_DOWN_SUB8": "1",
+    "STRATA_EXPERT_V2K": "0",
+    "LD_LIBRARY_PATH": "packaged 0.1.57 HIP-Halo libraries"
+  }
+}

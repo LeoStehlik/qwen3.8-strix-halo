@@ -1,0 +1,7 @@
+{"kind":"correctness","groups":12,"entries":35,"rows":31,"grid_groups":1,"relative_l1":6.71025485e-08,"passed":true}
+{"kind":"correctness","groups":12,"entries":35,"rows":31,"grid_groups":4,"relative_l1":6.70527449e-08,"passed":true}
+{"kind":"correctness","groups":12,"entries":35,"rows":31,"grid_groups":15,"relative_l1":7.13228422e-08,"passed":true}
+{"kind":"correctness","groups":12,"entries":35,"rows":2560,"grid_groups":1,"relative_l1":5.44338067e-08,"passed":true}
+{"kind":"correctness","groups":12,"entries":35,"rows":2560,"grid_groups":4,"relative_l1":7.28447191e-08,"passed":true}
+{"kind":"correctness","groups":12,"entries":35,"rows":2560,"grid_groups":15,"relative_l1":6.40104343e-08,"passed":true}
+{"kind":"correctness","groups":0,"entries":0,"rows":2560,"grid_groups":3,"relative_l1":0,"passed":true}

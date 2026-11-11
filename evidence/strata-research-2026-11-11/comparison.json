@@ -1,0 +1,277 @@
+{
+  "protocol": "decode-profile-analysis-v1",
+  "arms": [
+    {
+      "index": 0,
+      "profiled": false,
+      "runs": [
+        {
+          "target_tokens": 49152,
+          "prompt_tokens": 49164,
+          "output_sha256": "69004b66e1b04c8298ef1a88a3ede54efcc9b6638694971d9a810b4204a21227",
+          "messages_sha256": "8d696dfbc54047135dc821116021d91cff4f00c78fbb2d9a6bc214994bf677de",
+          "generated_native": 1006,
+          "decode_ms": 23981.0,
+          "decode_tok_s": 41.949876985947206,
+          "native_segments": 2,
+          "windows": 421.0,
+          "tokens_per_window": 2.3895486935866983,
+          "avg_T": 3.1392874109263653,
+          "verify_ms_per_window": 47.23035629453682,
+          "draft_ms_per_window": 9.723206650831354,
+          "verify_share": 0.8291555815020224,
+          "draft_share": 0.1706963846378383,
+          "accepted_fraction": 0.65,
+          "zero_draft_hypothetical_tok_s": 50.58446172048515,
+          "required_time_reduction": {
+            "60": 0.30083538356754647,
+            "70": 0.4007160430578971
+          }
+        },
+        {
+          "target_tokens": 196608,
+          "prompt_tokens": 196607,
+          "output_sha256": "5b6f94bda3203524fb4142b052c7ed9a9230a5df196d0ae604473db226f2791c",
+          "messages_sha256": "3cedbb7722e7a18fb3de405db8bd4f1b634b9825d59ce0ed1add17e077157703",
+          "generated_native": 1024,
+          "decode_ms": 25138.0,
+          "decode_tok_s": 40.735142016071286,
+          "native_segments": 1,
+          "windows": 427.0,
+          "tokens_per_window": 2.398126463700234,
+          "avg_T": 3.0600000000000005,
+          "verify_ms_per_window": 49.42,
+          "draft_ms_per_window": 9.45,
+          "verify_share": 0.8394597820033416,
+          "draft_share": 0.16051992998647466,
+          "accepted_fraction": 0.6791808873720137,
+          "zero_draft_hypothetical_tok_s": 48.52425146366486,
+          "required_time_reduction": {
+            "60": 0.3210809663988119,
+            "70": 0.41806939977041013
+          }
+        }
+      ],
+      "generation_telemetry": {
+        "49164": {
+          "sampled_seconds": 22.019243955612183,
+          "evicted_ms": {
+            "27661/stats_35564": 0,
+            "27651/stats_35564": 0
+          },
+          "swap_in_pages": 371
+        },
+        "196607": {
+          "sampled_seconds": 24.020490169525146,
+          "evicted_ms": {
+            "27661/stats_35564": 146,
+            "27651/stats_35564": 0
+          },
+          "swap_in_pages": 184
+        }
+      },
+      "conversation_cache_mib": 7168
+    },
+    {
+      "index": 1,
+      "profiled": true,
+      "runs": [
+        {
+          "target_tokens": 49152,
+          "prompt_tokens": 49164,
+          "output_sha256": "69004b66e1b04c8298ef1a88a3ede54efcc9b6638694971d9a810b4204a21227",
+          "messages_sha256": "8d696dfbc54047135dc821116021d91cff4f00c78fbb2d9a6bc214994bf677de",
+          "generated_native": 1006,
+          "decode_ms": 24473.0,
+          "decode_tok_s": 41.10652555877906,
+          "native_segments": 2,
+          "windows": 421.0,
+          "tokens_per_window": 2.3895486935866983,
+          "avg_T": 3.1392874109263653,
+          "verify_ms_per_window": 48.1921377672209,
+          "draft_ms_per_window": 9.852327790973872,
+          "verify_share": 0.8290315858292813,
+          "draft_share": 0.16948596412372818,
+          "accepted_fraction": 0.65,
+          "zero_draft_hypothetical_tok_s": 49.49528097427968,
+          "required_time_reduction": {
+            "60": 0.31489124068701557,
+            "70": 0.41276392058887057
+          }
+        },
+        {
+          "target_tokens": 196608,
+          "prompt_tokens": 196607,
+          "output_sha256": "5b6f94bda3203524fb4142b052c7ed9a9230a5df196d0ae604473db226f2791c",
+          "messages_sha256": "3cedbb7722e7a18fb3de405db8bd4f1b634b9825d59ce0ed1add17e077157703",
+          "generated_native": 1024,
+          "decode_ms": 26595.0,
+          "decode_tok_s": 38.503478097386726,
+          "native_segments": 1,
+          "windows": 427.0,
+          "tokens_per_window": 2.398126463700234,
+          "avg_T": 3.05,
+          "verify_ms_per_window": 51.4,
+          "draft_ms_per_window": 10.8,
+          "verify_share": 0.8252603872908442,
+          "draft_share": 0.1734010152284264,
+          "accepted_fraction": 0.6807297605473204,
+          "zero_draft_hypothetical_tok_s": 46.58060172675746,
+          "required_time_reduction": {
+            "60": 0.3582753650435545,
+            "70": 0.4499503128944753
+          }
+        }
+      ],
+      "generation_telemetry": {
+        "49164": {
+          "sampled_seconds": 22.015639543533325,
+          "evicted_ms": {
+            "28406/stats_35564": 26,
+            "28396/stats_35564": 0
+          },
+          "swap_in_pages": 281
+        },
+        "196607": {
+          "sampled_seconds": 24.02447271347046,
+          "evicted_ms": {
+            "28406/stats_35564": 875,
+            "28396/stats_35564": 0
+          },
+          "swap_in_pages": 148
+        }
+      },
+      "conversation_cache_mib": 7168
+    },
+    {
+      "index": 2,
+      "profiled": false,
+      "runs": [
+        {
+          "target_tokens": 49152,
+          "prompt_tokens": 49164,
+          "output_sha256": "69004b66e1b04c8298ef1a88a3ede54efcc9b6638694971d9a810b4204a21227",
+          "messages_sha256": "8d696dfbc54047135dc821116021d91cff4f00c78fbb2d9a6bc214994bf677de",
+          "generated_native": 1006,
+          "decode_ms": 24035.0,
+          "decode_tok_s": 41.85562721031829,
+          "native_segments": 2,
+          "windows": 421.0,
+          "tokens_per_window": 2.3895486935866983,
+          "avg_T": 3.1392874109263653,
+          "verify_ms_per_window": 47.2730403800475,
+          "draft_ms_per_window": 9.808028503562946,
+          "verify_share": 0.8280403578115247,
+          "draft_share": 0.17179862700228835,
+          "accepted_fraction": 0.65,
+          "zero_draft_hypothetical_tok_s": 50.53798336365947,
+          "required_time_reduction": {
+            "60": 0.30240621316136185,
+            "70": 0.4020624684240245
+          }
+        },
+        {
+          "target_tokens": 196608,
+          "prompt_tokens": 196607,
+          "output_sha256": "5b6f94bda3203524fb4142b052c7ed9a9230a5df196d0ae604473db226f2791c",
+          "messages_sha256": "3cedbb7722e7a18fb3de405db8bd4f1b634b9825d59ce0ed1add17e077157703",
+          "generated_native": 1024,
+          "decode_ms": 25214.0,
+          "decode_tok_s": 40.612358213690804,
+          "native_segments": 1,
+          "windows": 427.0,
+          "tokens_per_window": 2.398126463700234,
+          "avg_T": 3.0600000000000005,
+          "verify_ms_per_window": 49.49,
+          "draft_ms_per_window": 9.55,
+          "verify_share": 0.8381149361465852,
+          "draft_share": 0.161729594669628,
+          "accepted_fraction": 0.6791808873720137,
+          "zero_draft_hypothetical_tok_s": 48.44780151541316,
+          "required_time_reduction": {
+            "60": 0.3231273631051532,
+            "70": 0.41982345409013133
+          }
+        }
+      ],
+      "generation_telemetry": {
+        "49164": {
+          "sampled_seconds": 22.019281148910522,
+          "evicted_ms": {
+            "30097/stats_35564": 0,
+            "30121/stats_35564": 0
+          },
+          "swap_in_pages": 358
+        },
+        "196607": {
+          "sampled_seconds": 24.018959760665894,
+          "evicted_ms": {
+            "30097/stats_35564": 0,
+            "30121/stats_35564": 153
+          },
+          "swap_in_pages": 142
+        }
+      },
+      "conversation_cache_mib": 7168
+    }
+  ],
+  "comparisons": [
+    {
+      "target_tokens": 49152,
+      "control_tok_s": [
+        41.949876985947206,
+        41.85562721031829
+      ],
+      "control_mean_tok_s": 41.90275209813275,
+      "profile_tok_s": 41.10652555877906,
+      "profile_throughput_change_percent": -1.9001771947794621,
+      "control_output_hashes_match": true,
+      "profile_output_hash_matches_control": true,
+      "time_reduction_needed_for_60": 0.3016207983644541,
+      "time_reduction_needed_for_70": 0.40138925574096074
+    },
+    {
+      "target_tokens": 196608,
+      "control_tok_s": [
+        40.735142016071286,
+        40.612358213690804
+      ],
+      "control_mean_tok_s": 40.673750114881045,
+      "profile_tok_s": 38.503478097386726,
+      "profile_throughput_change_percent": -5.3358050618998565,
+      "control_output_hashes_match": true,
+      "profile_output_hash_matches_control": true,
+      "time_reduction_needed_for_60": 0.32210416475198256,
+      "time_reduction_needed_for_70": 0.41894642693027073
+    }
+  ],
+  "limits": [
+    "Public repeated-source fixture, not an agent quality evaluation.",
+    "External tracing preserves application path selection; tracing overhead must be measured against controls.",
+    "DECODE_TIMING is common to all arms; output limit is probe-only.",
+    "Timing-line values round to 0.01 ms; native durations round to milliseconds.",
+    "GPU stage counts can include initialization windows; they are retained explicitly.",
+    "Hypothetical speedups assume identical accepted tokens and no replacement costs; they are not measurements.",
+    "Eviction/swap counts cover only intervals fully inside sampled generation, excluding boundary intervals.",
+    "Auto conversation-cache budgets can differ between launches; see arm metadata."
+  ],
+  "continuation": {
+    "original_trial_completed": false,
+    "resumed_trial_completed": true,
+    "restored": {
+      "load_s": 76.21198347200152,
+      "health": {
+        "status": "ok",
+        "max_context": 262144,
+        "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+        "images": true,
+        "api_key": true,
+        "image_generation": false,
+        "loaded": true,
+        "service": "strata"
+      },
+      "profile_and_overrides_unchanged": true
+    },
+    "reason": "Final control interrupted during loading; completed as a separate control-only run."
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "argv": [
+    "/home/less/.local/opt/rocm-7.14.1-strata-lab/bin/rocprofv3",
+    "--kernel-trace",
+    "--pmc",
+    "GL2C_EA_RDREQ_32B_sum",
+    "GL2C_EA_RDREQ_64B_sum",
+    "GL2C_EA_RDREQ_128B_sum",
+    "GL2C_EA_WRREQ_64B_sum",
+    "SQ_WAVES_sum",
+    "--output-format",
+    "csv",
+    "--kernel-iteration-range",
+    "3-7",
+    "--kernel-include-regex",
+    ".*q51_subwarp<8>.*",
+    "-d",
+    "/home/less/.cache/strata-research-20261111/q51-counters/lanes8-memory",
+    "-o",
+    "q51",
+    "--",
+    "/home/less/.cache/strata-research-20261111/q51-build-v3/q51-probe",
+    "--counter",
+    "8",
+    "40",
+    "1",
+    "4"
+  ],
+  "serving_requests_before": 0,
+  "host_before": {
+    "monotonic_ns": 12174632282034,
+    "evicted_ms": {
+      "31272/stats_35564": 0,
+      "30944/stats_35564": 6935,
+      "30959/stats_35564": 12134
+    }
+  },
+  "binary_sha256": "c8a62b9a0985428604cbb1e1f70fece9a7eabf3246923bb1c8eeb74e5a2ce818",
+  "exit_code": 0,
+  "host_after": {
+    "monotonic_ns": 12175720515268,
+    "evicted_ms": {
+      "31281/stats_35564": 723,
+      "30944/stats_35564": 7839,
+      "30959/stats_35564": 13111
+    }
+  },
+  "serving_requests_after": 0
+}

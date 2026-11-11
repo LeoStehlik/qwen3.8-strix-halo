@@ -1,0 +1,303 @@
+{
+  "protocol": "decode-profile-v2",
+  "profile_mode": "external",
+  "requested_arms": [
+    "control"
+  ],
+  "started_at": "2026-11-11T22:59:17.427704+00:00",
+  "engine_sha256": "bce2f61ca0f970a1640aafa77925c0908f060243cffcd1ad10e3843b35eed476",
+  "profile_sha256": "698719bae62874639ae4c156d9851fe67077e0ea312f781bfa123cc110d633d5",
+  "arms": [
+    {
+      "index": 0,
+      "profiled": false,
+      "load_s": 78.398234065,
+      "health": {
+        "status": "ok",
+        "max_context": 262144,
+        "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+        "images": true,
+        "api_key": true,
+        "image_generation": false,
+        "loaded": true,
+        "service": "strata"
+      },
+      "before": {
+        "live": {
+          "state": "idle",
+          "queued": 0,
+          "phase": null,
+          "prompt_tokens": null,
+          "prompt_read": null,
+          "prompt_total": null,
+          "generated": null,
+          "max_tokens": null,
+          "elapsed_s": null,
+          "tok_s": null,
+          "tok_s_mean": null,
+          "prefill_tok_s_mean": null,
+          "tok_s_window_s": null
+        },
+        "totals": {
+          "since": 1794438039.9041882,
+          "requests": 0,
+          "prompt_tokens": 0,
+          "reused": 0,
+          "output_tokens": 0,
+          "prompt_ms": 0.0,
+          "decode_ms": 0.0,
+          "drafts_offered": 0,
+          "drafts_accepted": 0
+        },
+        "engine": {
+          "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+          "max_context": 262144,
+          "images": true,
+          "version": "0.1.57",
+          "logit_bias": 1,
+          "context": 262144,
+          "kv": "int8",
+          "kv_resident": 0,
+          "expert_slots": 24576,
+          "expert_cache_mib": 73450,
+          "expert_slots_primary": 24576,
+          "expert_cache_primary_mib": 73450,
+          "spec": 6,
+          "mtp_max": 4,
+          "lookup": 3,
+          "vram_free_mib": 19997,
+          "cvec": 0,
+          "arena_mib": 0,
+          "pool_workers": 15,
+          "pcie_frac": "0.55",
+          "spec_min_p": "0.50",
+          "conversation_cache_mib": 7168,
+          "conversation_cache_slots": 4,
+          "conversation_cache_min_free_mib": 2560,
+          "conversation_cache_min_tokens": 0,
+          "tail_role_token": 846,
+          "vram_elastic": 0,
+          "prefill_cap": 16384,
+          "prefill_stages": 1,
+          "stream_all_min": 128,
+          "prefill_pipe": 0,
+          "engine": "0.1.57",
+          "drafting": "mtp",
+          "drafting_note": "Drafting: MTP (the DFlash2 drafter isn't downloaded yet)"
+        }
+      },
+      "process": {
+        "native_pid": 30121,
+        "inherited_environment": {
+          "STRATA_DECODE_TIMING": "1",
+          "STRATA_VERIFY_PROFILE": "<unset>",
+          "STRATA_SH_STREAM": "<unset>",
+          "STRATA_VERIFY_EARLY_PLE_FLAG": "1",
+          "ROCP_TOOL_ATTACH": "1"
+        },
+        "runtime_libraries": {
+          "libamdhip64.so.7": {
+            "path": "/home/less/.local/share/strata/components/engine/0.1.57-linux-x86_64-hip-halo/libamdhip64.so.7",
+            "sha256": "668e75716f8d938782d7b885f9e62c4be545a2dc562d52fa5aa07602da45f28f"
+          },
+          "libhsa-runtime64.so.1": {
+            "path": "/home/less/.local/share/strata/components/engine/0.1.57-linux-x86_64-hip-halo/libhsa-runtime64.so.1",
+            "sha256": "3c5f6db042cfac693b2e12da40f44793fa1376b3236b98d75bced102967fc4f3"
+          },
+          "librocprofiler-register.so.0": {
+            "path": "/home/less/.local/share/strata/components/engine/0.1.57-linux-x86_64-hip-halo/librocprofiler-register.so.0",
+            "sha256": "197d173d1e5aa1aea1acc655bdf3340888b72ba5a082982e58276761f7080236"
+          }
+        }
+      },
+      "host_before": {
+        "unix_s": 1794438040.2304854,
+        "evicted_ms": {
+          "30097/stats_35564": 660,
+          "30121/stats_35564": 1872
+        },
+        "swap": {
+          "pswpin": 1163262,
+          "pswpout": 3129898
+        },
+        "clock_policy": "high"
+      },
+      "after": {
+        "live": {
+          "state": "idle",
+          "queued": 0,
+          "phase": null,
+          "prompt_tokens": null,
+          "prompt_read": null,
+          "prompt_total": null,
+          "generated": null,
+          "max_tokens": null,
+          "elapsed_s": null,
+          "tok_s": null,
+          "tok_s_mean": null,
+          "prefill_tok_s_mean": null,
+          "tok_s_window_s": null
+        },
+        "totals": {
+          "since": 1794438039.9041882,
+          "requests": 3,
+          "prompt_tokens": 245920,
+          "reused": 0,
+          "output_tokens": 2064,
+          "prompt_ms": 194518.1,
+          "decode_ms": 50267.8,
+          "drafts_offered": 1791,
+          "drafts_accepted": 1191
+        },
+        "engine": {
+          "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+          "max_context": 262144,
+          "images": true,
+          "version": "0.1.57",
+          "logit_bias": 1,
+          "context": 262144,
+          "kv": "int8",
+          "kv_resident": 0,
+          "expert_slots": 24576,
+          "expert_cache_mib": 73450,
+          "expert_slots_primary": 24576,
+          "expert_cache_primary_mib": 73450,
+          "spec": 6,
+          "mtp_max": 4,
+          "lookup": 3,
+          "vram_free_mib": 19997,
+          "cvec": 0,
+          "arena_mib": 0,
+          "pool_workers": 15,
+          "pcie_frac": "0.55",
+          "spec_min_p": "0.50",
+          "conversation_cache_mib": 7168,
+          "conversation_cache_slots": 4,
+          "conversation_cache_min_free_mib": 2560,
+          "conversation_cache_min_tokens": 0,
+          "tail_role_token": 846,
+          "vram_elastic": 0,
+          "prefill_cap": 16384,
+          "prefill_stages": 1,
+          "stream_all_min": 128,
+          "prefill_pipe": 0,
+          "engine": "0.1.57",
+          "drafting": "mtp",
+          "drafting_note": "Drafting: MTP (the DFlash2 drafter isn't downloaded yet)"
+        }
+      },
+      "host_after": {
+        "unix_s": 1794438287.2523108,
+        "evicted_ms": {
+          "30097/stats_35564": 4588,
+          "30121/stats_35564": 10483
+        },
+        "swap": {
+          "pswpin": 1177875,
+          "pswpout": 3129898
+        },
+        "clock_policy": "high"
+      },
+      "runs": [
+        {
+          "target_tokens": 0,
+          "usage": {
+            "prompt_tokens": 149,
+            "completion_tokens": 16,
+            "total_tokens": 165,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 149,
+            "prompt_ms": 1815.9,
+            "prompt_per_token_ms": 12.187,
+            "prompt_per_second": 82.1,
+            "predicted_n": 16,
+            "predicted_ms": 1018.6,
+            "predicted_per_token_ms": 63.663,
+            "predicted_per_second": 15.7,
+            "draft_n": 12,
+            "draft_n_accepted": 9
+          },
+          "output_sha256": "3f357e944f297431e091548e7550e3ce92e971ec29a8a9d967f8219171cba46e",
+          "elapsed_s": 2.876253184000234
+        },
+        {
+          "target_tokens": 49152,
+          "usage": {
+            "prompt_tokens": 49164,
+            "completion_tokens": 1024,
+            "total_tokens": 50188,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 49164,
+            "prompt_ms": 39706.3,
+            "prompt_per_token_ms": 0.808,
+            "prompt_per_second": 1238.2,
+            "predicted_n": 1024,
+            "predicted_ms": 24034.7,
+            "predicted_per_token_ms": 23.891,
+            "predicted_per_second": 41.9,
+            "draft_n": 900,
+            "draft_n_accepted": 585
+          },
+          "output_sha256": "69004b66e1b04c8298ef1a88a3ede54efcc9b6638694971d9a810b4204a21227",
+          "elapsed_s": 63.80145509400063
+        },
+        {
+          "target_tokens": 196608,
+          "usage": {
+            "prompt_tokens": 196607,
+            "completion_tokens": 1024,
+            "total_tokens": 197631,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "cache_n": 0,
+            "prompt_n": 196607,
+            "prompt_ms": 152995.9,
+            "prompt_per_token_ms": 0.778,
+            "prompt_per_second": 1285.0,
+            "predicted_n": 1024,
+            "predicted_ms": 25214.5,
+            "predicted_per_token_ms": 24.624,
+            "predicted_per_second": 40.6,
+            "draft_n": 879,
+            "draft_n_accepted": 597
+          },
+          "output_sha256": "5b6f94bda3203524fb4142b052c7ed9a9230a5df196d0ae604473db226f2791c",
+          "elapsed_s": 178.31128379999973
+        }
+      ]
+    }
+  ],
+  "completed": true,
+  "limits": [
+    "Public repeated-source fixture, not an agent quality evaluation.",
+    "External tracing preserves application path selection; tracing overhead must be measured against controls.",
+    "DECODE_TIMING is common to all arms; output limit is probe-only."
+  ],
+  "restoration": {
+    "load_s": 76.21198347200152,
+    "health": {
+      "status": "ok",
+      "max_context": 262144,
+      "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+      "images": true,
+      "api_key": true,
+      "image_generation": false,
+      "loaded": true,
+      "service": "strata"
+    },
+    "profile_and_overrides_unchanged": true
+  }
+}

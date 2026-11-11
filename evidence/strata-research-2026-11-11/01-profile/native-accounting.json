@@ -1,0 +1,58 @@
+{
+  "groups": [
+    [
+      {
+        "prompt": 149,
+        "reused": 0,
+        "read": 149,
+        "prefill_ms": 751.0,
+        "generated": 16,
+        "decode_ms": 623.0,
+        "accepted": 9,
+        "offered": 12,
+        "timing_line": "strata decode timing: 7 windows, avg T 2.71, 2.29 tokens/window, 89.07 ms/window = adapt wait 0.00 + verify 81.57 (GPU-reach wait 0.00 + per-layer host 0.00 [plan 0.00 actq 0.00 jobs 0.00 CPU 0.00] + stage 0.91) + commit/emit 0.05 + draft 7.44 + adapt join 0.00 + other 0.00; per layer-window: CPU experts 0.00 (0.00 entries), VRAM hits 0.00, PCIe 0.00; 0.0 swaps/window"
+      }
+    ],
+    [
+      {
+        "prompt": 49164,
+        "reused": 0,
+        "read": 49164,
+        "prefill_ms": 43133.0,
+        "generated": 512,
+        "decode_ms": 11801.0,
+        "accepted": 309,
+        "offered": 438,
+        "timing_line": "strata decode timing: 203 windows, avg T 3.16, 2.52 tokens/window, 58.13 ms/window = adapt wait 0.00 + verify 48.13 (GPU-reach wait 0.00 + per-layer host 0.00 [plan 0.00 actq 0.00 jobs 0.00 CPU 0.00] + stage 0.79) + commit/emit 0.08 + draft 9.93 + adapt join 0.00 + other 0.00; per layer-window: CPU experts 0.00 (0.00 entries), VRAM hits 0.00, PCIe 0.00; 0.0 swaps/window"
+      },
+      {
+        "prompt": 49694,
+        "reused": 49675,
+        "read": 19,
+        "prefill_ms": 212.0,
+        "generated": 494,
+        "decode_ms": 12672.0,
+        "accepted": 276,
+        "offered": 462,
+        "timing_line": "strata decode timing: 218 windows, avg T 3.12, 2.27 tokens/window, 58.13 ms/window = adapt wait 0.00 + verify 48.25 (GPU-reach wait 0.00 + per-layer host 0.00 [plan 0.00 actq 0.00 jobs 0.00 CPU 0.00] + stage 0.78) + commit/emit 0.09 + draft 9.78 + adapt join 0.00 + other 0.00; per layer-window: CPU experts 0.00 (0.00 entries), VRAM hits 0.00, PCIe 0.00; 0.0 swaps/window"
+      }
+    ],
+    [
+      {
+        "prompt": 196607,
+        "reused": 0,
+        "read": 196607,
+        "prefill_ms": 153793.0,
+        "generated": 1024,
+        "decode_ms": 26595.0,
+        "accepted": 597,
+        "offered": 877,
+        "timing_line": "strata decode timing: 427 windows, avg T 3.05, 2.40 tokens/window, 62.28 ms/window = adapt wait 0.00 + verify 51.40 (GPU-reach wait 0.00 + per-layer host 0.00 [plan 0.00 actq 0.00 jobs 0.00 CPU 0.00] + stage 0.68) + commit/emit 0.08 + draft 10.80 + adapt join 0.00 + other 0.00; per layer-window: CPU experts 0.00 (0.00 entries), VRAM hits 0.00, PCIe 0.00; 0.0 swaps/window"
+      }
+    ]
+  ],
+  "limits": [
+    "Native completion logs round durations to milliseconds.",
+    "Thinking-budget transitions can add a native continuation and injected tokens; API completion counts need not equal native decoded tokens."
+  ]
+}

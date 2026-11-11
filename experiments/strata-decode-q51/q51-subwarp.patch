@@ -1,0 +1,71 @@
+diff --git a/src/kernels/cuda/iq_kernels.cu b/src/kernels/cuda/iq_kernels.cu
+index 3053183..471352f 100644
+--- a/src/kernels/cuda/iq_kernels.cu
++++ b/src/kernels/cuda/iq_kernels.cu
+@@ -2226,6 +2226,44 @@ __global__ void __launch_bounds__(256) native_down_kernel(const unsigned long lo
+     }
+ }
+
++// Same 40 partial dots and the lane-zero addition tree of the 32-lane kernel.
++// No weight conversion, no changed quantization, and no cross-entry reuse.
++template<int LANES>
++__device__ __forceinline__ float q51_dot_sub(const uint8_t* row, const block_q8_1* x, int t) {
++    float a = 0.0f;
++    a += Fmt<7>::dot(row, x + t / 2, t / 2, 2 * (t % 2));
++    if (t < 8) a += Fmt<7>::dot(row, x + (t + 32) / 2, (t + 32) / 2, 2 * (t % 2));
++    float b = 0.0f;
++    b += Fmt<7>::dot(row, x + (t + 16) / 2, (t + 16) / 2, 2 * (t % 2));
++    a = __fadd_rn(a, b);
++    if constexpr (LANES == 8) {
++        float c = 0.0f, d = 0.0f;
++        c += Fmt<7>::dot(row, x + (t + 8) / 2, (t + 8) / 2, 2 * (t % 2));
++        d += Fmt<7>::dot(row, x + (t + 24) / 2, (t + 24) / 2, 2 * (t % 2));
++        a = __fadd_rn(a, __fadd_rn(c, d));
++    }
++    for (int o = LANES / 2; o; o >>= 1) a += __shfl_xor_sync(0xffffffffu, a, o);
++    return a;
++}
++
++template<int LANES>
++__global__ __launch_bounds__(256) void native_q51_subwarp(
++        const unsigned long long* __restrict__ ptr, const int32_t* __restrict__ starts,
++        const int32_t* __restrict__ ng, const int32_t* __restrict__ dst,
++        const block_q8_1* __restrict__ x, NativeExpertLayout L, float* __restrict__ out) {
++    const int r = blockIdx.x * (256 / LANES) + threadIdx.x / LANES;
++    if (r >= L.n_embd) return;
++    const int t = threadIdx.x % LANES;
++    for (int g = blockIdx.y; g < *ng; g += gridDim.y) {
++        const auto* row = (const uint8_t*) ptr[g] + L.down_off + r * L.d_row;
++        for (int e = starts[g]; e < starts[g + 1]; ++e) {
++            const float v = q51_dot_sub<LANES>(row, x + e * 20, t);
++            if (t == 0) out[(size_t) dst[e] * L.n_embd + r] = v;
++        }
++    }
++}
++
++
+ // the 8-lane down rows: IQ4_NL's K = 40, NVFP4's K = 20
+ template<int TD, int NC, bool EXACT_N = false, bool STAGE_GRID = false>
+ __device__ __forceinline__ void row_dot_sub8(const uint8_t* row, const block_q8_1* x, const int (&off)[NC], int n, int t,
+@@ -4298,6 +4336,21 @@ template<int TD>
+ void launch_down(dim3 grid, cudaStream_t s, const unsigned long long* grp_ptr, const int32_t* grp_start,
+                  const int32_t* n_groups, const int32_t* ent_dst, const block_q8_1* hq, const NativeExpertLayout& L,
+                  float* out) {
++    // Isolated gfx1151 scheduling experiment. No changed defaults or weight formats.
++    // This guard is evaluated before graph capture; only Q5_1 / 640-input rows qualify.
++#if defined(__HIPCC__)
++    if constexpr (TD == 7) {
++        static const bool q51_sub8 = [] {
++            const char* v = std::getenv("STRATA_Q51_DOWN_SUB8");
++            return v && v[0] == '1';
++        }();
++        if (q51_sub8 && !g_old_kernels && L.n_ff == 640 && L.tail_off == 0) {
++            grid.x = (unsigned)((L.n_embd + 31) / 32);
++            native_q51_subwarp<8><<<grid, 256, 0, s>>>(grp_ptr, grp_start, n_groups, ent_dst, hq, L, out);
++            return;
++        }
++    }
++#endif
+     if constexpr (!kSplit<TD>) native_down_kernel<TD><<<grid, 256, 0, s>>>(grp_ptr, grp_start, n_groups, ent_dst, hq, L, out);
+     else if (g_old_kernels || split_off<TD>()) native_down_kernel<TD><<<grid, 256, 0, s>>>(grp_ptr, grp_start, n_groups, ent_dst, hq, L, out);
+     else if constexpr (kTqType<TD>) {   // the trellis down types: the codebook staged where tq_stage_on() or tq_sub8_on()

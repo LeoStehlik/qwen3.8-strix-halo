@@ -1,0 +1,9 @@
+W1111 23:07:21.352872   31272 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.119851 sec
+W1111 23:07:21.353198   31272 simple_timer.cpp:55] [rocprofv3] '/home/less/.cache/strata-research-20261111/q51-build-v3/q51-probe --counter 16 40 1 4' ::     0.000000 sec
+W1111 23:07:21.370713   31272 tool.cpp:3082] HSA version 1.21.0 initialized (instance=0)
+W1111 23:07:21.928266   31272 simple_timer.cpp:55] [rocprofv3] '/home/less/.cache/strata-research-20261111/q51-build-v3/q51-probe --counter 16 40 1 4' ::     0.575067 sec
+E1111 23:07:21.936240   31272 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-research-20261111/q51-counters/lanes16-cache/q51_kernel_trace.csv
+E1111 23:07:21.946529   31272 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-research-20261111/q51-counters/lanes16-cache/q51_counter_collection.csv
+E1111 23:07:21.950330   31272 output_stream.cpp:111] Opened result file: /home/less/.cache/strata-research-20261111/q51-counters/lanes16-cache/q51_agent_info.csv
+W1111 23:07:21.952728   31272 simple_timer.cpp:55] [rocprofv3] output generation ::     0.023247 sec
+W1111 23:07:21.952767   31272 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.023307 sec

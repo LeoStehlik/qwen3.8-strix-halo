@@ -99,7 +99,11 @@ def main():
         if report['strata_tune']:
             body['strata_tune'] = report['strata_tune']
         start = time.monotonic()
+        clock_start = {'monotonic_ns': time.monotonic_ns(), 'unix_ns': time.time_ns(),
+                       'monotonic_raw_ns': time.clock_gettime_ns(time.CLOCK_MONOTONIC_RAW),
+                       'boottime_ns': time.clock_gettime_ns(time.CLOCK_BOOTTIME)}
         first = None
+        first_monotonic_ns = None
         usage = timings = None
         output = []
         finish = None
@@ -123,12 +127,15 @@ def main():
                     if piece:
                         if first is None:
                             first = time.monotonic() - start
+                            first_monotonic_ns = time.monotonic_ns()
                         output.append(piece)
                     finish = choice.get('finish_reason') or finish
         row = {'target_tokens': target, 'repeat': repetition, 'warmup': warmup,
                'nonce': nonce, 'messages_sha256': hashlib.sha256(json.dumps(msg).encode()).hexdigest(),
                'usage': usage, 'timings': timings, 'first_token_s': first,
                'elapsed_s': time.monotonic() - start, 'finish_reason': finish,
+               'clock_start': clock_start, 'end_monotonic_ns': time.monotonic_ns(),
+               'first_token_monotonic_ns': first_monotonic_ns,
                'complete_stream': saw_done,
                'output_sha256': hashlib.sha256(''.join(output).encode()).hexdigest()}
         report['runs'].append(row)

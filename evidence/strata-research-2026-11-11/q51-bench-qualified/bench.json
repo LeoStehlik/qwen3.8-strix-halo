@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/home/less/.cache/strata-research-20261111/q51-build-v5/q51-probe",
+    "--bench"
+  ],
+  "serving_requests_before": 0,
+  "host_before": {
+    "monotonic_ns": 12273342746759,
+    "evicted_ms": {
+      "30944/stats_35564": 9409,
+      "30959/stats_35564": 14946
+    }
+  },
+  "binary_sha256": "f0f40703589ba1b752f41abee8d9557b6396852457bb47d0584e0fc35567c0aa",
+  "exit_code": 0,
+  "host_after": {
+    "monotonic_ns": 12283977845143,
+    "evicted_ms": {
+      "31394/stats_35564": 943,
+      "30944/stats_35564": 9409,
+      "30959/stats_35564": 14957
+    }
+  },
+  "serving_requests_after": 0
+}

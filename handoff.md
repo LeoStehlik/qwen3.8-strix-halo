@@ -1,9 +1,38 @@
-# Handoff for Francis — Flash-Next cache and generation investigation, 2026-11-08
+# Handoff for Francis — Flash-Next kernel research, 2026-11-11
 
 Repository: [Qwen3.8 inference on Strix Halo](https://github.com/LeoStehlik/qwen3.8-strix-halo),
 renamed from the earlier 27B/DFlash2-specific name on 7 November. `main` is the
 canonical branch for deployment, experiments, evidence and this handoff. Completed
 topic branches were consolidated into `main` and retired on 8 November.
+
+## Active research — November 11
+
+The [research program](docs/STRATA-RESEARCH-PROGRAM-2026-11-11.md) now has an
+external timeline of the packaged engine with normal fusion and stream overlap
+preserved. Control generation is **41.95/41.86 tok/s at 49K** and
+**40.74/40.61 at 197K**, with all corresponding output hashes matching the traced
+arm. The weight inventory also corrects the earlier bandwidth argument: routed
+experts alone are about 1.5 GB per selected set, but substantial dense weights,
+speculative reuse and other traffic prevent a "one third of the memory wall"
+conclusion. No hardware ceiling has been established.
+
+The [Q5_1 down-projection prototype](experiments/strata-decode-q51/README.md)
+preserves exact outputs while assigning eight lanes to a row instead of 32.
+Standalone rotating-bank gains are 11–25% for one entry per expert, larger for
+multiple entries. They are operator results, not an overall speedup. Counter
+evidence shows four times fewer waves and essentially unchanged outgoing L2
+read volume. Both isolated correctness and the integrated Strata parity suite
+pass. A full control/candidate/control comparison at 49K/197K, with tool and
+checkpoint checks, is running. **No new source kernel is promoted.**
+
+The normal persistent profile remains the packaged baseline. The measurement
+controller temporarily uses authenticated loopback and restores the original
+service on completion or a caught interruption. The earlier profiling controller
+was interrupted while loading its final control; restoration was verified and
+only the missing control was rerun. Raw and curated evidence preserve that fact.
+Do not infer completed validation from a process merely starting.
+
+The remaining November 8 material below is historical context for the baseline.
 
 ## Latest incident — compact tool calls, November 8
 

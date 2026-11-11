@@ -1,0 +1,36 @@
+{
+  "source_commit": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "source_file_sha256": "cd7f6fee25e220b78c1ec768d5ad2870797633c1c58746173e2d0e208fe7335d",
+  "reference_sha256": "aaee3d2f12493d4c2ab6788134e4595887c2d3e66a5e308bfcbcbc3ed6acf7f2",
+  "probe_sha256": "991f01e21dc3d2e925e0ade85c1a9a325d3e6d4a3e4bdd1b010f88717151cb95",
+  "argv": [
+    "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/bin/clang++",
+    "-x",
+    "hip",
+    "-std=c++20",
+    "-O3",
+    "-DNDEBUG",
+    "--offload-arch=gfx1151",
+    "--rocm-path=/home/less/.local/opt/rocm-7.14.1-strata-lab",
+    "--rocm-device-lib-path=/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/amdgcn/bitcode",
+    "-DSTRATA_USE_HIP=1",
+    "-D__HIP_PLATFORM_AMD__=1",
+    "-I/home/less/src/strata-decode-q51-subwarp-20261111/include",
+    "-I/home/less/src/strata-decode-q51-subwarp-20261111/include/strata/hip_compat",
+    "-I/home/less/src/strata-decode-q51-subwarp-20261111/third_party/ggml",
+    "-I/home/less/.cache/strata-research-20261111/q51-build-v3",
+    "-include",
+    "/home/less/src/strata-decode-q51-subwarp-20261111/include/strata/hip_compat/cuda_runtime.h",
+    "/home/less/qwen38-dflash2/experiments/strata-decode-q51/probe.hip",
+    "-L/home/less/.local/opt/rocm-7.14.1-strata-lab/lib",
+    "-lamdhip64",
+    "-Wl,-rpath,/home/less/.local/opt/rocm-7.14.1-strata-lab/lib",
+    "-o",
+    "/home/less/.cache/strata-research-20261111/q51-build-v3/q51-probe"
+  ],
+  "limits": [
+    "Standalone operator probe; not a packaged-engine replacement.",
+    "Reference expressions and kernel extracted from the recorded Strata source."
+  ],
+  "binary_sha256": "c8a62b9a0985428604cbb1e1f70fece9a7eabf3246923bb1c8eeb74e5a2ce818"
+}

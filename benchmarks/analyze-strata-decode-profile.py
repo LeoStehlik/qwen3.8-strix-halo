@@ -54,21 +54,43 @@ def generation_telemetry(path):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--trial', type=Path, required=True)
+    ap.add_argument('--return-control', type=Path,
+                    help='Completed control-only run replacing an interrupted final control')
     ap.add_argument('--out', type=Path, required=True)
     a = ap.parse_args()
     manifest = json.loads((a.trial / 'summary.json').read_text())
-    assert manifest['completed'] and manifest['restoration']['profile_and_overrides_unchanged']
-    result = {'protocol': 'decode-profile-analysis-v1', 'arms': [], 'comparisons': [],
+    sources = [(a.trial, arm) for arm in manifest['arms']]
+    continuation = None
+    if a.return_control:
+        resumed = json.loads((a.return_control / 'summary.json').read_text())
+        assert len(sources) == 2 and [r['profiled'] for _, r in sources] == [False, True]
+        assert all('after' in r and 'runs' in r for _, r in sources)
+        assert resumed['completed'] and resumed['restoration']['profile_and_overrides_unchanged']
+        assert len(resumed['arms']) == 1 and not resumed['arms'][0]['profiled']
+        for key in ('engine_sha256', 'profile_sha256', 'profile_mode'):
+            assert manifest[key] == resumed[key], key
+        sources.append((a.return_control, resumed['arms'][0]))
+        continuation = {'original_trial_completed': manifest['completed'],
+                        'resumed_trial_completed': True,
+                        'restored': resumed['restoration'],
+                        'reason': 'Final control interrupted during loading; completed as a separate control-only run.'}
+    else:
+        assert manifest['completed'] and manifest['restoration']['profile_and_overrides_unchanged']
+    result = {'protocol': 'decode-profile-analysis-v1',
+              'treatment_mode': manifest.get('profile_mode', 'internal'),
+              'arms': [], 'comparisons': [],
               'limits': manifest['limits'] + ['Timing-line values round to 0.01 ms; native durations round to milliseconds.',
                 'GPU stage counts can include initialization windows; they are retained explicitly.',
                 'Hypothetical speedups assume identical accepted tokens and no replacement costs; they are not measurements.',
                 'Eviction/swap counts cover only intervals fully inside sampled generation, excluding boundary intervals.',
                 'Auto conversation-cache budgets can differ between launches; see arm metadata.']}
-    for arm in manifest['arms']:
-        directory = a.trial / f"{arm['index']:02d}-" / ('profile' if arm['profiled'] else 'control')
+    if continuation:
+        result['continuation'] = continuation
+    for comparison_index, (trial, arm) in enumerate(sources):
+        directory = trial / f"{arm['index']:02d}-" / ('profile' if arm['profiled'] else 'control')
         if not directory.is_dir():
             # Published evidence flattens the private run's nested arm folders.
-            directory = a.trial / (f"{arm['index']:02d}-" + ('profile' if arm['profiled'] else 'control'))
+            directory = trial / (f"{arm['index']:02d}-" + ('profile' if arm['profiled'] else 'control'))
         native = json.loads((directory / 'native-accounting.json').read_text())['groups']
         api = json.loads((directory / 'results.json').read_text())['runs']
         gpu = [stages(l) for l in json.loads((directory / 'gpu-stages.json').read_text())['lines']]
@@ -110,7 +132,7 @@ def main():
                 row['gpu_profile'] = {'windows': gw, 'total_ms_per_window': total,
                                       'stages': means, 'categories_ms_per_window': categories}
             rows.append(row)
-        result['arms'].append({'index': arm['index'], 'profiled': arm['profiled'], 'runs': rows,
+        result['arms'].append({'index': comparison_index, 'profiled': arm['profiled'], 'runs': rows,
             'generation_telemetry': generation_telemetry(directory / 'telemetry.jsonl'),
             'conversation_cache_mib': arm['before']['engine']['conversation_cache_mib']})
     controls = [result['arms'][i]['runs'] for i in (0, 2)]

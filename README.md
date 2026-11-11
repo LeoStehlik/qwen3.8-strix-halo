@@ -14,11 +14,20 @@ consolidated here and retired.
 - [Flash-Next deployment guide](docs/STRATA-FLASH-NEXT.md)
 - [Current handoff and serving state](handoff.md)
 - [Performance objectives and evidence](docs/STRATA-NEXT-TARGETS-2026-11-07.md)
+- [November 11 kernel research and external profiling](docs/STRATA-RESEARCH-PROGRAM-2026-11-11.md)
 
 The earlier 27B/DFlash2 setup remains documented below and in its installation
 guide. Use the Strata guide above for Flash-Next.
 
-## Current direction — 2026-11-08
+## Current direction — 2026-11-11
+
+The new [research program](docs/STRATA-RESEARCH-PROGRAM-2026-11-11.md) preserves
+normal engine paths while tracing 49K/197K workloads externally. Matching-output
+controls give about **41.9/40.7 tok/s generation**. An isolated Q5_1 expert-kernel
+prototype passes exact-output checks and improves its operator timings; full
+engine validation is ongoing. No new source kernel or overall speedup is promoted.
+
+### Validated deployment and November 8 findings
 
 The packaged Flash-Next deployment is persistent and enabled at boot, with a
 pinned engine and automatic crash recovery. Normal restart took 87.3 seconds;

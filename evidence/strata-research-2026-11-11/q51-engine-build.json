@@ -1,0 +1,13 @@
+{
+  "version": "0.1.57",
+  "variant": "halo",
+  "archs": [
+    "gfx1151"
+  ],
+  "hipblaslt_version": 100401,
+  "source": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d + opt-in Q51 subwarp",
+  "engine_source_matches_packaged_commit": "0bdcef4682c5371f7bcf130c41791c7849d78205",
+  "binary_sha256": "2a34b5976d72b7529889d4ea53228b67f1df0f7d3b64e797cc83e90d84d02392",
+  "patch_sha256": "0633da92e4b8121d43f2d718805ad8957c97273d1562728195d9bc95856ba182",
+  "source_diff_sha256": "35cc22524d4d8660294c6a565db90f2054e5eab61040521ff6ed2a030428c2e1"
+}

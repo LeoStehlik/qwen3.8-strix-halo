@@ -1,0 +1,16 @@
+{
+  "reason": "Controller handle and process disappeared while final control was loading; original manifest remains incomplete.",
+  "original_profile_sha256_matches": true,
+  "temporary_override_absent": true,
+  "restored_health": {
+    "status": "ok",
+    "max_context": 262144,
+    "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+    "images": true,
+    "api_key": true,
+    "image_generation": false,
+    "loaded": true,
+    "service": "strata"
+  },
+  "recovery": "Observed original serving service restored and loaded; rerun only missing final control separately."
+}
