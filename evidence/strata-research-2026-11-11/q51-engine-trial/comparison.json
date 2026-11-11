@@ -1,0 +1,273 @@
+{
+  "protocol": "decode-profile-analysis-v1",
+  "treatment_mode": "candidate",
+  "arms": [
+    {
+      "index": 0,
+      "profiled": false,
+      "runs": [
+        {
+          "target_tokens": 49152,
+          "prompt_tokens": 49164,
+          "output_sha256": "69004b66e1b04c8298ef1a88a3ede54efcc9b6638694971d9a810b4204a21227",
+          "messages_sha256": "8d696dfbc54047135dc821116021d91cff4f00c78fbb2d9a6bc214994bf677de",
+          "generated_native": 1006,
+          "decode_ms": 24020.0,
+          "decode_tok_s": 41.881765195670276,
+          "native_segments": 2,
+          "windows": 421.0,
+          "tokens_per_window": 2.3895486935866983,
+          "avg_T": 3.1392874109263653,
+          "verify_ms_per_window": 47.2048218527316,
+          "draft_ms_per_window": 9.835914489311165,
+          "verify_share": 0.8273617818484598,
+          "draft_share": 0.1723946711074105,
+          "drafts_offered": 900,
+          "drafts_accepted": 585,
+          "accepted_fraction": 0.65,
+          "zero_draft_hypothetical_tok_s": 50.60596365626578,
+          "required_time_reduction": {
+            "60": 0.30197058007216204,
+            "70": 0.4016890686332818
+          }
+        },
+        {
+          "target_tokens": 196608,
+          "prompt_tokens": 196607,
+          "output_sha256": "5b6f94bda3203524fb4142b052c7ed9a9230a5df196d0ae604473db226f2791c",
+          "messages_sha256": "3cedbb7722e7a18fb3de405db8bd4f1b634b9825d59ce0ed1add17e077157703",
+          "generated_native": 1024,
+          "decode_ms": 25159.0,
+          "decode_tok_s": 40.70114074486267,
+          "native_segments": 1,
+          "windows": 427.0,
+          "tokens_per_window": 2.398126463700234,
+          "avg_T": 3.0600000000000005,
+          "verify_ms_per_window": 49.06000000000001,
+          "draft_ms_per_window": 9.859999999999998,
+          "verify_share": 0.8326491513971145,
+          "draft_share": 0.16734448904964425,
+          "drafts_offered": 879,
+          "drafts_accepted": 597,
+          "accepted_fraction": 0.6791808873720137,
+          "zero_draft_hypothetical_tok_s": 48.88112816116261,
+          "required_time_reduction": {
+            "60": 0.3216476542522887,
+            "70": 0.4185551322162475
+          }
+        }
+      ],
+      "generation_telemetry": {
+        "49164": {
+          "sampled_seconds": 22.021734952926636,
+          "evicted_ms": {
+            "35020/stats_35564": 0,
+            "35007/stats_35564": 0
+          },
+          "swap_in_pages": 468
+        },
+        "196607": {
+          "sampled_seconds": 24.018837213516235,
+          "evicted_ms": {
+            "35020/stats_35564": 0,
+            "35007/stats_35564": 0
+          },
+          "swap_in_pages": 173
+        }
+      },
+      "conversation_cache_mib": 7168
+    },
+    {
+      "index": 1,
+      "profiled": true,
+      "runs": [
+        {
+          "target_tokens": 49152,
+          "prompt_tokens": 49164,
+          "output_sha256": "69004b66e1b04c8298ef1a88a3ede54efcc9b6638694971d9a810b4204a21227",
+          "messages_sha256": "8d696dfbc54047135dc821116021d91cff4f00c78fbb2d9a6bc214994bf677de",
+          "generated_native": 1006,
+          "decode_ms": 23558.0,
+          "decode_tok_s": 42.703115714407,
+          "native_segments": 2,
+          "windows": 420.0,
+          "tokens_per_window": 2.395238095238095,
+          "avg_T": 3.144166666666667,
+          "verify_ms_per_window": 46.15416666666667,
+          "draft_ms_per_window": 9.931333333333333,
+          "verify_share": 0.8228521096867306,
+          "draft_share": 0.1770591731046778,
+          "drafts_offered": 901,
+          "drafts_accepted": 586,
+          "accepted_fraction": 0.6503884572697003,
+          "zero_draft_hypothetical_tok_s": 51.89087030170982,
+          "required_time_reduction": {
+            "60": 0.2882814047598834,
+            "70": 0.3899554897941858
+          }
+        },
+        {
+          "target_tokens": 196608,
+          "prompt_tokens": 196607,
+          "output_sha256": "5b6f94bda3203524fb4142b052c7ed9a9230a5df196d0ae604473db226f2791c",
+          "messages_sha256": "3cedbb7722e7a18fb3de405db8bd4f1b634b9825d59ce0ed1add17e077157703",
+          "generated_native": 1024,
+          "decode_ms": 24746.0,
+          "decode_tok_s": 41.38042511921119,
+          "native_segments": 1,
+          "windows": 427.0,
+          "tokens_per_window": 2.398126463700234,
+          "avg_T": 3.0600000000000005,
+          "verify_ms_per_window": 48.01,
+          "draft_ms_per_window": 9.94,
+          "verify_share": 0.8284276246666128,
+          "draft_share": 0.17151782106198982,
+          "drafts_offered": 879,
+          "drafts_accepted": 597,
+          "accepted_fraction": 0.6791808873720137,
+          "zero_draft_hypothetical_tok_s": 49.94727245944467,
+          "required_time_reduction": {
+            "60": 0.3103262480131469,
+            "70": 0.4088510697255544
+          }
+        }
+      ],
+      "generation_telemetry": {
+        "49164": {
+          "sampled_seconds": 22.01653790473938,
+          "evicted_ms": {
+            "35675/stats_35564": 0,
+            "35688/stats_35564": 0
+          },
+          "swap_in_pages": 1157
+        },
+        "196607": {
+          "sampled_seconds": 24.014930248260498,
+          "evicted_ms": {
+            "35675/stats_35564": 0,
+            "35688/stats_35564": 0
+          },
+          "swap_in_pages": 72
+        }
+      },
+      "conversation_cache_mib": 7168
+    },
+    {
+      "index": 2,
+      "profiled": false,
+      "runs": [
+        {
+          "target_tokens": 49152,
+          "prompt_tokens": 49164,
+          "output_sha256": "69004b66e1b04c8298ef1a88a3ede54efcc9b6638694971d9a810b4204a21227",
+          "messages_sha256": "8d696dfbc54047135dc821116021d91cff4f00c78fbb2d9a6bc214994bf677de",
+          "generated_native": 1006,
+          "decode_ms": 24038.0,
+          "decode_tok_s": 41.85040352774773,
+          "native_segments": 2,
+          "windows": 421.0,
+          "tokens_per_window": 2.3895486935866983,
+          "avg_T": 3.1392874109263653,
+          "verify_ms_per_window": 47.214465558194775,
+          "draft_ms_per_window": 9.87627078384798,
+          "verify_share": 0.8269111406939014,
+          "draft_share": 0.17297237706963972,
+          "drafts_offered": 900,
+          "drafts_accepted": 585,
+          "accepted_fraction": 0.65,
+          "zero_draft_hypothetical_tok_s": 50.60339264057658,
+          "required_time_reduction": {
+            "60": 0.3024932745375377,
+            "70": 0.4021370924607467
+          }
+        },
+        {
+          "target_tokens": 196608,
+          "prompt_tokens": 196607,
+          "output_sha256": "5b6f94bda3203524fb4142b052c7ed9a9230a5df196d0ae604473db226f2791c",
+          "messages_sha256": "3cedbb7722e7a18fb3de405db8bd4f1b634b9825d59ce0ed1add17e077157703",
+          "generated_native": 1024,
+          "decode_ms": 25189.0,
+          "decode_tok_s": 40.65266584620271,
+          "native_segments": 1,
+          "windows": 427.0,
+          "tokens_per_window": 2.398126463700234,
+          "avg_T": 3.0600000000000005,
+          "verify_ms_per_window": 49.09,
+          "draft_ms_per_window": 9.890000000000002,
+          "verify_share": 0.832166024852118,
+          "draft_share": 0.16765373774266548,
+          "drafts_offered": 879,
+          "drafts_accepted": 597,
+          "accepted_fraction": 0.6791808873720137,
+          "zero_draft_hypothetical_tok_s": 48.84105052139252,
+          "required_time_reduction": {
+            "60": 0.3224555692299548,
+            "70": 0.41924763076853266
+          }
+        }
+      ],
+      "generation_telemetry": {
+        "49164": {
+          "sampled_seconds": 22.015568494796753,
+          "evicted_ms": {
+            "36188/stats_35564": 0,
+            "36176/stats_35564": 0
+          },
+          "swap_in_pages": 380
+        },
+        "196607": {
+          "sampled_seconds": 24.01802682876587,
+          "evicted_ms": {
+            "36188/stats_35564": 0,
+            "36176/stats_35564": 0
+          },
+          "swap_in_pages": 109
+        }
+      },
+      "conversation_cache_mib": 7168
+    }
+  ],
+  "comparisons": [
+    {
+      "target_tokens": 49152,
+      "control_tok_s": [
+        41.881765195670276,
+        41.85040352774773
+      ],
+      "control_mean_tok_s": 41.866084361709,
+      "profile_tok_s": 42.703115714407,
+      "profile_throughput_change_percent": 1.999306516144017,
+      "control_output_hashes_match": true,
+      "profile_output_hash_matches_control": true,
+      "native_counts_match_across_arms": false,
+      "time_reduction_needed_for_60": 0.30223192730485005,
+      "time_reduction_needed_for_70": 0.40191308054701425
+    },
+    {
+      "target_tokens": 196608,
+      "control_tok_s": [
+        40.70114074486267,
+        40.65266584620271
+      ],
+      "control_mean_tok_s": 40.67690329553269,
+      "profile_tok_s": 41.38042511921119,
+      "profile_throughput_change_percent": 1.729536338022486,
+      "control_output_hashes_match": true,
+      "profile_output_hash_matches_control": true,
+      "native_counts_match_across_arms": true,
+      "time_reduction_needed_for_60": 0.32205161174112185,
+      "time_reduction_needed_for_70": 0.4189013814923902
+    }
+  ],
+  "limits": [
+    "Public repeated-source fixture, not an agent quality evaluation.",
+    "Candidate mode compares opt-in switches on/off in the same isolated engine; no profiler is attached.",
+    "DECODE_TIMING is common to all arms; output limit is probe-only.",
+    "Timing-line values round to 0.01 ms; native durations round to milliseconds.",
+    "GPU stage counts can include initialization windows; they are retained explicitly.",
+    "Hypothetical speedups assume identical accepted tokens and no replacement costs; they are not measurements.",
+    "Eviction/swap counts cover only intervals fully inside sampled generation, excluding boundary intervals.",
+    "Auto conversation-cache budgets can differ between launches; see arm metadata."
+  ]
+}

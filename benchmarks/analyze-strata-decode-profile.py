@@ -116,6 +116,7 @@ def main():
                    'avg_T': sum(t['windows'] * t['avg_T'] for t in ts) / windows,
                    'verify_ms_per_window': verify_ms / windows, 'draft_ms_per_window': draft_ms / windows,
                    'verify_share': verify_ms / decode_ms, 'draft_share': draft_ms / decode_ms,
+                   'drafts_offered': offered, 'drafts_accepted': sum(r['accepted'] for r in group),
                    'accepted_fraction': sum(r['accepted'] for r in group) / offered,
                    'zero_draft_hypothetical_tok_s': generated * 1000 / (decode_ms - draft_ms),
                    'required_time_reduction': {str(target): 1 - generated * 1000 / target / decode_ms for target in (60, 70)}}
@@ -146,6 +147,9 @@ def main():
             'profile_throughput_change_percent': 100 * (prof['decode_tok_s'] / mean - 1),
             'control_output_hashes_match': first['output_sha256'] == second['output_sha256'],
             'profile_output_hash_matches_control': first['output_sha256'] == prof['output_sha256'],
+            'native_counts_match_across_arms': len({tuple(r[k] for k in
+                ('generated_native', 'windows', 'drafts_offered', 'drafts_accepted'))
+                for r in (first, second, prof)}) == 1,
             'time_reduction_needed_for_60': 1 - mean / 60,
             'time_reduction_needed_for_70': 1 - mean / 70})
     a.out.write_text(json.dumps(result, indent=2) + '\n')

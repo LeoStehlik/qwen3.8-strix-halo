@@ -1,7 +1,9 @@
 # Q5_1 decode down-projection scheduling experiment
 
-Status: standalone correctness and timings complete; full-engine comparison in
-preparation. Nothing is deployed.
+Status: standalone and full-engine comparisons complete. The candidate improves
+generation by **2.00% at 49K and 1.73% at 197K**, with matching output hashes and
+passing synthetic tool/state checks. No prefill gain. Retained as an opt-in
+research patch; nothing is promoted to the serving deployment.
 
 ## Why this operator
 
@@ -112,4 +114,83 @@ third-party trees are identical to packaged engine source commit
 `0bdcef4682c5371f7bcf130c41791c7849d78205`. The built engine also passes Strata's
 `iq_multi_parity` suite with the switch enabled and `STRATA_EXPERT_V2K=0`, including
 the Q4_K/Q5_1 and Q5_K/Q5_1 native expert paths. Full-model performance and
-continuation tests are running. CUDA and other AMD GPUs are untested.
+continuation tests are complete below. CUDA and other AMD GPUs are untested.
+
+## Full-model result
+
+| Context | Control | Candidate | Return control | Gain vs mean controls |
+|---|---:|---:|---:|---:|
+| 49K generation, tok/s | 41.88 | 42.70 | 41.85 | +2.00% |
+| 197K generation, tok/s | 40.70 | 41.38 | 40.65 | +1.73% |
+
+All corresponding prompt/output hashes match the packaged baseline, including
+warm-up. At 197K all arms generate 1,024 native tokens with 427 windows and
+879/597 offered/accepted drafts. At 49K they generate 1,006 native tokens plus
+18 frontend-injected tokens, with 421/420/421 windows and 585/586/585 accepted
+drafts. Do not describe the latter as identical speculative behavior; the cause
+of the small work-count difference is unproven.
+
+The candidate is measured once between two controls, without a profiler. All
+three arms have the same 7 GiB conversation-cache budget; fully sampled
+generation intervals record no queue evictions. Each arm passes exact tool
+arguments, result continuation and interleaved checkpoint restoration, with
+reused prefixes advancing from 11,614 to 11,782 tokens. These are synthetic API
+canaries, not a live OpenClaw quality evaluation.
+
+No prefill gain is demonstrated: 49K candidate/return control give 1,368.9/1,371.4
+tok/s, and 197K arms range from 1,280.0 to 1,289.2. The slow first 49K control is
+not evidence of a gain from this decode-only kernel.
+
+The result falls below the program's approximately 5% promotion threshold.
+Keep the patch available for research and restore the packaged deployment.
+[Full comparison and restoration evidence](../../evidence/strata-research-2026-11-11/q51-engine-trial/).
+
+## Full-engine build and comparison
+
+Apply the patch to a separate checkout, not an installed engine. The measured
+build used the following options (`STRATA_SRC`, `ROCM_LAB`, and `GGML_SRC` are
+absolute paths selected by the person reproducing the experiment):
+
+```sh
+git -C "$STRATA_SRC" apply /path/to/q51-subwarp.patch
+cmake -S "$STRATA_SRC" -B "$STRATA_SRC/build-halo-lab" -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release -DSTRATA_ENABLE_CUDA=OFF -DSTRATA_ENABLE_HIP=ON \
+  -DCMAKE_HIP_COMPILER="$ROCM_LAB/lib/llvm/bin/clang++" \
+  -DCMAKE_HIP_ARCHITECTURES=gfx1151 -DGPU_TARGETS=gfx1151 \
+  -DCMAKE_PREFIX_PATH="$ROCM_LAB" -DCMAKE_HIP_FLAGS="--rocm-path=$ROCM_LAB" \
+  -DSTRATA_BUILD_TESTS=OFF -DSTRATA_BUILD_DSV41=OFF -DSTRATA_BUILD_SPLIT=OFF \
+  -DSTRATA_NATIVE_EXPERTS=ON -DSTRATA_PREFILL_MMQ=ON -DSTRATA_MMQ_KQUANTS=ON \
+  -DSTRATA_AMD_COMMUNITY_TUNING=ON -DSTRATA_GGML_DIR="$GGML_SRC"
+cmake --build "$STRATA_SRC/build-halo-lab" --target strata iq_multi_parity -j 2
+```
+
+The pinned GGML checkout is
+`3cf03257f219afbe7334045ff7c6a06ac68c627d`. The SDK is TheRock 7.14.1 for gfx1151.
+Run the parity executable with `STRATA_Q51_DOWN_SUB8=1`,
+`STRATA_EXPERT_V2K=0`, and `LD_LIBRARY_PATH` pointing at the packaged 0.1.57
+HIP-Halo libraries. Stage the built `strata` beside symlinks to those packaged
+libraries and tuning files; do not replace any installed file. The harness
+checks loaded runtime library paths and hashes.
+
+Use the existing private profile only as input. Candidate mode creates private
+arm copies using the staged executable and sets the switch only in the middle
+arm; it restores the original service afterward:
+
+```sh
+python3 benchmarks/strata-decode-profile.py \
+  --profile /private/strata-known-good.json \
+  --terminal /path/to/terminal/0.1.57 --fixture /path/to/prompt.txt \
+  --out /private/new-q51-engine-trial --profile-mode candidate \
+  --engine /private/staged-engine/strata \
+  --candidate-env STRATA_Q51_DOWN_SUB8=1 \
+  --expected-results /path/to/packaged-control/results.json \
+  --checkpoint-checks --sizes 49152 196608 --max-tokens 1024 --execute
+```
+
+The legacy arm label `profile` means the candidate in this mode; no profiler is
+attached. Output counts affect synthetic probes only. `--expected-results`
+requires both request and answer hashes to match the packaged baseline, including
+the warm-up. The checkpoint checks run after timed probes and execute no real
+tools. Run the controller under a transient systemd unit if its terminal/tool
+session may disconnect. Its original incomplete manifest must be retained if
+interrupted, even when service restoration subsequently succeeds.

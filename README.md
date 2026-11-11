@@ -21,11 +21,14 @@ guide. Use the Strata guide above for Flash-Next.
 
 ## Current direction — 2026-11-11
 
-The new [research program](docs/STRATA-RESEARCH-PROGRAM-2026-11-11.md) preserves
-normal engine paths while tracing 49K/197K workloads externally. Matching-output
-controls give about **41.9/40.7 tok/s generation**. An isolated Q5_1 expert-kernel
-prototype passes exact-output checks and improves its operator timings; full
-engine validation is ongoing. No new source kernel or overall speedup is promoted.
+The bounded [research program](docs/STRATA-RESEARCH-PROGRAM-2026-11-11.md) is
+complete. External profiling preserves normal engine paths. An exact-output
+Q5_1 scheduling patch improves full-model generation by **2.00% at 49K and 1.73%
+at 197K**, to **42.70/41.38 tok/s**, in a control/candidate/control trial. Synthetic
+tool, continuation and checkpoint checks pass; no prefill gain is demonstrated.
+The patch remains optional research because the gain is below the approximately
+5% promotion threshold. The packaged endpoint is restored; the larger throughput
+targets remain unmet and the hardware ceiling is unproven.
 
 ### Validated deployment and November 8 findings
 

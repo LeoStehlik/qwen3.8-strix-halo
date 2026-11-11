@@ -27,6 +27,12 @@ credentials are excluded.
   subsequent eviction instrumentation changes host-side measurement only.
 - `q51-integrated-parity/`: existing Strata parity suite with the opt-in engine
   patch active, zero failures. `q51-engine-build.json` identifies that engine.
+- `q51-engine-trial/`: completed control/candidate/control trial on the same
+  isolated executable, switch enabled only in the middle arm. Generation gains
+  are 2.00% at 49K and 1.73% at 197K; no prefill gain is demonstrated. All arms
+  match the packaged reference output hashes and pass synthetic tool/state
+  checks. Native work counts match at 197K but differ slightly at 49K.
+  `restored-deployment.json` verifies the packaged endpoint after the trial.
 
 Recompute the control comparison and operator summary from the published files:
 
@@ -39,8 +45,13 @@ python3 experiments/strata-decode-q51/analyze.py \
   --run evidence/strata-research-2026-11-11/q51-bench-qualified \
   --counters evidence/strata-research-2026-11-11/q51-counters \
   --out /tmp/q51-analysis.json
+python3 benchmarks/analyze-strata-decode-profile.py \
+  --trial evidence/strata-research-2026-11-11/q51-engine-trial \
+  --out /tmp/q51-engine-comparison.json
 ```
 
 The source/kernel prototype and full-engine validation status are documented in
-the [research program](../../docs/STRATA-RESEARCH-PROGRAM-2026-11-11.md). No speedup
-or validation result is inferred from a started but incomplete run.
+the [research program](../../docs/STRATA-RESEARCH-PROGRAM-2026-11-11.md). The candidate
+is not promoted: its full-model gain is below the approximately 5% threshold.
+The packaged endpoint is restored. No speedup or validation result is inferred
+from a started but incomplete run.

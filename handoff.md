@@ -5,7 +5,7 @@ renamed from the earlier 27B/DFlash2-specific name on 7 November. `main` is the
 canonical branch for deployment, experiments, evidence and this handoff. Completed
 topic branches were consolidated into `main` and retired on 8 November.
 
-## Active research — November 11
+## Completed research pass — November 11
 
 The [research program](docs/STRATA-RESEARCH-PROGRAM-2026-11-11.md) now has an
 external timeline of the packaged engine with normal fusion and stream overlap
@@ -22,12 +22,32 @@ Standalone rotating-bank gains are 11–25% for one entry per expert, larger for
 multiple entries. They are operator results, not an overall speedup. Counter
 evidence shows four times fewer waves and essentially unchanged outgoing L2
 read volume. Both isolated correctness and the integrated Strata parity suite
-pass. A full control/candidate/control comparison at 49K/197K, with tool and
-checkpoint checks, is running. **No new source kernel is promoted.**
+pass. The full control/candidate/control comparison is complete:
 
-The normal persistent profile remains the packaged baseline. The measurement
-controller temporarily uses authenticated loopback and restores the original
-service on completion or a caught interruption. The earlier profiling controller
+| Context | Control | Candidate | Return control | Gain vs mean controls |
+|---|---:|---:|---:|---:|
+| 49K generation, tok/s | 41.88 | 42.70 | 41.85 | +2.00% |
+| 197K generation, tok/s | 40.70 | 41.38 | 40.65 | +1.73% |
+
+All corresponding input/output hashes match the packaged baseline, including
+warm-up. Native work counts also match at 197K; at 49K the candidate accepts one
+extra draft and uses one fewer window, with identical output. Each arm passes
+exact tool arguments, tool-result continuation and interleaved checkpoint
+restoration; reused prefixes advance from 11,614 to 11,782 tokens. These are
+synthetic API checks, not a new live OpenClaw quality evaluation.
+
+No prefill gain is demonstrated. The 49K candidate/return control give
+1,368.9/1,371.4 tok/s; 197K arms range from 1,280.0 to 1,289.2. The slow first 49K
+control must not be counted as a gain. **No new source kernel is promoted:**
+1.7–2.0% is below the program's approximately 5% threshold. The optional patch,
+build instructions and [complete evidence](evidence/strata-research-2026-11-11/q51-engine-trial/)
+are retained for separate research. The larger throughput targets remain unmet.
+
+The normal persistent profile remains the packaged baseline. Final restoration
+took 77.0 seconds; independent verification confirms the packaged executable,
+unchanged profile, absent experiment flags/temporary override, loaded model and
+idle queue at the normal endpoint. **No further benchmark or deployment change
+is pending from this research pass.** The earlier profiling controller
 was interrupted while loading its final control; restoration was verified and
 only the missing control was rerun. Raw and curated evidence preserve that fact.
 Do not infer completed validation from a process merely starting.

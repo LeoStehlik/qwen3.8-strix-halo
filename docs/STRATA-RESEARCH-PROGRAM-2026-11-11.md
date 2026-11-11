@@ -1,9 +1,12 @@
 # Flash-Next kernel research program — 11 November 2026
 
-Status: active measurement work. No new inference kernel is deployed and no new
-speedup is claimed. The packaged 0.1.57 engine and the validated cache settings
-remain the deployment baseline. This program replaces further broad flag sweeps
-with measured kernel and memory-path work.
+Status: this bounded research pass is complete. The opt-in Q5_1 kernel improves
+full-model generation by **2.00% at 49K and 1.73% at 197K** in a
+control/candidate/control comparison, with matching output hashes and passing
+synthetic tool/state checks. No prefill gain is demonstrated. The result is below
+the roughly 5% deployment threshold, so the packaged 0.1.57 engine and validated
+cache settings remain the baseline. The original endpoint is restored and
+verified; the patch remains an optional research artifact.
 
 ## Objective and decision points
 
@@ -188,8 +191,70 @@ expert, and more when experts handle multiple entries. The counter run shows
 roughly unchanged 49.2 MB outgoing L2 reads and four times fewer launched waves
 for its 40-group test. It does not measure DRAM saturation.
 
-These results warrant an opt-in full-engine comparison. The packaged engine is
-still the deployment baseline. Building and testing the isolated candidate is
-ongoing; no whole-model speedup, tool/state validation or promotion is claimed.
+These results warranted the completed opt-in full-engine comparison below.
+
+## Full-engine outcome
+
+The isolated engine uses the same source for the C++ engine, headers, CMake and
+third-party trees as the packaged build, plus the opt-in patch. Both controls and
+the candidate use this same rebuilt executable; only the middle arm sets
+`STRATA_Q51_DOWN_SUB8=1`. No profiler is attached. The bundled runtime libraries,
+model, quant, sampling, MTP settings and 262,144-token capacity are preserved.
+
+| Context | First control | Eight-lane candidate | Return control | Candidate vs mean controls |
+|---|---:|---:|---:|---:|
+| 49K generation | 41.88 tok/s | 42.70 tok/s | 41.85 tok/s | +2.00% |
+| 197K generation | 40.70 tok/s | 41.38 tok/s | 40.65 tok/s | +1.73% |
+
+All corresponding request and answer hashes match the packaged baseline,
+including the warm-up. At 197K all three arms also have identical native work
+counts: 1,024 generated tokens, 427 windows, 879 offered drafts and 597 accepted.
+Mean verification time falls from 49.06/49.09 to 48.01 ms per window; drafting
+remains about 9.9 ms. The gain is in the expected part of the execution path.
+
+At 49K the API reports 1,024 completion tokens, of which 1,006 are native model
+outputs and 18 are frontend-injected. The candidate has 420 windows and
+901/586 offered/accepted drafts, versus 421 windows and 900/585 in each control.
+The output is identical, but the native work counts are not. The cause of that
+small difference is not established; the 197K result independently shows a gain
+with matching work counts. This is one candidate arm bracketed by two controls,
+not a repeated candidate campaign or a broad quality evaluation.
+
+All three arms allocate 7,168 MiB of conversation cache and keep all 24,576
+experts resident. No GPU queue eviction is recorded in the fully sampled
+generation intervals. Boundary intervals are excluded by the telemetry analysis,
+and some swap-ins still occur; this does not prove an entirely stall-free run.
+
+Prefill does not improve. At 49K the candidate gives 1,368.9 tok/s and the return
+control 1,371.4. The first control's 1,113.0 tok/s is accompanied by startup/stall
+effects and must not be counted as a candidate gain. At 197K the three rates are
+1,289.2 / 1,280.0 / 1,283.7 tok/s. This patch changes decode scheduling only.
+
+After the timed probes, every arm passes four synthetic API requests checking
+exact tool arguments, tool-result continuation, an intervening conversation and
+restoration of the first conversation. Reused prefixes advance from 11,614 to
+11,782 tokens in every arm. No real tools or OpenClaw turns are executed. These
+checks establish the tested tool/state behavior, not general answer quality.
+
+## Decision and remaining uncertainty
+
+Keep the patch and reproducible evidence; **do not promote it**. The measured
+1.7–2.0% generation gain does not justify replacing the packaged deployment under
+this program's approximately 5% threshold. The large warm-cache operator gains
+do not survive as a comparable whole-model improvement. The 1,700–2,000 prefill
+and 60–70 generation targets remain unmet, and no hardware ceiling is proved.
+
+The packaged endpoint was restored after the final arm in 77.0 seconds. A
+separate verification confirms the running executable's packaged SHA, unchanged
+private profile, absence of the temporary service override and experimental
+environment variables, loaded model, 262,144 capacity and idle queue. No source
+kernel is serving.
+
+Further kernel work is a separate research decision. The normal-path profile
+now provides a better starting point: Q4_K gate/up is the largest individual
+prefill shape, while decode time is spread across dense and expert matrix work.
+Any next design needs clean per-kernel traffic/occupancy evidence and a larger
+end-to-end time budget. Neither the earlier bandwidth arithmetic nor this small
+scheduling win establishes an inexpensive route to the remaining target.
 
 [Curated results and native accounting](../evidence/strata-research-2026-11-11/).
