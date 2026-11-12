@@ -15,11 +15,29 @@ consolidated here and retired.
 - [Current handoff and serving state](handoff.md)
 - [Performance objectives and evidence](docs/STRATA-NEXT-TARGETS-2026-11-07.md)
 - [November 11 kernel research and external profiling](docs/STRATA-RESEARCH-PROGRAM-2026-11-11.md)
+- [November 12 measured hardware/model performance envelope](docs/STRATA-PERFORMANCE-ENVELOPE-2026-11-12.md)
 
 The earlier 27B/DFlash2 setup remains documented below and in its installation
 guide. Use the Strata guide above for Flash-Next.
 
-## Current direction — 2026-11-11
+## Current direction — 2026-11-12
+
+The [performance-envelope study](docs/STRATA-PERFORMANCE-ENVELOPE-2026-11-12.md)
+calibrates about **242 GB/s reads, 209–211 GB/s mixed traffic and 57 TFLOP/s
+register-only FP16 matrix work**. Large Q8 decode projections already approach
+the measured memory rate. Actual speculative routing touches about **8 GB of
+dense and distinct expert payload per window**, producing roughly 2.4 accepted
+tokens. This corrects the earlier claim that decode uses only a third of the
+memory ceiling. It is logical payload accounting, not measured physical DRAM.
+
+1,700–2,000 tok/s prefill remains a multi-kernel research target. Sustained
+60–70 tok/s decode needs better useful work per weight read or less speculative
+overhead as well as faster kernels; it has no demonstrated implementation here.
+All diagnostic output hashes match the control. No new deployment is promoted;
+the packaged endpoint is restored. Code, raw evidence, limitations and concrete
+next designs are on `main`.
+
+### November 11 kernel prototype
 
 The bounded [research program](docs/STRATA-RESEARCH-PROGRAM-2026-11-11.md) is
 complete. External profiling preserves normal engine paths. An exact-output

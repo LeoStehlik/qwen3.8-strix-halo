@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/bin/clang++",
+    "-O3",
+    "-std=c++17",
+    "-DNDEBUG",
+    "--rocm-path=/home/less/.local/opt/rocm-7.14.1-strata-lab",
+    "--offload-arch=gfx1151",
+    "-DSTRATA_USE_HIP=1",
+    "-D__HIP_PLATFORM_AMD__=1",
+    "-I/home/less/src/strata-decode-q51-subwarp-20261111/include",
+    "-I/home/less/src/strata-decode-q51-subwarp-20261111/include/strata/hip_compat",
+    "-I/home/less/.local/opt/rocm-7.14.1-strata-lab/include",
+    "-include",
+    "/home/less/src/strata-decode-q51-subwarp-20261111/include/strata/hip_compat/cuda_runtime.h",
+    "/home/less/qwen38-dflash2/experiments/strata-envelope/q8.cpp",
+    "/home/less/src/strata-decode-q51-subwarp-20261111/build-halo-lab/libstrata_kernels.a",
+    "/home/less/src/strata-decode-q51-subwarp-20261111/build-halo-lab/libstrata_core.a",
+    "-L/home/less/.local/opt/rocm-7.14.1-strata-lab/lib",
+    "-lamdhip64",
+    "-Wl,-rpath,/home/less/.local/opt/rocm-7.14.1-strata-lab/lib",
+    "-o",
+    "/home/less/.cache/strata-envelope-20261112/q8-build-v4/q8"
+  ],
+  "source_commit": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "sha256": {
+    "/home/less/qwen38-dflash2/experiments/strata-envelope/q8.cpp": "a5b7c756ed72271770122e4bb225a00c2977a0389f366a6cd878875bdfeb97d8",
+    "/home/less/src/strata-decode-q51-subwarp-20261111/build-halo-lab/libstrata_kernels.a": "707e0274d512c958ef3a790a4e8ecc952518efdb5c99d4af73f34c94aad3ce06",
+    "/home/less/src/strata-decode-q51-subwarp-20261111/build-halo-lab/libstrata_core.a": "19b7ab21d278a8a7f78588e8eef0fdeb975ae417edc78affd305c75fc8891632"
+  },
+  "binary_sha256": "239252f70dd5a28ab0b8c2310bfb62b19dc0368a8cef7dae3f5c118a060a8579"
+}

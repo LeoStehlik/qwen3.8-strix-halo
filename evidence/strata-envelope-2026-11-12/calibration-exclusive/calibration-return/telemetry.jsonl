@@ -1,0 +1,7 @@
+{"time": 1794442754.7001708, "swap": {"pswpin": 1877451, "pswpout": 5257414}, "evicted_ms": {}, "temp1_input": 55000}
+{"time": 1794442755.2008371, "swap": {"pswpin": 1877451, "pswpout": 5257414}, "evicted_ms": {"38793/stats_35564": 0}, "temp1_input": 61000}
+{"time": 1794442755.7020707, "swap": {"pswpin": 1877451, "pswpout": 5257414}, "evicted_ms": {"38793/stats_35564": 0}, "temp1_input": 60000}
+{"time": 1794442756.2036433, "swap": {"pswpin": 1877451, "pswpout": 5257414}, "evicted_ms": {"38793/stats_35564": 0}, "temp1_input": 62000}
+{"time": 1794442756.7043862, "swap": {"pswpin": 1877451, "pswpout": 5257414}, "evicted_ms": {"38793/stats_35564": 0}, "temp1_input": 62000}
+{"time": 1794442757.2052972, "swap": {"pswpin": 1877451, "pswpout": 5257414}, "evicted_ms": {"38793/stats_35564": 0}, "temp1_input": 63000}
+{"time": 1794442757.7065198, "swap": {"pswpin": 1877451, "pswpout": 5257414}, "evicted_ms": {"38793/stats_35564": 0}, "temp1_input": 73000}

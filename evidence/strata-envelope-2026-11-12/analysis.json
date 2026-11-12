@@ -1,0 +1,2047 @@
+{
+  "protocol": "strata-measured-envelope-v1",
+  "calibration": {
+    "calibration-first": [
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 64,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 215.480651,
+        "median": 219.31780250000003,
+        "max": 237.359132
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 64,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 231.977813,
+        "median": 242.176726,
+        "max": 252.205518
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 64,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 171.635243,
+        "median": 194.028028,
+        "max": 216.027936
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 64,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 185.412794,
+        "median": 204.141766,
+        "max": 223.077542
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 64,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 213.638814,
+        "median": 221.903864,
+        "max": 230.159874
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 64,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 226.563377,
+        "median": 241.2249385,
+        "max": 256.336884
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 64,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 184.676523,
+        "median": 220.6619235,
+        "max": 256.375554
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 64,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 195.750822,
+        "median": 228.841184,
+        "max": 262.442331
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 64,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 205.26815,
+        "median": 218.3266195,
+        "max": 230.868788
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 64,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 224.093241,
+        "median": 240.512168,
+        "max": 255.436803
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 64,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 185.597401,
+        "median": 228.9373095,
+        "max": 273.680272
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 64,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 232.138304,
+        "median": 257.5817505,
+        "max": 280.181798
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 512,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 215.617421,
+        "median": 216.1765715,
+        "max": 218.234113
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 512,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 215.991094,
+        "median": 217.697945,
+        "max": 219.357872
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 512,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 224.318039,
+        "median": 229.065943,
+        "max": 233.921803
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 512,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 230.377953,
+        "median": 233.9845305,
+        "max": 237.109706
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 512,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 213.294528,
+        "median": 214.907628,
+        "max": 216.633126
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 512,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 214.133763,
+        "median": 216.41306350000002,
+        "max": 218.024525
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 512,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 228.644076,
+        "median": 233.80425300000002,
+        "max": 239.043069
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 512,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 235.066993,
+        "median": 238.9444215,
+        "max": 242.500298
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 512,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 209.169558,
+        "median": 210.536807,
+        "max": 213.214215
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 512,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 212.815607,
+        "median": 214.18159200000002,
+        "max": 215.822294
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 512,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 228.137857,
+        "median": 233.7859685,
+        "max": 239.766258
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 512,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 237.210491,
+        "median": 241.78602899999998,
+        "max": 243.487489
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 2048,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 213.395041,
+        "median": 213.776851,
+        "max": 214.249636
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 2048,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 212.176131,
+        "median": 212.625896,
+        "max": 213.760916
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 2048,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 236.229597,
+        "median": 237.6212435,
+        "max": 238.889694
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 2048,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 239.201063,
+        "median": 240.28506149999998,
+        "max": 241.187318
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 2048,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 209.830802,
+        "median": 210.35976749999998,
+        "max": 211.14119
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 2048,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 211.386068,
+        "median": 211.9472715,
+        "max": 212.129938
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 2048,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 236.753536,
+        "median": 238.622518,
+        "max": 240.115271
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 2048,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 240.558296,
+        "median": 241.5725895,
+        "max": 242.610085
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 2048,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 208.090135,
+        "median": 209.03240549999998,
+        "max": 209.864764
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 2048,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 210.942956,
+        "median": 211.34295550000002,
+        "max": 211.67704
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 2048,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 233.923893,
+        "median": 236.7910295,
+        "max": 239.872381
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 2048,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 240.734435,
+        "median": 242.17927350000002,
+        "max": 242.84758
+      },
+      {
+        "kind": "compute",
+        "op": "fp32_fma8",
+        "mib_per_buffer": null,
+        "grid": 80,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 7.639811,
+        "median": 9.628531,
+        "max": 9.663251
+      },
+      {
+        "kind": "compute",
+        "op": "signed_dot4x8",
+        "mib_per_buffer": null,
+        "grid": 80,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 22.380905,
+        "median": 27.611579499999998,
+        "max": 28.426022
+      },
+      {
+        "kind": "compute",
+        "op": "fp16_wmma2",
+        "mib_per_buffer": null,
+        "grid": 80,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 53.982782,
+        "median": 56.482046,
+        "max": 56.867024
+      },
+      {
+        "kind": "compute",
+        "op": "fp32_fma8",
+        "mib_per_buffer": null,
+        "grid": 320,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 6.977324,
+        "median": 11.011345500000001,
+        "max": 11.298003
+      },
+      {
+        "kind": "compute",
+        "op": "signed_dot4x8",
+        "mib_per_buffer": null,
+        "grid": 320,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 28.569994,
+        "median": 28.7786405,
+        "max": 29.140155
+      },
+      {
+        "kind": "compute",
+        "op": "fp16_wmma2",
+        "mib_per_buffer": null,
+        "grid": 320,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 57.016061,
+        "median": 57.1056865,
+        "max": 57.181088
+      },
+      {
+        "kind": "compute",
+        "op": "fp32_fma8",
+        "mib_per_buffer": null,
+        "grid": 1280,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 9.18259,
+        "median": 11.488521,
+        "max": 11.542074
+      },
+      {
+        "kind": "compute",
+        "op": "signed_dot4x8",
+        "mib_per_buffer": null,
+        "grid": 1280,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 28.854565,
+        "median": 29.219582,
+        "max": 29.293439
+      },
+      {
+        "kind": "compute",
+        "op": "fp16_wmma2",
+        "mib_per_buffer": null,
+        "grid": 1280,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 56.848415,
+        "median": 57.136702,
+        "max": 57.231854
+      }
+    ],
+    "calibration-return": [
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 64,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 215.730951,
+        "median": 218.95874099999997,
+        "max": 238.169223
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 64,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 231.049351,
+        "median": 241.70526949999999,
+        "max": 252.49114
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 64,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 171.547493,
+        "median": 194.510126,
+        "max": 217.289085
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 64,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 187.656208,
+        "median": 204.4497375,
+        "max": 221.777843
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 64,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 213.095425,
+        "median": 221.677041,
+        "max": 229.728639
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 64,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 226.855559,
+        "median": 241.61697800000002,
+        "max": 256.651075
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 64,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 186.611012,
+        "median": 221.265643,
+        "max": 256.062502
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 64,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 198.159419,
+        "median": 229.71996,
+        "max": 261.377225
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 64,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 205.848464,
+        "median": 216.97359,
+        "max": 228.18461
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 64,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 224.784922,
+        "median": 242.08560849999998,
+        "max": 259.87717
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 64,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 184.900924,
+        "median": 228.86716,
+        "max": 273.769578
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 64,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 236.265537,
+        "median": 257.7835005,
+        "max": 279.014574
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 512,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 216.164786,
+        "median": 216.6322805,
+        "max": 218.511774
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 512,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 217.01802,
+        "median": 218.39529,
+        "max": 219.937657
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 512,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 224.750752,
+        "median": 229.006465,
+        "max": 233.905499
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 512,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 230.09309,
+        "median": 233.6030955,
+        "max": 236.552851
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 512,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 213.278703,
+        "median": 215.2661625,
+        "max": 217.117664
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 512,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 214.74132,
+        "median": 216.569366,
+        "max": 218.643673
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 512,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 229.140795,
+        "median": 234.096095,
+        "max": 238.97924
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 512,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 235.099929,
+        "median": 238.8146485,
+        "max": 242.359958
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 512,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 209.48469,
+        "median": 211.0393775,
+        "max": 213.50075
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 512,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 212.883329,
+        "median": 214.2124,
+        "max": 215.751139
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 512,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 229.529426,
+        "median": 233.68881349999998,
+        "max": 239.804814
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 512,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 240.683668,
+        "median": 241.529767,
+        "max": 243.51411
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 2048,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 212.929548,
+        "median": 213.463907,
+        "max": 214.372465
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 2048,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 211.710912,
+        "median": 212.6524865,
+        "max": 213.233974
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 2048,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 236.175485,
+        "median": 237.6908735,
+        "max": 238.792794
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 2048,
+        "grid": 5120,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 239.257663,
+        "median": 240.1545605,
+        "max": 241.020267
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 2048,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 209.777971,
+        "median": 210.66628450000002,
+        "max": 211.549058
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 2048,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 211.830567,
+        "median": 212.1937795,
+        "max": 212.69108
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 2048,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 237.244055,
+        "median": 238.5672465,
+        "max": 240.118523
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 2048,
+        "grid": 1280,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 240.9856,
+        "median": 241.721732,
+        "max": 242.669434
+      },
+      {
+        "kind": "memory",
+        "op": "add_two_inputs",
+        "mib_per_buffer": 2048,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 207.837251,
+        "median": 208.4619525,
+        "max": 208.926567
+      },
+      {
+        "kind": "memory",
+        "op": "copy",
+        "mib_per_buffer": 2048,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 210.864121,
+        "median": 211.368129,
+        "max": 211.917705
+      },
+      {
+        "kind": "memory",
+        "op": "read_permuted_tiles",
+        "mib_per_buffer": 2048,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 235.777496,
+        "median": 237.532854,
+        "max": 239.471471
+      },
+      {
+        "kind": "memory",
+        "op": "read_linear",
+        "mib_per_buffer": 2048,
+        "grid": 320,
+        "metric": "requested_gb_s",
+        "n": 6,
+        "min": 240.801497,
+        "median": 242.16071,
+        "max": 242.65513
+      },
+      {
+        "kind": "compute",
+        "op": "fp32_fma8",
+        "mib_per_buffer": null,
+        "grid": 80,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 7.720806,
+        "median": 9.8714835,
+        "max": 10.042855
+      },
+      {
+        "kind": "compute",
+        "op": "signed_dot4x8",
+        "mib_per_buffer": null,
+        "grid": 80,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 28.252052,
+        "median": 28.302847999999997,
+        "max": 28.329722
+      },
+      {
+        "kind": "compute",
+        "op": "fp16_wmma2",
+        "mib_per_buffer": null,
+        "grid": 80,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 53.36722,
+        "median": 55.7170815,
+        "max": 56.543007
+      },
+      {
+        "kind": "compute",
+        "op": "fp32_fma8",
+        "mib_per_buffer": null,
+        "grid": 320,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 7.75704,
+        "median": 11.193229500000001,
+        "max": 11.231679
+      },
+      {
+        "kind": "compute",
+        "op": "signed_dot4x8",
+        "mib_per_buffer": null,
+        "grid": 320,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 29.040612,
+        "median": 29.070552,
+        "max": 29.157564
+      },
+      {
+        "kind": "compute",
+        "op": "fp16_wmma2",
+        "mib_per_buffer": null,
+        "grid": 320,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 56.821114,
+        "median": 56.9044515,
+        "max": 56.956973
+      },
+      {
+        "kind": "compute",
+        "op": "fp32_fma8",
+        "mib_per_buffer": null,
+        "grid": 1280,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 11.466009,
+        "median": 11.4784185,
+        "max": 11.50861
+      },
+      {
+        "kind": "compute",
+        "op": "signed_dot4x8",
+        "mib_per_buffer": null,
+        "grid": 1280,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 29.244282,
+        "median": 29.339362,
+        "max": 29.418873
+      },
+      {
+        "kind": "compute",
+        "op": "fp16_wmma2",
+        "mib_per_buffer": null,
+        "grid": 1280,
+        "metric": "teraops_s",
+        "n": 6,
+        "min": 56.983291,
+        "median": 57.12578,
+        "max": 57.257653
+      }
+    ]
+  },
+  "routes": [
+    {
+      "native_report": 1,
+      "windows_by_width": {
+        "1": 2,
+        "2": 1,
+        "3": 1,
+        "4": 4
+      },
+      "windows": 8,
+      "mean_T": 2.875,
+      "mean_distinct_experts_per_layer": 20.6171875,
+      "expert_payload_bytes_per_window": 3104768000.0,
+      "dense_plus_distinct_expert_payload_bytes_per_window": 7785745920.0,
+      "single_stream_weight_ms_at_242GBs": 32.172503801652894,
+      "single_stream_weight_ms_at_256GBs": 30.41307
+    },
+    {
+      "native_report": 2,
+      "windows_by_width": {
+        "1": 30,
+        "2": 29,
+        "3": 23,
+        "4": 122
+      },
+      "windows": 204,
+      "mean_T": 3.161764705882353,
+      "mean_distinct_experts_per_layer": 22.171977124183005,
+      "expert_payload_bytes_per_window": 3337737537.254902,
+      "dense_plus_distinct_expert_payload_bytes_per_window": 8018715457.254902,
+      "single_stream_weight_ms_at_242GBs": 33.13518783989629,
+      "single_stream_weight_ms_at_256GBs": 31.32310725490196
+    },
+    {
+      "native_report": 3,
+      "windows_by_width": {
+        "1": 35,
+        "2": 28,
+        "3": 31,
+        "4": 124,
+        "6": 3
+      },
+      "windows": 221,
+      "mean_T": 3.158371040723982,
+      "mean_distinct_experts_per_layer": 22.648849924585218,
+      "expert_payload_bytes_per_window": 3409896832.5791855,
+      "dense_plus_distinct_expert_payload_bytes_per_window": 8090874752.5791855,
+      "single_stream_weight_ms_at_242GBs": 33.433366746194984,
+      "single_stream_weight_ms_at_256GBs": 31.60497950226244
+    },
+    {
+      "native_report": 4,
+      "windows_by_width": {
+        "1": 70,
+        "2": 71,
+        "3": 50,
+        "4": 237
+      },
+      "windows": 428,
+      "mean_T": 3.060747663551402,
+      "mean_distinct_experts_per_layer": 21.98306074766355,
+      "expert_payload_bytes_per_window": 3309295252.3364487,
+      "dense_plus_distinct_expert_payload_bytes_per_window": 7990273172.336449,
+      "single_stream_weight_ms_at_242GBs": 33.017657736927475,
+      "single_stream_weight_ms_at_256GBs": 31.212004579439252
+    }
+  ],
+  "operators": {
+    "q8-first": [
+      {
+        "shape": "gdn_qkv",
+        "cols": 1,
+        "packed": true,
+        "bank_bytes": 139264000,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.112544999,
+          "median": 0.1126185355,
+          "max": 0.113033928
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 246.410966,
+          "median": 247.31986,
+          "max": 247.481457
+        }
+      },
+      {
+        "shape": "gdn_qkv",
+        "cols": 3,
+        "packed": true,
+        "bank_bytes": 139264000,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.115083002,
+          "median": 0.115291435,
+          "max": 0.115668066
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 240.799392,
+          "median": 241.58605649999998,
+          "max": 242.023577
+        }
+      },
+      {
+        "shape": "gdn_qkv",
+        "cols": 4,
+        "packed": true,
+        "bank_bytes": 139264000,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.116806194,
+          "median": 0.11726170050000001,
+          "max": 0.117508799
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 237.027353,
+          "median": 237.5268365,
+          "max": 238.453102
+        }
+      },
+      {
+        "shape": "gdn_gate",
+        "cols": 1,
+        "packed": true,
+        "bank_bytes": 150405120,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0685746297,
+          "median": 0.06870151685,
+          "max": 0.0688328892
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 242.78627,
+          "median": 243.250616,
+          "max": 243.700616
+        }
+      },
+      {
+        "shape": "gdn_gate",
+        "cols": 3,
+        "packed": true,
+        "bank_bytes": 150405120,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0698421523,
+          "median": 0.0700491853,
+          "max": 0.0703111514
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 237.681794,
+          "median": 238.5706775,
+          "max": 239.277862
+        }
+      },
+      {
+        "shape": "gdn_gate",
+        "cols": 4,
+        "packed": true,
+        "bank_bytes": 150405120,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.071140781,
+          "median": 0.0712847598,
+          "max": 0.0713441446
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 234.240382,
+          "median": 234.435536,
+          "max": 234.909993
+        }
+      },
+      {
+        "shape": "out",
+        "cols": 1,
+        "packed": false,
+        "bank_bytes": 150405120,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.073237963,
+          "median": 0.07332183049999999,
+          "max": 0.0735110715
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 227.335541,
+          "median": 227.92229700000001,
+          "max": 228.183301
+        }
+      },
+      {
+        "shape": "out",
+        "cols": 3,
+        "packed": false,
+        "bank_bytes": 150405120,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0743155181,
+          "median": 0.07440157235,
+          "max": 0.0744594485
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 224.440024,
+          "median": 224.614635,
+          "max": 224.874692
+        }
+      },
+      {
+        "shape": "out",
+        "cols": 4,
+        "packed": false,
+        "bank_bytes": 150405120,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0744728148,
+          "median": 0.0745240375,
+          "max": 0.0746048912
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 224.002472,
+          "median": 224.24550349999998,
+          "max": 224.399733
+        }
+      },
+      {
+        "shape": "qsa_q",
+        "cols": 1,
+        "packed": true,
+        "bank_bytes": 167116800,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.134598792,
+          "median": 0.134808496,
+          "max": 0.135077
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 247.439313,
+          "median": 247.932228,
+          "max": 248.318418
+        }
+      },
+      {
+        "shape": "qsa_q",
+        "cols": 3,
+        "packed": true,
+        "bank_bytes": 167116800,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.136979133,
+          "median": 0.1373184325,
+          "max": 0.1383176
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 241.642132,
+          "median": 243.400424,
+          "max": 244.003293
+        }
+      },
+      {
+        "shape": "qsa_q",
+        "cols": 4,
+        "packed": true,
+        "bank_bytes": 167116800,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.139167204,
+          "median": 0.139543861,
+          "max": 0.139960602
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 238.805481,
+          "median": 239.51890600000002,
+          "max": 240.16694
+        }
+      },
+      {
+        "shape": "qsa_kv",
+        "cols": 1,
+        "packed": false,
+        "bank_bytes": 135086080,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.00899780076,
+          "median": 0.00901143113,
+          "max": 0.00902189966
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 154.362164,
+          "median": 154.541492,
+          "max": 154.775597
+        }
+      },
+      {
+        "shape": "qsa_kv",
+        "cols": 3,
+        "packed": false,
+        "bank_bytes": 135086080,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.00894354004,
+          "median": 0.00895194197,
+          "max": 0.0089688804
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 155.274682,
+          "median": 155.56849599999998,
+          "max": 155.714633
+        }
+      },
+      {
+        "shape": "qsa_kv",
+        "cols": 4,
+        "packed": false,
+        "bank_bytes": 135086080,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.00908276625,
+          "median": 0.00909874216,
+          "max": 0.00910824444
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 152.898841,
+          "median": 153.05852349999998,
+          "max": 153.327736
+        }
+      },
+      {
+        "shape": "shared_gu",
+        "cols": 1,
+        "packed": false,
+        "bank_bytes": 135782400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0106302518,
+          "median": 0.010641641,
+          "max": 0.0106528588
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 163.411531,
+          "median": 163.583801,
+          "max": 163.759053
+        }
+      },
+      {
+        "shape": "shared_gu",
+        "cols": 3,
+        "packed": false,
+        "bank_bytes": 135782400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0107653718,
+          "median": 0.01078857665,
+          "max": 0.0107972268
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 161.226589,
+          "median": 161.355863,
+          "max": 161.703652
+        }
+      },
+      {
+        "shape": "shared_gu",
+        "cols": 4,
+        "packed": false,
+        "bank_bytes": 135782400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.010661765,
+          "median": 0.01067606405,
+          "max": 0.0106859105
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 162.906099,
+          "median": 163.0563535,
+          "max": 163.275029
+        }
+      },
+      {
+        "shape": "shared_down",
+        "cols": 1,
+        "packed": false,
+        "bank_bytes": 135782400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.012025632,
+          "median": 0.0120342798,
+          "max": 0.0120610818
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 144.332,
+          "median": 144.65344599999997,
+          "max": 144.75746
+        }
+      },
+      {
+        "shape": "shared_down",
+        "cols": 3,
+        "packed": false,
+        "bank_bytes": 135782400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0134694744,
+          "median": 0.01347701065,
+          "max": 0.0134910513
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 129.033685,
+          "median": 129.1681115,
+          "max": 129.240385
+        }
+      },
+      {
+        "shape": "shared_down",
+        "cols": 4,
+        "packed": false,
+        "bank_bytes": 135782400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0137352608,
+          "median": 0.0137600065,
+          "max": 0.0137792733
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 126.334673,
+          "median": 126.5115835,
+          "max": 126.739494
+        }
+      },
+      {
+        "shape": "head",
+        "cols": 1,
+        "packed": false,
+        "bank_bytes": 675430400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 2.93197465,
+          "median": 2.941939835,
+          "max": 2.9522388
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 228.785835,
+          "median": 229.58695949999998,
+          "max": 230.367061
+        }
+      },
+      {
+        "shape": "head",
+        "cols": 3,
+        "packed": false,
+        "bank_bytes": 675430400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 2.87079501,
+          "median": 2.8716166,
+          "max": 2.87385392
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 235.025996,
+          "median": 235.2091095,
+          "max": 235.276436
+        }
+      },
+      {
+        "shape": "head",
+        "cols": 4,
+        "packed": false,
+        "bank_bytes": 675430400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 2.89137936,
+          "median": 2.8928823450000003,
+          "max": 2.89442515
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 233.355635,
+          "median": 233.48008049999999,
+          "max": 233.601446
+        }
+      }
+    ],
+    "q8-return": [
+      {
+        "shape": "gdn_qkv",
+        "cols": 1,
+        "packed": true,
+        "bank_bytes": 139264000,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.112478264,
+          "median": 0.112729367,
+          "max": 0.112897664
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 246.708377,
+          "median": 247.0767095,
+          "max": 247.628288
+        }
+      },
+      {
+        "shape": "gdn_qkv",
+        "cols": 3,
+        "packed": true,
+        "bank_bytes": 139264000,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.115064263,
+          "median": 0.11531277000000001,
+          "max": 0.115542531
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 241.061017,
+          "median": 241.541338,
+          "max": 242.062993
+        }
+      },
+      {
+        "shape": "gdn_qkv",
+        "cols": 4,
+        "packed": true,
+        "bank_bytes": 139264000,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.116963662,
+          "median": 0.1171627305,
+          "max": 0.117287062
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 237.475465,
+          "median": 237.7274755,
+          "max": 238.132074
+        }
+      },
+      {
+        "shape": "gdn_gate",
+        "cols": 1,
+        "packed": true,
+        "bank_bytes": 150405120,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0684543699,
+          "median": 0.0686131865,
+          "max": 0.0686517432
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 243.426888,
+          "median": 243.563683,
+          "max": 244.128748
+        }
+      },
+      {
+        "shape": "gdn_gate",
+        "cols": 3,
+        "packed": true,
+        "bank_bytes": 150405120,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.069882147,
+          "median": 0.06998900324999999,
+          "max": 0.0702799261
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 237.787391,
+          "median": 238.7758185,
+          "max": 239.140896
+        }
+      },
+      {
+        "shape": "gdn_gate",
+        "cols": 4,
+        "packed": true,
+        "bank_bytes": 150405120,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0709997416,
+          "median": 0.07119790835,
+          "max": 0.0714242235
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 233.977762,
+          "median": 234.72155800000002,
+          "max": 235.376631
+        }
+      },
+      {
+        "shape": "out",
+        "cols": 1,
+        "packed": false,
+        "bank_bytes": 150405120,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0732617453,
+          "median": 0.07339975979999999,
+          "max": 0.0734383389
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 227.560714,
+          "median": 227.68030850000002,
+          "max": 228.109235
+        }
+      },
+      {
+        "shape": "out",
+        "cols": 3,
+        "packed": false,
+        "bank_bytes": 150405120,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0743185133,
+          "median": 0.0744283274,
+          "max": 0.0746420398
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 223.890987,
+          "median": 224.533861,
+          "max": 224.865634
+        }
+      },
+      {
+        "shape": "out",
+        "cols": 4,
+        "packed": false,
+        "bank_bytes": 150405120,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0745337009,
+          "median": 0.07456931845,
+          "max": 0.0746271908
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 223.935546,
+          "median": 224.10934200000003,
+          "max": 224.216425
+        }
+      },
+      {
+        "shape": "qsa_q",
+        "cols": 1,
+        "packed": true,
+        "bank_bytes": 167116800,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.134847134,
+          "median": 0.1350128055,
+          "max": 0.135226473
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 247.165806,
+          "median": 247.55703,
+          "max": 247.861111
+        }
+      },
+      {
+        "shape": "qsa_q",
+        "cols": 3,
+        "packed": true,
+        "bank_bytes": 167116800,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.137644261,
+          "median": 0.13812916,
+          "max": 0.13916707
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 240.16716,
+          "median": 241.9717945,
+          "max": 242.824221
+        }
+      },
+      {
+        "shape": "qsa_q",
+        "cols": 4,
+        "packed": true,
+        "bank_bytes": 167116800,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.140369341,
+          "median": 0.14054027200000002,
+          "max": 0.141536728
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 236.146196,
+          "median": 237.8205275,
+          "max": 238.110124
+        }
+      },
+      {
+        "shape": "qsa_kv",
+        "cols": 1,
+        "packed": false,
+        "bank_bytes": 135086080,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.00900413096,
+          "median": 0.00900929747,
+          "max": 0.00902809296
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 154.256274,
+          "median": 154.5780935,
+          "max": 154.666789
+        }
+      },
+      {
+        "shape": "qsa_kv",
+        "cols": 3,
+        "packed": false,
+        "bank_bytes": 135086080,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.00895290356,
+          "median": 0.00895538321,
+          "max": 0.00898085907
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 155.067569,
+          "median": 155.508708,
+          "max": 155.55177
+        }
+      },
+      {
+        "shape": "qsa_kv",
+        "cols": 4,
+        "packed": false,
+        "bank_bytes": 135086080,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.00908909924,
+          "median": 0.00910624396,
+          "max": 0.00913481787
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 152.454054,
+          "median": 152.932469,
+          "max": 153.220898
+        }
+      },
+      {
+        "shape": "shared_gu",
+        "cols": 1,
+        "packed": false,
+        "bank_bytes": 135782400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0106121022,
+          "median": 0.0106242583,
+          "max": 0.010640868
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 163.59568,
+          "median": 163.85144,
+          "max": 164.039122
+        }
+      },
+      {
+        "shape": "shared_gu",
+        "cols": 3,
+        "packed": false,
+        "bank_bytes": 135782400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0107556116,
+          "median": 0.01077470505,
+          "max": 0.0107833548
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 161.433996,
+          "median": 161.56358899999998,
+          "max": 161.850401
+        }
+      },
+      {
+        "shape": "shared_gu",
+        "cols": 4,
+        "packed": false,
+        "bank_bytes": 135782400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0106728934,
+          "median": 0.01067914535,
+          "max": 0.0106862523
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 162.900896,
+          "median": 163.009295,
+          "max": 163.104788
+        }
+      },
+      {
+        "shape": "shared_down",
+        "cols": 1,
+        "packed": false,
+        "bank_bytes": 135782400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0120007992,
+          "median": 0.0120156985,
+          "max": 0.0120567987
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 144.383264,
+          "median": 144.877142,
+          "max": 145.057006
+        }
+      },
+      {
+        "shape": "shared_down",
+        "cols": 3,
+        "packed": false,
+        "bank_bytes": 135782400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.0134569742,
+          "median": 0.0134771792,
+          "max": 0.0134944739
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 129.00095,
+          "median": 129.166515,
+          "max": 129.360432
+        }
+      },
+      {
+        "shape": "shared_down",
+        "cols": 4,
+        "packed": false,
+        "bank_bytes": 135782400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 0.013747585,
+          "median": 0.0137641155,
+          "max": 0.0137727652
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 126.394375,
+          "median": 126.47380050000001,
+          "max": 126.625875
+        }
+      },
+      {
+        "shape": "head",
+        "cols": 1,
+        "packed": false,
+        "bank_bytes": 675430400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 2.93632865,
+          "median": 2.9391537899999998,
+          "max": 2.94175172
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 229.601423,
+          "median": 229.80437899999998,
+          "max": 230.025484
+        }
+      },
+      {
+        "shape": "head",
+        "cols": 3,
+        "packed": false,
+        "bank_bytes": 675430400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 2.86996722,
+          "median": 2.872357965,
+          "max": 2.87337327
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 235.065311,
+          "median": 235.14840600000002,
+          "max": 235.344297
+        }
+      },
+      {
+        "shape": "head",
+        "cols": 4,
+        "packed": false,
+        "bank_bytes": 675430400,
+        "ms_per_call": {
+          "n": 6,
+          "min": 2.89182019,
+          "median": 2.89306247,
+          "max": 2.89593434
+        },
+        "logical_GB_s": {
+          "n": 6,
+          "min": 233.234011,
+          "median": 233.46554550000002,
+          "max": 233.565829
+        }
+      }
+    ],
+    "projection-qkv": {
+      "ms": {
+        "n": 6,
+        "min": 21.182028,
+        "median": 21.336469,
+        "max": 21.416737
+      },
+      "matrix_TFLOP_s": 40.25940089712126,
+      "source_group": 8,
+      "m": 16384,
+      "n": 10240,
+      "k": 2560
+    },
+    "projection-gate": {
+      "ms": {
+        "n": 6,
+        "min": 12.647581,
+        "median": 12.7855345,
+        "max": 13.106263
+      },
+      "matrix_TFLOP_s": 40.310874412016176,
+      "source_group": 8,
+      "m": 16384,
+      "n": 6144,
+      "k": 2560
+    },
+    "projection-out": {
+      "ms": {
+        "n": 6,
+        "min": 11.826034,
+        "median": 12.036260500000001,
+        "max": 12.383737
+      },
+      "matrix_TFLOP_s": 42.82028255536676,
+      "source_group": 8,
+      "m": 16384,
+      "n": 2560,
+      "k": 6144
+    }
+  },
+  "runtime_inventory_summary": {
+    "protocol": "flash-next-runtime-inventory-v1",
+    "assumptions": [
+      "gfx1151 HC_Q8 default enabled, native dense loaded from original GGUF.",
+      "Packed Q8 copies are a layout change, not extra payload per invocation.",
+      "Prefill expands native weights into FP16/BF16 scratch; conversion is extra work.",
+      "Matrix FLOPs exclude attention, GDN recurrence, nonlinear ops, gathers, norms and launch costs.",
+      "Inventory is not physical DRAM bytes or bytes per emitted token."
+    ],
+    "groups": {
+      "output_head": {
+        "runtime_payload_bytes": 675430400,
+        "prompt_matrix_flops_per_row": 0,
+        "stored_bytes": 675430400
+      },
+      "hyper_connections": {
+        "runtime_payload_bytes": 683581440,
+        "prompt_matrix_flops_per_row": 1266155520,
+        "stored_bytes": 695132160
+      },
+      "embedding_lookup_tables": {
+        "runtime_payload_bytes": 29475568640,
+        "prompt_matrix_flops_per_row": 0,
+        "stored_bytes": 29475568640
+      },
+      "gdn_dense_projections": {
+        "runtime_payload_bytes": 2205941760,
+        "prompt_matrix_flops_per_row": 4152360960,
+        "stored_bytes": 2205941760
+      },
+      "routed_experts": {
+        "runtime_payload_bytes": 77017907200,
+        "prompt_matrix_flops_per_row": 4718592000,
+        "stored_bytes": 77017907200
+      },
+      "shared_experts": {
+        "runtime_payload_bytes": 250675200,
+        "prompt_matrix_flops_per_row": 471859200,
+        "stored_bytes": 250675200
+      },
+      "routing": {
+        "runtime_payload_bytes": 126074880,
+        "prompt_matrix_flops_per_row": 125829120,
+        "stored_bytes": 252149760
+      },
+      "gdn_other": {
+        "runtime_payload_bytes": 23625216,
+        "prompt_matrix_flops_per_row": 17694720,
+        "stored_bytes": 41319936
+      },
+      "ple_dense_and_norms": {
+        "runtime_payload_bytes": 41246720,
+        "prompt_matrix_flops_per_row": 65617920,
+        "stored_bytes": 35102720
+      },
+      "qsa_projections_and_norms": {
+        "runtime_payload_bytes": 674402304,
+        "prompt_matrix_flops_per_row": 1234698240,
+        "stored_bytes": 674402304
+      }
+    },
+    "nonexpert_runtime_payload_excluding_lookup_bytes": 4680977920,
+    "prompt_matrix_flops_per_row": 12052807680
+  },
+  "limits": [
+    "Window counts include native prelude/restore evaluations, not only emitting decode windows.",
+    "Logical unique weight inventory is an optimistic single-stream model, not measured DRAM traffic.",
+    "242 GB/s is empirical read calibration; 256 GB/s is conditional nominal bandwidth from firmware 8000 MT/s and 256-bit width.",
+    "Neither weight-only time nor register-only matrix throughput is an attainable end-to-end bound.",
+    "Projection control repeats share buffers. Q8 replays rotate a >=128 MiB weight bank.",
+    "Calibration medians exclude warmup and self-evicted samples. Projection timings need separate telemetry review."
+  ]
+}

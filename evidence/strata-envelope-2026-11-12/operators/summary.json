@@ -1,0 +1,273 @@
+{
+  "profile_sha256": "698719bae62874639ae4c156d9851fe67077e0ea312f781bfa123cc110d633d5",
+  "before_requests": 0,
+  "plan": [
+    {
+      "name": "q8-first",
+      "argv": [
+        "/home/less/.cache/strata-envelope-20261112/q8-build-v3/q8"
+      ],
+      "env": {
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_Q8_PACKED": "1",
+        "STRATA_TSUM": "1",
+        "STRATA_DISPATCH_REPORT": "/home/less/.cache/strata-envelope-20261112/q8-first-dispatch.json"
+      }
+    },
+    {
+      "name": "projection-reference",
+      "argv": [
+        "/home/less/.cache/strata-envelope-20261112/projection-build/grouping",
+        "--check"
+      ],
+      "env": {
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_Q8_PACKED": "1",
+        "STRATA_TSUM": "1"
+      }
+    },
+    {
+      "name": "projection-qkv",
+      "argv": [
+        "/home/less/.cache/strata-envelope-20261112/projection-build/grouping",
+        "10240",
+        "2560",
+        "0",
+        "7"
+      ],
+      "env": {
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_Q8_PACKED": "1",
+        "STRATA_TSUM": "1"
+      }
+    },
+    {
+      "name": "projection-gate",
+      "argv": [
+        "/home/less/.cache/strata-envelope-20261112/projection-build/grouping",
+        "6144",
+        "2560",
+        "0",
+        "7"
+      ],
+      "env": {
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_Q8_PACKED": "1",
+        "STRATA_TSUM": "1"
+      }
+    },
+    {
+      "name": "projection-out",
+      "argv": [
+        "/home/less/.cache/strata-envelope-20261112/projection-build/grouping",
+        "2560",
+        "6144",
+        "64",
+        "7"
+      ],
+      "env": {
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_Q8_PACKED": "1",
+        "STRATA_TSUM": "1"
+      }
+    },
+    {
+      "name": "q8-return",
+      "argv": [
+        "/home/less/.cache/strata-envelope-20261112/q8-build-v3/q8"
+      ],
+      "env": {
+        "LD_LIBRARY_PATH": "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/rocm_sysdeps/lib:/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/lib",
+        "STRATA_Q8_PACKED": "1",
+        "STRATA_TSUM": "1",
+        "STRATA_DISPATCH_REPORT": "/home/less/.cache/strata-envelope-20261112/q8-return-dispatch.json"
+      }
+    }
+  ],
+  "completed": true,
+  "steps": [
+    {
+      "name": "q8-first",
+      "before": {
+        "time": 1794443634.738286,
+        "swap": {
+          "pswpin": 2252977,
+          "pswpout": 6508512
+        },
+        "evicted_ms": {},
+        "temp1_input": 49000
+      },
+      "argv": [
+        "/home/less/.cache/strata-envelope-20261112/q8-build-v3/q8"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 2.5045020539982943,
+      "after": {
+        "time": 1794443637.2439551,
+        "swap": {
+          "pswpin": 2252979,
+          "pswpout": 6508512
+        },
+        "evicted_ms": {},
+        "temp1_input": 51000
+      }
+    },
+    {
+      "name": "projection-reference",
+      "before": {
+        "time": 1794443637.245128,
+        "swap": {
+          "pswpin": 2252979,
+          "pswpout": 6508512
+        },
+        "evicted_ms": {},
+        "temp1_input": 51000
+      },
+      "argv": [
+        "/home/less/.cache/strata-envelope-20261112/projection-build/grouping",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 3.0047683070006315,
+      "after": {
+        "time": 1794443640.250762,
+        "swap": {
+          "pswpin": 2253015,
+          "pswpout": 6508512
+        },
+        "evicted_ms": {},
+        "temp1_input": 50000
+      }
+    },
+    {
+      "name": "projection-qkv",
+      "before": {
+        "time": 1794443640.2530754,
+        "swap": {
+          "pswpin": 2253015,
+          "pswpout": 6508512
+        },
+        "evicted_ms": {},
+        "temp1_input": 50000
+      },
+      "argv": [
+        "/home/less/.cache/strata-envelope-20261112/projection-build/grouping",
+        "10240",
+        "2560",
+        "0",
+        "7"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 2.003406528998312,
+      "after": {
+        "time": 1794443642.257157,
+        "swap": {
+          "pswpin": 2253020,
+          "pswpout": 6508512
+        },
+        "evicted_ms": {},
+        "temp1_input": 53000
+      }
+    },
+    {
+      "name": "projection-gate",
+      "before": {
+        "time": 1794443642.2591314,
+        "swap": {
+          "pswpin": 2253020,
+          "pswpout": 6508512
+        },
+        "evicted_ms": {},
+        "temp1_input": 53000
+      },
+      "argv": [
+        "/home/less/.cache/strata-envelope-20261112/projection-build/grouping",
+        "6144",
+        "2560",
+        "0",
+        "7"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 1.0014503209968098,
+      "after": {
+        "time": 1794443643.263111,
+        "swap": {
+          "pswpin": 2253025,
+          "pswpout": 6508512
+        },
+        "evicted_ms": {},
+        "temp1_input": 59000
+      }
+    },
+    {
+      "name": "projection-out",
+      "before": {
+        "time": 1794443643.2641008,
+        "swap": {
+          "pswpin": 2253025,
+          "pswpout": 6508512
+        },
+        "evicted_ms": {},
+        "temp1_input": 59000
+      },
+      "argv": [
+        "/home/less/.cache/strata-envelope-20261112/projection-build/grouping",
+        "2560",
+        "6144",
+        "64",
+        "7"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 1.0012782650010195,
+      "after": {
+        "time": 1794443644.2660599,
+        "swap": {
+          "pswpin": 2253025,
+          "pswpout": 6508512
+        },
+        "evicted_ms": {},
+        "temp1_input": 56000
+      }
+    },
+    {
+      "name": "q8-return",
+      "before": {
+        "time": 1794443644.2670667,
+        "swap": {
+          "pswpin": 2253025,
+          "pswpout": 6508512
+        },
+        "evicted_ms": {},
+        "temp1_input": 56000
+      },
+      "argv": [
+        "/home/less/.cache/strata-envelope-20261112/q8-build-v3/q8"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 2.003329217997816,
+      "after": {
+        "time": 1794443646.2712207,
+        "swap": {
+          "pswpin": 2253032,
+          "pswpout": 6508512
+        },
+        "evicted_ms": {},
+        "temp1_input": 55000
+      }
+    }
+  ],
+  "restoration": {
+    "load_s": 82.16720465300023,
+    "health": {
+      "status": "ok",
+      "max_context": 262144,
+      "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+      "images": true,
+      "api_key": true,
+      "image_generation": false,
+      "loaded": true,
+      "service": "strata"
+    },
+    "profile_unchanged": true
+  }
+}

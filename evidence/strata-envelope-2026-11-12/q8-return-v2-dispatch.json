@@ -1,0 +1,29 @@
+{
+ "launches": {},
+ "counts": [
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 4, "n_in": 640, "n_out": 2560, "n": 1639},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 1, "n_in": 640, "n_out": 2560, "n": 1639},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 1, "n_in": 2560, "n_out": 248320, "n": 22},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 1, "n_in": 2560, "n_out": 640, "n": 1639},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 1, "n_in": 2560, "n_out": 10240, "n": 107},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 1, "n_in": 2560, "n_out": 6144, "n": 191},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 1, "n_in": 2560, "n_out": 12288, "n": 107},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 1, "n_in": 2560, "n_out": 512, "n": 2038},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 3, "n_in": 2560, "n_out": 248320, "n": 22},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 3, "n_in": 2560, "n_out": 640, "n": 1639},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 3, "n_in": 2560, "n_out": 512, "n": 2038},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 3, "n_in": 2560, "n_out": 10240, "n": 107},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 3, "n_in": 2560, "n_out": 6144, "n": 191},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 3, "n_in": 2560, "n_out": 12288, "n": 107},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 4, "n_in": 2560, "n_out": 248320, "n": 22},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 4, "n_in": 2560, "n_out": 640, "n": 1639},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 4, "n_in": 2560, "n_out": 512, "n": 2038},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 4, "n_in": 2560, "n_out": 10240, "n": 107},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 4, "n_in": 2560, "n_out": 6144, "n": 191},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 4, "n_in": 2560, "n_out": 12288, "n": 107},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 1, "n_in": 6144, "n_out": 2560, "n": 190},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 3, "n_in": 6144, "n_out": 2560, "n": 190},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 3, "n_in": 640, "n_out": 2560, "n": 1639},
+  {"scope": [-1, -1], "cat": 1, "var": 0, "type": 8, "ncols": 4, "n_in": 6144, "n_out": 2560, "n": 190}
+ ]
+}

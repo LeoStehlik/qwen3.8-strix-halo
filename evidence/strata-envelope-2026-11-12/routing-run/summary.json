@@ -1,0 +1,26 @@
+{
+  "completed": true,
+  "protocol": "decode-profile-v2",
+  "engine_sha256": "64cc7ef327821aa6d6131fece4763cd92dae4f3f75b94fd3fcec2b9cfe858d09",
+  "baseline_engine_sha256": "bce2f61ca0f970a1640aafa77925c0908f060243cffcd1ad10e3843b35eed476",
+  "candidate_switches": {
+    "STRATA_ROUTE_STATS": "1",
+    "STRATA_ENVELOPE_ROUTES": "/home/less/.cache/strata-envelope-20261112/routes.jsonl",
+    "STRATA_ENVELOPE_DISPATCH": "/home/less/.cache/strata-envelope-20261112/dispatch.json"
+  },
+  "restoration": {
+    "load_s": 78.3476047969998,
+    "health": {
+      "status": "ok",
+      "max_context": 262144,
+      "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+      "images": true,
+      "api_key": true,
+      "image_generation": false,
+      "loaded": true,
+      "service": "strata"
+    },
+    "profile_and_overrides_unchanged": true
+  },
+  "reference_outputs_match": true
+}

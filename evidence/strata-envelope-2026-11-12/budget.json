@@ -1,0 +1,139 @@
+{
+  "protocol": "strata-conditional-time-budget-v1",
+  "contexts": [
+    {
+      "nominal_context": 49152,
+      "windows": 421,
+      "native_emitted_tokens": 1006,
+      "outputs_per_window": 2.3895486935866983,
+      "verify_ms": 47.214465558194775,
+      "draft_ms": 9.87627078384798,
+      "native_decode_tok_s": 41.85040352774774,
+      "weight_payload_bytes_per_window": 8056238290.823529,
+      "decode_targets": [
+        {
+          "tok_s": 50,
+          "total_ms": 47.79097387173397,
+          "verify_ms_with_current_draft": 37.91470308788599,
+          "verify_time_reduction_fraction": 0.19696850023318058
+        },
+        {
+          "tok_s": 60,
+          "total_ms": 39.82581155977831,
+          "verify_ms_with_current_draft": 29.94954077593033,
+          "verify_time_reduction_fraction": 0.3656702364021117
+        },
+        {
+          "tok_s": 70,
+          "total_ms": 34.1364099083814,
+          "verify_ms_with_current_draft": 24.260139124533424,
+          "verify_time_reduction_fraction": 0.4861714765227769
+        }
+      ],
+      "weight_only_scenarios": [
+        {
+          "logical_GB_s": 242,
+          "weight_ms": 33.290240871171605,
+          "with_current_draft_tok_s": 55.35653917749065
+        },
+        {
+          "logical_GB_s": 248,
+          "weight_ms": 32.48483181783681,
+          "with_current_draft_tok_s": 56.40902967175507
+        },
+        {
+          "logical_GB_s": 256,
+          "weight_ms": 31.469680823529412,
+          "with_current_draft_tok_s": 57.79401853603314
+        }
+      ],
+      "cold_prefill": {
+        "tokens": 49164,
+        "ms": 35642.0,
+        "tok_s": 1379.3838729588688,
+        "targets": [
+          {
+            "tok_s": 1700,
+            "ms": 28920.0,
+            "save_ms": 6722.0
+          },
+          {
+            "tok_s": 2000,
+            "ms": 24582.0,
+            "save_ms": 11060.0
+          }
+        ]
+      }
+    },
+    {
+      "nominal_context": 196608,
+      "windows": 427,
+      "native_emitted_tokens": 1024,
+      "outputs_per_window": 2.398126463700234,
+      "verify_ms": 49.09,
+      "draft_ms": 9.890000000000002,
+      "native_decode_tok_s": 40.65266584620271,
+      "weight_payload_bytes_per_window": 7990273172.336449,
+      "decode_targets": [
+        {
+          "tok_s": 50,
+          "total_ms": 47.96252927400468,
+          "verify_ms_with_current_draft": 38.07252927400468,
+          "verify_time_reduction_fraction": 0.2244341154205607
+        },
+        {
+          "tok_s": 60,
+          "total_ms": 39.968774395003905,
+          "verify_ms_with_current_draft": 30.078774395003904,
+          "verify_time_reduction_fraction": 0.3872728784884111
+        },
+        {
+          "tok_s": 70,
+          "total_ms": 34.25894948143192,
+          "verify_ms_with_current_draft": 24.36894948143192,
+          "verify_time_reduction_fraction": 0.5035862806797328
+        }
+      ],
+      "weight_only_scenarios": [
+        {
+          "logical_GB_s": 242,
+          "weight_ms": 33.017657736927475,
+          "with_current_draft_tok_s": 55.890407218298066
+        },
+        {
+          "logical_GB_s": 248,
+          "weight_ms": 32.218843436840515,
+          "with_current_draft_tok_s": 56.95066090564108
+        },
+        {
+          "logical_GB_s": 256,
+          "weight_ms": 31.212004579439252,
+          "with_current_draft_tok_s": 58.34573004986394
+        }
+      ],
+      "cold_prefill": {
+        "tokens": 196607,
+        "ms": 153160.0,
+        "tok_s": 1283.670671193523,
+        "targets": [
+          {
+            "tok_s": 1700,
+            "ms": 115651.17647058824,
+            "save_ms": 37508.82352941176
+          },
+          {
+            "tok_s": 2000,
+            "ms": 98303.5,
+            "save_ms": 54856.5
+          }
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "Weight-only scenarios omit state/activation/compute costs and assume one stream of each logical weight payload.",
+    "They preserve observed acceptance and serial draft timing, and are not physical ceilings.",
+    "The 49K control has two native output segments and 18 frontend-injected tokens excluded from native throughput.",
+    "Cold prefill uses only the first uncached segment, not the cached continuation."
+  ]
+}

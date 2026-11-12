@@ -1,0 +1,10 @@
+{
+  "binary_sha256": "5ff08c2142e8511b7b85b0bb1ea8995eeadcbf1ba50479eedb11504812e12e88",
+  "code_object_sha256": "308dbab5ee2a844b28b3638efb475fb1ed7f4b5d57136ce86b319bf125d48da0",
+  "instruction_occurrences": {
+    "v_fma_f32": 8,
+    "v_dot4_i32_iu8": 8,
+    "v_wmma_f32_16x16x16_f16": 2
+  },
+  "target": "hipv4-amdgcn-amd-amdhsa--gfx1151"
+}

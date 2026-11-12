@@ -1,0 +1,9 @@
+{
+  "healthy": true,
+  "loaded": true,
+  "idle": true,
+  "engine_sha256": "bce2f61ca0f970a1640aafa77925c0908f060243cffcd1ad10e3843b35eed476",
+  "profile_sha256": "698719bae62874639ae4c156d9851fe67077e0ea312f781bfa123cc110d633d5",
+  "experimental_flags_absent": true,
+  "normal_endpoint_requests_since_restore": 0
+}

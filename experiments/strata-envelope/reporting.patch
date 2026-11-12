@@ -1,0 +1,61 @@
+diff --git a/src/core/verify.cpp b/src/core/verify.cpp
+index 47977c1..09aafd2 100644
+--- a/src/core/verify.cpp
++++ b/src/core/verify.cpp
+@@ -2677,6 +2677,24 @@ std::string Verifier::route_stats_report() {
+     const int64_t L = g_->n_layers;
+     std::vector<unsigned long long> h((size_t) 9 * (size_t) L * 8);
+     cudaMemcpy(h.data(), rs_dev_, h.size() * 8, cudaMemcpyDeviceToHost);
++    // Research-only readback of the existing route counters. No path selection changes.
++    if (const char* path = std::getenv("STRATA_ENVELOPE_ROUTES")) {
++        static unsigned long long report = 0;
++        ++report;
++        if (std::FILE* f = std::fopen(path, "ab")) {
++            for (int T = 1; T <= 8; ++T) {
++                if (rs_win_[T] == 0) continue;
++                for (int64_t l = 0; l < L; ++l) {
++                    std::fprintf(f, "{\"report\":%llu,\"T\":%d,\"windows\":%lld,\"layer\":%lld,\"new_per_row\":[",
++                                 report, T, (long long) rs_win_[T], (long long) l);
++                    for (int r = 0; r < T; ++r)
++                        std::fprintf(f, "%s%llu", r ? "," : "", h[((size_t) T * (size_t) L + (size_t) l) * 8 + (size_t) r]);
++                    std::fprintf(f, "]}\n");
++                }
++            }
++            std::fclose(f);
++        }
++    }
+     std::string out;
+     char b[160];
+     for (int T = 1; T <= 8; ++T) {
+diff --git a/src/program/generate.cpp b/src/program/generate.cpp
+index bfe8374..42dae5d 100644
+--- a/src/program/generate.cpp
++++ b/src/program/generate.cpp
+@@ -24,6 +24,7 @@
+ #include "strata/core/nv_defaults.hpp"
+ #include "strata/kernels/gfx_arch.hpp"
+ #include "strata/core/batch_telemetry.hpp"
++#include "strata/core/dispatch_stats.hpp"
+ #include "strata/core/dma_batch.hpp"
+ #include "strata/core/device.hpp"
+ #include "strata/core/remote_expert_opt.hpp"
+@@ -19112,6 +19113,19 @@ int main(int argc, char** argv) {
+                 }
+             }
+             if (drive.d.fs) std::fprintf(stderr, "strata serve: %s\n", drive.d.fs->report().c_str());
++            if (const char* path = std::getenv("STRATA_ENVELOPE_DISPATCH")) {
++                const std::string counts = strata::dispatch::Stats::get().json();
++                if (std::FILE* f = std::fopen(path, "ab")) {
++                    // One cumulative JSON object per completed native serve request.
++                    std::fwrite(counts.data(), 1, counts.size(), f);
++                    std::fputs("\n", f);
++                    std::fclose(f);
++                }
++                for (int st = 0; st < n_stages; ++st) {
++                    const std::string rs = stage_ver(st).route_stats_report();
++                    if (!rs.empty()) std::fprintf(stderr, "strata envelope routes, stage %d:\n%s", st, rs.c_str());
++                }
++            }
+             if (!cancelled) {
+                 // a prompt stopped halfway leaves the session somewhere between two chunks: nothing to continue from
+                 // (the checkpoints taken while reading it are still good)

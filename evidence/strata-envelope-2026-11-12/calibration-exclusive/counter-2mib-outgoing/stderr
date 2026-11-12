@@ -1,0 +1,9 @@
+W1112 00:19:11.900457   38765 simple_timer.cpp:55] [rocprofv3] tool initialization ::     0.119662 sec
+W1112 00:19:11.901688   38765 simple_timer.cpp:55] [rocprofv3] '/home/less/.cache/strata-envelope-20261112/calibration-build-v2/calibrate counter 2' ::     0.000000 sec
+W1112 00:19:11.922900   38765 tool.cpp:3082] HSA version 1.21.0 initialized (instance=0)
+W1112 00:19:11.966622   38765 simple_timer.cpp:55] [rocprofv3] '/home/less/.cache/strata-envelope-20261112/calibration-build-v2/calibrate counter 2' ::     0.064933 sec
+E1112 00:19:11.975192   38765 output_stream.cpp:111] Opened result file: profile/calibration_kernel_trace.csv
+E1112 00:19:11.984919   38765 output_stream.cpp:111] Opened result file: profile/calibration_counter_collection.csv
+E1112 00:19:11.988268   38765 output_stream.cpp:111] Opened result file: profile/calibration_agent_info.csv
+W1112 00:19:11.990403   38765 simple_timer.cpp:55] [rocprofv3] output generation ::     0.022238 sec
+W1112 00:19:11.990442   38765 simple_timer.cpp:55] [rocprofv3] tool finalization ::     0.022300 sec

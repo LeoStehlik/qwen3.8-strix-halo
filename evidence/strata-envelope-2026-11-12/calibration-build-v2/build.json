@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/bin/clang++",
+    "-x",
+    "hip",
+    "-std=c++20",
+    "-O3",
+    "--offload-arch=gfx1151",
+    "--rocm-path=/home/less/.local/opt/rocm-7.14.1-strata-lab",
+    "--rocm-device-lib-path=/home/less/.local/opt/rocm-7.14.1-strata-lab/lib/llvm/amdgcn/bitcode",
+    "/home/less/qwen38-dflash2/experiments/strata-envelope/calibrate.hip",
+    "-L/home/less/.local/opt/rocm-7.14.1-strata-lab/lib",
+    "-lamdhip64",
+    "-Wl,-rpath,/home/less/.local/opt/rocm-7.14.1-strata-lab/lib",
+    "-o",
+    "/home/less/.cache/strata-envelope-20261112/calibration-build-v2/calibrate"
+  ],
+  "source_sha256": "e34990d327f5c81338d8068b595923530b499a59c2fa4325b576c86b132b29e8",
+  "binary_sha256": "f31b4021f86af05af3bab96318f38a47c3df3eb37869901c3b5befbb8f864f0a"
+}

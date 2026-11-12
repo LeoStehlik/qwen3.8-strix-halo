@@ -1,0 +1,2 @@
+{"time": 1794443643.2646935, "swap": {"pswpin": 2253025, "pswpout": 6508512}, "evicted_ms": {}, "temp1_input": 59000}
+{"time": 1794443643.7649956, "swap": {"pswpin": 2253025, "pswpout": 6508512}, "evicted_ms": {"40461/stats_35564": 0}, "temp1_input": 77000}

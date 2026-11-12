@@ -1,0 +1,64 @@
+{
+  "kernel": "7.0.0-43-generic",
+  "memory_devices": [
+    {
+      "Data Width": "32 bits",
+      "Size": "16 GB",
+      "Type": "LPDDR5",
+      "Speed": "8532 MT/s",
+      "Configured Memory Speed": "8000 MT/s"
+    },
+    {
+      "Data Width": "32 bits",
+      "Size": "16 GB",
+      "Type": "LPDDR5",
+      "Speed": "8532 MT/s",
+      "Configured Memory Speed": "8000 MT/s"
+    },
+    {
+      "Data Width": "32 bits",
+      "Size": "16 GB",
+      "Type": "LPDDR5",
+      "Speed": "8532 MT/s",
+      "Configured Memory Speed": "8000 MT/s"
+    },
+    {
+      "Data Width": "32 bits",
+      "Size": "16 GB",
+      "Type": "LPDDR5",
+      "Speed": "8532 MT/s",
+      "Configured Memory Speed": "8000 MT/s"
+    },
+    {
+      "Data Width": "32 bits",
+      "Size": "16 GB",
+      "Type": "LPDDR5",
+      "Speed": "8532 MT/s",
+      "Configured Memory Speed": "8000 MT/s"
+    },
+    {
+      "Data Width": "32 bits",
+      "Size": "16 GB",
+      "Type": "LPDDR5",
+      "Speed": "8532 MT/s",
+      "Configured Memory Speed": "8000 MT/s"
+    },
+    {
+      "Data Width": "32 bits",
+      "Size": "16 GB",
+      "Type": "LPDDR5",
+      "Speed": "8532 MT/s",
+      "Configured Memory Speed": "8000 MT/s"
+    },
+    {
+      "Data Width": "32 bits",
+      "Size": "16 GB",
+      "Type": "LPDDR5",
+      "Speed": "8532 MT/s",
+      "Configured Memory Speed": "8000 MT/s"
+    }
+  ],
+  "conditional_nominal_GB_s": 256,
+  "nominal_assumption": "SMBIOS configured 8000 MT/s times 256 aggregate data bits / 8, not independent DRAM clock verification",
+  "gpu_clock_policy": "high"
+}

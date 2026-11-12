@@ -1,0 +1,6 @@
+{
+  "commit": "c3b3f5035506f3e966f1b4b7b188aeaabae92f1d",
+  "binary_sha256": "64cc7ef327821aa6d6131fece4763cd92dae4f3f75b94fd3fcec2b9cfe858d09",
+  "patch_sha256": "3cb6c735000a22318d5268e65894b66bc4492fae8b61bcee092cc34cf0e4b26c",
+  "prior_Q51_opt_in_present_but_unset": true
+}

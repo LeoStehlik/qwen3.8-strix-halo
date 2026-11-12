@@ -1,9 +1,42 @@
-# Handoff for Francis — Flash-Next kernel research, 2026-11-11
+# Handoff for Francis — Flash-Next performance envelope, 2026-11-12
 
 Repository: [Qwen3.8 inference on Strix Halo](https://github.com/LeoStehlik/qwen3.8-strix-halo),
 renamed from the earlier 27B/DFlash2-specific name on 7 November. `main` is the
 canonical branch for deployment, experiments, evidence and this handoff. Completed
 topic branches were consolidated into `main` and retired on 8 November.
+
+## Completed performance-envelope study — November 12
+
+The [new findings](docs/STRATA-PERFORMANCE-ENVELOPE-2026-11-12.md) establish
+measured calibration and model-work accounting. Read bandwidth repeated at
+242 GB/s, mixed traffic at 209–211 GB/s and register-only FP16 WMMA at 57 TFLOP/s.
+The large native Q8 decode operators already achieve approximately 224–248 GB/s
+of logical payload throughput. These are not physical DRAM counters.
+
+At 197K, actual routing averages about 22 distinct experts per layer and
+3.06 candidate rows per window. Dense plus distinct expert payload is about
+8 GB/window; the normal control emits 2.398 accepted tokens/window. The former
+“1.7 GB/token, one third of bandwidth” argument is withdrawn. Matrix work in
+prefill is also about 12 GFLOP/token before non-matrix costs, rather than the
+earlier active-parameter-only estimate.
+
+The conditional weight-streaming scenarios leave little room for 60–70 tok/s
+with unchanged serial drafting and acceptance. Better reuse/work per accepted
+token must be part of that design. Prefill 1,700–2,000 is not excluded by matrix
+capacity, but needs gains across several stages; representative dense matrices
+already achieve 40–43 TFLOP/s. Do not quote either target as an achievable result.
+
+The report supplies bounded next designs for expert gate/up operand reuse and
+the draft/verify schedule. Existing losing config/layout trials remain closed.
+The earlier Q5_1 patch remains optional, unpromoted research.
+
+Both context probes match the prior input/output hashes. Reporting adds
+diagnostic work, so its throughput is not a replacement baseline. Exclusive
+calibration/operator runs restored the original service; the known-good profile
+and packaged executable remain in place. No OpenClaw routing was changed and
+no measurement job remains active from this study. Source, raw measurements,
+counter limitations and [reproduction instructions](experiments/strata-envelope/README.md)
+are published on `main`.
 
 ## Completed research pass — November 11
 
