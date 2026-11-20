@@ -13,6 +13,7 @@ consolidated here and retired.
 
 - [Flash-Next deployment guide](docs/STRATA-FLASH-NEXT.md)
 - [Current handoff and serving state](handoff.md)
+- [November 20 ecosystem review and packaged Strata trial](docs/ECOSYSTEM-REVIEW-2026-11-20.md)
 - [Performance objectives and evidence](docs/STRATA-NEXT-TARGETS-2026-11-07.md)
 - [November 11 kernel research and external profiling](docs/STRATA-RESEARCH-PROGRAM-2026-11-11.md)
 - [November 12 measured hardware/model performance envelope](docs/STRATA-PERFORMANCE-ENVELOPE-2026-11-12.md)
@@ -20,7 +21,16 @@ consolidated here and retired.
 The earlier 27B/DFlash2 setup remains documented below and in its installation
 guide. Use the Strata guide above for Flash-Next.
 
-## Current direction — 2026-11-12
+## Current direction — 2026-11-20
+
+The [fortnight review](docs/ECOSYSTEM-REVIEW-2026-11-20.md) identifies new
+Strata, Halogen and Gufo releases worth evaluating with Flash-Next. A bounded
+trial of packaged Strata v0.2.17 / engine 0.1.63 is authorized; the existing
+v0.2.11 / engine 0.1.57 deployment is retained until comparison and state/tool
+checks pass. The external numbers are not local results. Earlier custom kernel
+research remains closed; no new release is promoted by this documentation.
+
+## Completed performance study — 2026-11-12
 
 The [performance-envelope study](docs/STRATA-PERFORMANCE-ENVELOPE-2026-11-12.md)
 calibrates about **242 GB/s reads, 209–211 GB/s mixed traffic and 57 TFLOP/s

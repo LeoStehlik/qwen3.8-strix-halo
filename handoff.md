@@ -1,9 +1,26 @@
-# Handoff for Francis — Flash-Next performance envelope, 2026-11-12
+# Handoff for Francis — Flash-Next release evaluation, 2026-11-20
 
 Repository: [Qwen3.8 inference on Strix Halo](https://github.com/LeoStehlik/qwen3.8-strix-halo),
 renamed from the earlier 27B/DFlash2-specific name on 7 November. `main` is the
 canonical branch for deployment, experiments, evidence and this handoff. Completed
 topic branches were consolidated into `main` and retired on 8 November.
+
+## Authorized release trial — November 20
+
+Read the [ecosystem review](docs/ECOSYSTEM-REVIEW-2026-11-20.md). Strata v0.2.17
+/ engine 0.1.63 will be compared against the retained packaged 0.1.57 deployment.
+Halogen 0.20.7 and Gufo 0.35.0 remain subsequent candidates, not installations.
+No new package has been promoted at this checkpoint. The completed custom kernel
+program stays closed; this is a bounded upstream-release evaluation.
+
+After today's user-operated reboot, BIOS GPU reserve is 512 MiB, Linux sees
+about 122 GiB, GTT is 112 GiB and the current Strata engine holds all 24,576
+experts (73,450 MiB). The persistent unit started successfully after reboot and
+served real requests. The earlier 96 GiB BIOS reserve starved host memory and
+caused the automatic expert cache to shrink; do not restore that configuration.
+Cold 89,471-token live input subsequently processed at about 1,300 tok/s.
+These operational observations supersede the old pending reboot-validation
+notes below; they are not controlled benchmark comparisons.
 
 ## Completed performance-envelope study — November 12
 
