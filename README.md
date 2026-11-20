@@ -21,14 +21,24 @@ consolidated here and retired.
 The earlier 27B/DFlash2 setup remains documented below and in its installation
 guide. Use the Strata guide above for Flash-Next.
 
-## Current direction — 2026-11-20
+## Current deployment — 2026-11-20
 
-The [fortnight review](docs/ECOSYSTEM-REVIEW-2026-11-20.md) identifies new
-Strata, Halogen and Gufo releases worth evaluating with Flash-Next. A bounded
-trial of packaged Strata v0.2.17 / engine 0.1.63 is authorized; the existing
-v0.2.11 / engine 0.1.57 deployment is retained until comparison and state/tool
-checks pass. The external numbers are not local results. Earlier custom kernel
-research remains closed; no new release is promoted by this documentation.
+[Strata v0.2.17 / engine-control 0.1.63 with DFlash2 is deployed](docs/STRATA-RELEASE-TRIAL-2026-11-20.md).
+The target remains Flash-Next UD-Q4_K_XL, with INT8 KV and a 262K context limit.
+Cold 64K / 128K / 192K prefill measured **1,383 / 1,331 / 1,281 tok/s**.
+The 512-token generation probes at 64K / 128K measured **42.1 / 43.1 tok/s**;
+sampled medium-thinking probes measured **45 / 58 / 54 tok/s**.
+
+DFlash2 improved long-context generation by about 7% versus MTP on the same new
+engine in these single-run probes, with matching outputs. Prefill is broadly
+unchanged. Exact tools, continuation and checkpoint restoration pass. Restart
+and remote connectivity are verified; the old deployment is retained for
+rollback. A full host reboot and live OpenClaw quality evaluation were not part
+of this upgrade. See the report for limits, raw evidence and reproduction.
+
+The [fortnight ecosystem review](docs/ECOSYSTEM-REVIEW-2026-11-20.md) also identifies
+Halogen and Gufo as subsequent candidates. They are not installed by this trial.
+The completed custom-kernel research program remains closed.
 
 ## Completed performance study — 2026-11-12
 
@@ -62,7 +72,8 @@ targets remain unmet and the hardware ceiling is unproven.
 
 The packaged Flash-Next deployment is persistent and enabled at boot, with a
 pinned engine and automatic crash recovery. Normal restart took 87.3 seconds;
-forced-process recovery took 96.3 seconds. Host reboot validation remains open.
+forced-process recovery took 96.3 seconds. At that checkpoint host reboot validation remained open; the November 20
+handoff records the subsequent successful baseline reboot.
 No experimental source kernel is serving.
 
 The [cache investigation](docs/STRATA-CACHE-MISSES-2026-11-08.md) found and fixed

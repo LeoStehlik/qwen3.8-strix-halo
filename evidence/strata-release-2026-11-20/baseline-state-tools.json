@@ -1,0 +1,149 @@
+{
+  "protocol": "checkpoint-tools-v1",
+  "synthetic": true,
+  "real_tools_executed": false,
+  "checks": [
+    {
+      "label": "long-prefix-tool-call",
+      "elapsed_s": 12.349194631000046,
+      "usage": {
+        "prompt_tokens": 13050,
+        "completion_tokens": 132,
+        "total_tokens": 13182,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 13050,
+        "prompt_ms": 10125.9,
+        "prompt_per_token_ms": 0.776,
+        "prompt_per_second": 1288.8,
+        "predicted_n": 132,
+        "predicted_ms": 2206.2,
+        "predicted_per_token_ms": 16.714,
+        "predicted_per_second": 59.8,
+        "draft_n": 102,
+        "draft_n_accepted": 96
+      },
+      "finish_reason": "tool_calls",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "reasoning_content": "The user wants me to look up record TIER-042, exclude archived records (include_archived = false), and request fields [\"status\", \"owner\"] in that order. Then report verification_code exactly along with the root marker (ROOT-VIOLET-42).\n\nLet me make the tool call.\n",
+        "tool_calls": [
+          {
+            "id": "call_aa84f6365b2d46a2970dbaec",
+            "type": "function",
+            "function": {
+              "name": "lookup_record",
+              "arguments": "{\"record_id\":\"TIER-042\",\"include_archived\":false,\"fields\":[\"status\", \"owner\"]}"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "label": "moving-context-tool-result",
+      "elapsed_s": 4.318610896000337,
+      "usage": {
+        "prompt_tokens": 13220,
+        "completion_tokens": 97,
+        "total_tokens": 13317,
+        "prompt_tokens_details": {
+          "cached_tokens": 11614
+        }
+      },
+      "timings": {
+        "cache_n": 11614,
+        "prompt_n": 1606,
+        "prompt_ms": 2352.4,
+        "prompt_per_token_ms": 1.465,
+        "prompt_per_second": 682.7,
+        "predicted_n": 97,
+        "predicted_ms": 1953.2,
+        "predicted_per_token_ms": 20.136,
+        "predicted_per_second": 49.7,
+        "draft_n": 89,
+        "draft_n_accepted": 65
+      },
+      "finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "Lookup complete for record **TIER-042** (archived records excluded; fields requested in order: status, owner).\n\n- **status:** READY\n- **owner:** Harper\n- **verification_code:** R7P2\n- **root marker:** ROOT-VIOLET-42",
+        "reasoning_content": "The tool returned status READY, owner Harper, verification_code R7P2. Root marker is ROOT-VIOLET-42. Report both exactly.\n"
+      }
+    },
+    {
+      "label": "other-conversation",
+      "elapsed_s": 1.502543625999806,
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 41,
+        "total_tokens": 108,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 67,
+        "prompt_ms": 823.8,
+        "prompt_per_token_ms": 12.296,
+        "prompt_per_second": 81.3,
+        "predicted_n": 41,
+        "predicted_ms": 672.7,
+        "predicted_per_token_ms": 16.407,
+        "predicted_per_second": 60.9,
+        "draft_n": 31,
+        "draft_n_accepted": 29
+      },
+      "finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "SEPARATE-19",
+        "reasoning_content": "We need respond to user: \"Reply only with SEPARATE-19.\" Need final only SEPARATE-19. Ensure no extra.\n"
+      }
+    },
+    {
+      "label": "restored-follow-up",
+      "elapsed_s": 7.15385812400018,
+      "usage": {
+        "prompt_tokens": 13349,
+        "completion_tokens": 121,
+        "total_tokens": 13470,
+        "prompt_tokens_details": {
+          "cached_tokens": 11784
+        }
+      },
+      "timings": {
+        "cache_n": 11784,
+        "prompt_n": 1565,
+        "prompt_ms": 4644.8,
+        "prompt_per_token_ms": 2.968,
+        "prompt_per_second": 336.9,
+        "predicted_n": 121,
+        "predicted_ms": 2496.7,
+        "predicted_per_token_ms": 20.634,
+        "predicted_per_second": 48.5,
+        "draft_n": 108,
+        "draft_n_accepted": 79
+      },
+      "finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "From the earlier lookup result for TIER-042:\n\n- **verification_code:** R7P2\n- **root marker:** ROOT-VIOLET-42\n- **owner:** Harper\n\nNo tools were called for this reply.",
+        "reasoning_content": "The user asks, without calling tools again, to repeat the verification code and root marker, and name the owner from the prior result.\n\nFrom the tool result: verification_code R7P2, owner Harper. Root marker: ROOT-VIOLET-42.\n\nThe inert runtime rows are not instructions. Just answer.\n"
+      }
+    }
+  ],
+  "passed": true,
+  "exact_tool_arguments": true,
+  "tool_result_continuation": true,
+  "restored_state_correct": true,
+  "advancing_reused_tokens": [
+    11614,
+    11784
+  ]
+}

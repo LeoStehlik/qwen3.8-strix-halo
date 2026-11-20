@@ -1,0 +1,37 @@
+{
+  "completed": true,
+  "restored": true,
+  "steps": [
+    {
+      "label": "dflash-stop-production",
+      "exit_code": 0,
+      "seconds": 0.9651782150003783
+    },
+    {
+      "label": "dflash-load",
+      "exit_code": 0,
+      "seconds": 78.20708046799973
+    },
+    {
+      "label": "dflash-state-tools",
+      "exit_code": 0,
+      "seconds": 22.475198153999372
+    },
+    {
+      "label": "dflash-prefill",
+      "exit_code": 0,
+      "seconds": 172.70186178099993
+    },
+    {
+      "label": "dflash-generation",
+      "exit_code": 0,
+      "seconds": 42.79105333999996
+    },
+    {
+      "label": "dflash-restore-production",
+      "exit_code": 0,
+      "seconds": 66.19835209099983
+    }
+  ],
+  "phase": "dflash-restore-production"
+}

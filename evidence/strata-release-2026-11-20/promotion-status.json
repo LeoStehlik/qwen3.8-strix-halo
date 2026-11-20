@@ -1,0 +1,91 @@
+{
+  "selected_drafting": "dflash2",
+  "promoted": true,
+  "rolled_back": false,
+  "steps": [
+    {
+      "label": "install-pinned-release",
+      "exit_code": 0,
+      "seconds": 0.5643305470002815
+    },
+    {
+      "label": "start-pinned-release",
+      "exit_code": 0,
+      "seconds": 75.60686687500038
+    },
+    {
+      "label": "dflash-capacity",
+      "exit_code": 0,
+      "seconds": 157.04575909899995
+    },
+    {
+      "label": "service-enabled",
+      "exit_code": 0,
+      "seconds": 0.003525387000081537
+    }
+  ],
+  "phase": "service-enabled",
+  "ready_response": {
+    "id": "chatcmpl-c6b5ddf43b8e4c548c9b493a",
+    "object": "chat.completion",
+    "created": 1795212844,
+    "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "STRATA-READY"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 24,
+      "completion_tokens": 5,
+      "total_tokens": 29,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 24,
+      "prompt_ms": 787.5,
+      "prompt_per_token_ms": 32.812,
+      "prompt_per_second": 30.5,
+      "predicted_n": 5,
+      "predicted_ms": 118.2,
+      "predicted_per_token_ms": 23.64,
+      "predicted_per_second": 42.3,
+      "draft_n": 7,
+      "draft_n_accepted": 3
+    }
+  },
+  "health": {
+    "status": "ok",
+    "max_context": 262144,
+    "model": "qwen3.8-flash-next-unsloth-ud-q4_k_xl",
+    "images": true,
+    "api_key": true,
+    "image_generation": false,
+    "loaded": true,
+    "service": "strata"
+  },
+  "final_live": {
+    "state": "idle",
+    "queued": 0,
+    "phase": null,
+    "prompt_tokens": null,
+    "prompt_read": null,
+    "prompt_total": null,
+    "generated": null,
+    "max_tokens": null,
+    "elapsed_s": null,
+    "tok_s": null,
+    "tok_s_mean": null,
+    "prefill_tok_s_mean": null,
+    "reused": null,
+    "tok_s_window_s": null
+  }
+}

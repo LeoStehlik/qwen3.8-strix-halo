@@ -1,0 +1,68 @@
+{
+  "started_at": 1795211284.834136,
+  "completed": true,
+  "restored": true,
+  "steps": [
+    {
+      "label": "stop-production",
+      "exit_code": 0,
+      "seconds": 0.8641958739999609
+    },
+    {
+      "label": "baseline-load",
+      "exit_code": 0,
+      "seconds": 72.20283154699973
+    },
+    {
+      "label": "baseline-prefill",
+      "exit_code": 0,
+      "seconds": 179.70476123199978
+    },
+    {
+      "label": "baseline-generation",
+      "exit_code": 0,
+      "seconds": 45.750760000000355
+    },
+    {
+      "label": "baseline-state-tools",
+      "exit_code": 0,
+      "seconds": 25.388087426999846
+    },
+    {
+      "label": "update",
+      "exit_code": 0,
+      "seconds": 74.27892425499977
+    },
+    {
+      "label": "candidate-load",
+      "exit_code": 0,
+      "seconds": 78.19066567000027
+    },
+    {
+      "label": "candidate-prefill",
+      "exit_code": 0,
+      "seconds": 174.99717123500068
+    },
+    {
+      "label": "candidate-generation",
+      "exit_code": 0,
+      "seconds": 44.741580240000076
+    },
+    {
+      "label": "candidate-state-tools",
+      "exit_code": 0,
+      "seconds": 23.276011521000328
+    },
+    {
+      "label": "candidate-capacity",
+      "exit_code": 0,
+      "seconds": 157.53625022699998
+    },
+    {
+      "label": "restore-production",
+      "exit_code": 0,
+      "seconds": 58.0915957090001
+    }
+  ],
+  "phase": "restore-production"
+}

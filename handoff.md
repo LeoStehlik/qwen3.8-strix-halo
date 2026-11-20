@@ -1,26 +1,53 @@
-# Handoff for Francis — Flash-Next release evaluation, 2026-11-20
+# Handoff for Francis — Strata 0.1.63 / DFlash2, 2026-11-20
 
 Repository: [Qwen3.8 inference on Strix Halo](https://github.com/LeoStehlik/qwen3.8-strix-halo),
 renamed from the earlier 27B/DFlash2-specific name on 7 November. `main` is the
 canonical branch for deployment, experiments, evidence and this handoff. Completed
 topic branches were consolidated into `main` and retired on 8 November.
 
-## Authorized release trial — November 20
+## Current deployment — November 20
 
-Read the [ecosystem review](docs/ECOSYSTEM-REVIEW-2026-11-20.md). Strata v0.2.17
-/ engine 0.1.63 will be compared against the retained packaged 0.1.57 deployment.
-Halogen 0.20.7 and Gufo 0.35.0 remain subsequent candidates, not installations.
-No new package has been promoted at this checkpoint. The completed custom kernel
-program stays closed; this is a bounded upstream-release evaluation.
+The [release trial](docs/STRATA-RELEASE-TRIAL-2026-11-20.md) is complete.
+**Engine/control 0.1.63 from Strata v0.2.17 now serves Flash-Next UD-Q4_K_XL
+with the tuned DFlash2 drafter**, window 8 and confidence 0.35. Target weights,
+tokenizer, 262,144 context, INT8 KV and endpoint credentials are unchanged.
+The normal API remains `http://100.96.8.54:8083/v1`; no OpenClaw routing was edited.
+
+Cold prefill: **1,383 / 1,331 / 1,281 tok/s at 64K / 128K / 192K**. Sustained
+512-token generation: **42.1 / 43.1 tok/s at 64K / 128K**. Medium-thinking,
+temperature-0.2 generation probes: **45 / 58 / 54 tok/s**. These are single-run
+public-fixture samples, not a promise for every live Discord request. DFlash2
+improves long-context decode about 7% versus MTP on the updated engine; prefill
+is essentially unchanged. All five timing-probe output hashes match between
+MTP and DFlash2 on 0.1.63. The engine update itself is not bitwise identical to
+0.1.57 on every probe.
+
+All arms pass exact typed tool arguments, tool-result continuation and
+interleaved conversation/checkpoint restoration. The final DFlash2 192K prompt
+and a normal-endpoint completion passed; the queue was idle. The Mac mini can
+reach the loaded endpoint. **Real OpenClaw answer quality with normal `xhigh`
+requests remains to be judged in live use.** The benchmarks used medium thinking
+or thinking disabled, as recorded in the report.
+
+`strata-flash-next.service` is pinned to the 0.1.63 control interpreter/entry
+point and engine, with `STRATA_NO_HANDOVER=1`, automatic restart, enabled boot
+startup and user linger. Restart took 75.6 s. Temporary trial service removed;
+no benchmark remains running. The old 0.1.57 engine/bundle, target weights, MTP
+pack and private deployment backups remain available. Rollback and exact pinned
+installation commands are in the report. Do not use the historical installer
+without `--release 0.1.63 --drafting dflash2` to reproduce today's deployment.
 
 After today's user-operated reboot, BIOS GPU reserve is 512 MiB, Linux sees
-about 122 GiB, GTT is 112 GiB and the current Strata engine holds all 24,576
-experts (73,450 MiB). The persistent unit started successfully after reboot and
-served real requests. The earlier 96 GiB BIOS reserve starved host memory and
-caused the automatic expert cache to shrink; do not restore that configuration.
-Cold 89,471-token live input subsequently processed at about 1,300 tok/s.
-These operational observations supersede the old pending reboot-validation
-notes below; they are not controlled benchmark comparisons.
+about 122 GiB, GTT is 112 GiB and all **24,576 experts (73,450 MiB)** are resident.
+The prior service successfully started after that reboot. The earlier 96 GiB
+BIOS reserve starved host memory and shrank the automatic expert cache; do not
+restore it. The **new** release has passed a service restart, not another host
+reboot. Do not hot-reload the GPU driver.
+
+The [ecosystem review](docs/ECOSYSTEM-REVIEW-2026-11-20.md) is published.
+Halogen 0.20.7 and Gufo 0.35.0 remain subsequent candidates, not installations.
+The completed custom kernel program stays closed. No additional performance
+work is pending from this bounded release trial.
 
 ## Completed performance-envelope study — November 12
 

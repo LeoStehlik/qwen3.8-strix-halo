@@ -12,7 +12,11 @@ capability is more useful than a faster model that needs tool-use hand-holding.
 Test packaged Strata v0.2.17 / engine 0.1.63 against the retained v0.2.11 /
 engine 0.1.57 baseline first. Halogen 0.20.7 is the strongest subsequent
 performance lead; Gufo 0.35.0 is an open-source alternative using the existing
-UD-Q4_K_XL target format. No engine comparison in this report is yet promoted.
+UD-Q4_K_XL target format. No engine was promoted at this research checkpoint; the subsequent local trial
+below records the deployment decision.
+
+The subsequent [local release trial](STRATA-RELEASE-TRIAL-2026-11-20.md) records
+measured results and the deployment decision separately from this source review.
 
 This is a bounded release evaluation, not a reopening of the completed custom
 kernel research program. The historical controls measured cold prefill of

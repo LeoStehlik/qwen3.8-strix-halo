@@ -1,0 +1,15 @@
+[strata] 2026-11-20 21:54:46 engine started: ~/.local/share/strata/components/engine/0.1.63-linux-x86_64-hip-halo/strata --serve --pack ~/models/strata-flash-next/packs/unsloth-ud-q4_k_xl --native ~/models/strata-flash-next/models/unsloth-UD-Q4_K_XL/Qwen3.8-Flash-Next-UD-Q4_K_XL-00001-of-00004.gguf --expert-profile ~/.local/share/strata/terminal/0.1.57/data/expert-profile.bin --expert-cache auto --prefill 16384 --spec 4 --spec-min-p 0.5 --mtp ~/models/strata-flash-next/mtp/rt --max-context 262144 --kv int8 --ple-io mmap --kv-resident 0 --vision --vram-reserve-mib 700 --mmap-experts --no-prefill-borrow --tail-role-token 846
+strata generate: expert cache 24576 slots, 71.73 GiB of VRAM; policy is
+strata serve: prompt 151 tokens = 0 reused + 151 read in 498 ms (303.4 tok/s), 16 generated in 332 ms (48.2 tok/s), drafts accepted 9 of 9, 1 checkpoints
+strata serve: prompt 65546 tokens = 0 reused + 65546 read in 47608 ms (1376.8 tok/s), 512 generated in 12984 ms (39.4 tok/s), drafts accepted 281 of 454, 5 checkpoints
+strata serve: prompt 131076 tokens = 0 reused + 131076 read in 98874 ms (1325.7 tok/s), 512 generated in 12767 ms (40.1 tok/s), drafts accepted 293 of 458, 6 checkpoints
+strata serve: prompt 35 tokens = 0 reused + 35 read in 1141 ms (30.7 tok/s), 512 generated in 11604 ms (44.1 tok/s), drafts accepted 312 of 465, 1 checkpoints
+strata serve: the graphics driver paused the GPU for 663 ms during this request while Linux moved memory the GPU uses; the request was slower by up to that much
+strata serve: prompt 16345 tokens = 0 reused + 16345 read in 11445 ms (1428.1 tok/s), 512 generated in 10178 ms (50.3 tok/s), drafts accepted 339 of 446, 1 checkpoints
+strata serve: prompt 70 tokens = 0 reused + 70 read in 465 ms (150.4 tok/s), 512 generated in 9795 ms (52.3 tok/s), drafts accepted 339 of 454, 1 checkpoints
+strata serve: prompt 13050 tokens = 0 reused + 13050 read in 10284 ms (1269.0 tok/s), 132 generated in 2237 ms (59.0 tok/s), drafts accepted 96 of 102, 2 checkpoints
+strata serve: prompt 13220 tokens = 11614 reused + 1606 read in 2523 ms (636.5 tok/s), 97 generated in 1928 ms (50.3 tok/s), drafts accepted 65 of 86, 4 checkpoints
+strata serve: prompt 67 tokens = 0 reused + 67 read in 885 ms (75.7 tok/s), 41 generated in 673 ms (60.9 tok/s), drafts accepted 29 of 31, 1 checkpoints
+strata serve: prompt 13349 tokens = 11784 reused + 1565 read in 2267 ms (690.5 tok/s), 110 generated in 2339 ms (47.0 tok/s), drafts accepted 73 of 104, 5 checkpoints
+strata serve: prompt 151 tokens = 0 reused + 151 read in 543 ms (278.2 tok/s), 16 generated in 322 ms (49.7 tok/s), drafts accepted 9 of 9, 1 checkpoints
+strata serve: prompt 196606 tokens = 0 reused + 196606 read in 154269 ms (1274.4 tok/s), 32 generated in 862 ms (37.1 tok/s), drafts accepted 17 of 30, 6 checkpoints

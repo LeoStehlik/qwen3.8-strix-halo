@@ -1,5 +1,10 @@
 # Flash-Next on packaged Strata
 
+For the November 20 engine/control 0.1.63 and DFlash2 evaluation, measured
+results and pinned upgrade instructions, read the
+[release trial](STRATA-RELEASE-TRIAL-2026-11-20.md) and [current handoff](../handoff.md).
+The 0.1.57 commands and measurements below reproduce the earlier deployment.
+
 Status on 2026-11-08: persistent authenticated API at
 `http://100.96.8.54:8083/v1`, OpenClaw provider `tiercelmoe`, alias
 `qwen-flash-next`. The user moved Francis to another model for profiling. That comparison

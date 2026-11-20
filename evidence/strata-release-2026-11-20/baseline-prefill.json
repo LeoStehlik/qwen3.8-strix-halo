@@ -1,0 +1,139 @@
+{
+  "protocol": "strata-cold-prefill-custom-v3",
+  "fixture_sha256": "6efd5cb8693d5c7fc9fa826da0e454895172071c7d30283f6eb6c04978875346",
+  "sampling": {
+    "temperature": 0,
+    "enable_thinking": false,
+    "max_tokens": 512,
+    "presence_penalty": 0.0
+  },
+  "sampling_preset": "greedy",
+  "nonce_seed": "release-20261120",
+  "strata_tune": {},
+  "runs": [
+    {
+      "target_tokens": 0,
+      "repeat": 0,
+      "warmup": true,
+      "nonce": "0123456789abcdef0123456789abcdef",
+      "messages_sha256": "cb5dcf4eb40a4691bba53a26ef206b46d147ba56b0664a57c83899453e5c51ca",
+      "usage": {
+        "prompt_tokens": 151,
+        "completion_tokens": 16,
+        "total_tokens": 167,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 151,
+        "prompt_ms": 827.2,
+        "prompt_per_token_ms": 5.478,
+        "prompt_per_second": 182.5,
+        "predicted_n": 16,
+        "predicted_ms": 734.0,
+        "predicted_per_token_ms": 45.875,
+        "predicted_per_second": 21.8,
+        "draft_n": 9,
+        "draft_n_accepted": 9
+      },
+      "first_token_s": 0.907597517999875,
+      "elapsed_s": 1.6018965749999552,
+      "finish_reason": "length",
+      "clock_start": {
+        "monotonic_ns": 3804107348294,
+        "unix_ns": 1795211358090327425,
+        "monotonic_raw_ns": 3804383974511,
+        "boottime_ns": 3804107349727
+      },
+      "end_monotonic_ns": 3805709243506,
+      "first_token_monotonic_ns": 3805014946102,
+      "complete_stream": true,
+      "output_sha256": "7d64ff2ac50c2d3679b1613d8cdf338e2e4cc28816c07b63080305bf51dd1a80"
+    },
+    {
+      "target_tokens": 65536,
+      "repeat": 0,
+      "warmup": false,
+      "nonce": "eceee62c918b18cd74e27d81caa0f445",
+      "messages_sha256": "536aeca9942078e5d10aacb7e30e5db9c06b917526cb2b926adf4b2ade2b425a",
+      "usage": {
+        "prompt_tokens": 65546,
+        "completion_tokens": 512,
+        "total_tokens": 66058,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 65546,
+        "prompt_ms": 51562.0,
+        "prompt_per_token_ms": 0.787,
+        "prompt_per_second": 1271.2,
+        "predicted_n": 512,
+        "predicted_ms": 12577.1,
+        "predicted_per_token_ms": 24.565,
+        "predicted_per_second": 40.7,
+        "draft_n": 458,
+        "draft_n_accepted": 292
+      },
+      "first_token_s": 51.63209377400017,
+      "elapsed_s": 64.17672626800004,
+      "finish_reason": "length",
+      "clock_start": {
+        "monotonic_ns": 3806456201370,
+        "unix_ns": 1795211360439181002,
+        "monotonic_raw_ns": 3806732904923,
+        "boottime_ns": 3806456203654
+      },
+      "end_monotonic_ns": 3870632928169,
+      "first_token_monotonic_ns": 3858088296216,
+      "complete_stream": true,
+      "output_sha256": "77a9f8d4394e52fbc7ff49a04ccc5e38dfd810310ec005fb4dbf6343e41d9299"
+    },
+    {
+      "target_tokens": 131072,
+      "repeat": 0,
+      "warmup": false,
+      "nonce": "5f440bcf417709ea9346e59f914797e6",
+      "messages_sha256": "2716104490b9ec6cb31c31502c20d227e73dac5438fc560d31dd9f8645b15936",
+      "usage": {
+        "prompt_tokens": 131076,
+        "completion_tokens": 512,
+        "total_tokens": 131588,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 131076,
+        "prompt_ms": 99260.7,
+        "prompt_per_token_ms": 0.757,
+        "prompt_per_second": 1320.5,
+        "predicted_n": 512,
+        "predicted_ms": 12829.5,
+        "predicted_per_token_ms": 25.058,
+        "predicted_per_second": 39.9,
+        "draft_n": 463,
+        "draft_n_accepted": 293
+      },
+      "first_token_s": 99.36581866400002,
+      "elapsed_s": 112.16395214199974,
+      "finish_reason": "length",
+      "clock_start": {
+        "monotonic_ns": 3871565200534,
+        "unix_ns": 1795211425548180276,
+        "monotonic_raw_ns": 3871844021453,
+        "boottime_ns": 3871565203169
+      },
+      "end_monotonic_ns": 3983729153408,
+      "first_token_monotonic_ns": 3970931019569,
+      "complete_stream": true,
+      "output_sha256": "1c4b542f1c7545465e2e6cd16e6e92f54690ee806c82dccb338590f7f1bed719"
+    }
+  ],
+  "completed": true
+}
